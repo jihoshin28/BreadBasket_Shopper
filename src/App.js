@@ -25,7 +25,7 @@ function App() {
         
       </header>
       <footer className = "footer">
-        Allen Shin 2020
+       
         <br></br>
         <br></br>
       </footer>
