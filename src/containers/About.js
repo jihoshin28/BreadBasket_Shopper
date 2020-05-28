@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import aboutPic from '../T02MD9XTF-UPPK08S6T-a84b4ba4eadc-512.png'
+// import aboutPic from '../public/logo192.png'
 export class Home extends Component {
     render() {
         return (
@@ -7,8 +7,9 @@ export class Home extends Component {
                 <h1>About Me</h1>
             <div className='textBox'>
                 <p> Hi! I'm Allen.</p>
-                <img width = '400px' src= {aboutPic} alt='Profile pic here!'></img>
+                {/* <img width = '400px' src= {aboutPic} alt='Profile pic here!'></img> */}
                 <div className = 'aboutBox'>
+                
                     <p>
                         I'm a local bay area native with a drive to innovate and solve problems.
                         I graduated from UCSD in 2016 with a degree in General Biology, but I found out
@@ -19,13 +20,14 @@ export class Home extends Component {
                         through labs, coding challeneges, and team projects.
 
                     </p>
-                    
+
                     <p>
                         Using computers have always seemed cyptic to me, but I've recently found that 
                         making a computer, is less like solving a math problem, and there are a ton of 
                         things you can build if you just know how to speak the language. I am interested 
                         in investing in the programming to continue build things that interest me. 
                     </p>
+
                     <p>
                     I'm also currently looking for a job and would love to connect!
                     </p>
@@ -41,7 +43,6 @@ export class Home extends Component {
                     <p>- CSS</p>
                     <p>- Github</p>
                     <p>...And I'm continuing to learn more!</p>
-                    <p></p>
                     <br></br>
                 </div>
             </div>
