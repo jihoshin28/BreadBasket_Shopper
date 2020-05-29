@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       
       <header className="App-header">
-        <div><h1>Allen Shin</h1></div>
+        <div><h1>Bread Basket Shopper</h1></div>
         <Router>
           <NavBar/>
           <Route exact path = '/' render = {(props)=> <About {...props}/>}/>
@@ -25,7 +25,7 @@ function App() {
         
       </header>
       <footer className = "footer">
-       
+      
         <br></br>
         <br></br>
       </footer>
