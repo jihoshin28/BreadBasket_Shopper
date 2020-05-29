@@ -25,7 +25,7 @@ function App() {
         
       </header>
       <footer className = "footer">
-      
+        <br></br>
         <br></br>
         <br></br>
       </footer>
