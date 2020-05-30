@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       
       <header className="App-header">
-        <div><h1>Shopper Page(Windows)</h1></div>
+        <div><h1>Welcome to BreadBasket!</h1></div>
         <Router>
           <NavBar/>
           <Route exact path = '/' render = {(props)=> <About {...props}/>}/>
