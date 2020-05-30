@@ -7,7 +7,8 @@ export class Navbar extends Component {
             <div>
                 <ul className ="" >
                     <li className = 'nav'><Link to = '/'>About</Link></li>
-                    <li className = 'nav'><Link to = '/works'>Works</Link></li>
+                    <li className = 'nav'><Link to = '/orderpage'>Order Page</Link></li>
+                    <li className='nav'><Link to='/orderhistory'>Order History</Link></li>
                     <li className = 'nav'><Link to = '/contact'>Contact</Link></li>
                 </ul>
             </div>

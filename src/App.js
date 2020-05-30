@@ -7,7 +7,8 @@ import {
 import './App.css';
 import NavBar from './containers/NavBar'
 import About from './containers/About'
-import Works from './containers/Works'
+import OrderPage from './containers/OrderPage'
+import OrderHistory from './containers/OrderHistory'
 import Contact from './containers/Contact'
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
         <Router>
           <NavBar/>
           <Route exact path = '/' render = {(props)=> <About {...props}/>}/>
-          <Route exact path = '/works' render = {(props)=> <Works {...props}/>}/>
+          <Route exact path = '/orderpage' render = {(props)=> <OrderPage {...props}/>}/>
+          <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
           <Route exact path = '/contact' render = {(props)=> <Contact {...props}/>}/>
         </Router>
         
