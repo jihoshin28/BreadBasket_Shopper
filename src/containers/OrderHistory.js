@@ -4,7 +4,7 @@ export class OrderHistory extends Component {
     render() {
         return (
             <div>
-                <h1>Works</h1>
+                <h1>Order History</h1>
                 <div>
                     <h2>
                         Nutrition Tracker 2.0

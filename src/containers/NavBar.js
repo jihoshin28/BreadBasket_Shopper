@@ -4,14 +4,26 @@ import { Link } from 'react-router-dom'
 export class Navbar extends Component {
     render() {
         return (
-            <div>
-                <ul className ="" >
-                    <li className = 'nav'><Link to = '/'>About</Link></li>
-                    <li className = 'nav'><Link to = '/orderpage'>Order Page</Link></li>
-                    <li className='nav'><Link to='/orderhistory'>Order History</Link></li>
-                    <li className = 'nav'><Link to = '/contact'>Contact</Link></li>
-                </ul>
-            </div>
+          
+                <div class="ui secondary pointing menu">
+                    <a class="active item">
+                        <Link to='/orderpage'>Make an Order</Link>
+                    </a>
+                    <a class="item">
+                        <Link to='/'>About</Link>
+                    </a>
+                    <a class="item">
+                        <Link to='/orderhistory'>Order History</Link>
+                    </a>
+                    <div class="right menu">
+                        <a class="ui item">
+                            Logout
+                    </a>
+                    </div>
+                </div>
+                
+        
+          
         )
     }
 }
