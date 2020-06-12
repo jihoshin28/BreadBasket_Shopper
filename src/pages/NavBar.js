@@ -12,22 +12,27 @@ export class Navbar extends Component {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav justify-content-end">
                         <li class="nav-item active">
                             <a class="nav-link"><Link to='/orderpage'>Make an Order</Link></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"><Link to='/'>About</Link></a>
+                            <a class="nav-link"><Link to='/about'>About</Link></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"><Link to='/orderhistory'>Order History</Link></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link"><Link to='/profile'>Profile</Link></a>
+                        </li>
                         
                         
                     </ul>
-                    <form class="form-inline">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+                    <ul class = "navbar-nav justify-content-end">
+                        <li class="nav-item active">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         
