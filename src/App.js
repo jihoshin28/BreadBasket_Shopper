@@ -21,6 +21,8 @@ function App() {
             <Route exact path='/' render={(props) => <About {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />} />
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
+            <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
+
           </Router>
         </div>
 
