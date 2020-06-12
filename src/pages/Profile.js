@@ -4,7 +4,7 @@ export class Profile extends Component{
     render(){   
         return (
             <div>
-                hello
+                <h1>Profile Page</h1>
             </div>
 
         )
