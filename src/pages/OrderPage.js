@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import Dropdown from '../components/Dropdown'
 import Searchbar from '../components/Searchbar'
-import FoodCategories from '../containers/FoodCategories'
+import FoodCategoryNav from '../containers/FoodCategoryNav'
+import FoodList from '../containers/FoodList'
 
 export class OrderPage extends Component {
+    constructor(){
+        super()
+        this.state = {
+            "categories": ["Meat/Seafood", "Produce", "Dairy", "Snacks", "Beverages", "Frozen", "Household", "More"]
+        }
+    }
     render() {
         return (
                 <div>
@@ -20,9 +27,16 @@ export class OrderPage extends Component {
                             <Searchbar />
                         </div>
                     </div>
-                    <FoodCategories/>
-                    
-                    
+                    <FoodCategoryNav categories = {this.state.categories}/>
+                    <br></br><br></br>
+                    {
+                        this.state.categories.map(category => {
+                            return (
+                                <FoodList name={category} />
+                            )   
+                        })
+                    }
+
                 </div>
            
             
