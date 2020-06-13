@@ -14,7 +14,9 @@ export class OrderPage extends Component {
     render() {
         return (
             <div>
+                <br></br>
                 <h1>Order Page</h1>
+                <br></br>
                 <div class = "row">
                     <div class="col-sm-4">
                         <Dropdown />
