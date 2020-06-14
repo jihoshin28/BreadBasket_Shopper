@@ -30,7 +30,7 @@ export class Navbar extends Component {
                     </ul>
                     <ul class = "navbar-nav justify-content-end">
                         <li class="nav-item active">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cart</button>
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><Link to='/cart'>Cart</Link></button>
                         </li>
                     </ul>
                 </div>

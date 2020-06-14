@@ -23,6 +23,14 @@ const FoodBrowser = props => {
                         <button type="button" class="btn btn-primary btn-sm">Next</button>
                     </div>
                 </div>
+                <div class = "well well-sm">
+                    <p>
+                        DSIFOJSDIOFJSDIOFJISODFIJSDOIF
+                        SDIFOSDIOFSJDIOFJSODIO
+                        SDFIODSJFIOJSDOIJ
+                    </p>
+                    
+                </div>
             <br></br><br></br>
         </div>
     )
