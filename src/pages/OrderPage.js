@@ -8,7 +8,7 @@ export class OrderPage extends Component {
     constructor(){
         super()
         this.state = {
-            "categories": ["Meat/Seafood", "Produce", "Dairy", "Snacks", "Beverages", "Frozen", "Household", "More"]
+            "categories": ["Meat/Seafood", "Produce", "Dairy", "Snacks", "Beverages", "Frozen", "Household", "Etc."]
         }
     }
     render() {

@@ -8,9 +8,15 @@ class Products extends Component {
         }
     }
 
+    formChange = (event) => {
+        this.setState({
+            foodCategory: event.target.value
+        })
+    }
+
     formSubmit = (event) => {
         event.preventDefault()
-        console.log(event.value)
+        console.log(this.state.foodCategory)
     } 
 
     render(){
@@ -20,7 +26,7 @@ class Products extends Component {
                     <div class = "sidebar-header">
                         <h3>Categories</h3>
                     </div>
-                    <form onSubmit = {this.formSubmit}>
+                    <form onChange = {this.formChange} onSubmit = {this.formSubmit}>
                         
                             <div class="input-group-text">
                                 <input type="radio" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
@@ -44,7 +50,7 @@ class Products extends Component {
                                 <input type="radio" name= "food-category" value="household" aria-label="Household Input"/> Household
                             </div>
                             <div class="input-group-text">
-                                <input type="radio" name= "food-category" value="more" aria-label="More Input"/> More
+                                <input type="radio" name= "food-category" value="etc" aria-label="More Input"/> Etc.
                             </div>
                       
                         <button type="submit">Search</button>
