@@ -5,6 +5,9 @@ export class Profile extends Component{
         return (
             <div>
                 <h3>Profile Page</h3>
+                <div id = "profileDiv" class = "container">
+                    <p>Name: </p>
+                </div>
             </div>
 
         )
