@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import FoodList from '../containers/FoodList'
 
 class Products extends Component {
     constructor(props){
@@ -27,7 +28,10 @@ class Products extends Component {
                         <h3>Categories</h3>
                     </div>
                     <form onChange = {this.formChange} onSubmit = {this.formSubmit}>
-                        
+
+                            <div class="input-group-text">
+                                <input type="radio" name="food-category" value="all" aria-label="All" checked = "true"/> All
+                            </div>
                             <div class="input-group-text">
                                 <input type="radio" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
                             </div>
@@ -59,8 +63,9 @@ class Products extends Component {
                 </div>
 
                 <div id = "content"> 
-                    <div class = "row justify-content-center">
-                        <h1> Hello</h1>
+                    <div class = "container-fluid justify-content-center">
+                        <h1 id = "productsHeader"> Hello</h1>
+                        <FoodList/>
                     </div>
                 </div>
 
