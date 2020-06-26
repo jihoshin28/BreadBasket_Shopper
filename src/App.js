@@ -4,7 +4,7 @@ import {
   Route
 } from "react-router-dom"
 import './App.css';
-import NavBar from './pages/NavBar'
+import NavBar from './containers/NavBar'
 import About from './pages/About'
 import OrderPage from './pages/OrderPage'
 import OrderHistory from './pages/OrderHistory'
@@ -15,13 +15,10 @@ import Cart from './pages/Cart'
 
 function App() {
   return (
-    
       <div className="App">
-
         <div class="ui segment">
-
           <Router>
-            <NavBar />
+            <NavBar/>
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />} />
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />

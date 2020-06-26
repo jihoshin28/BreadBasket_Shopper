@@ -5,32 +5,35 @@ class Products extends Component {
     constructor(props){
         super(props)
         this.state = {
-            foodCategory: props
+            foodCategory: "Category"
         }
     }
 
-    formChange = (event) => {
-        this.setState({
-            foodCategory: event.target.value
-        })
-    }
+    // formChange = (event) => {
+    //     this.setState({
+    //         foodCategory: event.target.value
+    //     })
+    // }
 
     formSubmit = (event) => {
         event.preventDefault()
-        console.log(this.state.foodCategory)
+        console.log(event.target.value)
+        this.setState({
+            foodCategory: event.target.value
+        })
     } 
 
     render(){
         return (
-            <div class = "wrapper">
-                <div id = "sidebar">
+            <div class = "products">
+                <div class = "sidebar">
                     <div class = "sidebar-header">
                         <h3>Categories</h3>
                     </div>
                     <form onChange = {this.formChange} onSubmit = {this.formSubmit}>
 
                             <div class="input-group-text">
-                                <input type="radio" name="food-category" value="all" aria-label="All" checked = "true"/> All
+                                <input type="radio" name="food-category" value="all" aria-label="All"/> All
                             </div>
                             <div class="input-group-text">
                                 <input type="radio" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
@@ -62,9 +65,9 @@ class Products extends Component {
                     
                 </div>
 
-                <div id = "content"> 
+                <div class = "content"> 
                     <div class = "container-fluid justify-content-center">
-                        <h1 id = "productsHeader"> Hello</h1>
+                        <h1 class = "productsHeader">{this.state.foodCategory}</h1>
                         <FoodList/>
                     </div>
                 </div>

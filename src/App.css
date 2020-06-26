@@ -49,3 +49,15 @@
   align-items: center;
 }
 
+.products {
+  display: grid
+}
+
+.sidebar {
+  grid-column: 1/2;
+  margin: 20px;
+}
+
+.content {
+  grid-column: 2/3;
+}
