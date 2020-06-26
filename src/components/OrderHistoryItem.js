@@ -21,9 +21,15 @@ class OrderHistoryItem extends Component {
                             Grocery Store: Safeway
                         </p>
                     </div> 
-                    <button>
-                        View Details
-                    </button>
+                    <div class = "orderButtonBox">
+                        <button class="detailsButton">
+                            View Payment Details
+                        </button>
+                        <button class="detailsButton">
+                            View Items
+                        </button>
+                    </div>
+                    
                 </div>
            
             

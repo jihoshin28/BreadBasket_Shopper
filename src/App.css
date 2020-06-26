@@ -64,6 +64,18 @@
   align-self: center;
 }
 
+.orderButtonBox{
+  padding: 10px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  
+}
+
+.detailsButton {
+  height: 40px;
+}
+
 .products {
   display: grid
 }
