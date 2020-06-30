@@ -23,7 +23,7 @@ function App() {
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />} />
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
             <Route exact path='/profile' render={(props) => <Profile {...props} />} />
-            <Route exact path='/products' render={(props) => <Products {...props} />} /> 
+            <Route exact path='/products/:category' render={(props) => <Products {...props} />} /> 
             <Route exact path='/cart' render={(props) => <Cart {...props} />} /> 
           </Router>
         </div>
