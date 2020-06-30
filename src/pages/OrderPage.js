@@ -8,7 +8,40 @@ export class OrderPage extends Component {
     constructor(){
         super()
         this.state = {
-            "categories": ["Meat/Seafood", "Produce", "Dairy", "Snacks", "Beverages", "Frozen", "Household", "Etc."]
+            categories: [
+                {
+                    name: "Meat/Seafood",
+                    url: "meats"
+                }, 
+                {
+                    name:"Produce",
+                    url: "produce"
+                },
+                {
+                    name: "Dairy",
+                    url: "dairy"
+                },
+                {
+                    name: "Snacks",
+                    url: "snacks"
+                },
+                {
+                    name: "Beverages",
+                    url: "beverages"
+                },
+                {
+                    name: "Frozen",
+                    url: "frozen"
+                },
+                {
+                    name: "Household",
+                    url: "household"
+                },
+                {
+                    name: "Etc.",
+                    url: "etc"
+                }
+            ]
         }
     }
     render() {
@@ -28,12 +61,15 @@ export class OrderPage extends Component {
                         <Searchbar />
                     </div>
                 </div>
-                <FoodCategoryNav categories = {this.state.categories}/>
+                <div class = "row justify-content-center">
+                    <FoodCategoryNav categories= {this.state.categories}/>
+                </div>
+                
                 <br></br><br></br>
                 {
                     this.state.categories.map(category => {
                         return (
-                            <FoodList name={category} />
+                            <FoodList name={category.name} />
                         )   
                     })
                 }

@@ -5,9 +5,10 @@ const Category = props => {
         e.preventDefault()
         console.log(e.target)
     }
+    var url = `/products/?category=${props.url}`
     return (
         <div class = "col-sm-auto">
-            <a href= "/products/" data-category = {props.name}>
+            <a href = {url} data-category = {props.url}>
                 {props.name}
             </a>
         </div>

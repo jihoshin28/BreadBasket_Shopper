@@ -9,7 +9,7 @@ class CartItem extends Component {
         }
     }
 
-    handleClick = (event) => {
+    changeCount = (event) => {
         if(event.target.innerHTML === '+'){
             this.setState({
                 count: this.state.count + 1,
@@ -33,14 +33,14 @@ class CartItem extends Component {
                     <img width = "200px" src={this.props.image}/>
                 </div>
                 <div>
-                    <h3>Price per unit: ${this.state.price}</h3>
+                    <h3>Price per unit: ${this.props.price.toFixed(2)}</h3>
                     <div>
                         <h3>Count: {this.state.count}</h3>
                         <span>
-                            <button onClick= {this.handleClick}>
+                            <button onClick= {this.changeCount}>
                                 +
                             </button>
-                            <button onClick = {this.handleClick}>
+                            <button onClick = {this.changeCount}>
                                 -
                             </button>
                         </span>

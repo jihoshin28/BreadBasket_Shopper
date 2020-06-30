@@ -9,11 +9,11 @@ class Products extends Component {
         }
     }
 
-    // formChange = (event) => {
-    //     this.setState({
-    //         foodCategory: event.target.value
-    //     })
-    // }
+    formChange = (event) => {
+        this.setState({
+            foodCategory: event.target.value
+        })
+    }
 
     formSubmit = (event) => {
         event.preventDefault()
@@ -22,6 +22,14 @@ class Products extends Component {
             foodCategory: event.target.value
         })
     } 
+
+    componentDidUpdate(){
+        console.log('updated')
+    }
+
+    componentDidMount() {
+        console.log('mounted')
+    }
 
     render(){
         return (
@@ -33,7 +41,7 @@ class Products extends Component {
                     <form onChange = {this.formChange} onSubmit = {this.formSubmit}>
 
                             <div class="input-group-text">
-                                <input type="radio" name="food-category" value="all" aria-label="All"/> All
+                                <input type="radio" name="food-category" value="all" aria-label="All" /> All
                             </div>
                             <div class="input-group-text">
                                 <input type="radio" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
