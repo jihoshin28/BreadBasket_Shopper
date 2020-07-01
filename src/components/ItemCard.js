@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ListCard = props => {
+const ItemCard = props => {
     return (
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <div class="card" style={{ width: "10rem", height: "10rem" }}>
@@ -15,4 +15,4 @@ const ListCard = props => {
     )
 }
 
-export default ListCard
+export default ItemCard

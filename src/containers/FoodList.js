@@ -1,18 +1,18 @@
 import React from 'react'
-import ListCard from '../components/ListCard'
+import ItemCard from '../components/ItemCard'
 
-const FoodBrowser = props => {
+const FoodList = props => {
     return (
         <div class= "container">
             <h1>{props.name}</h1>
             <br></br>
                 <div class = "row justify-content-center">
-                    <ListCard/>
-                    <ListCard />
-                    <ListCard />
-                    <ListCard />
-                    <ListCard />
-                    <ListCard />
+                    <ItemCard />
+                    <ItemCard />
+                    <ItemCard />
+                    <ItemCard />
+                    <ItemCard />
+                    <ItemCard />
                 </div>
                 <br></br>
                 <div class = "row justify-content-center">
@@ -29,4 +29,4 @@ const FoodBrowser = props => {
     )
 }
 
-export default FoodBrowser
+export default FoodList

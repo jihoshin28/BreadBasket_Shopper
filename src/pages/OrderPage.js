@@ -4,45 +4,9 @@ import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodList from '../containers/FoodList'
 
-export class OrderPage extends Component {
-    constructor(){
-        super()
-        this.state = {
-            categories: [
-                {
-                    name: "Meat/Seafood",
-                    url: "meats"
-                }, 
-                {
-                    name:"Produce",
-                    url: "produce"
-                },
-                {
-                    name: "Dairy",
-                    url: "dairy"
-                },
-                {
-                    name: "Snacks",
-                    url: "snacks"
-                },
-                {
-                    name: "Beverages",
-                    url: "beverages"
-                },
-                {
-                    name: "Frozen",
-                    url: "frozen"
-                },
-                {
-                    name: "Household",
-                    url: "household"
-                },
-                {
-                    name: "Etc.",
-                    url: "etc"
-                }
-            ]
-        }
+class OrderPage extends Component {
+    componentDidMount(){
+        console.log(this.props)
     }
     render() {
         return (
@@ -62,12 +26,12 @@ export class OrderPage extends Component {
                     </div>
                 </div>
                 <div class = "row justify-content-center">
-                    <FoodCategoryNav categories= {this.state.categories}/>
+                    <FoodCategoryNav categories= {this.props.categories}/>
                 </div>
                 
                 <br></br><br></br>
                 {
-                    this.state.categories.map(category => {
+                    this.props.categories.map(category => {
                         return (
                             <FoodList name={category.name} />
                         )   

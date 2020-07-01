@@ -23,13 +23,16 @@ class Products extends Component {
         })
     } 
 
+    componentDidMount() {
+        console.log(this.props)
+        document.getElementById(this.props.match.params.category).checked = true
+    }
+
     componentDidUpdate(){
         window.location.replace(`/products/${this.state.foodCategory}`)
     }
 
-    componentDidMount() {
-        document.getElementById(this.props.match.params.category).checked = true
-    }
+    
 
     render(){
         return (
