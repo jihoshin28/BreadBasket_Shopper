@@ -1,11 +1,11 @@
 import React from 'react'
-import Category from '../components/Category'
+import CategoryLink from '../components/CategoryLink'
 
 const FoodCategories = props => {
     return (
         <div class="row justify-content-center">
             {props.categories.map(category => {
-                return <Category url = {category.url} name = {category.name}/>
+                return <CategoryLink name = {category.name} title = {category.title} />
             })}
         </div>
     )

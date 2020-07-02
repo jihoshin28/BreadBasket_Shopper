@@ -33,7 +33,7 @@ class OrderPage extends Component {
                 {
                     this.props.categories.map(category => {
                         return (
-                            <FoodList name={category.name} />
+                            <FoodList title={category.title} />
                         )   
                     })
                 }

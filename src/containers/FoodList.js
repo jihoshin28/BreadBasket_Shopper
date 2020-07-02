@@ -4,7 +4,7 @@ import ItemCard from '../components/ItemCard'
 const FoodList = props => {
     return (
         <div class= "container">
-            <h1>{props.name}</h1>
+            <h1>{props.title}</h1>
             <br></br>
                 <div class = "row justify-content-center">
                     <ItemCard />

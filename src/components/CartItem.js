@@ -30,7 +30,7 @@ class CartItem extends Component {
             <div class = "row cartItem">
                 <div>
                     <h3>{this.props.name}</h3>
-                    <img width = "200px" src={this.props.image}/>
+                    <img  height = "200px" src={this.props.image}/>
                 </div>
                 <div>
                     <h3>Price per unit: ${this.props.price.toFixed(2)}</h3>

@@ -1,4 +1,5 @@
-let data = {
+
+const data = {
     items: [
         {
             image: "https://media.istockphoto.com/photos/tomato-isolated-on-white-background-picture-id466175630?k=6&m=466175630&s=612x612&w=0&h=fu_mQBjGJZIliOWwCR0Vf2myRvKWyQDsymxEIi8tZ38=",
@@ -25,46 +26,51 @@ let data = {
             price: 3.50
         },
         {
-            image: "https://www.kingarthurflour.com/sites/default/files/styles/featured_image/public/2020-02/the-easiest-loaf-of-bread-youll-ever-bake.jpg?itok=j89yDeId",
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Baguettes_-_stonesoup.jpg/1200px-Baguettes_-_stonesoup.jpg",
             name: "Bread",
+            category: "bakery",
             count: 1,
             price: 2.00
         }
     ],
     categories: [
         {
-            name: "Meat/Seafood",
-            url: "meats"
+            title: "Meat/Seafood",
+            name: "meats"
         },
         {
-            name: "Produce",
-            url: "produce"
+            title: "Produce",
+            name: "produce"
         },
         {
-            name: "Dairy",
-            url: "dairy"
+            title: "Dairy",
+            name: "dairy"
         },
         {
-            name: "Snacks",
-            url: "snacks"
+            title: "Bakery",
+            name: "bakery"
         },
         {
-            name: "Beverages",
-            url: "beverages"
+            title: "Snacks",
+            name: "snacks"
         },
         {
-            name: "Frozen",
-            url: "frozen"
+            title: "Beverages",
+            name: "beverages"
         },
         {
-            name: "Household",
-            url: "household"
+            title: "Frozen",
+            name: "frozen"
         },
         {
-            name: "Etc.",
-            url: "etc"
+            title: "Household",
+            name: "household"
         }
+        
     ]
 }
 
-export default data;
+
+
+export default { data }
+
