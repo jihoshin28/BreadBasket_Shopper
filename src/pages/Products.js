@@ -24,7 +24,6 @@ class Products extends Component {
     } 
 
     componentDidMount() {
-        console.log(this.props)
         document.getElementById(this.props.match.params.category).checked = true
     }
 
@@ -50,25 +49,25 @@ class Products extends Component {
                                 <input type="radio" id = "meats" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
                             </div>
                             <div class="input-group-text">
-                                <input type="radio" id= "produce" value="produce" aria-label="Produce Input"/> Produce
+                                <input type="radio" id="produce" name="food-category" value="produce" aria-label="Produce Input"/> Produce
                             </div>
                             <div class="input-group-text">
-                                <input type="radio" id= "dairy" value="dairy" aria-label="Dairy Input"/> Dairy
+                                <input type="radio" id="dairy" name="food-category" value="dairy" aria-label="Dairy Input"/> Dairy
                             </div>
                             <div class="input-group-text">
-                                <input type="radio" id= "snacks" value="snacks" aria-label="Snacks Input"/> Snacks
+                                <input type="radio" id="bakery" name="food-category" value="bakery" aria-label="Bakery Input" /> Bakery
                             </div>
                             <div class="input-group-text">
-                                <input type="radio" id= "beverages" value="beverage" aria-label="Beverages Input"/> Beverages
+                                <input type="radio" id="snacks" name="food-category" value="snacks" aria-label="Snacks Input"/> Snacks
                             </div>
                             <div class="input-group-text">
-                                <input type="radio" id= "frozen" value="frozen" aria-label="Frozen Input"/> Frozen
+                                <input type="radio" id="beverages" name="food-category" value="beverage" aria-label="Beverages Input"/> Beverages
                             </div>
                             <div class="input-group-text">
-                                <input type="radio" id= "household" value="household" aria-label="Household Input"/> Household
+                                <input type="radio" id="frozen" name="food-category" value="frozen" aria-label="Frozen Input"/> Frozen
                             </div>
                             <div class="input-group-text">
-                                <input type="radio" id= "etc" value="etc" aria-label="More Input"/> Etc.
+                                <input type="radio" id="household" name="food-category" value="household" aria-label="Household Input"/> Household
                             </div>
                       
                         <button type="submit">Search</button>
