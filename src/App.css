@@ -100,6 +100,11 @@
   grid-template-columns: 15% 85%
 }
 
+.productsHeader {
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
 .sidebar {
   grid-column: 1/2;
   margin: 20px;

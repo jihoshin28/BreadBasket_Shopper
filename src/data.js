@@ -35,6 +35,10 @@ const data = {
     ],
     categories: [
         {
+            title: "Products",
+            name: "all"
+        },
+        {
             title: "Meat/Seafood",
             name: "meats"
         },

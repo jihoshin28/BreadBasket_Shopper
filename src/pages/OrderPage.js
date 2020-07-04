@@ -23,7 +23,7 @@ class OrderPage extends Component {
                         <h2>{this.props.selectedStore}</h2>
                     </div>
                     <div class="col-sm-4">
-                        <Searchbar onSearchSubmit = {this.props.onSearchSubmit} onSearchChange = {this.props.onSearchChange} search/>
+                        <Searchbar onSearchSubmit = {this.props.onSearchSubmit} onSearchChange = {this.props.onSearchChange}/>
                     </div>
                 </div>
                 <div class = "row justify-content-center">

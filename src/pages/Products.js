@@ -12,36 +12,29 @@ class Products extends Component {
             title: ""
         }
     }
-    
-    formChange = (event) => {
-        this.setState({
-            foodCategory: event.target.value
-        })
-        
-    }
 
     componentDidMount(){
-        let current = this.props.match.params.category
-        document.getElementById(current).checked = true
+        console.log(this.props.match.params.category)
+        document.getElementById(`${this.props.match.params.category}`).checked = true
     }
  
-
-    componentDidUpdate(){
-        window.location.replace(`/products/${this.state.foodCategory}`)
+    onCategoryChange = (e) => {
+        console.log(e.target.value)
+        this.props.onCategoryChange(e.target.value)
     }
 
     
 
     render(){
         let categoryData = this.props.categories.find((index) => index.name === this.props.match.params.category)
-        let pageTitle = categoryData.title
+        let categoryTitle = categoryData.title
         return (
             <div class = "products">
                 <div class = "sidebar">
                     <div class = "sidebar-header">
                         <h3>Categories</h3>
                     </div>
-                    <form onChange = {this.formChange} onSubmit = {this.formSubmit}>
+                    <form onChange = {this.onCategoryChange} onSubmit = {this.formSubmit}>
 
                             <div class="input-group-text">
                                 <input type="radio" id = "all" name="food-category" value="all" aria-label="All" /> All
@@ -78,13 +71,13 @@ class Products extends Component {
 
                 <div class = "content"> 
                     <div class = "container-fluid justify-content-center">
-                        <h1 class = "productsHeader">{pageTitle}</h1>
-                        <div class = "row">
-                            <div>
+                        <h1 class = "productsHeader">{categoryTitle}</h1>
+                        <div class = "row productsHeader">
+                            <div className = "col-sm-5">
                                 <h2>{this.props.selectedStore}</h2>
                             </div>
-                            <div>
-                                <Searchbar/>
+                            <div className = "col-sm-5">
+                                <Searchbar onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange}/>
                             </div>
                         </div>
                         <FoodList/>
