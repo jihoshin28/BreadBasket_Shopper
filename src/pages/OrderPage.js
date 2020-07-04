@@ -5,32 +5,6 @@ import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodList from '../containers/FoodList'
 
 class OrderPage extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            stores: props.stores,
-            selected: props.stores[0].name,
-            searchTerm: ''
-        }
-    }
-
-    onStoreChange = (e) => {
-        console.log(e.target.innerHTML)
-        this.setState({
-            selected: e.target.innerHTML
-        })
-    }
-
-    onSearchSubmit = (e) => {
-        console.log(this.state.searchTerm)
-    }
-
-    onSearchChange = (e) => {
-        console.log(e.target.value)
-        this.setState({
-            searchTerm: e.target.value
-        })
-    }
 
     componentDidMount(){
         console.log(this.props.stores)
@@ -43,13 +17,13 @@ class OrderPage extends Component {
                 <br></br>
                 <div class = "row">
                     <div class="col-sm-4">
-                        <Dropdown selected = {this.state.selected} stores = {this.state.stores} onStoreChange= {this.onStoreChange}/>
+                        <Dropdown selectedStore = {this.props.selectedStore} stores = {this.props.stores} onStoreChange= {this.props.onStoreChange}/>
                     </div>
                     <div class="col-sm-4">
-                        <h3>Grocery store name</h3>
+                        <h2>{this.props.selectedStore}</h2>
                     </div>
                     <div class="col-sm-4">
-                        <Searchbar onSearchSubmit = {this.onSearchSubmit} onSearchChange = {this.onSearchChange} search/>
+                        <Searchbar onSearchSubmit = {this.props.onSearchSubmit} onSearchChange = {this.props.onSearchChange} search/>
                     </div>
                 </div>
                 <div class = "row justify-content-center">

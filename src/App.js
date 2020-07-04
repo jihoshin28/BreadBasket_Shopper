@@ -14,17 +14,41 @@ import Products from './pages/Products'
 import Cart from './pages/Cart'
 import Data from './data.js'
 
-
+let data = Data.data
 class App extends Component  {
   constructor(){
     super()
     this.state = {
-      data: Data.data
+      items: data.items,
+      categories: data.categories,
+      stores: data.stores,
+      selectedStore: data.stores[0].name,
+      searchTerm: ''
     }
   }
   componentDidMount(){
-    console.log(Data.data, this.state.data.categories)
+    console.log(Data.data, this.state.categories)
   }
+
+  onStoreChange = (e) => {
+    console.log(e.target.innerHTML)
+    this.setState({
+      selectedStore: e.target.innerHTML
+    })
+  }
+
+  onSearchSubmit = (e) => {
+    console.log(this.state.searchTerm, this.state.items)
+    window.location.replace(`/products/search/${this.state.searchTerm}`)
+  }
+
+  onSearchChange = (e) => {
+    console.log(e.target.value)
+    this.setState({
+      searchTerm: e.target.value
+    })
+  }
+
   render (){
     return (
       <div className="App">
@@ -32,11 +56,11 @@ class App extends Component  {
           <Router>
             <NavBar />
             <Route exact path='/about' render={(props) => <About {...props} />} />
-            <Route exact path='/orderpage' render={(props) => <OrderPage {...props} items = {this.state.data.items} categories = {this.state.data.categories} stores = {this.state.data.stores}/>} />
+            <Route exact path='/orderpage' render={(props) => <OrderPage {...props} items = {this.state.items} categories = {this.state.categories} stores = {this.state.stores} selectedStore = {this.state.selectedStore} onStoreChange = {this.onStoreChange} onSearchSubmit = {this.onSearchSubmit} onSearchChange = {this.onSearchChange}/>} />
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
             <Route exact path='/profile' render={(props) => <Profile {...props} />} />
-            <Route exact path='/products/:category' render={(props) => <Products {...props} items={this.state.data.items} categories={this.state.data.categories} />} />
-            <Route exact path='/cart' render={(props) => <Cart {...props} removeItem = {this.removeItem} currentOrder={this.state.data.currentOrder} items={this.state.data.items} />} />
+            <Route exact path='/products/:category' render={(props) => <Products {...props} items={this.state.items} categories={this.state.categories} selectedStore = {this.state.selectedStore}/>} />
+            <Route exact path='/cart' render={(props) => <Cart {...props} removeItem = {this.removeItem} currentOrder={this.state.currentOrder} items={this.state.items} />} />
           </Router>
         </div>
 

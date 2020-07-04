@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Searchbar from '../components/Searchbar'
 import FoodList from '../containers/FoodList'
 
 
@@ -78,6 +79,14 @@ class Products extends Component {
                 <div class = "content"> 
                     <div class = "container-fluid justify-content-center">
                         <h1 class = "productsHeader">{pageTitle}</h1>
+                        <div class = "row">
+                            <div>
+                                <h2>{this.props.selectedStore}</h2>
+                            </div>
+                            <div>
+                                <Searchbar/>
+                            </div>
+                        </div>
                         <FoodList/>
                     </div>
                 </div>

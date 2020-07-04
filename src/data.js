@@ -27,7 +27,7 @@ const data = {
         },
         {
             image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Baguettes_-_stonesoup.jpg/1200px-Baguettes_-_stonesoup.jpg",
-            name: "Bread",
+            name: "Fresh Bread",
             category: "bakery",
             count: 1,
             price: 2.00
