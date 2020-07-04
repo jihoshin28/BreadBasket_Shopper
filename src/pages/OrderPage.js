@@ -9,7 +9,8 @@ class OrderPage extends Component {
         super(props)
         this.state = {
             stores: props.stores,
-            selected: props.stores[0].name
+            selected: props.stores[0].name,
+            searchTerm: ''
         }
     }
 
@@ -19,6 +20,18 @@ class OrderPage extends Component {
             selected: e.target.innerHTML
         })
     }
+
+    onSearchSubmit = (e) => {
+        console.log(this.state.searchTerm)
+    }
+
+    onSearchChange = (e) => {
+        console.log(e.target.value)
+        this.setState({
+            searchTerm: e.target.value
+        })
+    }
+
     componentDidMount(){
         console.log(this.props.stores)
     }
@@ -36,7 +49,7 @@ class OrderPage extends Component {
                         <h3>Grocery store name</h3>
                     </div>
                     <div class="col-sm-4">
-                        <Searchbar />
+                        <Searchbar onSearchSubmit = {this.onSearchSubmit} onSearchChange = {this.onSearchChange} search/>
                     </div>
                 </div>
                 <div class = "row justify-content-center">
