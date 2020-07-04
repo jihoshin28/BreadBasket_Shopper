@@ -24,11 +24,12 @@ class App extends Component  {
       stores: data.stores,
       selectedStore: data.stores[0].name,
       searchTerm: '',
-      foodCategory: null
+      foodCategory: null,
+      currentOrder: []
     }
   }
   componentDidMount(){
-    console.log(Data.data, this.state.categories)
+    console.log(this.state.items, this.state.foodCategory)
   }
 
   onStoreChange = (e) => {
@@ -53,7 +54,7 @@ class App extends Component  {
   onCategoryChange = (category) => {
     window.location.replace(`/products/${category}`)
   }
-
+  
   render (){
     return (
       <div className="App">

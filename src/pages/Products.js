@@ -8,13 +8,18 @@ class Products extends Component {
     constructor(props){
         super(props)
         this.state = {
-            foodCategory: null,
-            title: ""
+            filteredItems: []
         }
     }
 
     componentDidMount(){
-        console.log(this.props.match.params.category)
+        let filteredItems = this.props.items.filter((item) => {
+            return item.category === this.props.match.params.category;
+        })
+        this.setState({
+            filteredItems: filteredItems
+        })
+
         document.getElementById(`${this.props.match.params.category}`).checked = true
     }
  
@@ -26,6 +31,7 @@ class Products extends Component {
     
 
     render(){
+        console.log(this.state.filteredItems)
         let categoryData = this.props.categories.find((index) => index.name === this.props.match.params.category)
         let categoryTitle = categoryData.title
         return (
@@ -80,7 +86,7 @@ class Products extends Component {
                                 <Searchbar onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange}/>
                             </div>
                         </div>
-                        <FoodList/>
+                        <FoodList items = {this.state.filteredItems} length = {this.state.filteredItems.length}/>
                     </div>
                 </div>
 

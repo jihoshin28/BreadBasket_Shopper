@@ -2,17 +2,15 @@ import React from 'react'
 import ItemCard from '../components/ItemCard'
 
 const FoodList = props => {
+    let itemCards = props.items.map((item) => {
+        return <ItemCard image = {item.image} price = {item.price.toFixed(2)} name = {item.name}/>
+    })
     return (
         <div class= "container">
             <h1>{props.title}</h1>
             <br></br>
                 <div class = "row justify-content-center">
-                    <ItemCard />
-                    <ItemCard />
-                    <ItemCard />
-                    <ItemCard />
-                    <ItemCard />
-                    <ItemCard />
+                    {itemCards}
                 </div>
                 <br></br>
                 <div class = "row justify-content-center">

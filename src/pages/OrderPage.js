@@ -33,8 +33,10 @@ class OrderPage extends Component {
                 <br></br><br></br>
                 {
                     this.props.categories.map(category => {
+                        let items = this.props.items.filter(item => item.category === category.name)
+                        console.log(items)
                         return (
-                            <FoodList title={category.title} />
+                            <FoodList items = {items} title={category.title} />
                         )   
                     })
                 }
