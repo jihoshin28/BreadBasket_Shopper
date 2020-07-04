@@ -1,12 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import Dropdown from '../components/Dropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodList from '../containers/FoodList'
 
 class OrderPage extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            stores: props.stores,
+            selected: props.stores[0].name
+        }
+    }
+
+    onStoreChange = (e) => {
+        console.log(e.target.innerHTML)
+        this.setState({
+            selected: e.target.innerHTML
+        })
+    }
     componentDidMount(){
-        console.log(this.props)
+        console.log(this.props.stores)
     }
     render() {
         return (
@@ -16,7 +30,7 @@ class OrderPage extends Component {
                 <br></br>
                 <div class = "row">
                     <div class="col-sm-4">
-                        <Dropdown />
+                        <Dropdown selected = {this.state.selected} stores = {this.state.stores} onStoreChange= {this.onStoreChange}/>
                     </div>
                     <div class="col-sm-4">
                         <h3>Grocery store name</h3>

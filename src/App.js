@@ -1,3 +1,4 @@
+import 'jquery/src/jquery';
 import React, {Component} from 'react';
 import {
   BrowserRouter as Router,
@@ -31,7 +32,7 @@ class App extends Component  {
           <Router>
             <NavBar />
             <Route exact path='/about' render={(props) => <About {...props} />} />
-            <Route exact path='/orderpage' render={(props) => <OrderPage {...props} items = {this.state.data.items} categories = {this.state.data.categories}/>} />
+            <Route exact path='/orderpage' render={(props) => <OrderPage {...props} items = {this.state.data.items} categories = {this.state.data.categories} stores = {this.state.data.stores}/>} />
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
             <Route exact path='/profile' render={(props) => <Profile {...props} />} />
             <Route exact path='/products/:category' render={(props) => <Products {...props} items={this.state.data.items} categories={this.state.data.categories} />} />

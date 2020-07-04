@@ -1,31 +1,29 @@
 import React, {Component} from 'react'
 import FoodList from '../containers/FoodList'
 
+
 class Products extends Component {
+    
     constructor(props){
         super(props)
         this.state = {
-            foodCategory: props.match.params.category
+            foodCategory: null,
+            title: ""
         }
     }
-
+    
     formChange = (event) => {
         this.setState({
             foodCategory: event.target.value
         })
+        
     }
 
-    formSubmit = (event) => {
-        event.preventDefault()
-        console.log(event.target.value)
-        this.setState({
-            foodCategory: event.target.value
-        })
-    } 
-
-    componentDidMount() {
-        document.getElementById(this.props.match.params.category).checked = true
+    componentDidMount(){
+        let current = this.props.match.params.category
+        document.getElementById(current).checked = true
     }
+ 
 
     componentDidUpdate(){
         window.location.replace(`/products/${this.state.foodCategory}`)
@@ -34,6 +32,8 @@ class Products extends Component {
     
 
     render(){
+        let categoryData = this.props.categories.find((index) => index.name === this.props.match.params.category)
+        let pageTitle = categoryData.title
         return (
             <div class = "products">
                 <div class = "sidebar">
@@ -61,7 +61,7 @@ class Products extends Component {
                                 <input type="radio" id="snacks" name="food-category" value="snacks" aria-label="Snacks Input"/> Snacks
                             </div>
                             <div class="input-group-text">
-                                <input type="radio" id="beverages" name="food-category" value="beverage" aria-label="Beverages Input"/> Beverages
+                                <input type="radio" id="beverages" name="food-category" value="beverages" aria-label="Beverages Input"/> Beverages
                             </div>
                             <div class="input-group-text">
                                 <input type="radio" id="frozen" name="food-category" value="frozen" aria-label="Frozen Input"/> Frozen
@@ -77,7 +77,7 @@ class Products extends Component {
 
                 <div class = "content"> 
                     <div class = "container-fluid justify-content-center">
-                        <h1 class = "productsHeader">{this.state.foodCategory}</h1>
+                        <h1 class = "productsHeader">{pageTitle}</h1>
                         <FoodList/>
                     </div>
                 </div>

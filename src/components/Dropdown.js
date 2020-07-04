@@ -1,16 +1,19 @@
-import React from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 
 let Dropdown = props => {
-    document.querySelector('dropdown-menu')
+    
+    const storeOptions = props.stores.map((store)=> {
+        return (
+                <button class="dropdown-item" key = {store.key} value={store.name}>{store.name}</button>
+        )
+    })
     return (
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="menu" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {props.selected}
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+            <div onClick = {(e) => props.onStoreChange(e)} class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {storeOptions}
             </div>
         </div>
 

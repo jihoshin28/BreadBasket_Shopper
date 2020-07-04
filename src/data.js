@@ -67,6 +67,28 @@ const data = {
             name: "household"
         }
         
+    ],
+    stores: [
+        {
+            name: "Safeway",
+            key: 1
+        },
+        {
+            name: "Costco",
+            key: 2
+        },
+        {
+            name: "Rite Aid",
+            key: 3
+        },
+        {
+            name: "Smart and Final",
+            key: 4
+        },
+        {
+            name: "FoodMax",
+            key: 5
+        }
     ]
 }
 
