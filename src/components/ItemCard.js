@@ -4,7 +4,7 @@ const ItemCard = props => {
     return (
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" style = {{justifyContent: "space-around"}}>
             <div class="card" style={{ width: "250px", height: "250px" }}>
-                <div style = {{height: "40%", width: "40%", alignItems: "center"}}>
+                <div style = {{height: "45%", width: "45%", alignSelf: "center", marginTop: "5px"}}>
                     <img src={props.image} style={{ height: "100%" }} class="card-img-top" alt="..." />
                 </div>
                

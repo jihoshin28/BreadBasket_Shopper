@@ -31,10 +31,17 @@ const data = {
         },
         {
             image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Baguettes_-_stonesoup.jpg/1200px-Baguettes_-_stonesoup.jpg",
-            name: "Fresh Bread",
+            name: "French Bread",
             count: 1,
             price: 2.00,
-             category: "bakery"
+            category: "bakery"
+        },
+        {
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Baguettes_-_stonesoup.jpg/1200px-Baguettes_-_stonesoup.jpg",
+            name: "French Bread",
+            count: 1,
+            price: 2.00,
+            category: ""
         }
     ],
     categories: [
