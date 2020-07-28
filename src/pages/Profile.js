@@ -7,6 +7,9 @@ export class Profile extends Component{
                 <h3>Profile Page</h3>
                 <div id = "profileDiv" class = "container">
                     <p>Name: </p>
+                    <p>Image:</p>
+                    <p>Age:</p>
+                    <p>Number of Orders:</p>
                 </div>
             </div>
 
