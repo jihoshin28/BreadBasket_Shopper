@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+import authReducer from './authReducer'
 
 const itemsReducer = (listofItems = [], action) => {
     if(action.type === 'ADD_ITEM'){
@@ -19,7 +20,9 @@ const usersReducer = (currentUser = null, action) => {
     return currentUser
 }
 
+
 export default combineReducers({
     items: itemsReducer,
-    users: usersReducer
+    users: usersReducer,
+    auth: authReducer
 })

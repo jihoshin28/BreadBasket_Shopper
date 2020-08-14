@@ -1,13 +1,7 @@
-import axios from 'axios'
+const API_ROOT = 'https://localhost:3000'
 
-export class Api extends Component {
-    render() {
-        return (
-            <div>
-                
-            </div>
-        )
-    }
+const headers = {
+    'Contetn-Type': 'application/json',
+    Accepts: 'application/json',
+    "Authorization": token
 }
-
-export default Api
