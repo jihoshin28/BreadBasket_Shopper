@@ -1,23 +1,10 @@
 import React from 'react'
-import reducers from 'react-redux'
+import reducers, { connect } from 'react-redux'
 import {signIn, signOut} from '../actions'
 
 class GoogleAuth extends React.Component{
    
-    componentDidMount(){
-        window.gapi.load('client:auth2', () => {
-            window.gapi.client.init({
-                clientId: '891785934075-igm1g08q55j6cdm7bnl99lhs19thnma6.apps.googleusercontent.com',
-                scope: 'email'
-            }).then(() => {
-                this.auth = window.gapi.auth2.getAuthInstance()
-                this.authChange(this.auth.isSignedIn.get())
-                this.auth.isSignedIn.listen(this.authChange)
-
-            })
-        })
-    }
-
+ 
   
     signIn = () => {
         this.auth.signOut()
@@ -57,8 +44,10 @@ class GoogleAuth extends React.Component{
     }
 }
 
-let mapStatetoProps = (state) => {
+let mapStateToProps = (state) => {
     return {
         signedIn: state.auth.signedIn
     }
 }
+
+export default connect(mapStateToProps, {signIn, signOut})(GoogleAuth)
