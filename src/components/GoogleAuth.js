@@ -28,11 +28,11 @@ class GoogleAuth extends React.Component{
 
   
     signIn = () => {
-        this.auth.signOut()
+        this.auth.signIn()
     }
 
     signOut = () => {
-        this.auth.signIn()
+        this.auth.signOut()
     }
 
     renderAuthButton = () => {
@@ -66,9 +66,9 @@ class GoogleAuth extends React.Component{
 }
 
 let mapStateToProps = (state) => {
-    return {
-        signedIn: state.auth.signedIn
-    }
+    return ({
+        signedIn: state.auth.isSignedIn
+    })
 }
 
 export default connect(mapStateToProps, {signIn, signOut})(GoogleAuth)
