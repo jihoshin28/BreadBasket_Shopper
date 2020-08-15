@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import GoogleAuth from '../components/GoogleAuth'
 
 export class Navbar extends Component {
     render() {
@@ -12,7 +13,7 @@ export class Navbar extends Component {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav justify-content-end">
+                    <ul class="navbar-nav justify-content-start">
                         <li class="nav-item active">
                             <a class="nav-link"><Link to='/orderpage'>Make an Order</Link></a>
                         </li>

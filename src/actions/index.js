@@ -7,7 +7,7 @@ export const addItem = (item) => {
     }
 }
 
-export const deleteItem = () => {
+export const deleteItem = (item) => {
     return {
         type: 'DELETE_ITEM',
         payload: {
