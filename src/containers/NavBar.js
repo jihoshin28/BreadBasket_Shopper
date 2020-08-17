@@ -1,8 +1,22 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import GoogleAuth from '../components/GoogleAuth'
+import { connect } from 'react-redux'
 
 export class Navbar extends Component {
+    renderUser = () => {
+        if(!!this.props.isSignedIn){ 
+            console.log(this.props.userAuthPic)  
+            return (
+                <div>
+                    <a>
+                        <img class = "google-pic" alt = "alt img" src = {`${this.props.userAuthPic}`} />
+                    </a>
+                </div>
+            )
+        }
+    }
+
     render() {
         return (    
             <nav class="navbar navbar-expand-lg navbar-expand-med navbar-expand-sm navbar-light bg-light">
@@ -32,12 +46,24 @@ export class Navbar extends Component {
                     </li>
                 </ul>
                 <GoogleAuth/>
-                {/* {renderUser} */}
+                <ul class="navbar-nav cart-nav">
+                    <li class = "nav-item">
+                        {this.renderUser()} 
+                    </li>
+                </ul>
+                
             </nav>
         
           
         )
     }
 }
+let mapStateToProps = (state) => {
+    return ({
+        isSignedIn: state.auth.isSignedIn,
+        userAuthPic: state.auth.userPic,
+        userAuthName: state.auth.userName
+    })
+}
 
-export default Navbar
+export default connect(mapStateToProps)(Navbar)
