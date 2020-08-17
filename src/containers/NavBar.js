@@ -24,8 +24,6 @@ export class Navbar extends Component {
                         <li class="nav-item">
                             <a class="nav-link"><Link to='/profile'>Profile</Link></a>
                         </li>
-                        
-                        
                     </ul>
                 </div>
                 <ul class = "navbar-nav cart-nav">
@@ -34,6 +32,7 @@ export class Navbar extends Component {
                     </li>
                 </ul>
                 <GoogleAuth/>
+                {/* {renderUser} */}
             </nav>
         
           

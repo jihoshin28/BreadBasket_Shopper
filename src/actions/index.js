@@ -16,9 +16,19 @@ export const deleteItem = (item) => {
     }
 }
 
-export const signIn = () => {
+export const updateUser = () => {
     return {
-        type: 'SIGN_IN'
+        type: 'CURRENT_USER',
+        payload: {
+
+        }
+    }
+}
+
+export const signIn = (userId) => {
+    return {
+        type: 'SIGN_IN',
+        payload: userId
     }
 }
 
