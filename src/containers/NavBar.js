@@ -4,16 +4,14 @@ import GoogleAuth from '../components/GoogleAuth'
 
 export class Navbar extends Component {
     render() {
-        return (
-
-                
+        return (    
             <nav class="navbar navbar-expand-lg navbar-expand-med navbar-expand-sm navbar-light bg-light">
                 <a class="navbar-brand" >BreadBasket</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav justify-content-start">
+                    <ul class="navbar-nav">
                         <li class="nav-item active">
                             <a class="nav-link"><Link to='/orderpage'>Make an Order</Link></a>
                         </li>
@@ -29,13 +27,13 @@ export class Navbar extends Component {
                         
                         
                     </ul>
-                    <ul class = "navbar-nav justify-content-end">
-                        <li class="nav-item active">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><Link to='/cart'>Cart</Link></button>
-                        </li>
-                    </ul>
-                    <GoogleAuth/>
                 </div>
+                <ul class = "navbar-nav cart-nav">
+                    <li class="nav-item">
+                        <button class="btn btn-outline-success" type="button"><Link class = "text-reset" to='/cart'>Cart</Link></button>
+                    </li>
+                </ul>
+                <GoogleAuth/>
             </nav>
         
           
