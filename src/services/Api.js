@@ -9,7 +9,7 @@ const shopperSignUp = async () => {
 
 }
 
-const getShopper = async () => {
+const getShopper = async (id) => {
     const response = await fetch(API_ROOT + `/shoppers/${id}`, {
         method: 'GET',
         headers: headers
@@ -45,8 +45,8 @@ const getStore = async (id) => {
     return response.json()
 }
 
-const getOpenOrders = async (id) => {
-    const response = await fetch(API_ROOT + `/orders/${id}`, {
+const getOpenOrders = async (status) => {
+    const response = await fetch(API_ROOT + `/orders/?status=${status}`, {
         method: 'GET',
         headers: headers
     })
@@ -73,28 +73,37 @@ const getItems = async () => {
     return response.json()
 }
 
-const getItemsCategory = async () => {
+const getItemsCategory = async (category) => {
+    const response = await fetch(API_ROOT + `/items/?category=${category}`, {
+        method: 'GET',
+        headers: headers
+    })
 
+}   
+
+
+const getCartItemsOrder = async (order) => {
+    const response = await fetch(API_ROOT + `/cartitems/?order=${order}`, {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
-const getCartItemsCategory = async () => {
-
+const getCartItemsStatus = async (order, status) => {
+    const response = await fetch(API_ROOT + `/cartitems/?order=${order}&status=${status}`, {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
-const getCartItemsOrder = async () => {
-
-}
-
-const getCartItemsActive = async () => {
-
-}
-
-const getCartItemsDone = async () => {
-
-}
-
-const getDriverOrder = async () => {
-
+const getDriverOrder = async (id) => {
+    const response = await fetch(API_ROOT + `/cartitems/?order=${order}&status=${status}`, {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
 export default {
@@ -111,8 +120,7 @@ export default {
     getItems,
     getItemsCategory,
     getCartItemsOrder,
-    getCartItemsActive,
-    getCartItemsDone,
+    getCartItemsStatus,
     getDriverOrder
 
 }
