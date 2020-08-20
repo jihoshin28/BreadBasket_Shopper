@@ -9,8 +9,10 @@ export class Navbar extends Component {
             console.log(this.props.userAuthPic)  
             return (
                 <div>
-                    <a>
-                        <img class = "google-pic" alt = "alt img" src = {`${this.props.userAuthPic}`} />
+                    <a class="nav-link">
+                        <Link to='/profile'>
+                            <img class="google-pic" alt="alt img" src={`${this.props.userAuthPic}`} />
+                        </Link>
                     </a>
                 </div>
             )
@@ -34,9 +36,6 @@ export class Navbar extends Component {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"><Link to='/orderhistory'>Order History</Link></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"><Link to='/profile'>Profile</Link></a>
                         </li>
                     </ul>
                 </div>
