@@ -13,6 +13,7 @@ import Profile from './pages/Profile'
 import Products from './pages/Products'
 import Cart from './pages/Cart'
 import Data from './data.js'
+import Api from './services/Api'
 
 let data = Data.data
 class App extends Component  {
@@ -29,7 +30,7 @@ class App extends Component  {
     }
   }
   componentDidMount(){
-    console.log(this.state.items, this.state.foodCategory)
+    Api.getItems().then(data => console.log(data))
   }
 
   onStoreChange = (e) => {

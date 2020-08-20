@@ -1,9 +1,8 @@
-const API_ROOT = 'https://localhost:3000'
+const API_ROOT = 'http://localhost:3000'
 
 const headers = {
     'Content-Type': 'application/json',
-    Accepts: 'application/json',
-    "Authorization": token
+    Accepts: 'application/json'
 }
 
 const shopperSignUp = async () => {
@@ -11,27 +10,47 @@ const shopperSignUp = async () => {
 }
 
 const getShopper = async () => {
-
+    const response = await fetch(API_ROOT + `/shoppers/${id}`, {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
 const driverSignUp = async () => {
 
 }
 
-const getDriver = async () => {
-
+const getDriver = async (id) => {
+    const response = await fetch(API_ROOT + `/drivers/${id}`, {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
 const getStores = async () => {
-
+    const response = await fetch(API_ROOT + '/stores', {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
-const getStore = async () => {
-
+const getStore = async (id) => {
+    const response = await fetch(API_ROOT + `/stores/${id}`, {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
-const getOpenOrders = async () => {
-
+const getOpenOrders = async (id) => {
+    const response = await fetch(API_ROOT + `/orders/${id}`, {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
 const getActiveOrders = async () => {
@@ -47,7 +66,7 @@ const getShopperOrders = async () => {
 }
 
 const getItems = async () => {
-    let response = await fetch(API_ROOT + '/items', {
+    const response = await fetch(API_ROOT + '/items', {
         method: 'GET',
         headers: headers
     })
