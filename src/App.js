@@ -29,6 +29,7 @@ class App extends Component  {
       currentOrder: []
     }
   }
+
   componentDidMount(){
     Api.get.Items().then(data => console.log(data))
     Api.get.ItemsCategory('meats').then(data => console.log(data))
@@ -36,6 +37,7 @@ class App extends Component  {
     Api.get.Driver(1).then(data => console.log(data))
     Api.get.Stores().then(data => console.log(data))
     Api.get.Store(1).then(data => console.log(data))
+    
   }
 
   onStoreChange = (e) => {

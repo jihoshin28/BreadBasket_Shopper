@@ -8,6 +8,7 @@ const headers = {
 
 //GET METHODS
 
+
 const Shopper = async (id) => {
     const response = await fetch(API_ROOT + `/shoppers/${id}`, {
         method: 'GET',
@@ -118,7 +119,7 @@ const DriverOrder = async (order, status) => {
 //POST METHODS
 
 const shopperSignUp = async () => {
-    
+
 }
 
 const driverSignUp = async () => {
@@ -132,6 +133,10 @@ const driverSignUp = async () => {
 //DELETE METHODS
 
 export default {
+    auth: {
+        shopperAuth,
+        driverAuth
+    },
     get: {
         Shopper,
         Driver,
