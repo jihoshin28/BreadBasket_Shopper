@@ -30,7 +30,12 @@ class App extends Component  {
     }
   }
   componentDidMount(){
-    Api.getItems().then(data => console.log(data))
+    Api.get.Items().then(data => console.log(data))
+    Api.get.ItemsCategory('meats').then(data => console.log(data))
+    Api.get.Shopper(1).then(data => console.log(data))
+    Api.get.Driver(1).then(data => console.log(data))
+    Api.get.Stores().then(data => console.log(data))
+    Api.get.Store(1).then(data => console.log(data))
   }
 
   onStoreChange = (e) => {

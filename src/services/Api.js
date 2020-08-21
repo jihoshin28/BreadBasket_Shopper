@@ -5,11 +5,10 @@ const headers = {
     Accepts: 'application/json'
 }
 
-const shopperSignUp = async () => {
 
-}
+//GET METHODS
 
-const getShopper = async (id) => {
+const Shopper = async (id) => {
     const response = await fetch(API_ROOT + `/shoppers/${id}`, {
         method: 'GET',
         headers: headers
@@ -17,11 +16,8 @@ const getShopper = async (id) => {
     return response.json()
 }
 
-const driverSignUp = async () => {
 
-}
-
-const getDriver = async (id) => {
+const Driver = async (id) => {
     const response = await fetch(API_ROOT + `/drivers/${id}`, {
         method: 'GET',
         headers: headers
@@ -29,7 +25,7 @@ const getDriver = async (id) => {
     return response.json()
 }
 
-const getStores = async () => {
+const Stores = async () => {
     const response = await fetch(API_ROOT + '/stores', {
         method: 'GET',
         headers: headers
@@ -37,7 +33,7 @@ const getStores = async () => {
     return response.json()
 }
 
-const getStore = async (id) => {
+const Store = async (id) => {
     const response = await fetch(API_ROOT + `/stores/${id}`, {
         method: 'GET',
         headers: headers
@@ -45,7 +41,7 @@ const getStore = async (id) => {
     return response.json()
 }
 
-const getOpenOrders = async (status) => {
+const OpenOrders = async (status) => {
     const response = await fetch(API_ROOT + `/orders/?status=${status}`, {
         method: 'GET',
         headers: headers
@@ -53,19 +49,32 @@ const getOpenOrders = async (status) => {
     return response.json()
 }
 
-const getActiveOrders = async () => {
 
+const StoreOrders = async (store_id) => {
+    const response = await fetch(API_ROOT + `/orders/?store_id=${store_id}`, {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
-const getStoreOrders = async () => {
-
+const ShopperActiveOrder = async (shopper_id, status) => {
+    const response = await fetch(API_ROOT + `/orders/?shopper_id=${shopper_id}&status=${status}`, {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
-const getShopperOrders = async () => {
-
+const ShopperOrders = async (shopper_id) => {
+    const response = await fetch(API_ROOT + `/orders/?shopper_id=${shopper_id}`, {
+        method: 'GET',
+        headers: headers
+    })
+    return response.json()
 }
 
-const getItems = async () => {
+const Items = async () => {
     const response = await fetch(API_ROOT + '/items', {
         method: 'GET',
         headers: headers
@@ -73,54 +82,80 @@ const getItems = async () => {
     return response.json()
 }
 
-const getItemsCategory = async (category) => {
+const ItemsCategory = async (category) => {
     const response = await fetch(API_ROOT + `/items/?category=${category}`, {
         method: 'GET',
         headers: headers
     })
-
+    return response.json()
 }   
 
 
-const getCartItemsOrder = async (order) => {
-    const response = await fetch(API_ROOT + `/cartitems/?order=${order}`, {
+const CartItemsOrder = async (order) => {
+    const response = await fetch(API_ROOT + `/cart_items/?order=${order}`, {
         method: 'GET',
         headers: headers
     })
     return response.json()
 }
 
-const getCartItemsStatus = async (order, status) => {
-    const response = await fetch(API_ROOT + `/cartitems/?order=${order}&status=${status}`, {
+const CartItemsStatus = async (order, status) => {
+    const response = await fetch(API_ROOT + `/cart_items/?order=${order}&status=${status}`, {
         method: 'GET',
         headers: headers
     })
     return response.json()
 }
 
-const getDriverOrder = async (id) => {
-    const response = await fetch(API_ROOT + `/cartitems/?order=${order}&status=${status}`, {
+const DriverOrder = async (order, status) => {
+    const response = await fetch(API_ROOT + `/order/?order=${order}&status=${status}`, {
         method: 'GET',
         headers: headers
     })
     return response.json()
 }
+
+//POST METHODS
+
+const shopperSignUp = async () => {
+    
+}
+
+const driverSignUp = async () => {
+
+}
+
+//UPDATE METHODS
+
+
+
+//DELETE METHODS
 
 export default {
-    shopperSignUp,
-    getShopper,
-    driverSignUp,
-    getDriver,
-    getStores,
-    getStore,
-    getOpenOrders,
-    getActiveOrders,
-    getStoreOrders,
-    getShopperOrders,
-    getItems,
-    getItemsCategory,
-    getCartItemsOrder,
-    getCartItemsStatus,
-    getDriverOrder
+    get: {
+        Shopper,
+        Driver,
+        Stores,
+        Store,
+        OpenOrders,
+        ShopperActiveOrder,
+        StoreOrders,
+        ShopperOrders,
+        Items,
+        ItemsCategory,
+        CartItemsOrder,
+        CartItemsStatus,
+        DriverOrder
+    },
+    post: {
+        shopperSignUp,
+        driverSignUp
+    }, 
+    update: {
+
+    }, 
+    delete: {
+
+    }
 
 }
