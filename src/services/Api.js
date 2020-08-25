@@ -14,13 +14,13 @@ const shopperAuth = async (email) => {
     const response = await fetch(API_ROOT + '/login', {
         method: 'POST',
         headers: headers,
-        body: JSON.stringify({email: email})
+        body: JSON.stringify({shopper: {email}})
     })
     return response.json()
 }
 
-const driverAuth = async()=> {
-    
+const driverAuth = async ()=> {
+
 }
 
 //GET METHODS
