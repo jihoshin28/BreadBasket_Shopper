@@ -1,13 +1,29 @@
 const API_ROOT = 'http://localhost:3000'
 
+let token = localStorage.getItem("token")
+
 const headers = {
     'Content-Type': 'application/json',
-    Accepts: 'application/json'
+    Accepts: 'application/json',
+    "Authorization": token
 }
 
+//AUTH METHODS
+
+const shopperAuth = async (email) => {
+    const response = await fetch(API_ROOT + '/login', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({email: email})
+    })
+    return response.json()
+}
+
+const driverAuth = async()=> {
+    
+}
 
 //GET METHODS
-
 
 const Shopper = async (id) => {
     const response = await fetch(API_ROOT + `/shoppers/${id}`, {
@@ -139,7 +155,6 @@ export default {
     },
     get: {
         Shopper,
-        Driver,
         Stores,
         Store,
         OpenOrders,
@@ -149,12 +164,10 @@ export default {
         Items,
         ItemsCategory,
         CartItemsOrder,
-        CartItemsStatus,
-        DriverOrder
+        CartItemsStatus
     },
     post: {
-        shopperSignUp,
-        driverSignUp
+        shopperSignUp
     }, 
     update: {
 

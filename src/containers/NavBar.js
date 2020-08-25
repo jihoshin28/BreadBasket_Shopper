@@ -5,8 +5,7 @@ import { connect } from 'react-redux'
 
 export class Navbar extends Component {
     renderUser = () => {
-        if(!!this.props.isSignedIn){ 
-            console.log(this.props.userAuthPic)  
+        if(!!this.props.isSignedIn){   
             return (
                 <div>
                     <a class="nav-link">

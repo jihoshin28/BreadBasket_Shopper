@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {signIn, signOut} from '../actions'
+import Api from '../services/Api'
 
 class GoogleAuth extends React.Component{
    
@@ -15,8 +16,8 @@ class GoogleAuth extends React.Component{
                 this.auth.isSignedIn.listen(this.authChange)
             })
         })
-
-    }
+        
+    }   
 
     authChange = (isSignedIn) => {
         if (isSignedIn) {
@@ -29,6 +30,7 @@ class GoogleAuth extends React.Component{
   
     signIn = () => {
         this.auth.signIn()
+        this.auth.shopperLogin()
     }
 
     signOut = () => {
