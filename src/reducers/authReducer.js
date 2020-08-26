@@ -13,7 +13,10 @@ export default (state = INTIAL_STATE, action) => {
                 userAuthPic: action.payload.image
             }
         case 'SIGN_OUT':
-            return{...state, isSignedIn: false}
+            return{...state, 
+                isSignedIn: false, 
+                userAuthName: null, 
+                userAuthPic: null}
         default:
             return state 
     }

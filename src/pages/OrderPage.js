@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react'
+import {connect} from 'react-redux'
 import Dropdown from '../components/Dropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
@@ -7,7 +8,7 @@ import FoodList from '../containers/FoodList'
 class OrderPage extends Component {
 
     componentDidMount(){
-        console.log(this.props.stores)
+        
     }
     render() {
         return (
@@ -34,7 +35,7 @@ class OrderPage extends Component {
                 {
                     this.props.categories.map(category => {
                         let items = this.props.items.filter(item => item.category === category.name)
-                        console.log(items)
+                
                         return (
                             <FoodList items = {items} title={category.title} />
                         )   
@@ -45,4 +46,10 @@ class OrderPage extends Component {
     }
 }
 
-export default OrderPage
+let mapStateToProps = (state) => {
+    return ({
+        signedIn: state.auth.isSignedIn
+    })
+}
+
+export default connect(mapStateToProps)(OrderPage)
