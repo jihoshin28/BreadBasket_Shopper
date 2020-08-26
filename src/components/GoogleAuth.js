@@ -30,27 +30,21 @@ class GoogleAuth extends React.Component{
   
     signIn = () => {
         this.auth.signIn().then(data => {
-
-            let dataObject = {
+            let userInfo = {
                 'email': data.rt.$t,
                 'first_name': data.rt.tV,
                 'last_name': data.rt.uT,
                 'image' : data.rt.TJ
             }
-            console.log(dataObject)
-            Api.auth.shopperAuth(dataObject).then(data => {
-                console.log(data)
+            console.log(userInfo)
+            Api.auth.shopperAuth(userInfo).then(data => {
+                localStorage.setItem('rails_token', data.jwt)
+                console.log(this.props,window.history)
+                window.history.pushState('', '', '/orderpage')
             })
         })
     }
-
-    $t: "geeuho@gmail.com"
-    Ad: "allen shin"
-    NT: "102721874707233748293"
-    TJ: "https://lh3.googleusercontent.com/a-/AOh14GgsSyA-3IFDg0VfaiSOjTxKDrjJWrEN49boKjaP=s96-c"
-    tV: "allen"
-    uT: "shin"
-
+    
     signOut = () => {
         this.auth.signOut()
     }

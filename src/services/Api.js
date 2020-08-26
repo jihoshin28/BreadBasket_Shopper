@@ -1,6 +1,6 @@
 const API_ROOT = 'http://localhost:3000'
 
-let token = localStorage.getItem("token")
+let token = localStorage.getItem('rails_token')
 
 const headers = {
     'Content-Type': 'application/json',
@@ -10,11 +10,18 @@ const headers = {
 
 //AUTH METHODS
 
-const shopperAuth = async (email) => {
+const shopperAuth = async (userInfo) => {
     const response = await fetch(API_ROOT + '/login', {
         method: 'POST',
         headers: headers,
-        body: JSON.stringify({shopper: {email}})
+        body: JSON.stringify({
+            shopper: {
+                email: userInfo.email,
+                first_name: userInfo.first_name,
+                last_name: userInfo.last_name,
+                image: userInfo.image
+            }
+        })
     })
     return response.json()
 }
