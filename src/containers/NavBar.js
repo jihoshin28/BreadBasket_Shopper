@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 export class Navbar extends Component {
     renderUser = () => {
-        if(!!this.props.isSignedIn){   
+        if(!!this.props.signedIn){   
             return (
                 <div>
                     <a class="nav-link">
@@ -57,10 +57,12 @@ export class Navbar extends Component {
     }
 }
 let mapStateToProps = (state) => {
+    let auth = state.auth
+    console.log(state.auth.userAuthPic, state.auth.userAuthName)
     return ({
-        isSignedIn: state.auth.isSignedIn,
-        userAuthPic: state.auth.currentUser,
-        userAuthName: state.auth.userName
+        signedIn: auth.isSignedIn,
+        userAuthPic: auth.userAuthPic,
+        userAuthName: auth.userAuthName
     })
 }
 

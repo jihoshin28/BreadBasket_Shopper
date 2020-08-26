@@ -7,9 +7,10 @@ export default (state = INTIAL_STATE, action) => {
     console.log(action.payload)
     switch(action.type){
         case 'SIGN_IN':
-            return{...state, 
+            return {...state, 
                 isSignedIn: true, 
-                currentuser: action.payload
+                userAuthName: action.payload.first_name,
+                userAuthPic: action.payload.image
             }
         case 'SIGN_OUT':
             return{...state, isSignedIn: false}

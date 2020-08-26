@@ -24,7 +24,6 @@ const shopperAuth = async (userInfo) => {
             }
         })
     })
-    console.log(response)
     return response.json()
 }
 

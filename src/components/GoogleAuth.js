@@ -37,6 +37,7 @@ class GoogleAuth extends React.Component{
                 'image' : data.rt.TJ
             }
             Api.auth.shopperAuth(userInfo).then(data => {
+                console.log(data)
                 localStorage.setItem('rails_token', data.jwt)
                 this.authChange(data.shopper.data.attributes)
                 // window.history.pushState('', '', '/orderpage')
