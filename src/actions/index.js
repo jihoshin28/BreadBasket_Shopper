@@ -25,10 +25,11 @@ export const updateUser = () => {
     }
 }
 
-export const signIn = (userId) => {
+export const signIn = (userData) => {
+    console.log(userData)
     return {
         type: 'SIGN_IN',
-        payload: userId
+        payload: userData
     }
 }
 

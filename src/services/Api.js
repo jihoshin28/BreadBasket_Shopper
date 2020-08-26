@@ -5,12 +5,13 @@ let token = localStorage.getItem('rails_token')
 const headers = {
     'Content-Type': 'application/json',
     Accepts: 'application/json',
-    Authorization: token
+    "Authorization": token
 }
 
 //AUTH METHODS
 
 const shopperAuth = async (userInfo) => {
+    console.log(userInfo, headers)
     const response = await fetch(API_ROOT + '/login', {
         method: 'POST',
         headers: headers,
@@ -23,6 +24,7 @@ const shopperAuth = async (userInfo) => {
             }
         })
     })
+    console.log(response)
     return response.json()
 }
 

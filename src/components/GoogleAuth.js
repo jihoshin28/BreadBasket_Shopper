@@ -19,9 +19,9 @@ class GoogleAuth extends React.Component{
         
     }   
 
-    authChange = (isSignedIn) => {
-        if (isSignedIn) {
-            this.props.signIn()
+    authChange = (userData) => {
+        if (!!userData) {
+            this.props.signIn(userData)
         } else {
             this.props.signOut()
         }
@@ -36,18 +36,18 @@ class GoogleAuth extends React.Component{
                 'last_name': data.rt.uT,
                 'image' : data.rt.TJ
             }
-            console.log(userInfo)
             Api.auth.shopperAuth(userInfo).then(data => {
-                console.log(data)
                 localStorage.setItem('rails_token', data.jwt)
-                window.history.pushState('', '', '/orderpage')
-                window.history.go()
+                this.authChange(data.shopper.data.attributes)
+                // window.history.pushState('', '', '/orderpage')
+                // window.history.go()
             })
         })
     }
     
     signOut = () => {
         this.auth.signOut()
+        this.authChange()
         localStorage.removeItem('rails_token')
     }
 
