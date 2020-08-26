@@ -5,7 +5,7 @@ let token = localStorage.getItem('rails_token')
 const headers = {
     'Content-Type': 'application/json',
     Accepts: 'application/json',
-    "Authorization": token
+    Authorization: token
 }
 
 //AUTH METHODS

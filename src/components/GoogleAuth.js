@@ -38,15 +38,17 @@ class GoogleAuth extends React.Component{
             }
             console.log(userInfo)
             Api.auth.shopperAuth(userInfo).then(data => {
+                console.log(data)
                 localStorage.setItem('rails_token', data.jwt)
-                console.log(this.props,window.history)
                 window.history.pushState('', '', '/orderpage')
+                window.history.go()
             })
         })
     }
     
     signOut = () => {
         this.auth.signOut()
+        localStorage.removeItem('rails_token')
     }
 
     renderAuthButton = () => {
