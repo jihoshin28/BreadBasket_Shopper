@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {signIn, signOut, updateUser} from '../actions'
+import {signIn, signOut, currentUser} from '../actions'
 import Api from '../services/Api'
 
 class GoogleAuth extends React.Component{
@@ -27,7 +27,6 @@ class GoogleAuth extends React.Component{
         }
     } 
 
-
   
     signIn = () => {
         this.auth.signIn().then(data => {
@@ -40,7 +39,8 @@ class GoogleAuth extends React.Component{
             Api.auth.shopperAuth(userInfo).then(data => {
                 console.log(data)
                 localStorage.setItem('rails_token', data.jwt)
-                this.updateUser(data.shopper.data.attributes)
+                localStorage.setItem('current_user', data.shopper.data.attributes)
+                this.props.currentUser(data.shopper.data.attributes)
                
             })
         })
@@ -90,8 +90,8 @@ class GoogleAuth extends React.Component{
 
 let mapStateToProps = (state) => {
     return ({
-        signedIn: state.auth.isSignedIn
+        signedIn: state.auth.signedIn
     })
 }
 
-export default connect(mapStateToProps, {signIn, signOut, updateUser})(GoogleAuth)
+export default connect(mapStateToProps, {signIn, signOut, currentUser})(GoogleAuth)

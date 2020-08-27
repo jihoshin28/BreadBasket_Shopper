@@ -13,16 +13,20 @@ const itemsReducer = (listofItems = [], action) => {
     return listofItems
 }
 
-const usersReducer = (currentUser = null, action) => {
-    if(currentUser !== null){
-        return null
+const currentUser = (state = {}, action) => {
+    if(action.type === "CURRENT_USER"){
+        return {
+            ...state,
+            userAuthName: action.payload.first_name,
+            userAuthPic: action.payload.image
+        }
     }
-    return currentUser
+    return state
 }
 
 
 export default combineReducers({
     items: itemsReducer,
-    users: usersReducer,
+    currentUser: currentUser,
     auth: authReducer
 })

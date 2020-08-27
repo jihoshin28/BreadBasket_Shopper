@@ -57,12 +57,11 @@ export class Navbar extends Component {
     }
 }
 let mapStateToProps = (state) => {
-    let auth = state.auth
-    console.log(state.auth.userAuthPic, state.auth.userAuthName)
+    console.log(state)
     return ({
-        signedIn: auth.isSignedIn,
-        userAuthPic: auth.userAuthPic,
-        userAuthName: auth.userAuthName
+        signedIn: state.auth.isSignedIn,
+        // userAuthPic: state.currentUser.userAuthPic,
+        // userAuthName: state.currentUser.userAuthName
     })
 }
 

@@ -16,20 +16,18 @@ export const deleteItem = (item) => {
     }
 }
 
-export const updateUser = () => {
+export const currentUser = (userData) => {
     return {
         type: 'CURRENT_USER',
-        payload: {
-
-        }
+        payload: userData
     }
 }
 
-export const signIn = (userData) => {
-    console.log(userData)
+export const signIn = (userStatus) => {
+    console.log(userStatus)
     return {
         type: 'SIGN_IN',
-        payload: userData
+        payload: userStatus
     }
 }
 
