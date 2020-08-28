@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 export class Navbar extends Component {
     componentDidMount(){
-        console.log(this.props)
+        console.log(this.props.userAuthPic)
     }
 
     renderUser = () => {
@@ -47,7 +47,7 @@ export class Navbar extends Component {
                         <button class="btn btn-outline-success" type="button"><Link class = "text-reset" to='/cart'>Cart</Link></button>
                     </li>
                 </ul>
-                <GoogleAuth history = {this.props.history}/>
+                <GoogleAuth />
                 <ul class="navbar-nav cart-nav">
                     <li class = "nav-item">
                         {this.renderUser()} 
@@ -63,7 +63,7 @@ export class Navbar extends Component {
 let mapStateToProps = (state) => {
     console.log(state)
     return ({
-        signedIn: state.auth.isSignedIn,
+        signedIn: state.auth.signedIn,
         userAuthPic: state.currentUser.userAuthPic,
         userAuthName: state.currentUser.userAuthName
     })

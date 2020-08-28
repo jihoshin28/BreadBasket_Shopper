@@ -15,6 +15,7 @@ import Cart from './pages/Cart'
 import Data from './data.js'
 import Api from './services/Api'
 
+
 let data = Data.data
 class App extends Component  {
   constructor(){
@@ -66,8 +67,8 @@ class App extends Component  {
     return (
       <div className="App">
         <div class="ui segment">
-          <Router history = {this.props.history}>
-            <NavBar history = {this.props.history}/>
+          <Router >
+            <NavBar />
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} 
               items = {this.state.items} 
