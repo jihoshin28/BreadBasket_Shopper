@@ -1,7 +1,6 @@
 import 'jquery/src/jquery';
 import React, {Component} from 'react';
 import {
-  BrowserRouter as Router,
   Route
 } from "react-router-dom"
 import './App.css';
@@ -67,7 +66,7 @@ class App extends Component  {
     return (
       <div className="App">
         <div class="ui segment">
-          <Router >
+         
             <NavBar />
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} 
@@ -95,7 +94,7 @@ class App extends Component  {
               currentOrder={this.state.currentOrder} 
               items={this.state.items} 
             />} />
-          </Router>
+       
         </div>
 
         <footer className="footer">

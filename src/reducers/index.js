@@ -1,5 +1,7 @@
 import authReducer from './authReducer'
 import {combineReducers} from 'redux'
+import {persistReducer} from 'react'
+import storage from 'redux-persist/lib/storage'
 
 
 const itemsReducer = (listofItems = [], action) => {
@@ -25,8 +27,17 @@ const currentUser = (state = {}, action) => {
     return state
 }
 
-export default combineReducers({
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['currentUser']
+}
+
+const reducer = combineReducers({
     items: itemsReducer,
     currentUser: currentUser,
     auth: authReducer
 })
+
+export default persistReducer(persistConfig, reducer)
