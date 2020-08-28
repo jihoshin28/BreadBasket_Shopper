@@ -1,6 +1,6 @@
 import authReducer from './authReducer'
 import {combineReducers} from 'redux'
-import {persistReducer} from 'react'
+import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 
