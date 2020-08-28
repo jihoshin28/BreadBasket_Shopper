@@ -45,8 +45,8 @@ class GoogleAuth extends React.Component{
                 localStorage.setItem('rails_token', data.jwt)
                 localStorage.setItem('current_user', data.shopper.data.attributes)
                 this.props.currentUser(data.shopper.data.attributes)
-                // this.props.history.push('/orderpage')
-                // this.props.history.go(this.props.history.getCurrentLocation())
+                window.history.pushState({}, '', '/orderpage')
+                window.history.go()
             })
         })
     }
