@@ -3,7 +3,6 @@ const INTIAL_STATE = {
 }
 
 export default (state = INTIAL_STATE, action) => {
-    console.log(action.payload)
     switch(action.type){
         case 'SIGN_IN':
             return {...state, 

@@ -27,6 +27,10 @@ class GoogleAuth extends React.Component{
         }
     } 
 
+    currentUser = (data) => {
+        this.props.currentUser(data)
+    }
+
   
     signIn = () => {
         this.auth.signIn().then(data => {
@@ -41,7 +45,8 @@ class GoogleAuth extends React.Component{
                 localStorage.setItem('rails_token', data.jwt)
                 localStorage.setItem('current_user', data.shopper.data.attributes)
                 this.props.currentUser(data.shopper.data.attributes)
-               
+                // this.props.history.push('/orderpage')
+                // this.props.history.go(this.props.history.getCurrentLocation())
             })
         })
     }
@@ -88,7 +93,8 @@ class GoogleAuth extends React.Component{
     }
 }
 
-let mapStateToProps = (state) => {
+let mapStateToProps = (state, ownProps) => {
+    console.log(ownProps)
     return ({
         signedIn: state.auth.signedIn
     })

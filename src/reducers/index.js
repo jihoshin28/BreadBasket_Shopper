@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux'
+
 import authReducer from './authReducer'
 
 const itemsReducer = (listofItems = [], action) => {
@@ -25,8 +25,8 @@ const currentUser = (state = {}, action) => {
 }
 
 
-export default combineReducers({
+export default {
     items: itemsReducer,
     currentUser: currentUser,
     auth: authReducer
-})
+}

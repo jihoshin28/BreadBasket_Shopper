@@ -4,13 +4,17 @@ import GoogleAuth from '../components/GoogleAuth'
 import { connect } from 'react-redux'
 
 export class Navbar extends Component {
+    componentDidMount(){
+        console.log(this.props)
+    }
+
     renderUser = () => {
         if(!!this.props.signedIn){   
             return (
                 <div>
                     <a class="nav-link">
                         <Link to='/profile'>
-                            <img class="google-pic" alt="alt img" src={`${this.props.userAuthPic}`} />
+                            <img class="google-pic" alt="alt img" src={this.props.userAuthPic} />
                         </Link>
                     </a>
                 </div>
@@ -43,7 +47,7 @@ export class Navbar extends Component {
                         <button class="btn btn-outline-success" type="button"><Link class = "text-reset" to='/cart'>Cart</Link></button>
                     </li>
                 </ul>
-                <GoogleAuth/>
+                <GoogleAuth history = {this.props.history}/>
                 <ul class="navbar-nav cart-nav">
                     <li class = "nav-item">
                         {this.renderUser()} 
@@ -60,8 +64,8 @@ let mapStateToProps = (state) => {
     console.log(state)
     return ({
         signedIn: state.auth.isSignedIn,
-        // userAuthPic: state.currentUser.userAuthPic,
-        // userAuthName: state.currentUser.userAuthName
+        userAuthPic: state.currentUser.userAuthPic,
+        userAuthName: state.currentUser.userAuthName
     })
 }
 

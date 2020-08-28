@@ -66,8 +66,8 @@ class App extends Component  {
     return (
       <div className="App">
         <div class="ui segment">
-          <Router>
-            <NavBar />
+          <Router history = {this.props.history}>
+            <NavBar history = {this.props.history}/>
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} 
               items = {this.state.items} 
