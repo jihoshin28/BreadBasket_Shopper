@@ -1,6 +1,5 @@
 import authReducer from './authReducer'
 import itemsReducer from './itemsReducer'
-import currentUser from './currentUser'
 import {combineReducers} from 'redux'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'

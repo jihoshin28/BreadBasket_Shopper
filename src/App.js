@@ -5,6 +5,7 @@ import {
 } from "react-router-dom"
 import './App.css';
 import NavBar from './containers/NavBar'
+import Home from './pages/Home'
 import About from './pages/About'
 import OrderPage from './pages/OrderPage'
 import OrderHistory from './pages/OrderHistory'
@@ -68,6 +69,7 @@ class App extends Component  {
         <div class="ui segment">
          
             <NavBar />
+            <Route exact path='/' render={(props) => <Home {...props} />} />
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} 
               items = {this.state.items} 

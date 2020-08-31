@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 // import aboutPic from '../public/logo192.png'
-export class Home extends Component {
+export class About extends Component {
     render() {
         return (
             <div>
-                <h1>Welcome to BreadBasket</h1>
+                <h1>About</h1>
             <div className='textBox'>
                 <p> Hi! I'm Allen.</p>
                 {/* <img width = '400px' src= {aboutPic} alt='Profile pic here!'></img> */}
@@ -52,4 +52,4 @@ export class Home extends Component {
     }
 }
 
-export default Home
+export default About

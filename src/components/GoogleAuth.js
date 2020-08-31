@@ -22,6 +22,7 @@ class GoogleAuth extends React.Component{
     authChange = (userStatus) => {
         console.log(userStatus)
         if (!!userStatus) {
+
             let user = this.auth.currentUser.get()
             let userInfo =
             {
@@ -58,7 +59,10 @@ class GoogleAuth extends React.Component{
 
   
     signIn = () => {
-        this.auth.signIn()
+        this.auth.signIn().then(() => {
+            window.history.pushState({}, '', '/orderpage')
+            window.history.go()
+        })
     }
     
     signOut = () => {
