@@ -10,27 +10,6 @@ const headers = {
 
 //AUTH METHODS
 
-const shopperAuth = async (userInfo) => {
-    console.log(userInfo, headers)
-    const response = await fetch(API_ROOT + '/login', {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify({
-            shopper: {
-                email: userInfo.email,
-                first_name: userInfo.first_name,
-                last_name: userInfo.last_name,
-                image: userInfo.image
-            }
-        })
-    })
-    return response.json()
-}
-
-const driverAuth = async ()=> {
-
-}
-
 //GET METHODS
 
 const Shopper = async (id) => {
@@ -157,10 +136,6 @@ const driverSignUp = async () => {
 //DELETE METHODS
 
 export default {
-    auth: {
-        shopperAuth,
-        driverAuth
-    },
     get: {
         Shopper,
         Stores,

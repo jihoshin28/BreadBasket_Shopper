@@ -1,3 +1,14 @@
+import rails from '../services/Rails'
+
+const API_ROOT = 'http://localhost:3000'
+let token = localStorage.getItem('rails_token')
+
+const headers = {
+    'Content-Type': 'application/json',
+    Accepts: 'application/json',
+    "Authorization": token
+}
+
 export const addItem = (item) => {
     return {
         type: 'ADD_ITEM',
@@ -16,15 +27,20 @@ export const deleteItem = (item) => {
     }
 }
 
-export const currentUser = (userData) => {
-    return {
+export const currentUser = userInfo => async dispatch => {
+    const response = await rails.post('/login', {shopper: userInfo, headers})
+    let data = response.data
+    console.log(data)
+    localStorage.setItem('rails_token', data.jwt)
+    dispatch({
         type: 'CURRENT_USER',
-        payload: userData
-    }
+        payload: data.shopper.data.attributes
+    })
 }
 
 export const signIn = (userStatus) => {
     console.log(userStatus)
+    // localStorage.setItem('rails_token', data.jwt)
     return {
         type: 'SIGN_IN',
         payload: userStatus

@@ -34,20 +34,25 @@ class GoogleAuth extends React.Component{
   
     signIn = () => {
         this.auth.signIn().then(data => {
-            let userInfo = {
-                'email': data.rt.$t,
-                'first_name': data.rt.tV,
-                'last_name': data.rt.uT,
-                'image' : data.rt.TJ
-            }
-            Api.auth.shopperAuth(userInfo).then(data => {
-                console.log(data)
-                localStorage.setItem('rails_token', data.jwt)
-                localStorage.setItem('current_user', data.shopper.data.attributes)
-                this.props.currentUser(data.shopper.data.attributes)
+            let userInfo =   
+                {
+                    email: data.rt.$t,
+                    first_name: data.rt.tV,
+                    last_name: data.rt.uT,
+                    image : data.rt.TJ
+                }
+            this.props.currentUser(userInfo).then(function(){
                 window.history.pushState({}, '', '/orderpage')
                 window.history.go()
             })
+            // Api.auth.shopperAuth(userInfo).then(data => {
+            //     console.log(data)
+            //     localStorage.setItem('rails_token', data.jwt)
+
+            //     // this.props.currentUser(data.shopper.data.attributes)
+            //     // window.history.pushState({}, '', '/orderpage')
+            //     // window.history.go()
+            // })
         })
     }
     
@@ -85,6 +90,7 @@ class GoogleAuth extends React.Component{
         }
     }
     render(){
+        console.log(this.props)
         return(
             <div>
                 {this.renderAuthButton()}
