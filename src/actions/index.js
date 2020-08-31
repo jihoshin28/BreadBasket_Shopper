@@ -32,28 +32,35 @@ export const deleteItem = (item) => {
     }
 }
 
-export const currentUser = userInfo => async dispatch => {
+export const signIn = userInfo => async dispatch => {
     const response = await rails.post('/login', {shopper: userInfo, headers})
     let data = response.data
     console.log(data)
     localStorage.setItem('rails_token', data.jwt)
     dispatch({
-        type: 'CURRENT_USER',
+        type: 'SIGN_IN',
         payload: data.shopper.data.attributes
     })
 }
 
-export const signIn = (userStatus) => {
-    console.log(userStatus)
-    // localStorage.setItem('rails_token', data.jwt)
-    return {
-        type: 'SIGN_IN',
-        payload: userStatus
-    }
-}
-
 export const signOut = () => {
+    localStorage.removeItem('rails_token')
     return {
         type: 'SIGN_OUT'
     }
 }
+
+// export const signIn = (userStatus) => {
+//     console.log(userStatus)
+//     // localStorage.setItem('rails_token', data.jwt)
+//     return {
+//         type: 'SIGN_IN',
+//         payload: userStatus
+//     }
+// }
+
+// export const signOut = () => {
+//     return {
+//         type: 'SIGN_OUT'
+//     }
+// }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {signIn, signOut, currentUser} from '../actions'
+import {signIn, signOut} from '../actions'
 import Api from '../services/Api'
 
 class GoogleAuth extends React.Component{
@@ -20,46 +20,51 @@ class GoogleAuth extends React.Component{
     }   
 
     authChange = (userStatus) => {
+        console.log(userStatus)
         if (!!userStatus) {
-            this.props.signIn(userStatus)
+            let user = this.auth.currentUser.get()
+            let userInfo =
+            {
+                email: user.rt.$t,
+                first_name: user.rt.tV,
+                last_name: user.rt.uT,
+                image: user.rt.TJ
+            }
+            this.props.signIn(userInfo)
         } else {
             this.props.signOut()
         }
     } 
 
-    currentUser = (data) => {
-        this.props.currentUser(data)
-    }
+    // currentUser = (userStatus) => {
+    //     if(!!userStatus){
+    //         let user = this.auth.currentUser.get()
+    //         let userInfo =
+    //         {
+    //             email: user.rt.$t,
+    //             first_name: user.rt.tV,
+    //             last_name: user.rt.uT,
+    //             image: user.rt.TJ
+    //         }
+    //         console.log(userInfo)
+    //         this.props.currentUser(userInfo).then(function () {
+    //             window.history.pushState({}, '', '/orderpage')
+    //             window.history.go()
+    //         })
+    //     } else {
+    //         this.props.removeCurrentUser()
+    //     }
+    // }
 
   
     signIn = () => {
-        this.auth.signIn().then(data => {
-            let userInfo =   
-                {
-                    email: data.rt.$t,
-                    first_name: data.rt.tV,
-                    last_name: data.rt.uT,
-                    image : data.rt.TJ
-                }
-            this.props.currentUser(userInfo).then(function(){
-                window.history.pushState({}, '', '/orderpage')
-                window.history.go()
-            })
-            // Api.auth.shopperAuth(userInfo).then(data => {
-            //     console.log(data)
-            //     localStorage.setItem('rails_token', data.jwt)
-
-            //     // this.props.currentUser(data.shopper.data.attributes)
-            //     // window.history.pushState({}, '', '/orderpage')
-            //     // window.history.go()
-            // })
-        })
+        this.auth.signIn()
     }
     
     signOut = () => {
         this.auth.signOut()
-        this.authChange()
-        localStorage.removeItem('rails_token')
+        // this.authChange()
+        // localStorage.removeItem('rails_token')
     }
 
     renderAuthButton = () => {
@@ -106,4 +111,4 @@ let mapStateToProps = (state, ownProps) => {
     })
 }
 
-export default connect(mapStateToProps, {signIn, signOut, currentUser})(GoogleAuth)
+export default connect(mapStateToProps, {signIn, signOut})(GoogleAuth)

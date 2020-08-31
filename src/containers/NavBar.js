@@ -64,8 +64,8 @@ let mapStateToProps = (state) => {
     console.log(state)
     return ({
         signedIn: state.auth.signedIn,
-        userAuthPic: state.currentUser.userAuthPic,
-        userAuthName: state.currentUser.userAuthName
+        userAuthPic: state.auth.userAuthPic,
+        userAuthName: state.auth.userAuthName
     })
 }
 
