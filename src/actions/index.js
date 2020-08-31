@@ -9,6 +9,11 @@ const headers = {
     "Authorization": token
 }
 
+export const getItems = async dispatch => {
+    const response = await rails.get('/items', {headers})
+    dispatch({type: 'GET_ITEMS', payload: response})
+}
+
 export const addItem = (item) => {
     return {
         type: 'ADD_ITEM',

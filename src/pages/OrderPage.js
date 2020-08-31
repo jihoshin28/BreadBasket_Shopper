@@ -48,7 +48,7 @@ class OrderPage extends Component {
 
 let mapStateToProps = (state) => {
     return ({
-        signedIn: state.auth.isSignedIn
+        items: state.items
     })
 }
 
