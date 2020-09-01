@@ -8,7 +8,6 @@ import FoodList from '../containers/FoodList'
 class Products extends Component {
 
     componentDidMount(){
-        this.props.getFilteredItems(1, 'meats')
         document.getElementById(`${this.props.match.params.category}`).checked = true
     }
  
@@ -18,9 +17,10 @@ class Products extends Component {
     }
 
     render(){
-        console.log(this.props.match.params.category)
-        // let categoryData = this.props.categories.find((category) => category.name === this.props.match.params.category)
-        // let categoryTitle = categoryData.title
+        let category = this.props.match.params.category
+        let filteredItems = this.props.items.filter(item => item.attributes.category === category)
+        let categoryData = this.props.categories.find((category) => category.name === this.props.match.params.category)
+        let categoryTitle = categoryData.title
         return (
             <div class = "products">
                 <div class = "sidebar">
@@ -64,7 +64,7 @@ class Products extends Component {
 
                 <div class = "content"> 
                     <div class = "container-fluid justify-content-center">
-                        {/* <h1 class = "productsHeader">{categoryTitle}</h1> */}
+                        <h1 class = "productsHeader">{categoryTitle}</h1>
                         <div class = "row productsHeader">
                             <div className = "col-sm-5">
                                 <h2>{this.props.selectedStore}</h2>
@@ -73,7 +73,8 @@ class Products extends Component {
                                 <Searchbar onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange}/>
                             </div>
                         </div>
-                        <FoodList items = {this.props.items} length = {this.props.items.length}/>
+                    
+                        <FoodList items = {filteredItems}/>
                     </div>
                 </div>
 
@@ -84,10 +85,11 @@ class Products extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return({
         categories: state.categories,
         items: state.items.itemsList.data
     })
 }
 
-export default connect(mapStateToProps, {getFilteredItems})(Products)
+export default connect(mapStateToProps)(Products)

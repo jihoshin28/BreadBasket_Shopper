@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { getItems } from '../actions'
+import { getItems, getCategories } from '../actions'
 import Dropdown from '../components/Dropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
@@ -51,9 +51,9 @@ class OrderPage extends Component {
 let mapStateToProps = (state) => {
     console.log(state.items[0])
     return ({
-        items: state.items.data,
+        items: state.items.itemsList.data,
         categories: state.categories
     })
 }
 
-export default connect(mapStateToProps, {getItems} )(OrderPage)
+export default connect(mapStateToProps,{getItems})(OrderPage)

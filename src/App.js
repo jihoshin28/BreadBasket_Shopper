@@ -33,7 +33,6 @@ class App extends Component  {
   }
 
   componentDidMount(){
-    this.props.getItems(1)
     this.props.getCategories()
     // Api.get.Items().then(data => console.log(data))
     // Api.get.ItemsCategory('meats').then(data => console.log(data))
@@ -107,4 +106,4 @@ class App extends Component  {
   
 }
 
-export default connect(null, {getItems, getCategories})(App)
+export default connect(null, {getCategories})(App)
