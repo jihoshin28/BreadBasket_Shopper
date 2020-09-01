@@ -68,6 +68,12 @@ export const getItems = (store_id) => async dispatch => {
     dispatch({type: 'GET_ITEMS', payload: response.data})
 }
 
+export const searchItem = (item) => {
+    return {
+        
+    }
+}
+
 // export const addItem = (item) => {
 //     return {
 //         type: 'ADD_ITEM',

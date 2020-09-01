@@ -1,14 +1,50 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { reduxForm, Field} from 'redux-form'
+import { searchItem } from '../actions'
 
-const Searchbar = props => {
-    return (
-        <div class="input-group mb-3">
+
+class Searchbar extends React.Component {
+
+    renderInput = ({ input, meta, label }) => {
+    console.log(meta)
+        return (
             <div class="input-group-prepend">
-                <button onClick = {props.onSearchSubmit} class="btn btn-outline-secondary" type="button" id="button-addon1">Search Item</button>
+                <label>{label}</label>
+                <input {...input} />
+                <div> {meta.error}</div>
             </div>
-            <input onChange = {props.onSearchChange} type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"/>
-        </div>
-    )
+        )
+    }
+
+    searchSubmit = (formValues) => {
+        console.log(formValues)
+    }
+
+    render(){
+        return (
+            <form onSubmit = {this.props.handleSubmit(this.searchSubmit)}>
+                <Field name = "searchItem" component = {this.renderInput} label = "Search for Item"/>
+                <button type="submit" id="button-addon1">Search Item</button>
+            </form>
+        )
+    }
 }
 
-export default Searchbar
+let validate = (formValues) => {
+    let error = {}
+
+    if(!formValues.searchItem){
+        error.searchItem = "Please enter an Item"
+    }
+
+    return error
+}
+
+let formWrapped = reduxForm({
+    form: 'searchForm',
+    validate: validate
+})(Searchbar)
+
+
+export default connect(null, {searchItem})(formWrapped)
