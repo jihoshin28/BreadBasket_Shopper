@@ -13,6 +13,7 @@ import OrderHistory from './pages/OrderHistory'
 import Profile from './pages/Profile'
 import Products from './pages/Products'
 import Cart from './pages/Cart'
+import SearchPage from './pages/SearchPage'
 import {getStores, getCategories} from './actions'
 
 class App extends Component  {
@@ -66,27 +67,19 @@ class App extends Component  {
             <NavBar />
             <Route exact path='/' render={(props) => <Home {...props} />} />
             <Route exact path='/about' render={(props) => <About {...props} />} />
-            <Route exact path='/orderpage' render={(props) => <OrderPage {...props} 
-              selectedStore = {this.state.selectedStore} 
-              onStoreChange = {this.onStoreChange} 
-              onSearchSubmit = {this.onSearchSubmit} 
-              onSearchChange = {this.onSearchChange}
-            />}/>
-            <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
-            <Route exact path='/profile' render={(props) => <Profile {...props} />} />
-            <Route exact path='/products/:category' render={(props) => <Products {...props} 
-  
-              foodCategory = {this.state.foodCategory}
-              selectedStore = {this.state.selectedStore}
-              onSearchSubmit={this.onSearchSubmit}
-              onSearchChange={this.onSearchChange}
-              onCategoryChange= {this.onCategoryChange}
-            />}/>
             <Route exact path='/cart' render={(props) => <Cart {...props} 
               removeItem = {this.removeItem} 
               currentOrder={this.state.currentOrder} 
               items={this.state.items} 
             />} />
+            <Route exact path='/orderpage' render={(props) => <OrderPage {...props} 
+              onSearchSubmit = {this.onSearchSubmit} 
+              onSearchChange = {this.onSearchChange}
+            />}/>
+            <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
+            <Route exact path='/profile' render={(props) => <Profile {...props} />} />
+            <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>
+            <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
        
         </div>
 

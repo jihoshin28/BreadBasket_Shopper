@@ -39,7 +39,6 @@ class OrderPage extends Component {
                 {
                     this.props.categories.map(category => {
                         let categoryItems = this.props.items.filter(item => item.attributes.category === category.name)
-                
                         return (
                             <FoodList items = {categoryItems} title={category.title} />
                         )   
