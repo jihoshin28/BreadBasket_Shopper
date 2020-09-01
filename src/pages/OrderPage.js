@@ -1,7 +1,7 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { getItems, getCategories } from '../actions'
-import Dropdown from '../components/Dropdown'
+import { getItems, selectStore } from '../actions'
+import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodList from '../containers/FoodList'
@@ -12,7 +12,6 @@ class OrderPage extends Component {
         this.props.getItems(1)
     }
     render() {
-        console.log(this.props.items)
         return (
             <div>
                 <br></br>
@@ -20,13 +19,13 @@ class OrderPage extends Component {
                 <br></br>
                 <div class = "row">
                     <div class="col-sm-4">
-                        <Dropdown selectedStore = {this.props.selectedStore} stores = {this.props.stores} onStoreChange= {this.props.onStoreChange}/>
+                        <StoreDropdown/>
                     </div>
                     <div class="col-sm-4">
-                        <h2>{this.props.selectedStore}</h2>
+                        <h2>{this.props.selectedStore.attributes.name}</h2>
                     </div>
                     <div class="col-sm-4">
-                        <Searchbar onSearchSubmit = {this.props.onSearchSubmit} onSearchChange = {this.props.onSearchChange}/>
+                        <Searchbar/>
                     </div>
                 </div>
                 <div class = "row justify-content-center">
@@ -49,11 +48,13 @@ class OrderPage extends Component {
 }
 
 let mapStateToProps = (state) => {
-    console.log(state.items[0])
+    console.log(state)
     return ({
         items: state.items.itemsList.data,
-        categories: state.categories
+        categories: state.categories,
+        stores: state.stores.storesList,
+        selectedStore: state.stores.selectedStore
     })
 }
 
-export default connect(mapStateToProps,{getItems})(OrderPage)
+export default connect(mapStateToProps,{getItems, selectStore})(OrderPage)

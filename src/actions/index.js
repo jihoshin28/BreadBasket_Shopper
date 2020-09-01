@@ -8,6 +8,19 @@ const headers = {
     "Authorization": token
 }
 
+export const getStores = () => async dispatch => {
+    const response = await rails.get(`/stores`, { headers })
+    console.log(response.data.data)
+    dispatch({ type: 'GET_STORES', payload: response.data.data })
+}
+
+export const selectStore = (store) => {
+    return ({
+        type: 'SELECT_STORE',
+        payload: store
+    })
+}
+
 export const getCategories = () => {
     return {
         type: 'GET_CATEGORIES',

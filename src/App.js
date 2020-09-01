@@ -13,19 +13,12 @@ import OrderHistory from './pages/OrderHistory'
 import Profile from './pages/Profile'
 import Products from './pages/Products'
 import Cart from './pages/Cart'
-import Data from './data.js'
-import {getItems, getCategories} from './actions'
+import {getStores, getCategories} from './actions'
 
-
-let data = Data.data
 class App extends Component  {
   constructor(){
     super()
     this.state = {
-      items: data.items,
-      categories: data.categories,
-      stores: data.stores,
-      selectedStore: data.stores[0].name,
       searchTerm: '',
       foodCategory: null,
       currentOrder: []
@@ -34,6 +27,7 @@ class App extends Component  {
 
   componentDidMount(){
     this.props.getCategories()
+    this.props.getStores()
     // Api.get.Items().then(data => console.log(data))
     // Api.get.ItemsCategory('meats').then(data => console.log(data))
     // Api.get.Stores().then(data => console.log(data))
@@ -73,7 +67,6 @@ class App extends Component  {
             <Route exact path='/' render={(props) => <Home {...props} />} />
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} 
-              stores = {this.state.stores} 
               selectedStore = {this.state.selectedStore} 
               onStoreChange = {this.onStoreChange} 
               onSearchSubmit = {this.onSearchSubmit} 
@@ -103,7 +96,6 @@ class App extends Component  {
       </div>
     );
   }
-  
 }
 
-export default connect(null, {getCategories})(App)
+export default connect(null, {getStores, getCategories})(App)

@@ -56,8 +56,6 @@ class Products extends Component {
                             <div class="input-group-text">
                                 <input type="radio" id="household" name="food-category" value="household" aria-label="Household Input"/> Household
                             </div>
-                      
-                        <button class = "btn btn-primary products-search" type="submit">Search</button>
                     </form>
                     
                 </div>
