@@ -85,6 +85,7 @@ class GoogleAuth extends React.Component{
                     </button>
                 )
             } else {
+                
                 return (
                     <div class = 'log-button'>
                         <button type="button" class="btn btn-outline-primary" onClick={this.signIn}>

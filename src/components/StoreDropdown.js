@@ -1,10 +1,9 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import {selectStore} from '../actions'
 
 class StoreDropdown extends React.Component {
     componentDidMount(){
-        console.log(this.props.selectedStore)
     }
     
     storeOptions = () => {

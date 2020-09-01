@@ -65,7 +65,7 @@ class Products extends Component {
                         <h1 class = "productsHeader">{categoryTitle}</h1>
                         <div class = "row productsHeader">
                             <div className = "col-sm-5">
-                                <h2>{this.props.selectedStore}</h2>
+                                <h2>{this.props.selectedStore.attributes.name}</h2>
                             </div>
                             <div className = "col-sm-5">
                                 <Searchbar onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange}/>
@@ -86,7 +86,8 @@ const mapStateToProps = state => {
     console.log(state)
     return({
         categories: state.categories,
-        items: state.items.itemsList.data
+        items: state.items.itemsList.data,
+        selectedStore: state.stores.selectedStore
     })
 }
 

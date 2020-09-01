@@ -9,9 +9,12 @@ import FoodList from '../containers/FoodList'
 class OrderPage extends Component {
 
     componentDidMount(){
-        this.props.getItems(1)
+        let store = this.props.stores.find(store => store.id == 1)
+        console.log(store)
+        this.props.selectStore(store)
     }
     render() {
+        console.log(this.props.selectedStore)
         return (
             <div>
                 <br></br>
