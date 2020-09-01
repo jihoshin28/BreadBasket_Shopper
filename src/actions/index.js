@@ -55,6 +55,11 @@ export const getItems = (store_id) => async dispatch => {
     dispatch({type: 'GET_ITEMS', payload: response.data})
 }
 
+export const getFilteredItems = (store_id, category) => async dispatch => {
+    const response = await rails.get(`/items?store_id=${store_id}&category=${category}`)
+    dispatch({type: 'GET_FILTERED_ITEMS', payload: response.data})
+}
+
 export const addItem = (item) => {
     return {
         type: 'ADD_ITEM',

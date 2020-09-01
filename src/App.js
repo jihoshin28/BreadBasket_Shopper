@@ -34,11 +34,11 @@ class App extends Component  {
 
   componentDidMount(){
     this.props.getItems(1)
+    this.props.getCategories()
     // Api.get.Items().then(data => console.log(data))
     // Api.get.ItemsCategory('meats').then(data => console.log(data))
     // Api.get.Stores().then(data => console.log(data))
     // Api.get.Store(1).then(data => console.log(data))
-    // 
     
   }
 
@@ -74,8 +74,6 @@ class App extends Component  {
             <Route exact path='/' render={(props) => <Home {...props} />} />
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} 
-              items = {this.state.items} 
-              categories = {this.state.categories} 
               stores = {this.state.stores} 
               selectedStore = {this.state.selectedStore} 
               onStoreChange = {this.onStoreChange} 
@@ -85,8 +83,7 @@ class App extends Component  {
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
             <Route exact path='/profile' render={(props) => <Profile {...props} />} />
             <Route exact path='/products/:category' render={(props) => <Products {...props} 
-              items={this.state.items} 
-              categories={this.state.categories} 
+  
               foodCategory = {this.state.foodCategory}
               selectedStore = {this.state.selectedStore}
               onSearchSubmit={this.onSearchSubmit}
@@ -110,4 +107,4 @@ class App extends Component  {
   
 }
 
-export default connect(null, {getItems})(App)
+export default connect(null, {getItems, getCategories})(App)

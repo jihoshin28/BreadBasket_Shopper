@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { getFilteredItems } from '../actions'
 import Searchbar from '../components/Searchbar'
 import FoodList from '../containers/FoodList'
 
@@ -7,13 +8,7 @@ import FoodList from '../containers/FoodList'
 class Products extends Component {
 
     componentDidMount(){
-        let filteredItems = this.props.items.filter((item) => {
-            return item.category === this.props.match.params.category;
-        })
-        this.setState({
-            filteredItems: filteredItems
-        })
-
+        this.props.getFilteredItems(1, 'meats')
         document.getElementById(`${this.props.match.params.category}`).checked = true
     }
  
@@ -22,12 +17,10 @@ class Products extends Component {
         this.props.onCategoryChange(e.target.value)
     }
 
-    
-
     render(){
-        console.log(this.state.filteredItems)
-        let categoryData = this.props.categories.find((index) => index.name === this.props.match.params.category)
-        let categoryTitle = categoryData.title
+        console.log(this.props.match.params.category)
+        // let categoryData = this.props.categories.find((category) => category.name === this.props.match.params.category)
+        // let categoryTitle = categoryData.title
         return (
             <div class = "products">
                 <div class = "sidebar">
@@ -71,7 +64,7 @@ class Products extends Component {
 
                 <div class = "content"> 
                     <div class = "container-fluid justify-content-center">
-                        <h1 class = "productsHeader">{categoryTitle}</h1>
+                        {/* <h1 class = "productsHeader">{categoryTitle}</h1> */}
                         <div class = "row productsHeader">
                             <div className = "col-sm-5">
                                 <h2>{this.props.selectedStore}</h2>
@@ -80,7 +73,7 @@ class Products extends Component {
                                 <Searchbar onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange}/>
                             </div>
                         </div>
-                        <FoodList items = {this.state.filteredItems} length = {this.state.filteredItems.length}/>
+                        <FoodList items = {this.props.items} length = {this.props.items.length}/>
                     </div>
                 </div>
 
@@ -90,4 +83,11 @@ class Products extends Component {
     
 }
 
-export default Products
+const mapStateToProps = state => {
+    return({
+        categories: state.categories,
+        items: state.items.itemsList.data
+    })
+}
+
+export default connect(mapStateToProps, {getFilteredItems})(Products)
