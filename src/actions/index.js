@@ -9,10 +9,8 @@ const headers = {
 }
 
 export const getItems = (store_id) => async dispatch => {
-    console.log('called')
-    const response = await rails.get(`/items?store_id=${store_id}`, {headers: headers})
-    console.log(response)
-    dispatch({type: 'GET_ITEMS', payload: response})
+    const response = await rails.get(`/items?store_id=${store_id}`, {headers})
+    dispatch({type: 'GET_ITEMS', payload: response.data})
 }
 
 export const addItem = (item) => {

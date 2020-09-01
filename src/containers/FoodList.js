@@ -2,8 +2,8 @@ import React from 'react'
 import ItemCard from '../components/ItemCard'
 
 const FoodList = props => {
-    let itemCards = props.items.map((item) => {
-        return <ItemCard image = {item.image} price = {item.price.toFixed(2)} name = {item.name}/>
+    let itemCards = props.items.map(({attributes}) => {
+        return <ItemCard image = {attributes.image} price = {attributes.price.toFixed(2)} name = {attributes.name}/>
     })
     return (
         <div class= "container">

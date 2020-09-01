@@ -36,10 +36,10 @@ class OrderPage extends Component {
                 <br></br><br></br>
                 {
                     this.props.categories.map(category => {
-                        let items = this.props.items.filter(item => item.category === category.name)
+                        let categoryItems = this.props.items.filter(item => item.attributes.category === category.name)
                 
                         return (
-                            <FoodList items = {items} title={category.title} />
+                            <FoodList items = {categoryItems} title={category.title} />
                         )   
                     })
                 }
@@ -49,8 +49,9 @@ class OrderPage extends Component {
 }
 
 let mapStateToProps = (state) => {
+    console.log(state.items[0])
     return ({
-        items: state.items
+        items: state.items.data
     })
 }
 
