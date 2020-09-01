@@ -10,7 +10,7 @@ const headers = {
 
 export const getStores = () => async dispatch => {
     const response = await rails.get(`/stores`, { headers })
-    console.log(response.data.data)
+    console.log(response.data.data[0])
     dispatch({ type: 'GET_STORES', payload: response.data.data })
 }
 

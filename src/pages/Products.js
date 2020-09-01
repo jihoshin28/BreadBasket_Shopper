@@ -30,9 +30,6 @@ class Products extends Component {
                     <form onChange = {this.onCategoryChange} onSubmit = {this.formSubmit}>
 
                             <div class="input-group-text">
-                                <input type="radio" id = "all" name="food-category" value="all" aria-label="All" /> All
-                            </div>
-                            <div class="input-group-text">
                                 <input type="radio" id = "meats" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
                             </div>
                             <div class="input-group-text">

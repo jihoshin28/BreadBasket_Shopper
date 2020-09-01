@@ -2,6 +2,7 @@ import authReducer from './authReducer'
 import itemsReducer from './itemsReducer'
 import categoriesReducer from './categoriesReducer'
 import storesReducer from './storesReducer'
+import 
 import {combineReducers} from 'redux'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
@@ -16,7 +17,8 @@ const reducer = combineReducers({
     items: itemsReducer,
     auth: authReducer,
     categories: categoriesReducer,
-    stores: storesReducer
+    stores: storesReducer,
+    form: formReducer
 })
 
 export default persistReducer(persistConfig, reducer)
