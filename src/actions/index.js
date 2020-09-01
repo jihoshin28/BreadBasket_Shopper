@@ -1,6 +1,5 @@
 import rails from '../services/Rails'
 
-const API_ROOT = 'http://localhost:3000'
 let token = localStorage.getItem('rails_token')
 
 const headers = {
@@ -9,8 +8,10 @@ const headers = {
     "Authorization": token
 }
 
-export const getItems = async dispatch => {
-    const response = await rails.get('/items', {headers})
+export const getItems = (store_id) => async dispatch => {
+    console.log('called')
+    const response = await rails.get(`/items?store_id=${store_id}`, {headers: headers})
+    console.log(response)
     dispatch({type: 'GET_ITEMS', payload: response})
 }
 
@@ -49,18 +50,3 @@ export const signOut = () => {
         type: 'SIGN_OUT'
     }
 }
-
-// export const signIn = (userStatus) => {
-//     console.log(userStatus)
-//     // localStorage.setItem('rails_token', data.jwt)
-//     return {
-//         type: 'SIGN_IN',
-//         payload: userStatus
-//     }
-// }
-
-// export const signOut = () => {
-//     return {
-//         type: 'SIGN_OUT'
-//     }
-// }

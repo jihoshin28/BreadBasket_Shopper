@@ -1,5 +1,6 @@
-import React, { Component, useState } from 'react'
-import {connect} from 'react-redux'
+import React, { Component} from 'react'
+import { connect } from 'react-redux'
+import { getItems } from '../actions'
 import Dropdown from '../components/Dropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
@@ -8,9 +9,10 @@ import FoodList from '../containers/FoodList'
 class OrderPage extends Component {
 
     componentDidMount(){
-        
+        this.props.getItems(1)
     }
     render() {
+        console.log(this.props.items)
         return (
             <div>
                 <br></br>
@@ -52,4 +54,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps)(OrderPage)
+export default connect(mapStateToProps, {getItems} )(OrderPage)

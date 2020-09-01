@@ -12,8 +12,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
     items: itemsReducer,
-    auth: authReducer,
-    items: itemsReducer
+    auth: authReducer
 })
 
 export default persistReducer(persistConfig, reducer)
