@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {
   Route
 } from "react-router-dom"
+import {connect} from 'react-redux'
 import './App.css';
 import NavBar from './containers/NavBar'
 import Home from './pages/Home'
@@ -13,7 +14,7 @@ import Profile from './pages/Profile'
 import Products from './pages/Products'
 import Cart from './pages/Cart'
 import Data from './data.js'
-import Api from './services/Api'
+import {getItems, getCategories} from './actions'
 
 
 let data = Data.data
@@ -32,6 +33,7 @@ class App extends Component  {
   }
 
   componentDidMount(){
+    this.props.getItems(1)
     // Api.get.Items().then(data => console.log(data))
     // Api.get.ItemsCategory('meats').then(data => console.log(data))
     // Api.get.Stores().then(data => console.log(data))
@@ -108,4 +110,4 @@ class App extends Component  {
   
 }
 
-export default App;
+export default connect(null, {getItems})(App)

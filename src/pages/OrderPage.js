@@ -7,10 +7,6 @@ import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodList from '../containers/FoodList'
 
 class OrderPage extends Component {
-
-    componentDidMount(){
-        this.props.getItems(1)
-    }
     render() {
         console.log(this.props.items)
         return (

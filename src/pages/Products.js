@@ -1,16 +1,10 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import Searchbar from '../components/Searchbar'
 import FoodList from '../containers/FoodList'
 
 
 class Products extends Component {
-    
-    constructor(props){
-        super(props)
-        this.state = {
-            filteredItems: []
-        }
-    }
 
     componentDidMount(){
         let filteredItems = this.props.items.filter((item) => {

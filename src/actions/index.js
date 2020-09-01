@@ -8,6 +8,48 @@ const headers = {
     "Authorization": token
 }
 
+export const getCategories = () => {
+    return {
+        type: 'GET_CATEGORIES',
+        payload: 
+        [
+            {
+                title: "Meat/Seafood",
+                name: "meats"
+            },
+            {
+                title: "Produce",
+                name: "produce"
+            },
+            {
+                title: "Dairy",
+                name: "dairy"
+            },
+            {
+                title: "Bakery",
+                name: "bakery"
+            },
+            {
+                title: "Snacks",
+                name: "snacks"
+            },
+            {
+                title: "Beverages",
+                name: "beverages"
+            },
+            {
+                title: "Frozen",
+                name: "frozen"
+            },
+            {
+                title: "Household",
+                name: "household"
+            }
+
+        ]
+    }
+}
+
 export const getItems = (store_id) => async dispatch => {
     const response = await rails.get(`/items?store_id=${store_id}`, {headers})
     dispatch({type: 'GET_ITEMS', payload: response.data})
