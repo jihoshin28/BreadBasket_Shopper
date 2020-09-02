@@ -18,7 +18,8 @@ class Searchbar extends React.Component {
     }
 
     searchSubmit = (formValues) => {
-        console.log(formValues)
+        window.history.pushState({}, '', `/search/${formValues.searchItem}`)
+        window.history.go()
     }
 
     render(){

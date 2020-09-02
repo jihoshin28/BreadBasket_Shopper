@@ -1,6 +1,5 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import {Field, reduxForm} from 'redux-form'
 import { getItems, selectStore } from '../actions'
 import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'

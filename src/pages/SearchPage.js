@@ -1,23 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Searchbar from '../components/Searchbar'
+import FoodList from '../containers/FoodList'
 
 class SearchPage extends React.Component{
     componentDidMount(){
-        console.log(this.props.match.params.item)
-        console.log(this.props.items)
+
+        this.searchTerm()
         console.log(!!this.props.items.find(item => item.attributes.name == this.props.match.params.item), "REALLY GOD EXISTS")
     }
 
     searchTerm = () => {
-        // store results in array
-        let results = []
-        
-        //find if current items from Store are in the 
+        // store results in array   
+        //find if current items from current store that include this search term
+        //items must be checked in lower case
+        let filteredItems = this.props.items.filter(item => 
+            item.attributes.name.toLowerCase().includes(this.props.match.params.item)
+        )
     }
     render(){
-        let category = this.props.match.params.category
-        let filteredItems = this.props.items.filter(item => item.attributes.category === category)
+        let filteredItems = this.props.items.filter(item =>
+            item.attributes.name.toLowerCase().includes(this.props.match.params.item)
+        )
         // let categoryData = this.props.categories.find((category) => category.name === this.props.match.params.category)
         // let categoryTitle = categoryData.title
         return(
@@ -33,7 +37,7 @@ class SearchPage extends React.Component{
                         </div>
                     </div>
 
-                    {/* <FoodList items={filteredItems} /> */}
+                    <FoodList items={filteredItems} />
                 </div>
             </div>
 
