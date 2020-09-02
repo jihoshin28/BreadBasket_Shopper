@@ -122,6 +122,10 @@
   margin: 20px;
 }
 
+.searchResult{
+  margin: 30px;
+}
+
 .content {
   grid-column: 2/3;
 }

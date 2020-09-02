@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field} from 'redux-form'
-import { searchItem } from '../actions'
 
 
 class Searchbar extends React.Component {
@@ -48,4 +47,4 @@ let formWrapped = reduxForm({
 })(Searchbar)
 
 
-export default connect(null, {searchItem})(formWrapped)
+export default connect(null)(formWrapped)

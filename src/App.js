@@ -17,14 +17,7 @@ import SearchPage from './pages/SearchPage'
 import {getStores, getCategories} from './actions'
 
 class App extends Component  {
-  constructor(){
-    super()
-    this.state = {
-      searchTerm: '',
-      foodCategory: null,
-      currentOrder: []
-    }
-  }
+  
 
   componentDidMount(){
     this.props.getCategories()
@@ -67,15 +60,8 @@ class App extends Component  {
             <NavBar />
             <Route exact path='/' render={(props) => <Home {...props} />} />
             <Route exact path='/about' render={(props) => <About {...props} />} />
-            <Route exact path='/cart' render={(props) => <Cart {...props} 
-              removeItem = {this.removeItem} 
-              currentOrder={this.state.currentOrder} 
-              items={this.state.items} 
-            />} />
-            <Route exact path='/orderpage' render={(props) => <OrderPage {...props} 
-              onSearchSubmit = {this.onSearchSubmit} 
-              onSearchChange = {this.onSearchChange}
-            />}/>
+            <Route exact path='/cart' render={(props) => <Cart {...props} />} />
+            <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
             <Route exact path='/profile' render={(props) => <Profile {...props} />} />
             <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>

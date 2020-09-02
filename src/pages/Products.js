@@ -13,7 +13,8 @@ class Products extends Component {
  
     onCategoryChange = (e) => {
         console.log(e.target.value)
-        this.props.onCategoryChange(e.target.value)
+        window.history.pushState({}, '', `/products/${e.target.value}`)
+        window.history.go()
     }
 
     render(){

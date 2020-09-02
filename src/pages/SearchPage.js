@@ -36,8 +36,9 @@ class SearchPage extends React.Component{
                             <Searchbar onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange} />
                         </div>
                     </div>
-
-                    <FoodList items={filteredItems} />
+                    <div className = 'searchResult'>
+                        {(filteredItems.length > 0) ? <FoodList items={filteredItems} /> : <h1>Sorry item doesn't exist!</h1>}
+                    </div>
                 </div>
             </div>
 
