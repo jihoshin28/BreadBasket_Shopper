@@ -46,6 +46,7 @@ export const addCartItem = cartItemInfo => async dispatch => {
 export const signIn = userInfo => async dispatch => {
     const response = await rails.post('/login', {shopper: userInfo})
     let data = response.data
+    console.log(data)
     localStorage.setItem('shopper_token', data.jwt)
     dispatch({
         type: 'SIGN_IN',

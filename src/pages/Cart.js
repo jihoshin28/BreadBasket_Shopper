@@ -26,7 +26,7 @@ class Cart extends Component{
 
 const mapStateToProps = state => {
     return({
-        shopperId: state.auth.userAuthId
+       
     })
 }
 
