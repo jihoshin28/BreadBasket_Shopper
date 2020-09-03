@@ -3,9 +3,15 @@ import { connect } from 'react-redux'
 import { addCartItem } from '../actions'
 
 class ItemCard extends React.Component  {
+
     addCartItem = (e) => {
         e.preventDefault()
-        console.log(this.props.id)
+        let cartInfo = {
+            cart_id: this.props.cart_id,
+            item_id: this.props.item_id
+        }
+        console.log(cartInfo)
+        // this.props.addCartItem(cartInfo)
     }
 
     render(){
@@ -27,4 +33,11 @@ class ItemCard extends React.Component  {
     }
 }
 
-export default connect(null, {addCartItem})(ItemCard)
+let mapStateToProps = state => {
+    return({
+        cart_id: state.cart.cart_id
+    })
+}
+
+
+export default connect(mapStateToProps, {addCartItem})(ItemCard)

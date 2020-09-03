@@ -33,7 +33,7 @@ export const getCart = cartInfo => async dispatch => {
     console.log(data.cart.data.attributes, 'cart')
     localStorage.setItem('cart_token', data.jwt)
 
-    dispatch({ type: 'CURRENT_CART', payload: data.cart})
+    dispatch({ type: 'CART_ID', payload: data.cart})
 }
 
 export const addCartItem = cartItemInfo => async dispatch => {

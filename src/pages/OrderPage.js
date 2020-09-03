@@ -9,6 +9,10 @@ import FoodList from '../containers/FoodList'
 class OrderPage extends Component {
 
     componentDidMount(){
+        if (!!this.props.shopperId) {
+            console.log("Hello shopper! Welcome to BreadBasket!")
+            this.props.getCart({ shopper_id: this.props.shopperId })
+        }
         console.log(parseInt(this.props.selectedStore.id))
         this.props.getItems(parseInt(this.props.selectedStore.id))
     }

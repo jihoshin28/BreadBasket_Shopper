@@ -5,10 +5,7 @@ import CartItem from '../components/CartItem'
 
 class Cart extends Component{
     componentDidMount(){
-        if(!!this.props.shopperId) {
-            console.log("hello!")
-            this.props.getCart({shopper_id: this.props.shopperId})
-        }
+        
     }
 
     render() {
