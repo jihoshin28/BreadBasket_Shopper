@@ -30,18 +30,18 @@ export const getItems = (store_id) => async dispatch => {
 export const getCart = cartInfo => async dispatch => {
     const response = await rails.post('/carts', {cart: cartInfo})
     let data = response.data
-    console.log(data.cart, 'cart')
+    console.log(data.cart.data.attributes, 'cart')
     localStorage.setItem('cart_token', data.jwt)
 
     dispatch({ type: 'CURRENT_CART', payload: data.cart})
 }
 
-export const addCartItem = cartItemInfo => async dispatch => {
-    const response = await rails.post('/cart_items', {cart_item: cartItemInfo})
-    let data = response.data
-    console.log(data.cart, 'cart_item added')
-    dispatch({ type: "ADD_TO_CART", payload: data})
-}
+// export const addCartItem = cartItemInfo => async dispatch => {
+//     const response = await rails.post('/cart_items', {cart_item: cartItemInfo})
+//     let data = response.data
+//     console.log(data.cart, 'cart_item added')
+//     dispatch({ type: "ADD_TO_CART", payload: data})
+// }
 
 export const signIn = userInfo => async dispatch => {
     const response = await rails.post('/login', {shopper: userInfo})
