@@ -29,29 +29,6 @@ class App extends Component  {
     // Api.get.Store(1).then(data => console.log(data))
     
   }
-
-  onStoreChange = (e) => {
-    console.log(e.target.innerHTML)
-    this.setState({
-      selectedStore: e.target.innerHTML
-    })
-  }
-
-  onSearchSubmit = (e) => {
-    console.log(this.state.searchTerm, this.state.items)
-    window.location.replace(`/products/search/${this.state.searchTerm}`)
-  }
-
-  onSearchChange = (e) => {
-    console.log(e.target.value)
-    this.setState({
-      searchTerm: e.target.value
-    })
-  }
-
-  onCategoryChange = (category) => {
-    window.location.replace(`/products/${category}`)
-  }
   
   render (){
     return (
