@@ -1,21 +1,30 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { addCartItem } from '../actions'
 
-const ItemCard = props => {
-    return (
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <div class="card">
-                <div style = {{height: "45%", width: "45%", alignSelf: "center", marginTop: "5px"}}>
-                    <img src={props.image} style={{ height: "100%" }} class="card-img-top" alt="..." />
-                </div>
-               
-                <div class="card-body">
-                    <h6 class="card-title">{props.name}</h6>
-                    <p style={{fontSize: "10px"}}> ${props.price}</p>
-                    <a style = {{fontSize: "10px", width: "2rem", height: '2rem'}} href="" class="btn btn-primary">+</a>
+class ItemCard extends React.Component  {
+    addCartItem = (e) => {
+        e.preventDefault()
+        console.log(this.props.id)
+    }
+
+    render(){
+        return (
+            <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <div class="card">
+                    <div style = {{height: "45%", width: "45%", alignSelf: "center", marginTop: "5px"}}>
+                        <img src={this.props.image} style={{ height: "100%" }} class="card-img-top" alt="..." />
+                    </div>
+                   
+                    <div class="card-body">
+                        <h6 class="card-title">{this.props.name}</h6>
+                        <p style={{fontSize: "10px"}}> ${this.props.price}</p>
+                        <a onClick = {this.addCartItem} style = {{fontSize: "10px", width: "2rem", height: '2rem'}} href="" class="btn btn-primary">+</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
-export default ItemCard
+export default connect(null, {addCartItem})(ItemCard)
