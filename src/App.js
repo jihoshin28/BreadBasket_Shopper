@@ -27,7 +27,6 @@ class App extends Component  {
     // Api.get.ItemsCategory('meats').then(data => console.log(data))
     // Api.get.Stores().then(data => console.log(data))
     // Api.get.Store(1).then(data => console.log(data))
-    
   }
   
   render (){

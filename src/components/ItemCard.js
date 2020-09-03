@@ -6,12 +6,13 @@ class ItemCard extends React.Component  {
 
     addCartItem = (e) => {
         e.preventDefault()
-        let cartInfo = {
+        let cartItemInfo = {
             cart_id: this.props.cart_id,
-            item_id: this.props.item_id
+            item_id: this.props.item_id,
+            quantity_num: 0
         }
-        console.log(cartInfo)
-        // this.props.addCartItem(cartInfo)
+        console.log(cartItemInfo)
+        this.props.addCartItem(cartItemInfo)
     }
 
     render(){

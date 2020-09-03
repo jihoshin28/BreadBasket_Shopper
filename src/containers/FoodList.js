@@ -3,7 +3,7 @@ import ItemCard from '../components/ItemCard'
 
 const FoodList = props => {
     let itemCards = props.items.map((item) => {
-        return <ItemCard item_id = {parseInt(item.id)} image = {item.attributes.image} price = {item.attributes.price.toFixed(2)} name = {item.attributes.name}/>
+        return <ItemCard item_id = {parseInt(item.id)} image = {item.attributes.image} price = {(item.attributes.price * .01).toFixed(2)} name = {item.attributes.name}/>
     })
     return (
         <div class= "container">
