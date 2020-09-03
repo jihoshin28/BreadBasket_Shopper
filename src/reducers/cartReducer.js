@@ -5,12 +5,12 @@ let INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
     console.log(action.payload)
-    if (action.type === 'CART_ID') {
+    if (action.type === 'START_CART') {
         return { ...state, cart_id: action.payload.data.attributes.id }
     }
 
-    // if(action.type = "ADD_TO_CART"){
-    //     return {...state, cart_items: [...state.cart_items, action.payload]}
-    // }
+    if(action.type === 'GET_CART'){
+        return {...state, cart_items: action.payload}
+    }
     return state
 }

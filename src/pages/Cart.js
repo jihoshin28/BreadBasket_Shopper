@@ -5,7 +5,7 @@ import CartItem from '../components/CartItem'
 
 class Cart extends Component{
     componentDidMount(){
-        
+        this.props.getCart(this.props.cart_id)
     }
 
     render() {
@@ -26,7 +26,7 @@ class Cart extends Component{
 
 const mapStateToProps = state => {
     return({
-       
+       cart_id: state.cart.cart_id
     })
 }
 
