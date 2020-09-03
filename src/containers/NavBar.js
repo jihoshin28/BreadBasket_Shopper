@@ -68,7 +68,6 @@ export class Navbar extends Component {
     }
 }
 let mapStateToProps = (state) => {
-    console.log(state)
     return ({
         signedIn: state.auth.signedIn,
         userAuthPic: state.auth.userAuthPic,

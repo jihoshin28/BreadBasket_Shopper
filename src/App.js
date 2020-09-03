@@ -22,6 +22,7 @@ class App extends Component  {
   componentDidMount(){
     this.props.getCategories()
     this.props.getStores()
+    console.log(this.props.state)
     // Api.get.Items().then(data => console.log(data))
     // Api.get.ItemsCategory('meats').then(data => console.log(data))
     // Api.get.Stores().then(data => console.log(data))
@@ -77,4 +78,10 @@ class App extends Component  {
   }
 }
 
-export default connect(null, {getStores, getCategories})(App)
+let mapStateToProps = state => {
+  return({
+    state: state
+  })
+}
+
+export default connect(mapStateToProps, {getStores, getCategories})(App)
