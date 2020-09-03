@@ -1,9 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {selectStore} from '../actions'
+import {selectStore, getItems} from '../actions'
 
 class StoreDropdown extends React.Component {
-    componentDidMount(){
+
+    componentDidUpdate(){
+        this.props.getItems(this.props.selectedStore.attributes.id)
     }
     
     storeOptions = () => {
@@ -18,8 +20,8 @@ class StoreDropdown extends React.Component {
         let store = this.props.stores.find(store => store.id == e.target.id)
         console.log(store)
         this.props.selectStore(store)
-        window.history.pushState({}, '', '/orderpage')
-        window.history.go()
+        // window.history.pushState({}, '', '/orderpage')
+        // window.history.go()
     }
 
     render() {
@@ -45,4 +47,4 @@ let mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, {selectStore})(StoreDropdown)
+export default connect(mapStateToProps, {selectStore, getItems})(StoreDropdown)

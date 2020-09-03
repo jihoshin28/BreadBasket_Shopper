@@ -1,9 +1,14 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import { getCart } from '../actions'
 import CartItem from '../components/CartItem'
 
 class Cart extends Component{
-    constructor(){
-        super()
+    componentDidMount(){
+        if(!!this.props.shopperId) {
+            console.log("hello!")
+            this.props.getCart({shopper_id: this.props.shopperId})
+        }
     }
 
     render() {
@@ -12,9 +17,9 @@ class Cart extends Component{
                 
                 <div class = 'wrapper cart'>
                     <h1>Cart</h1>
-                    {this.props.items.map(item => {
+                    {/* {this.props.items.map(item => {
                         return <CartItem image = {item.image} name = {item.name} count = {item.count} price = {item.price}/>
-                    })}
+                    })} */}
                 </div>
                 
             </div> 
@@ -22,4 +27,10 @@ class Cart extends Component{
     }
 }
 
-export default Cart
+const mapStateToProps = state => {
+    return({
+        shopperId: state.auth.userAuthId
+    })
+}
+
+export default connect(mapStateToProps, {getCart})(Cart)

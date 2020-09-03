@@ -14,7 +14,7 @@ import Profile from './pages/Profile'
 import Products from './pages/Products'
 import Cart from './pages/Cart'
 import SearchPage from './pages/SearchPage'
-import {getStores, getCategories} from './actions'
+import {getStores, getCategories, setHeaders} from './actions'
 
 class App extends Component  {
   

@@ -9,7 +9,7 @@ import FoodList from '../containers/FoodList'
 class OrderPage extends Component {
 
     componentDidMount(){
-        console.log(this.props.selectedStore.id)
+        console.log(parseInt(this.props.selectedStore.id))
         this.props.getItems(parseInt(this.props.selectedStore.id))
     }
     render() {

@@ -9,6 +9,7 @@ class Products extends Component {
 
     componentDidMount(){
         document.getElementById(`${this.props.match.params.category}`).checked = true
+        
     }
  
     onCategoryChange = (e) => {
