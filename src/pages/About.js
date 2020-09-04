@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 // import aboutPic from '../public/logo192.png'
 export class About extends Component {
+    componentDidMount() {
+        // this.props.testRoute(this.props.history)
+    }
     render() {
         return (
             <div>
@@ -52,4 +56,10 @@ export class About extends Component {
     }
 }
 
-export default About
+const mapStateToProps = state => {
+    return {
+        users: state.users
+    }
+}
+
+export default connect(mapStateToProps)(About)

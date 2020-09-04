@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 // import aboutPic from '../public/logo192.png'
 export class Home extends Component {
+    
     render() {
         return (
             <div>
@@ -52,4 +54,10 @@ export class Home extends Component {
     }
 }
 
-export default Home
+let mapStateToProps= state => {
+    return ({
+        routes: state.routes
+    })
+}
+
+export default connect(mapStateToProps)(Home)

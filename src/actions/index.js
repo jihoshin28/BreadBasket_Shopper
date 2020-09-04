@@ -1,6 +1,13 @@
 import rails from '../services/Rails'
 import categories from '../categories'
 
+// export const testRoute = history => async dispatch => {
+//     const response = await rails.get('/shoppers')
+    
+//     dispatch({type: "ROUTE_TEST", payload: response.data})
+//     dispatch({type: "ROUTE_CHANGE", payload: history})
+// }
+
 export const getStores = () => async dispatch => {
     const response = await rails.get(`/stores`)
     dispatch({ type: 'GET_STORES', payload: response.data.data })

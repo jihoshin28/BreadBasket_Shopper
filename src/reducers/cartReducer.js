@@ -4,7 +4,6 @@ let INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-    console.log(action.payload)
     if (action.type === 'START_CART') {
         return { ...state, cart_id: action.payload.data.attributes.id }
     }
