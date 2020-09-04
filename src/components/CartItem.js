@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
+import {reduxForm, Field } from 'redux-form'
+import { cartItemCount } from '../actions'
 
 class CartItem extends Component {
 
@@ -7,21 +9,14 @@ class CartItem extends Component {
 
     }
 
-    changeCount = (event) => {
-        if(event.target.innerHTML === '+'){
-            this.setState({
-                count: this.state.count + 1,
-                price: (this.props.price * (this.state.count + 1)).toFixed(2)
-            })
-        } else if(event.target.innerHTML === '-') {
-            if(this.state.count > 0){
-                this.setState({
-                    count: this.state.count - 1,
-                    price: (this.props.price * (this.state.count - 1)).toFixed(2)
-                })
-            }
-        }
+    removeItem(){
+
     }
+
+    changeCount(type){
+        this.props.cartItemCount(type)
+    }
+
     render(){
         
         return(
@@ -35,10 +30,10 @@ class CartItem extends Component {
                     <div>
                         <h3>Count: {this.props.count}</h3>
                         <span>
-                            <button onClick= {this.changeCount}>
+                            <button onClick= {this.changeCount('+')}>
                                 +
                             </button>
-                            <button onClick = {this.changeCount}>
+                            <button onClick = {this.changeCount('-')}>
                                 -
                             </button>
                         </span>
@@ -55,4 +50,4 @@ class CartItem extends Component {
     }
 }
 
-export default CartItem
+export default connect(null, {cartItemCount})(CartItem)

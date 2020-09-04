@@ -58,8 +58,12 @@ export const dropCart = () => {
 export const addCartItem = cartItemInfo => async dispatch => {
     const response = await rails.post('/cart_items', {cart_item: cartItemInfo})
     let data = response.data
-    console.log(data, 'cart_item added')
-    // dispatch({ type: "ADD_TO_CART", payload: data.cart_item})
+    console.log(data.data.attributes.item, 'cart_item added')
+    dispatch({ type: "ADD_CART_ITEM", payload: data.data.attributes.item})
+}
+
+export const cartItemCount = type => async dispatch => {
+    
 }
 
 export const signIn = (userInfo) => async dispatch => {
