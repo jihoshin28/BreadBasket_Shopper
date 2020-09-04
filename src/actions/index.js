@@ -59,7 +59,14 @@ export const addCartItem = cartItemInfo => async dispatch => {
     const response = await rails.post('/cart_items', {cart_item: cartItemInfo})
     let data = response.data
     console.log(data.data.attributes.item, 'cart_item added')
-    dispatch({ type: "ADD_CART_ITEM", payload: data.data.attributes.item})
+    dispatch({ type: "ADD_CART_ITEM", payload: data.data})
+}
+
+export const removeCartItem = cartItemId => async dispatch => {
+    const response = await rails.delete(`/cart_items/${cartItemId}`)
+    let data = response.data 
+    console.log(data)
+    dispatch({type: "DROP_CART_ITEM", payload: cartItemId})
 }
 
 export const cartItemCount = type => async dispatch => {

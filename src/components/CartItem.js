@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import {reduxForm, Field } from 'redux-form'
-import { cartItemCount } from '../actions'
+import { cartItemCount, removeCartItem } from '../actions'
+
 
 class CartItem extends Component {
 
@@ -9,8 +10,9 @@ class CartItem extends Component {
 
     }
 
-    removeItem(){
-
+    removeItem(cartItemId){
+        console.log(cartItemId)
+        this.props.removeCartItem(this.props.itemId)
     }
 
     changeCount(type){
@@ -42,7 +44,7 @@ class CartItem extends Component {
                     <h3>Total: ${this.props.price} </h3>
                 </div>
                 <div>
-                    <button>Remove Item</button>
+                    <button onClick = {() => this.removeItem(this.props.cartItemId)}>Remove Item</button>
                     <button>Item Details</button>
                 </div>
             </div>
@@ -50,4 +52,4 @@ class CartItem extends Component {
     }
 }
 
-export default connect(null, {cartItemCount})(CartItem)
+export default connect(null, {cartItemCount, removeCartItem})(CartItem)
