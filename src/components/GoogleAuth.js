@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from "react-router-dom"
-import {signIn, signOut} from '../actions'
+import {signIn, signOut, dropCart} from '../actions'
 
 class GoogleAuth extends React.Component{
    
@@ -44,6 +44,7 @@ class GoogleAuth extends React.Component{
     
     signOut = () => {
         this.auth.signOut()
+        this.props.dropCart()
         // localStorage.removeItem('rails_token')
     }
 
@@ -83,7 +84,7 @@ class GoogleAuth extends React.Component{
                 {this.renderAuthButton()}
                     {(!this.props.signedIn) ? 
                     <Redirect to = '/'/> :
-                    null
+                    <Redirect to = '/orderpage'/>
                 }
                 </div>
             
@@ -97,4 +98,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, {signIn, signOut})(GoogleAuth)
+export default connect(mapStateToProps, {signIn, signOut, dropCart})(GoogleAuth)

@@ -53,6 +53,7 @@ export class Navbar extends Component {
                     </ul>
                     }
                 </div>
+                {(!!this.props.signedIn) ? 
                 <ul class="navbar-nav cart-nav">
                     <li class="nav-item">
                         <button class="btn btn-outline-success" type="button">
@@ -65,6 +66,9 @@ export class Navbar extends Component {
                         </button>
                     </li>
                 </ul>
+                :
+                <div></div>
+                }
                 <GoogleAuth />
                 <ul class="navbar-nav cart-nav">
                     <li class="nav-item">

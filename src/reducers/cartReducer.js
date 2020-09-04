@@ -12,5 +12,9 @@ export default (state = INITIAL_STATE, action) => {
     if(action.type === 'GET_CART'){
         return {...state, cart_items: action.payload}
     }
+
+    if(action.type === 'DROP_CART'){
+        return {...state, cart_items: []}
+    }
     return state
 }

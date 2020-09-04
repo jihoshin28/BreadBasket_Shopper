@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 class CartItem extends Component {
 
     componentDidMount(){
-        
+
     }
 
     changeCount = (event) => {
@@ -32,7 +32,7 @@ class CartItem extends Component {
                 <div>
                     <h3>Price per unit: ${this.props.price.toFixed(2)}</h3>
                     <div>
-                        <h3>Count: {this.state.count}</h3>
+                        <h3>Count: {this.props.count}</h3>
                         <span>
                             <button onClick= {this.changeCount}>
                                 +
@@ -43,7 +43,7 @@ class CartItem extends Component {
                         </span>
                         
                     </div>
-                    <h3>Total: ${this.state.price} </h3>
+                    <h3>Total: ${this.props.price} </h3>
                 </div>
                 <div>
                     <button>Remove Item</button>
