@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from "react-router-dom"
 import {signIn, signOut} from '../actions'
-import Api from '../services/Api'
 
 class GoogleAuth extends React.Component{
    
@@ -44,8 +44,6 @@ class GoogleAuth extends React.Component{
     
     signOut = () => {
         this.auth.signOut()
-        window.history.pushState({}, '', '/')
-        window.history.go()
         // localStorage.removeItem('rails_token')
     }
 
@@ -78,12 +76,17 @@ class GoogleAuth extends React.Component{
         }
     }
     render(){
-        console.log(this.props)
-        return(
+        return( 
             
-            <div>
+                
+                <div>
                 {this.renderAuthButton()}
-            </div>
+                    {(!this.props.signedIn) ? 
+                    <Redirect to = '/'/> :
+                    null
+                }
+                </div>
+            
         )
     }
 }

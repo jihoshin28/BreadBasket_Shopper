@@ -33,7 +33,7 @@ class App extends Component  {
     return (
       <div className="App">
         <div class="ui segment">
-         
+          
             <NavBar />
             <Route exact path='/'>
               {!!this.props.shopperId ? <Redirect to="/orderpage" /> : <Home />}
