@@ -31,42 +31,21 @@ class GoogleAuth extends React.Component{
                 image: user.rt.TJ
             }
             this.props.signIn(userInfo)
+            // this.navigateToOrder()
         } else {
             this.props.signOut()
         }
-    } 
-
-    // currentUser = (userStatus) => {
-    //     if(!!userStatus){
-    //         let user = this.auth.currentUser.get()
-    //         let userInfo =
-    //         {
-    //             email: user.rt.$t,
-    //             first_name: user.rt.tV,
-    //             last_name: user.rt.uT,
-    //             image: user.rt.TJ
-    //         }
-    //         console.log(userInfo)
-    //         this.props.currentUser(userInfo).then(function () {
-    //             window.history.pushState({}, '', '/orderpage')
-    //             window.history.go()
-    //         })
-    //     } else {
-    //         this.props.removeCurrentUser()
-    //     }
-    // }
-
+    }
   
     signIn = () => {
-        this.auth.signIn().then(() => {
-            window.history.pushState({}, '', '/orderpage')
-            window.history.go()
-        })
+        this.auth.signIn()
     }
+
     
     signOut = () => {
         this.auth.signOut()
-        // this.authChange()
+        window.history.pushState({}, '', '/')
+        window.history.go()
         // localStorage.removeItem('rails_token')
     }
 

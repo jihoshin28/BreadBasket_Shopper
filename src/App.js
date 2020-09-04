@@ -1,6 +1,7 @@
 import 'jquery/src/jquery';
 import React, {Component} from 'react';
 import {
+  Redirect,
   Route
 } from "react-router-dom"
 import {connect} from 'react-redux'
@@ -18,7 +19,6 @@ import {getStores, getCategories, setHeaders} from './actions'
 
 class App extends Component  {
   
-
   componentDidMount(){
     this.props.getCategories()
     this.props.getStores()
@@ -35,7 +35,9 @@ class App extends Component  {
         <div class="ui segment">
          
             <NavBar />
-            <Route exact path='/' render={(props) => <Home {...props} />} />
+            <Route exact path='/'>
+              {!!this.props.shopperId ? <Redirect to="/orderpage" /> : <Home />}
+            </Route> 
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/cart' render={(props) => <Cart {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
@@ -56,6 +58,7 @@ class App extends Component  {
 
 let mapStateToProps = state => {
   return({
+    shopperId: state.auth.userAuthId,
     state: state
   })
 }

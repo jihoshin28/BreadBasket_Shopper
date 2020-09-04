@@ -30,7 +30,6 @@ export const getItems = (store_id) => async dispatch => {
 export const getCart = (cart_id) => async dispatch => {
     const response = await rails.get(`/cart_items?cart_id=${cart_id}`)
     console.log(response.data)
-
 }
 
 export const startCart = cartInfo => async dispatch => {
