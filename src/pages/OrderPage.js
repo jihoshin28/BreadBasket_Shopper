@@ -30,7 +30,7 @@ class OrderPage extends Component {
                         <h2>{this.props.selectedStore.attributes.name}</h2>
                     </div>
                     <div class="col-sm-4">
-                        <Searchbar/>
+                        <Searchbar history = {this.props.history}/>
                     </div>
                 </div>
                 <div class = "row justify-content-center">

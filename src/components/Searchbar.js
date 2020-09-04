@@ -1,12 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { reduxForm, Field} from 'redux-form'
 
 
 class Searchbar extends React.Component {
-
+    componentDidMount() {
+        console.log('searchbarinfobabyyy', this.props)
+    }
     renderInput = ({ input, meta, label }) => {
-    console.log(meta)
+    console.log(input)
         return (
             <div class="input-group-prepend">
                 <label>{label}</label>
@@ -17,16 +20,17 @@ class Searchbar extends React.Component {
     }
 
     searchSubmit = (formValues) => {
-        window.history.pushState({}, '', `/search/${formValues.searchItem}`)
-        window.history.go()
+        this.props.history.push(`/search/${formValues.searchItem}`)
     }
 
     render(){
         return (
-            <form onSubmit = {this.props.handleSubmit(this.searchSubmit)}>
-                <Field name = "searchItem" component = {this.renderInput} label = "Search for Item"/>
-                <button type="submit" id="button-addon1">Search Item</button>
-            </form>
+            <div>
+                <form onSubmit = {this.props.handleSubmit(this.searchSubmit)}>
+                    <Field name = "searchItem" component = {this.renderInput} label = "Search for Item"/>
+                    <button type="submit" id="button-addon1">Search Item</button>
+                </form>
+            </div>
         )
     }
 }

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 
 class CartItem extends Component {
 
@@ -30,7 +31,7 @@ class CartItem extends Component {
                     <img  height = "200px" src={this.props.image}/>
                 </div>
                 <div>
-                    <h3>Price per unit: ${this.props.price.toFixed(2)}</h3>
+                    <h3>Price per unit: ${(this.props.price * .01).toFixed(2)}</h3>
                     <div>
                         <h3>Count: {this.props.count}</h3>
                         <span>

@@ -55,7 +55,7 @@ export const addCartItem = cartItemInfo => async dispatch => {
     // dispatch({ type: "ADD_TO_CART", payload: data.cart_item})
 }
 
-export const signIn = userInfo => async dispatch => {
+export const signIn = (userInfo) => async dispatch => {
     const response = await rails.post('/login', {shopper: userInfo})
     let data = response.data
     console.log(data)

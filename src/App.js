@@ -1,7 +1,6 @@
 import 'jquery/src/jquery';
 import React, {Component} from 'react';
 import {
-  Redirect,
   Route
 } from "react-router-dom"
 import {connect} from 'react-redux'
@@ -33,11 +32,8 @@ class App extends Component  {
     return (
       <div className="App">
         <div class="ui segment">
-          
             <NavBar />
-            <Route exact path='/'>
-              {!!this.props.shopperId ? <Redirect to="/orderpage" /> : <Home />}
-            </Route> 
+            <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/cart' render={(props) => <Cart {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
@@ -45,7 +41,6 @@ class App extends Component  {
             <Route exact path='/profile' render={(props) => <Profile {...props} />} />
             <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>
             <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
-       
         </div>
 
         <footer className="footer">

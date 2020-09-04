@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from "react-router-dom"
+import { Redirect } from 'react-router-dom'
 import {signIn, signOut, dropCart} from '../actions'
 
 class GoogleAuth extends React.Component{
    
     componentDidMount() {
+        console.log(this.props.history, "history!!")
         window.gapi.load('client:auth2', () => {
             window.gapi.client.init({
                 clientId: '30752304516-hq148b4og5mh54aphpmsuus4049qv04n.apps.googleusercontent.com',
@@ -18,6 +19,12 @@ class GoogleAuth extends React.Component{
         })
         
     }   
+
+    componentDidUpdate(){
+        if(!!this.props.signedIn){
+
+        }
+    }
 
     authChange = (userStatus) => {
         if (!!userStatus) {
@@ -38,7 +45,10 @@ class GoogleAuth extends React.Component{
     }
   
     signIn = () => {
-        this.auth.signIn()
+        this.auth.signIn().then(()=>{
+            this.props.history.push('/orderpage')
+            this.props.history.go()
+        })
     }
 
     
@@ -77,9 +87,7 @@ class GoogleAuth extends React.Component{
         }
     }
     render(){
-        return( 
-            
-                
+        return(   
                 <div>
                 {this.renderAuthButton()}
                     {(!this.props.signedIn) ? 

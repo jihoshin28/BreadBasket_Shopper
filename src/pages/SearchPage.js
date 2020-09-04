@@ -6,18 +6,18 @@ import FoodList from '../containers/FoodList'
 class SearchPage extends React.Component{
     componentDidMount(){
 
-        this.searchTerm()
+
         console.log(!!this.props.items.find(item => item.attributes.name == this.props.match.params.item), "REALLY GOD EXISTS")
     }
 
-    searchTerm = () => {
-        // store results in array   
-        //find if current items from current store that include this search term
-        //items must be checked in lower case
-        let filteredItems = this.props.items.filter(item => 
-            item.attributes.name.toLowerCase().includes(this.props.match.params.item)
-        )
-    }
+    // searchTerm = () => {
+    //     // store results in array   
+    //     //find if current items from current store that include this search term
+    //     //items must be checked in lower case
+    //     let filteredItems = this.props.items.filter(item => 
+    //         item.attributes.name.toLowerCase().includes(this.props.match.params.item)
+    //     )
+    // }
     render(){
         let filteredItems = this.props.items.filter(item =>
             item.attributes.name.toLowerCase().includes(this.props.match.params.item)
@@ -33,7 +33,7 @@ class SearchPage extends React.Component{
                             <h2>{this.props.selectedStore.attributes.name}</h2>
                         </div>
                         <div className="col-sm-5">
-                            <Searchbar onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange} />
+                            <Searchbar history = {this.props.history}/>
                         </div>
                     </div>
                     <div className = 'searchResult'>

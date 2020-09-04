@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import OrderHistoryItem from '../components/OrderHistoryItem'
 
 export class OrderHistory extends Component {
+    componentDidMount(){
+        console.log(this.props)
+    }
     
     render() {
         let orders = [1, 2, 3, 4, 5]
