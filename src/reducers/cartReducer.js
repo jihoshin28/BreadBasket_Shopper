@@ -10,10 +10,6 @@ export default (state = INITIAL_STATE, action) => {
         return { ...state, cart_id: action.payload.data.attributes.id }
     }
 
-    if(action.type === 'GET_CART'){
-        return { ...state, cart_items: { ...state.cart_items, ..._.mapKeys(...action.payload, 'id')}}
-    }
-
     if(action.type === 'DROP_CART'){
         return {}
     }

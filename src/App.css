@@ -126,6 +126,12 @@
   margin: 30px;
 }
 
+.total {
+  justify-content: 'space-around'
+}
+
+
+
 .content {
   grid-column: 2/3;
 }
