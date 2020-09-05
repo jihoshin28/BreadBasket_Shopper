@@ -5,7 +5,7 @@ const FoodCategories = props => {
     return (
         <div class="row justify-content-center">
             {props.categories.map(category => {
-                return <CategoryLink name = {category.name} title = {category.title} />
+                return <CategoryLink history = {props.history} name = {category.name} title = {category.title} />
             })}
         </div>
     )

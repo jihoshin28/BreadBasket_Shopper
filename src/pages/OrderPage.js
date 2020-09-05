@@ -34,7 +34,7 @@ class OrderPage extends Component {
                     </div>
                 </div>
                 <div class = "row justify-content-center">
-                    <FoodCategoryNav categories= {this.props.categories}/>
+                    <FoodCategoryNav history={this.props.history} categories= {this.props.categories}/>
                 </div>
                 
                 <br></br><br></br>

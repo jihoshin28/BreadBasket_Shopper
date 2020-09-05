@@ -67,7 +67,7 @@ class Products extends Component {
                                 <h2>{this.props.selectedStore.attributes.name}</h2>
                             </div>
                             <div className = "col-sm-5">
-                                <Searchbar onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange}/>
+                                <Searchbar history = {this.props.history} onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange}/>
                             </div>
                         </div>
                     

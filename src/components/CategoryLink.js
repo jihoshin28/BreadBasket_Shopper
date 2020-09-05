@@ -1,16 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Category = props => {
-    alert = e => {
-        e.preventDefault()
-        console.log(e.target)
+    const navigate = () => {
+        var url = `/products/${props.name}`
+        props.history.push(url)
     }
-    var url = `/products/${props.name}`
+
     return (
         <div class = "col-sm-auto">
-            <a href = {url} data-category = {props.name}>
+            <Link onClick = {() => navigate()} data-category = {props.name}>
                 {props.title}
-            </a>
+            </Link>
         </div>
     )
 }
