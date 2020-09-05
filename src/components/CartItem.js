@@ -6,10 +6,6 @@ import { cartItemCount, removeCartItem } from '../actions'
 
 class CartItem extends Component {
 
-    componentDidMount(){
-
-    }
-
     removeItem(cartItemId){
         console.log(cartItemId)
         this.props.removeCartItem(this.props.cartItemId)
@@ -54,7 +50,7 @@ class CartItem extends Component {
                         </span>
                         
                     </div>
-                    <h3>Total: ${this.props.price} </h3>
+                    <h3>Total: ${(this.props.count * this.props.price * .01).toFixed(2)} </h3>
                 </div>
                 <div>
                     <button onClick = {() => this.removeItem(this.props.cartItemId)}>Remove Item</button>
