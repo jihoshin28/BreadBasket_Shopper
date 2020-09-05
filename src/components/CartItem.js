@@ -12,11 +12,24 @@ class CartItem extends Component {
 
     removeItem(cartItemId){
         console.log(cartItemId)
-        this.props.removeCartItem(this.props.itemId)
+        this.props.removeCartItem(this.props.cartItemId)
     }
 
     changeCount(type){
-        this.props.cartItemCount(type)
+        let newCount = 0
+        if(type === '+'){
+            newCount = this.props.count + 1
+            
+        }
+        if(type === '-'){
+            if(this.props.count > 0){
+                newCount = this.props.count - 1 
+            } else{
+                newCount = 0
+            }
+        }
+        this.props.cartItemCount(newCount, this.props.cartItemId)
+        // this.props.cartItemCount(newCount, this.props.cartItemId)
     }
 
     render(){
@@ -32,10 +45,10 @@ class CartItem extends Component {
                     <div>
                         <h3>Count: {this.props.count}</h3>
                         <span>
-                            <button onClick= {this.changeCount('+')}>
+                            <button onClick= {() => this.changeCount('+')}>
                                 +
                             </button>
-                            <button onClick = {this.changeCount('-')}>
+                            <button onClick = {() => this.changeCount('-')}>
                                 -
                             </button>
                         </span>

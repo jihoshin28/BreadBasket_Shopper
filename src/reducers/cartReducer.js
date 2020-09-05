@@ -1,6 +1,8 @@
+import _ from 'lodash'
+
 let INITIAL_STATE = {
     cart_id: null,
-    cart_items: []
+    cart_items: {}
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -9,20 +11,32 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     if(action.type === 'GET_CART'){
-        return {...state, cart_items: action.payload}
+        return { ...state, cart_items: { ...state.cart_items, ..._.mapKeys(...action.payload, 'id')}}
     }
 
     if(action.type === 'DROP_CART'){
-        return {...state, cart_items: []}
+        return {}
     }
 
     if(action.type === 'ADD_CART_ITEM'){
-        return {...state, cart_items: [...state.cart_items, action.payload]}
+        return {...state, cart_items: {...state.cart_items, [action.payload.id]: action.payload.cart_item}}
     }
 
     if(action.type === 'DROP_CART_ITEM'){
-        return {...state, cart_items: [...state.cart_items.filter(key => key.id !== action.payload)] }
+        return {...state, cart_items: _.omit(state.cart_items, action.payload) }
     }
-
-    return state
-}
+    
+    // if(action.type === 'CHANGE_COUNT_CART_ITEM'){
+        //     // return  {...state, 
+        //     //             cart_items: [
+            //     //                 ...state.cart_items.filter(item => item.id !== action.payload.id),
+            //     //                     state.cart_items.find(item => item.id === action.payload.id)
+            //     //                         ...state.cart_items[i].attributes, 
+            //     //                             quantity_num = action.payload
+            //     //                     }
+            //     //             ]
+            //     //         }
+            // }
+            
+        return state
+    }

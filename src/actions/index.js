@@ -38,7 +38,7 @@ export const getCart = (cart_id) => async dispatch => {
     const response = await rails.get(`/cart_items?cart_id=${cart_id}`)
     let data = response.data
     console.log(data.data)
-    dispatch({type: "GET_CART", payload: data.data})
+    // dispatch({type: "GET_CART", payload: data.data})
 }
 
 export const startCart = cartInfo => async dispatch => {
@@ -58,8 +58,13 @@ export const dropCart = () => {
 export const addCartItem = cartItemInfo => async dispatch => {
     const response = await rails.post('/cart_items', {cart_item: cartItemInfo})
     let data = response.data
-    console.log(data.data.attributes.item, 'cart_item added')
-    dispatch({ type: "ADD_CART_ITEM", payload: data.data})
+    console.log(data.data, 'cart_item added')
+    dispatch({ type: "ADD_CART_ITEM", 
+                payload: { 
+                    cart_item: data.data,
+                    id: data.data.id
+                }
+            })
 }
 
 export const removeCartItem = cartItemId => async dispatch => {
@@ -69,8 +74,14 @@ export const removeCartItem = cartItemId => async dispatch => {
     dispatch({type: "DROP_CART_ITEM", payload: cartItemId})
 }
 
-export const cartItemCount = type => async dispatch => {
-    
+export const cartItemCount = (newCount, cartItemId) => {
+    // const response = await rails.patch(`/cart_items/${cartItemId}`, {cart_item: newCount})
+    // console.log(response.data)
+    // // dispatch({type: "CHANGE_COUNT_CART_ITEM"})
+    return ({
+        type: "CHANGE_COUNT_CART_ITEM",
+        payload: {count: newCount, cartItemId: cartItemId}
+    })
 }
 
 export const signIn = (userInfo) => async dispatch => {

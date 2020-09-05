@@ -6,18 +6,20 @@ import CartItem from '../components/CartItem'
 class Cart extends Component{
     componentDidMount(){
         this.props.getCart(this.props.cart_id)
-        // this.props.removeCartItem(11)
+        console.log(this.props.cart_items)
     }
 
     render() {
+        let keys = Object.keys(this.props.cart_items)
+        let cartItems = keys.map(key=> this.props.cart_items[key])
         return(
             <div class = 'container'>
                 
                 <div class = 'wrapper cart'>
                     <h1>Cart</h1>
-                    {this.props.cart_items.map(cart_item => {
+                    {cartItems.map(cart_item => {
                         let item_attribute = cart_item.attributes.item
-                        return <CartItem itemId = {cart_item.id} image = {item_attribute.image} name = {item_attribute.name} count = {cart_item.attributes.quantity_num} price = {item_attribute.price}/>
+                        return <CartItem cartItemId = {cart_item.id} image = {item_attribute.image} name = {item_attribute.name} count = {cart_item.attributes.quantity_num} price = {item_attribute.price}/>
                     })}
                 </div>
                 
