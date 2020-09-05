@@ -78,6 +78,7 @@ export const cartItemCount = (newCount, cartItemId) => {
     // const response = await rails.patch(`/cart_items/${cartItemId}`, {cart_item: newCount})
     // console.log(response.data)
     // // dispatch({type: "CHANGE_COUNT_CART_ITEM"})
+    console.log(newCount, cartItemId)
     return ({
         type: "CHANGE_COUNT_CART_ITEM",
         payload: {count: newCount, cartItemId: cartItemId}

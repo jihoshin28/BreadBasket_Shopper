@@ -26,17 +26,16 @@ export default (state = INITIAL_STATE, action) => {
         return {...state, cart_items: _.omit(state.cart_items, action.payload) }
     }
     
-    // if(action.type === 'CHANGE_COUNT_CART_ITEM'){
-        //     // return  {...state, 
-        //     //             cart_items: [
-            //     //                 ...state.cart_items.filter(item => item.id !== action.payload.id),
-            //     //                     state.cart_items.find(item => item.id === action.payload.id)
-            //     //                         ...state.cart_items[i].attributes, 
-            //     //                             quantity_num = action.payload
-            //     //                     }
-            //     //             ]
-            //     //         }
-            // }
+    if(action.type === 'CHANGE_COUNT_CART_ITEM'){
+        return  {...state, cart_items: 
+                    {...state.cart_items, [action.payload.cartItemId]: 
+                        {...state.cart_items[action.payload.cartItemId], attributes: 
+                            {...state.cart_items[action.payload.cartItemId].attributes, 
+                                "quantity_num": action.payload.count}
+                        }
+                    }
+                }
+    }
             
         return state
     }
