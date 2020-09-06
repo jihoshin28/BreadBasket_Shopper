@@ -27,7 +27,8 @@ export default (state = INITIAL_STATE, action) => {
                     {...state.cart_items, [action.payload.cartItemId]: 
                         {...state.cart_items[action.payload.cartItemId], attributes: 
                             {...state.cart_items[action.payload.cartItemId].attributes, 
-                                "quantity_num": action.payload.count}
+                                "quantity_num": action.payload.count
+                            }
                         }
                     }
                 }

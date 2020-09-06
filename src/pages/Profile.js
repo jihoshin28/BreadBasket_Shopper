@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 export class Profile extends Component{
+    componentDidMount(){
+
+    }
     render(){   
         return (
             <div>
@@ -18,4 +22,13 @@ export class Profile extends Component{
     
 }
 
-export default Profile
+let mapStateToProps = state => {
+    return ({
+        userAuthId: state.auth.userAuthId,
+        userAuthPic: state.auth.userAuthPic,
+        userAuthName: state.auth.userAuthName
+    })
+}
+
+
+export default connect(mapStateToProps)(Profile)
