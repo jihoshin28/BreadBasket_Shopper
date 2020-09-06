@@ -12,7 +12,7 @@ export default (state = INTIAL_STATE, action) => {
                 signedIn: true,
                 userAuthId: action.payload.id,
                 userAuthPic: action.payload.image,
-                userAuthName: action.payload.name
+                userAuthName: action.payload.first_name + ' ' + action.payload.last_name
             }
         case 'SIGN_OUT':
             return {...state, 
