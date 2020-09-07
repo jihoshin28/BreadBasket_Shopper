@@ -9,25 +9,70 @@ class Cart extends Component{
         console.log(this.props.cart_items)
     }
 
+    renderCart(){ 
+        if(this.props.cart_items !== {}){
+            let keys = Object.keys(this.props.cart_items)
+            let cartItems = keys.map(key => this.props.cart_items[key])
+            return (
+                    cartItems.map(cart_item => {
+                        let item_attribute = cart_item.attributes.item
+                        return <CartItem cartItemId={cart_item.id} image={item_attribute.image} name={item_attribute.name} count={cart_item.attributes.quantity_num} price={item_attribute.price} />
+                    })
+            )
+        }
+    }
+
+    renderCartTotal(){
+        if (this.props.carts_items !== {}) {
+            let keys = Object.keys(this.props.cart_items)
+            let cartItems = keys.map(key => this.props.cart_items[key])
+            console.log(cartItems)
+            let subtotal = cartItems.reduce((sum, current) => {
+                return sum + (current.attributes.quantity_num * (current.attributes.item.price * .01))
+            }, 0)
+            let delivery = subtotal * .14
+            let total = subtotal + delivery
+            
+            return (
+            <div>
+                <h3>
+                    {`$${subtotal.toFixed(2)}`}
+                </h3>
+                <h3>
+                    {`$${delivery.toFixed(2)}`}
+                </h3>
+                <h3>
+                    <span>
+                        Tip(% of total order)
+                                </span>
+                    <span>
+                        <select id="cars">
+                            <option value="0">0%</option>
+                            <option value="5">5%</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                        </select>
+                    </span>
+                    {/* {`$${}`} */}
+                </h3>
+                <h3>
+                    {`$${total.toFixed(2)}`}
+                </h3>
+            </div>
+            )
+        }
+
+        
+    }
+
     render() {
-        let keys = Object.keys(this.props.cart_items)
-        let cartItems = keys.map(key=> this.props.cart_items[key])
-        console.log(cartItems)
-        let subtotal = cartItems.reduce((sum, current) => {
-            return sum + (current.attributes.quantity_num * (current.attributes.item.price * .01))
-        }, 0)
-        let delivery = subtotal * .14
-        let total = subtotal + delivery
-        console.log(subtotal)
         return(
             <div class = 'container'>
                 
                 <div class = 'wrapper cart'>
                     <h1>Cart</h1>
-                    {cartItems.map(cart_item => {
-                        let item_attribute = cart_item.attributes.item
-                        return <CartItem cartItemId = {cart_item.id} image = {item_attribute.image} name = {item_attribute.name} count = {cart_item.attributes.quantity_num} price = {item_attribute.price}/>
-                    })}
+                    {this.renderCart()}
                     <div class = "row cartItem total">
                         <div>
                             <h3>
@@ -58,31 +103,7 @@ class Cart extends Component{
                             </h3>
                         </div>
 
-                        <div>
-                            <h3>
-                                {`$${subtotal.toFixed(2)}`}
-                            </h3>
-                            <h3>
-                                {`$${delivery.toFixed(2)}`}
-                            </h3>
-                            <h3>
-                                <span> 
-                                    Tip(% of total order)
-                                </span>
-                                <span>
-                                    <select id="cars">
-                                        <option value="5">5%</option>
-                                        <option value="10">10%</option>
-                                        <option value="15">15%</option>
-                                        <option value="20">20%</option>
-                                    </select>
-                                </span>
-                                {/* {`$${}`} */}
-                            </h3>
-                            <h3>
-                                {`$${total.toFixed(2)}`}
-                            </h3>
-                        </div>
+                        {this.renderCartTotal()}
                     </div>
                 </div>
                 

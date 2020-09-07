@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { useHistory, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import {signIn, signOut, dropCart} from '../actions'
 
 class GoogleAuth extends React.Component{
@@ -61,8 +61,7 @@ class GoogleAuth extends React.Component{
         } else if (!!this.props.signedIn) {
             this.props.history.push('/orderpage')
             this.props.history.go()
-
-        } else {
+        } else if(!this.props.signedIn) {
             this.props.history.push('/')
             this.props.history.go()
         }
