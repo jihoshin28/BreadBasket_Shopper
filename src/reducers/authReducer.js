@@ -2,7 +2,8 @@ const INTIAL_STATE = {
     signedIn: null,
     userAuthId: null,
     userAuthPic: null,
-    userAuthName: null
+    userAuthName: null,
+    userShopperInfo: null,
 }
 
 export default (state = INTIAL_STATE, action) => {
@@ -12,7 +13,8 @@ export default (state = INTIAL_STATE, action) => {
                 signedIn: true,
                 userAuthId: action.payload.id,
                 userAuthPic: action.payload.image,
-                userAuthName: action.payload.first_name + ' ' + action.payload.last_name
+                userAuthName: action.payload.first_name,
+                userShopperInfo: action.payload.shopper_info
             }
         case 'SIGN_OUT':
             return {...state, 
@@ -24,5 +26,4 @@ export default (state = INTIAL_STATE, action) => {
         default:
             return state 
     }
-    console.log(state)
 }

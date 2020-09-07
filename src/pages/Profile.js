@@ -25,7 +25,6 @@ export class Profile extends Component{
                     </div>
                     <div>
                         <h4>Number of Orders</h4>
-                        
                     </div>
                 </div>
             </div>

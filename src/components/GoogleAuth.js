@@ -1,12 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import {signIn, signOut, dropCart} from '../actions'
 
 class GoogleAuth extends React.Component{
-   
     componentDidMount() {
-        console.log(this.props.history, "history!!")
+        console.log(this.props)
         window.gapi.load('client:auth2', () => {
             window.gapi.client.init({
                 clientId: '30752304516-hq148b4og5mh54aphpmsuus4049qv04n.apps.googleusercontent.com',
@@ -19,11 +18,9 @@ class GoogleAuth extends React.Component{
         })
         
     }   
-
     componentDidUpdate(){
-        if(!!this.props.signedIn){
-
-        }
+        console.log('updated')
+        this.redirect()
     }
 
     authChange = (userStatus) => {
@@ -43,19 +40,32 @@ class GoogleAuth extends React.Component{
             this.props.signOut()
         }
     }
-  
+
     signIn = () => {
-        this.auth.signIn().then(()=>{
-            this.props.history.push('/orderpage')
-            this.props.history.go()
-        })
+        this.auth.signIn()
     }
 
     
     signOut = () => {
-        this.auth.signOut()
-        this.props.dropCart()
+        this.auth.signOut().then(() => {
+            this.props.dropCart()
+        })
         // localStorage.removeItem('rails_token')
+    }
+
+    redirect = () => {
+        if (!!this.props.signedIn && !this.props.shopperInfo) {
+            console.log(this.props.signedIn, this.props.shopperInfo)
+            this.props.history.push('/profile_signup')
+            this.props.history.go()
+        } else if (!!this.props.signedIn) {
+            this.props.history.push('/orderpage')
+            this.props.history.go()
+
+        } else {
+            this.props.history.push('/')
+            this.props.history.go()
+        }
     }
 
     renderAuthButton = () => {
@@ -86,15 +96,13 @@ class GoogleAuth extends React.Component{
             }
         }
     }
+
+    
     render(){
         return(   
-                <div>
+            <div>
                 {this.renderAuthButton()}
-                    {(!this.props.signedIn) ? 
-                    <Redirect to = '/'/> :
-                    <Redirect to = '/orderpage'/>
-                }
-                </div>
+            </div>
             
         )
     }
@@ -102,7 +110,8 @@ class GoogleAuth extends React.Component{
 
 let mapStateToProps = (state) => {
     return ({
-        signedIn: state.auth.signedIn
+        signedIn: state.auth.signedIn,
+        shopperInfo: state.auth.userShopperInfo
     })
 }
 

@@ -69,7 +69,7 @@ export class Navbar extends Component {
                 :
                 <div></div>
                 }
-                <GoogleAuth />
+                <GoogleAuth history = {this.props.history} />
                 <ul class="navbar-nav cart-nav">
                     <li class="nav-item">
                         {this.renderUser()}
