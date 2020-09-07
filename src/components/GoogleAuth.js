@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 import {signIn, signOut, dropCart} from '../actions'
 
 class GoogleAuth extends React.Component{
@@ -18,10 +18,13 @@ class GoogleAuth extends React.Component{
         })
         
     }   
-    componentDidUpdate(){
-        console.log('updated')
-        this.redirect()
+
+    componentDidUpdate(prevState){
+        if (prevState.signedIn !== this.props.signedIn){
+            this.redirect()
+        }
     }
+    
 
     authChange = (userStatus) => {
         if (!!userStatus) {
@@ -35,6 +38,7 @@ class GoogleAuth extends React.Component{
                 image: user.rt.TJ
             }
             this.props.signIn(userInfo)
+           
             // this.navigateToOrder()
         } else {
             this.props.signOut()
@@ -58,10 +62,10 @@ class GoogleAuth extends React.Component{
             console.log(this.props.signedIn, this.props.shopperInfo)
             this.props.history.push('/profile_signup')
             this.props.history.go()
-        } else if (!!this.props.signedIn) {
+        } else if (!!this.props.signedIn && !!this.props.shopperInfo) {
             this.props.history.push('/orderpage')
             this.props.history.go()
-        } else if(!this.props.signedIn) {
+        } else {
             this.props.history.push('/')
             this.props.history.go()
         }

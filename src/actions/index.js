@@ -92,14 +92,15 @@ export const getCurrentShopper = (userId) => async dispatch => {
     dispatch({type: 'CURRENT_SHOPPER', payload: data})
 }
 
-export const createShopperProfile = (profileInfo) => async dispatch => {
-    // const response = await rails.post('/profile_info/', profileInfo)
-    console.log(profileInfo)
+export const createShopperProfile = (shopperInfo) => async dispatch => {
+    const response = await rails.post('/shopper_infos/', shopperInfo)
+    console.log(response.config)
     // let data = response.data
+    // dispatch({ type: 'CREATE_SHOPPER_PROFILE', payload: profileInfo})
     // dispatch({type: 'CREATE_SHOPPER_PROFILE', payload: data})
 }
 
-export const signIn = (userInfo, history) => async dispatch => {
+export const signIn = (userInfo) => async dispatch => {
     const response = await rails.post('/login', {shopper: userInfo})
     let data = response.data
     console.log(data.shopper.data.attributes.shopper_info === null)

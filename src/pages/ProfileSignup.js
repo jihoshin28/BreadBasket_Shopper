@@ -16,8 +16,9 @@ class ProfileSignup extends React.Component {
         )
     }
 
-    profileSubmit = () => {
-
+    profileSubmit = (formValues) => {
+        let form = {shopper_info : {...formValues, age: parseInt(formValues.age), shopper_id: this.props.shopperId}}
+        this.props.createShopperProfile(form)
     }
 
     render(){
@@ -26,14 +27,14 @@ class ProfileSignup extends React.Component {
                 <h1> 
                     Welcome {this.props.shopperName}
                 </h1>
-                <form onSubmit = {this.props.handleSubmit(this.profileSubmit())}>
+                <form onSubmit = {this.props.handleSubmit(this.profileSubmit)}>
                     <Field name = "age" component = {this.renderInput} label = "Age"/>
-                    <Field name = "address" component = {this.renderInput} label = "Age" />
-                    <Field name = "city" component = {this.renderInput} label = "Age" />
-                    <Field name = "state" component = {this.renderInput} label = "Age" />
-                    <Field name = "zip_code" component = {this.renderInput} label = "Age" />
-                    <Field name = "phone" component = {this.renderInput} label = "Age" />
-                    <button type="submit" id="button-addon1">Search Item</button>
+                    <Field name = "address" component = {this.renderInput} label = "Address" />
+                    <Field name = "city" component = {this.renderInput} label = "City" />
+                    <Field name = "state" component = {this.renderInput} label = "State" />
+                    <Field name = "zip_code" component = {this.renderInput} label = "Zip Code" />
+                    <Field name = "phone" component = {this.renderInput} label = "Phone" />
+                    <button type="submit" id="button-addon1">Submit</button>
                 </form>
             </div>
         )
@@ -64,13 +65,13 @@ let validate = (formValues) => {
         error.phone = "Please enter an Item"
     }
     
-
     return error
 }
 
 let mapStateToProps = state => {
     return({
-        shopperName: state.auth.userAuthName
+        shopperName: state.auth.userAuthName,
+        shopperId: state.auth.userAuthId
     })
 }
 
