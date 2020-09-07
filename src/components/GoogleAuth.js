@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { useHistory, Redirect } from 'react-router-dom'
 import {signIn, signOut, dropCart} from '../actions'
 
 class GoogleAuth extends React.Component{
@@ -113,6 +112,7 @@ class GoogleAuth extends React.Component{
 
 let mapStateToProps = (state) => {
     return ({
+        shopperid: state.auth.shopperId,
         signedIn: state.auth.signedIn,
         shopperInfo: state.auth.userShopperInfo
     })

@@ -6,11 +6,10 @@ import CartItem from '../components/CartItem'
 class Cart extends Component{
     componentDidMount(){
         this.props.getCart(this.props.cart_id)
-        console.log(this.props.cart_items)
     }
 
     renderCart(){ 
-        if(this.props.cart_items !== {}){
+        if(!!this.props.cart_items || this.props.cart_items !== {}){
             let keys = Object.keys(this.props.cart_items)
             let cartItems = keys.map(key => this.props.cart_items[key])
             return (
@@ -23,14 +22,20 @@ class Cart extends Component{
     }
 
     renderCartTotal(){
+        let subtotal = 0
+        if (!this.props.cart_items || this.props.cart_items !== {}){
+            subtotal = 0
+        } else {
             let keys = Object.keys(this.props.cart_items)
             let cartItems = keys.map(key => this.props.cart_items[key])
             console.log(cartItems)
-            let subtotal = cartItems.reduce((sum, current) => {
+            subtotal = cartItems.reduce((sum, current) => {
                 return sum + (current.attributes.quantity_num * (current.attributes.item.price * .01))
             }, 0)
-            let delivery = subtotal * .14
-            let total = subtotal + delivery
+        }
+    
+        let delivery = subtotal * .14
+        let total = subtotal + delivery
             
             return (
             <div>

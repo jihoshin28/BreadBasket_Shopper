@@ -19,6 +19,7 @@ class ProfileSignup extends React.Component {
     profileSubmit = (formValues) => {
         let form = {shopper_info : {...formValues, age: parseInt(formValues.age), shopper_id: this.props.shopperId}}
         this.props.createShopperProfile(form)
+        this.props.history.push('/orderpage')
     }
 
     render(){

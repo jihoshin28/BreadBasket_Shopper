@@ -6,8 +6,16 @@ let INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
+
     if (action.type === 'START_CART') {
-        return { ...state, cart_id: action.payload.data.attributes.id }
+        return {
+            ...state, cart_id: action.payload.data.attributes.id
+        }
+    }
+    if (action.type === 'GET_CART'){
+        return{
+            ...state, cart_items: {...state.cart_items, ..._.mapKeys(action.payload,'id')}
+        }
     }
 
     if(action.type === 'DROP_CART'){

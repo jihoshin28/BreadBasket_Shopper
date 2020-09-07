@@ -38,7 +38,7 @@ export const getCart = (cart_id) => async dispatch => {
     const response = await rails.get(`/cart_items?cart_id=${cart_id}`)
     let data = response.data
     console.log(data.data)
-    // dispatch({type: "GET_CART", payload: data.data})
+    dispatch({type: "GET_CART", payload: data.data})
 }
 
 export const startCart = cartInfo => async dispatch => {
@@ -103,7 +103,6 @@ export const createShopperProfile = (shopperInfo) => async dispatch => {
 export const signIn = (userInfo) => async dispatch => {
     const response = await rails.post('/login', {shopper: userInfo})
     let data = response.data
-    console.log(data.shopper.data.attributes.shopper_info === null)
     localStorage.setItem('shopper_token', data.jwt)
     dispatch({
         type: 'SIGN_IN',
