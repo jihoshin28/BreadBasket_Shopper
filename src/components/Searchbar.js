@@ -1,13 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { reduxForm, Field} from 'redux-form'
 
 
 class Searchbar extends React.Component {
-    componentDidMount() {
-        console.log('searchbarinfobabyyy', this.props)
-    }
+
     renderInput = ({ input, meta, label }) => {
     console.log(input)
         return (
@@ -49,6 +46,5 @@ let formWrapped = reduxForm({
     form: 'searchForm',
     validate: validate
 })(Searchbar)
-
 
 export default connect(null)(formWrapped)

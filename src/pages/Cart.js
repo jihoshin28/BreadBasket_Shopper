@@ -23,7 +23,6 @@ class Cart extends Component{
     }
 
     renderCartTotal(){
-        if (this.props.carts_items !== {}) {
             let keys = Object.keys(this.props.cart_items)
             let cartItems = keys.map(key => this.props.cart_items[key])
             console.log(cartItems)
@@ -61,7 +60,7 @@ class Cart extends Component{
                 </h3>
             </div>
             )
-        }
+        
 
         
     }
