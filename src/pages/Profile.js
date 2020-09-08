@@ -23,6 +23,7 @@ class Profile extends Component{
         if(!isEmpty(this.props.currentShopper)){
             return (
                 <div>
+                    <i class="fas fa-envelope fa-2x"></i><span class="counter counter-lg">9</span>
                     <div>
                         <img class="profilePageImage" src={this.props.userAuthPic}></img>
                     </div>

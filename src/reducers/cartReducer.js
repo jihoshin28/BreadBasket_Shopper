@@ -19,7 +19,10 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     if(action.type === 'DROP_CART'){
-        return {}
+        return {...state, 
+            cart_id: null, 
+            cart_items: {}
+        }
     }
 
     if(action.type === 'ADD_CART_ITEM'){
