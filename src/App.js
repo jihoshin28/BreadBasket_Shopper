@@ -8,12 +8,13 @@ import './App.css';
 import NavBar from './containers/NavBar'
 import Home from './pages/Home'
 import About from './pages/About'
+import Cart from './pages/Cart'
+import EditShopper from './pages/EditShopper'
 import OrderPage from './pages/OrderPage'
 import OrderHistory from './pages/OrderHistory'
 import Profile from './pages/Profile'
 import Products from './pages/Products'
 import ProfileSignup from './pages/ProfileSignup'
-import Cart from './pages/Cart'
 import SearchPage from './pages/SearchPage'
 import {getStores, getCategories, signOut} from './actions'
 
@@ -23,10 +24,6 @@ class App extends Component  {
     this.props.getCategories()
     this.props.getStores()
     console.log(this.props.state)
-    // Api.get.Items().then(data => console.log(data))
-    // Api.get.ItemsCategory('meats').then(data => console.log(data))
-    // Api.get.Stores().then(data => console.log(data))
-    // Api.get.Store(1).then(data => console.log(data))
   }
   
   render (){
@@ -37,7 +34,7 @@ class App extends Component  {
             <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/cart' render={(props) => <Cart {...props} />} />
-            <Route exact path='/edit_shopper/:section' render={(props) => <Cart {...props} />} />
+            <Route exact path='/edit_shopper/:section' render={(props) => <EditShopper {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
             <Route exact path='/profile' render={(props) => <Profile {...props} />} />

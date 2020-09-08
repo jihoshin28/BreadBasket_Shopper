@@ -13,7 +13,7 @@ export class Profile extends Component{
     }
 
     editPage = (e) => {
-        this.props.history.push(`/editShopper/${e.target.value}`)
+        this.props.history.replace(`/edit_shopper/${e.target.value}`)
     }
 
     render(){   
@@ -25,7 +25,7 @@ export class Profile extends Component{
                         <img class="profilePageImage" src={this.props.userAuthPic}></img> 
                     </div>
                     <div className = "segment">
-                        <button value = "image" onClick = {(e)=> {console.log(e.target.value)}}>Change</button>
+                        <button value = "image" onClick = {(e)=> this.editPage(e)}>Change</button>
                     </div>
                         <h4>{this.capitalize(this.props.userFirstName) + ' ' + this.capitalize(this.props.userLastName)}</h4>
                    
@@ -35,19 +35,19 @@ export class Profile extends Component{
                     <div>
                         <h4>Email: {this.props.userEmail}</h4>
                         <div className = "segment">
-                            <button value="email" onClick={(e) => { console.log(e.target.value) }}>Change</button>
+                            <button value="email" onClick={(e) => this.editPage(e) }>Change</button>
                         </div>
                     </div>
                     <div>
                         <h4>Phone: {this.props.userInfo.phone}</h4>
                         <div className = "segment">
-                            <button value="profile_infos/phone" onClick={(e) => { console.log(e.target.value) }}>Change</button>
+                            <button value="profile_infos/phone" onClick={(e) => this.editPage(e) }>Change</button>
                         </div>
                     </div>
                     <div>
                         <h4>Address: {this.renderAddress()}</h4>
                         <div className = "segment">
-                            <button value="profile_infos/address" onClick={(e) => { console.log(e.target.value) }}>Change</button>
+                            <button value="profile_infos/address" onClick={(e) => this.editPage(e) }>Change</button>
                         </div>
                     </div>
                     <div>
