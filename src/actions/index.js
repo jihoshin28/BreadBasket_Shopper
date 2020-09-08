@@ -77,14 +77,16 @@ export const removeCartItem = cartItemId => async dispatch => {
 export const editShopper = (form, id) =>  async dispatch => {
     console.log(form)
     const response = await rails.patch(`/shoppers/${id}`, form)
-    console.log(response.data)
-    // dispatch({type: "EDIT_SHOPPER"})
+    let data = response.data
+    console.log(data.data)
+    dispatch({type: "EDIT_SHOPPER", payload: data.data.attributes})
 }
 
 export const editShopperProfile = (form, id) => async dispatch => {
-    console.log(form)
     const response = await rails.patch(`/shopper_infos/${id}`, form)
-    console.log(response.data)
+    let data = response.data.data
+    console.log(data)
+    dispatch({type: "EDIT_PROFILE", payload: data.attributes})
 }
 
 

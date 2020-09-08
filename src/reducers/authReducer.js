@@ -24,6 +24,17 @@ export default (state = INTIAL_STATE, action) => {
                         shopper_info: action.payload
                 }
             }
+        case 'EDIT_SHOPPER':
+            return{
+                ...state, currentShopper: action.payload
+            }
+        case 'EDIT_PROFILE':
+            return{
+                ...state, currentShopper: {
+                    ...state.currentShopper,
+                    shopper_info: action.payload
+                }
+            }
         default:
             return state 
     }
