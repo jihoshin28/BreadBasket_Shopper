@@ -1,6 +1,8 @@
 const INTIAL_STATE = {
     signedIn: null,
-    currentShopper: {}
+    currentShopper: {
+        shopper_info: {}
+    }
 }
 
 export default (state = INTIAL_STATE, action) => {
@@ -15,7 +17,10 @@ export default (state = INTIAL_STATE, action) => {
             return {
                 ...state, 
                 signedIn: false, 
-                currentShopper: {}
+                currentShopper: {
+                    ...state.currentShopper,
+                    shopper_info: {}
+                }
             }
         case 'PROFILE_INFO':
             return{

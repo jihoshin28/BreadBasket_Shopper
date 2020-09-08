@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { isEmpty } from 'lodash'
 
-export class Profile extends Component{
+class Profile extends Component{
     
     capitalize(word){
         if(!!word){
