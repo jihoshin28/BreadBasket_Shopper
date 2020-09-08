@@ -37,6 +37,7 @@ class App extends Component  {
             <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/cart' render={(props) => <Cart {...props} />} />
+            <Route exact path='/edit_shopper/:section' render={(props) => <Cart {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
             <Route exact path='/profile' render={(props) => <Profile {...props} />} />

@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
 export class Profile extends Component{
-    componentDidMount(){
-
-    }
+    
     capitalize(word){
         return word.charAt(0).toUpperCase() + word.slice(1)
     }
@@ -13,6 +11,11 @@ export class Profile extends Component{
             `${this.props.userInfo.address}, ${this.props.userInfo.city}, ${this.props.userInfo.state} ${this.props.userInfo.zip_code}`
         )
     }
+
+    editPage = (e) => {
+        this.props.history.push(`/editShopper/${e.target.value}`)
+    }
+
     render(){   
         return (
             <div>
@@ -21,7 +24,9 @@ export class Profile extends Component{
                     <div>
                         <img class="profilePageImage" src={this.props.userAuthPic}></img> 
                     </div>
-                    <button onClick = {(e)=> {console.log()}}>Change</button>
+                    <div className = "segment">
+                        <button value = "image" onClick = {(e)=> {console.log(e.target.value)}}>Change</button>
+                    </div>
                         <h4>{this.capitalize(this.props.userFirstName) + ' ' + this.capitalize(this.props.userLastName)}</h4>
                    
                     <div>
@@ -29,12 +34,21 @@ export class Profile extends Component{
                     </div>
                     <div>
                         <h4>Email: {this.props.userEmail}</h4>
+                        <div className = "segment">
+                            <button value="email" onClick={(e) => { console.log(e.target.value) }}>Change</button>
+                        </div>
                     </div>
                     <div>
                         <h4>Phone: {this.props.userInfo.phone}</h4>
+                        <div className = "segment">
+                            <button value="profile_infos/phone" onClick={(e) => { console.log(e.target.value) }}>Change</button>
+                        </div>
                     </div>
                     <div>
                         <h4>Address: {this.renderAddress()}</h4>
+                        <div className = "segment">
+                            <button value="profile_infos/address" onClick={(e) => { console.log(e.target.value) }}>Change</button>
+                        </div>
                     </div>
                     <div>
                         <h4>Number of Orders</h4>
