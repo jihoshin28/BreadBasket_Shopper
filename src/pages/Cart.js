@@ -9,7 +9,7 @@ class Cart extends Component{
     }
 
     renderCart(){ 
-        if(!!this.props.cart_items || this.props.cart_items !== {}){
+        if (!!this.props.cart_items || this.props.cart_items === {}){
             let keys = Object.keys(this.props.cart_items)
             let cartItems = keys.map(key => this.props.cart_items[key])
             return (
@@ -23,7 +23,7 @@ class Cart extends Component{
 
     renderCartTotal(){
         let subtotal = 0
-        if (!this.props.cart_items || this.props.cart_items !== {}){
+        if (!this.props.cart_items || this.props.cart_items === {}){
             subtotal = 0
         } else {
             let keys = Object.keys(this.props.cart_items)

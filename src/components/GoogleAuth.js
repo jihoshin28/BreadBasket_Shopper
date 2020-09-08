@@ -112,9 +112,9 @@ class GoogleAuth extends React.Component{
 
 let mapStateToProps = (state) => {
     return ({
-        shopperid: state.auth.shopperId,
+        shopperId: state.auth.currentShopper.id,
         signedIn: state.auth.signedIn,
-        shopperInfo: state.auth.userShopperInfo
+        shopperInfo: state.auth.currentShopper.shopper_info
     })
 }
 

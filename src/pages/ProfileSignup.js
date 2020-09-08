@@ -26,7 +26,7 @@ class ProfileSignup extends React.Component {
         return(
             <div> 
                 <h1> 
-                    Welcome {this.props.shopperName}
+                    Welcome {this.props.shopperFirstName}
                 </h1>
                 <form onSubmit = {this.props.handleSubmit(this.profileSubmit)}>
                     <Field name = "age" component = {this.renderInput} label = "Age"/>
@@ -71,8 +71,8 @@ let validate = (formValues) => {
 
 let mapStateToProps = state => {
     return({
-        shopperName: state.auth.userAuthName,
-        shopperId: state.auth.userAuthId
+        shopperFirstName: state.auth.currentShopper.first_name,
+        shopperId: state.auth.currentShopper.id
     })
 }
 

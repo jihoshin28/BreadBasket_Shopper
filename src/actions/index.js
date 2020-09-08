@@ -85,13 +85,6 @@ export const cartItemCount = (newCount, cartItemId) => {
     })
 }
 
-export const getCurrentShopper = (userId) => async dispatch => {
-    const response = await rails.post(`/shopper/${userId}`)
-    let data = response.data
-    console.log(data)
-    dispatch({type: 'CURRENT_SHOPPER', payload: data})
-}
-
 export const createShopperProfile = (shopperInfo) => async dispatch => {
     const response = await rails.post('/shopper_infos/', shopperInfo)
     console.log(response.config)
@@ -104,6 +97,7 @@ export const signIn = (userInfo) => async dispatch => {
     const response = await rails.post('/login', {shopper: userInfo})
     let data = response.data
     localStorage.setItem('shopper_token', data.jwt)
+    console.log(data.shopper.data.attributes)
     dispatch({
         type: 'SIGN_IN',
         payload: data.shopper.data.attributes

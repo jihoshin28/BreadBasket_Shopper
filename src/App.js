@@ -15,7 +15,7 @@ import Products from './pages/Products'
 import ProfileSignup from './pages/ProfileSignup'
 import Cart from './pages/Cart'
 import SearchPage from './pages/SearchPage'
-import {getStores, getCategories, setHeaders} from './actions'
+import {getStores, getCategories, signOut} from './actions'
 
 class App extends Component  {
   
@@ -55,9 +55,9 @@ class App extends Component  {
 
 let mapStateToProps = state => {
   return({
-    shopperId: state.auth.userAuthId,
+    shopperId: state.auth.currentShopper.id,
     state: state
   })
 }
 
-export default connect(mapStateToProps, {getStores, getCategories})(App)
+export default connect(mapStateToProps, {getStores, getCategories, signOut})(App)

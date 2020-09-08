@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {getCurrentShopper} from '../actions'
 
 export class Profile extends Component{
     componentDidMount(){
-        this.props.getCurrentShopper(this.props.userAuthId) 
+    }
+    capitalize(word){
+        return word.charAt(0).toUpperCase() + word.slice(1)
     }
     render(){   
         return (
@@ -13,7 +14,7 @@ export class Profile extends Component{
                 <div id = "profileDiv" class = "container">
                     <div>
                         <h4>Name</h4>
-                        <h4>{this.props.userAuthName}</h4>
+                        <h4>{this.capitalize(this.props.userFirstName) + ' ' + this.capitalize(this.props.userLastName)}</h4>
                     </div>
                     <div>
                         <h4>Image</h4>
@@ -36,11 +37,12 @@ export class Profile extends Component{
 
 let mapStateToProps = state => {
     return ({
-        userAuthId: state.auth.userAuthId,
-        userAuthPic: state.auth.userAuthPic,
-        userAuthName: state.auth.userAuthName
+        userAuthId: state.auth.currentShopper.id,
+        userAuthPic: state.auth.currentShopper.image,
+        userFirstName: state.auth.currentShopper.first_name,
+        userLastName: state.auth.currentShopper.last_name,
     })
 }
 
 
-export default connect(mapStateToProps,{getCurrentShopper})(Profile)
+export default connect(mapStateToProps)(Profile)
