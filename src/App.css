@@ -130,7 +130,10 @@
   justify-content: 'space-around'
 }
 
-
+.profilePageImage {
+  width: 500px;
+  height: 500px;
+}
 
 .content {
   grid-column: 2/3;

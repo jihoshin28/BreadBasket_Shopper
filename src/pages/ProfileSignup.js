@@ -22,11 +22,15 @@ class ProfileSignup extends React.Component {
         this.props.history.push('/orderpage')
     }
 
+    capitalize(word) {
+        return word.charAt(0).toUpperCase() + word.slice(1)
+    }
+
     render(){
         return(
             <div> 
                 <h1> 
-                    Welcome {this.props.shopperFirstName}
+                    Welcome {this.capitalize(this.props.shopperFirstName)}
                 </h1>
                 <form onSubmit = {this.props.handleSubmit(this.profileSubmit)}>
                     <Field name = "age" component = {this.renderInput} label = "Age"/>
