@@ -74,6 +74,20 @@ export const removeCartItem = cartItemId => async dispatch => {
     dispatch({type: "DROP_CART_ITEM", payload: cartItemId})
 }
 
+export const editShopper = (form, id) =>  async dispatch => {
+    console.log(form)
+    const response = await rails.patch(`/shoppers/${id}`, form)
+    console.log(response.data)
+    // dispatch({type: "EDIT_SHOPPER"})
+}
+
+export const editShopperProfile = (form, id) => async dispatch => {
+    console.log(form)
+    const response = await rails.patch(`/shopper_infos/${id}`, form)
+    console.log(response.data)
+}
+
+
 export const cartItemCount = (newCount, cartItemId) => {
     // const response = await rails.patch(`/cart_items/${cartItemId}`, {cart_item: newCount})
     // console.log(response.data)
@@ -87,10 +101,12 @@ export const cartItemCount = (newCount, cartItemId) => {
 
 export const createShopperProfile = (shopperInfo) => async dispatch=> {
     const response = await rails.post('/shopper_infos/', shopperInfo)
-    console.log(response.data)
-    // return ({
-
-    // })
+    let data = response.data
+    console.log(data)
+    dispatch({
+        type: 'PROFILE_INFO',
+        payload: data.data
+    })
 }
 
 export const signIn = (userInfo) => async dispatch => {

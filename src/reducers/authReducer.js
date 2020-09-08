@@ -19,9 +19,9 @@ export default (state = INTIAL_STATE, action) => {
             }
         case 'PROFILE_INFO':
             return{
-                ...state, currentShopper: {
-                    currentShopper: state.currentShopper,
-                    shopper_info: action.payload
+                ...state, currentShopper: { 
+                        ...state.currentShopper,
+                        shopper_info: action.payload
                 }
             }
         default:

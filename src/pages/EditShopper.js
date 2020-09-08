@@ -23,15 +23,20 @@ class EditShopper extends React.Component {
     }
 
     submitForm = (formValues) => {
+        let id = this.props.shopperId
+        let infoId = this.props.infoId
+        console.log(formValues)
         if(!!formValues.image){
-            this.props.editShopper()
+   
+            this.props.editShopper({ shopper: {image: formValues.image} }, id)
+        } else if (!!formValues.email) {          
+            this.props.editShopper({ shopper: { email: formValues.email} }, id)
         } else if (!!formValues.phone) {
-            this.props.editShopper()
-        } else if (!!formValues.email) {
-            this.props.editShopperProfile()
+            this.props.editShopperProfile({ shopper_info: {phone: formValues.phone} }, infoId)
         } else if (!!formValues.address) {
-            this.props.editShopperProfile()
+            this.props.editShopperProfile({ shopper_info: {address: formValues.address, city: formValues.city, state: formValues.state, zip_code: formValues.zip_code} }, infoId)
         }
+        this.toProfile()
         
     }
 
@@ -116,9 +121,16 @@ let validate = (formValues) => {
 }
 
 
-let formWrapped = reduxForm({
+const formWrapped = reduxForm({
     form: 'editShopperForm',
     validate: validate
 })(EditShopper)
 
-export default connect(null)(formWrapped)
+const mapStateToProps = state => {
+    return ({
+        shopperId: state.auth.currentShopper.id,
+        infoId: state.auth.currentShopper.shopper_info.id
+    })
+}
+
+export default connect(mapStateToProps, {editShopper, editShopperProfile})(formWrapped)
