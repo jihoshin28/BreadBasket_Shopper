@@ -16,12 +16,12 @@ export class Profile extends Component{
     render(){   
         return (
             <div>
-                <h3>Profile Page</h3>
+                <h1>Profile Page</h1>
                 <div class = "container">
                     <div>
                         <img class="profilePageImage" src={this.props.userAuthPic}></img> 
-
                     </div>
+                    <button onClick = {(e)=> {console.log()}}>Change</button>
                         <h4>{this.capitalize(this.props.userFirstName) + ' ' + this.capitalize(this.props.userLastName)}</h4>
                    
                     <div>
