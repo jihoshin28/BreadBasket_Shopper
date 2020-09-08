@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { getItems, selectStore, startCart } from '../actions'
+import { getItems, selectStore, startCart, getCart } from '../actions'
 import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
@@ -15,6 +15,13 @@ class OrderPage extends Component {
             this.props.startCart({ shopper_id: this.props.shopperId })
         }
     }
+
+    componentDidUpdate(prevState){
+        if (prevState.cartId !== this.props.cartId){
+            this.props.getCart(this.props.cartId)
+        }
+    }
+    
     render() {
         console.log(this.props.selectedStore)
         return (
@@ -58,8 +65,10 @@ let mapStateToProps = (state) => {
         categories: state.categories,
         stores: state.stores.storesList,
         selectedStore: state.stores.selectedStore,
-        shopperId: state.auth.currentShopper.id
+        shopperId: state.auth.currentShopper.id,
+        cartId: state.cart.cart_id,
+        cartItems: state.cart.cart_items
     })
 }
 
-export default connect(mapStateToProps,{getItems, selectStore, startCart})(OrderPage)
+export default connect(mapStateToProps,{getItems, selectStore, startCart, getCart})(OrderPage)

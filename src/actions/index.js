@@ -41,6 +41,11 @@ export const getCart = (cart_id) => async dispatch => {
     dispatch({type: "GET_CART", payload: data.data})
 }
 
+export const changeCart = (cart_id) => async dispatch => {
+    const response = await rails.delete(`/cart_items/${cart_id}`)
+    
+}
+
 export const startCart = cartInfo => async dispatch => {
     const response = await rails.post('/carts', {cart: cartInfo})
     let data = response.data

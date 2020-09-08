@@ -25,6 +25,13 @@ export default (state = INITIAL_STATE, action) => {
         }
     }
 
+    if(action.type === 'CHANGE_STORE'){
+        return {...state, 
+            cart_id: action.payload.id,
+            cart_items: action.payload.cartItems
+        }
+    }
+
     if(action.type === 'ADD_CART_ITEM'){
         return {...state, cart_items: {...state.cart_items, [action.payload.id]: action.payload.cart_item}}
     }
