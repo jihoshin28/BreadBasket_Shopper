@@ -45,14 +45,18 @@ class GoogleAuth extends React.Component{
     }
 
     signIn = () => {
-        this.auth.signIn()
+        if(!!this.auth){
+            this.auth.signIn()
+        }
     }
 
     
     signOut = () => {
-        this.auth.signOut().then(() => {
+        if(!!this.auth){
+            this.auth.signOut()
             this.props.dropCart()
-        })
+        }
+  
         // localStorage.removeItem('rails_token')
     }
 
