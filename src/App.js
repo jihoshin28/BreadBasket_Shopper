@@ -53,7 +53,6 @@ class App extends Component  {
 
 let mapStateToProps = state => {
   return({
-    shopperId: state.auth.currentShopper.id,
     state: state
   })
 }

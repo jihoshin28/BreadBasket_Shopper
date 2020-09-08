@@ -85,12 +85,12 @@ export const cartItemCount = (newCount, cartItemId) => {
     })
 }
 
-export const createShopperProfile = (shopperInfo) => async dispatch => {
+export const createShopperProfile = (shopperInfo) => async dispatch=> {
     const response = await rails.post('/shopper_infos/', shopperInfo)
-    console.log(response.config)
-    // let data = response.data
-    // dispatch({ type: 'CREATE_SHOPPER_PROFILE', payload: profileInfo})
-    // dispatch({type: 'CREATE_SHOPPER_PROFILE', payload: data})
+    console.log(response.data)
+    // return ({
+
+    // })
 }
 
 export const signIn = (userInfo) => async dispatch => {
@@ -110,22 +110,3 @@ export const signOut = () => {
         type: 'SIGN_OUT'
     }
 }
-
-
-// export const addItem = (item) => {
-//     return {
-//         type: 'ADD_ITEM',
-//         payload: {
-//             item: item
-//         }
-//     }
-// }
-
-// export const deleteItem = (item) => {
-//     return {
-//         type: 'DELETE_ITEM',
-//         payload: {
-//             item: item
-//         }
-//     }
-// }

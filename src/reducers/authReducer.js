@@ -6,14 +6,23 @@ const INTIAL_STATE = {
 export default (state = INTIAL_STATE, action) => {
     switch(action.type){
         case 'SIGN_IN':
-            return {...state, 
+            return {
+                ...state, 
                 signedIn: true,
                 currentShopper: action.payload
             }
         case 'SIGN_OUT':
-            return {...state, 
+            return {
+                ...state, 
                 signedIn: false, 
                 currentShopper: {}
+            }
+        case 'PROFILE_INFO':
+            return{
+                ...state, currentShopper: {
+                    currentShopper: state.currentShopper,
+                    shopper_info: action.payload
+                }
             }
         default:
             return state 

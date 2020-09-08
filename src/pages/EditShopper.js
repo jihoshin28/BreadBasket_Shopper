@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import {editShopper} from '../actions'
+import {editShopper, editShopperProfile} from '../actions'
 
 class EditShopper extends React.Component {
     componentDidMount(){
@@ -18,31 +18,45 @@ class EditShopper extends React.Component {
         )
     }
 
+    toProfile = () => {
+        this.props.history.replace('/profile')
+    }
+
     submitForm = (formValues) => {
-        console.log(formValues)
+        if(!!formValues.image){
+            this.props.editShopper()
+        } else if (!!formValues.phone) {
+            this.props.editShopper()
+        } else if (!!formValues.email) {
+            this.props.editShopperProfile()
+        } else if (!!formValues.address) {
+            this.props.editShopperProfile()
+        }
+        
     }
 
     renderForm(){
-        if(this.props.match.params.section === "profile/address"){
+        let params = this.props.match.params.section
+    
+        if(params === "address"){
             return (
                 <div>
                     <Field name = "address" component= {this.renderInput} label = "Address"></Field>
                     <Field name="city" component={this.renderInput} label="City"></Field>
                     <Field name="state" component={this.renderInput} label="State"></Field>
                     <Field name="zip_code" component={this.renderInput} label="Zip Code"></Field>
-
                 </div>
             )
 
-        } else if (this.props.match.params.section === "profile/phone"){
+        } else if (params === "phone"){
             return (
                 <Field name="phone" component={this.renderInput} label="Phone Number"></Field>
             )
-        } else if (this.props.match.params.section === "email"){
+        } else if (params === "email"){
             return (
                 <Field name="email" component={this.renderInput} label="Email"></Field>
             )
-        } else if (this.props.match.params.section === "image"){
+        } else if (params === "image"){
             return (                
                 <Field name="image" component={this.renderInput} label="Image URL"></Field>
             )
@@ -57,6 +71,12 @@ class EditShopper extends React.Component {
                     {this.renderForm()}
                     <button type = "submit">Submit</button>
                 </form>
+
+                <div>
+                    <button onClick = {this.toProfile}>
+                        Back To Profile
+                    </button>
+                </div>
             </div>
         )
     }
