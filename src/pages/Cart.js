@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { getCart, removeCartItem, checkoutPage} from '../actions'
+import { getCart, removeCartItem} from '../actions'
 import CartItem from '../components/CartItem'
 import { isEmpty } from 'lodash'
 import {reduxForm, Field } from 'redux-form'
@@ -44,12 +44,18 @@ class Cart extends Component{
                 alert('Your cart is empty!')
             } else {
                 let tip = !!formValues.tip ? formValues.tip * .01 * (subtotal + delivery) : 0
-                let cartTotal = {
-                    subtotal: subtotal,
-                    delivery: delivery,
-                    tip: tip
+                if(!this.props.orderId){
+                    let orderInfo = {
+                        payment: delivery,
+                        tip: this.props.cartTip,
+                        total: total,
+                        store_id: this.props.storeId,
+                        shopper_id: this.props.shopperId,
+                        status: 'active'
+                    }
+                    this.props.createOrder(orderInfo)
                 }
-                this.props.checkoutPage(cartTotal)
+                
                 this.props.history.push('/checkout')
             }
         }
@@ -153,11 +159,13 @@ let formWrapped = reduxForm({
 
 const mapStateToProps = state => {
     return({
-        state: state,
+        shopperId: state.auth.currentShopper.shopper_info.id,
+        storeId: state.stores.selectedStore.id,
+        orderId: state.order.order_id,
         tip: state.form.checkoutForm,
         cart_id: state.cart.cart_id,
         cart_items: state.cart.cart_items
     })
 }
 
-export default connect(mapStateToProps, {getCart, removeCartItem, checkoutPage})(formWrapped)
+export default connect(mapStateToProps, {getCart, removeCartItem})(formWrapped)

@@ -79,12 +79,6 @@ export const removeCartItem = cartItemId => async dispatch => {
     dispatch({type: "DROP_CART_ITEM", payload: cartItemId})
 }
 
-export const checkoutPage = cartTotal => {
-    return({
-        type: "CHECKOUT",
-        payload: cartTotal
-    })
-}
 export const placeOrder = orderInfo => async dispatch => {
     const response = await rails.post(`orders`, {order: orderInfo})
     let data = response.data 

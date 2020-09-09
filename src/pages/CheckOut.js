@@ -7,8 +7,8 @@ class CheckOut extends React.Component{
     componentDidMount(){
         let keys = Object.keys(this.props.cartItems)
         let cartItems = keys.map(key => this.props.cartItems[key])
-        console.log(cartItems)
     }
+
     placeOrder = () => {
         let orderInfo = {
             payment: this.props.cartDelivery, 
@@ -19,25 +19,24 @@ class CheckOut extends React.Component{
             status: 'active'
         }
         //:order_id, :item_id, :quantity_num, :status
-        this.props.placeOrder(orderInfo).then((value) => {
-            console.log(value)
-            console.log(this.props.orderId)
-            let keys = Object.keys(this.props.cartItems)
-            let cartItems = keys.map(key => this.props.cartItems[key])
-            cartItems.forEach(cartItem => {
-                let orderItemInfo = {
-                    order_id: this.props.orderId,
-                    item_id: cartItem.attributes.item_id,
-                    quantity_num: cartItem.attributes.quantity_num, 
-                    status: "pending"
-                }
-                console.log(orderItemInfo)
-                this.props.addOrderItem(orderItemInfo)
-            })    
-            for (let i = 0; i < keys.length; i++) {
-                this.props.removeCartItem(keys[i])
+    
+        console.log(this.props.orderId)
+        let keys = Object.keys(this.props.cartItems)
+        let cartItems = keys.map(key => this.props.cartItems[key])
+        cartItems.forEach(cartItem => {
+            let orderItemInfo = {
+                order_id: this.props.orderId,
+                item_id: cartItem.attributes.item_id,
+                quantity_num: cartItem.attributes.quantity_num, 
+                status: "pending"
             }
-        })
+            console.log(orderItemInfo)
+            this.props.addOrderItem(orderItemInfo)
+        })    
+        for (let i = 0; i < keys.length; i++) {
+            this.props.removeCartItem(keys[i])
+        }
+    
         this.props.dropCart()
         this.props.history.push('/')
 
