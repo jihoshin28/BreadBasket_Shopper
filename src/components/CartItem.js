@@ -17,10 +17,10 @@ class CartItem extends Component {
             
         }
         if(type === '-'){
-            if(this.props.count > 0){
+            if(this.props.count > 1){
                 newCount = this.props.count - 1 
             } else{
-                newCount = 0
+                newCount = 1
             }
         }
         this.props.cartItemCount(newCount, this.props.cartItemId)

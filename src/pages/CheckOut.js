@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CheckoutItem from '../components/CheckoutItem'
+import {checkout} from '../actions'
 
 class CheckOut extends React.Component{
     componentDidMount(){

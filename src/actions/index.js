@@ -79,11 +79,14 @@ export const removeCartItem = cartItemId => async dispatch => {
     dispatch({type: "DROP_CART_ITEM", payload: cartItemId})
 }
 
-export const checkOut = cartTotal => {
+export const checkoutPage = cartTotal => {
     return({
         type: "CHECKOUT",
         payload: cartTotal
     })
+}
+export const checkout = orderInfo => async dispatch => {
+
 }
 
 export const editShopper = (form, id) =>  async dispatch => {

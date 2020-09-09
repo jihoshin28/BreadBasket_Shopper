@@ -9,7 +9,7 @@ class ItemCard extends React.Component  {
         let cartItemInfo = {
             cart_id: this.props.cart_id,
             item_id: this.props.item_id,
-            quantity_num: 0
+            quantity_num: 1
         }
         console.log(cartItemInfo)
         this.props.addCartItem(cartItemInfo)

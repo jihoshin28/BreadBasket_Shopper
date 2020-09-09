@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { getCart, removeCartItem, checkOut} from '../actions'
+import { getCart, removeCartItem, checkoutPage} from '../actions'
 import CartItem from '../components/CartItem'
 import { isEmpty } from 'lodash'
 import {reduxForm, Field } from 'redux-form'
@@ -49,7 +49,7 @@ class Cart extends Component{
                 delivery: delivery,
                 tip: tip
             }
-            this.props.checkOut(cartTotal)
+            this.props.checkoutPage(cartTotal)
             this.props.history.push('/checkout')
         }
     
@@ -94,18 +94,6 @@ class Cart extends Component{
                 </form>
             </div>
             )
-    }
-
-    checkOut(cartTotal){
-        
-        if (isEmpty(this.props.cart_items)) {
-            alert('Your cart is empty!')
-        } else {
-            console.log(cartTotal)
-            // this.props.checkOut(cartTotal)
-            this.props.history.push('/checkout')
-        }
-        
     }
 
     render() {
@@ -171,4 +159,4 @@ const mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, {getCart, removeCartItem, checkOut})(formWrapped)
+export default connect(mapStateToProps, {getCart, removeCartItem, checkoutPage})(formWrapped)
