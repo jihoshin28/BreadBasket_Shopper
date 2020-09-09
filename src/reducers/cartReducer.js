@@ -2,7 +2,10 @@ import _ from 'lodash'
 
 let INITIAL_STATE = {
     cart_id: null,
-    cart_items: {}
+    cart_items: {},
+    subtotal: 0,
+    delivery: 0,
+    tip: 0
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -50,6 +53,14 @@ export default (state = INITIAL_STATE, action) => {
                         }
                     }
                 }
+    }
+
+    if (action.type === "CHECKOUT"){
+        return {...state,
+            total: action.payload.total,
+            payment: action.payload.payment,
+            tip: action.payload.tip
+        }
     }
             
         return state

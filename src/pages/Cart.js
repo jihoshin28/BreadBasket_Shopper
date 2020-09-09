@@ -1,11 +1,17 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { getCart, removeCartItem } from '../actions'
+import { getCart, removeCartItem, checkOut} from '../actions'
 import CartItem from '../components/CartItem'
+import { isEmpty } from 'lodash'
+import {reduxForm, Field } from 'redux-form'
 
 class Cart extends Component{
     componentDidMount(){
         this.props.getCart(this.props.cart_id)
+    }
+
+    componentDidUpdate(){
+        console.log(this.props.tip)
     }
 
     renderCart(){ 
@@ -33,40 +39,89 @@ class Cart extends Component{
                 return sum + (current.attributes.quantity_num * (current.attributes.item.price * .01))
             }, 0)
         }
-    
+        function renderSelect({input, label}){
+            return(
+                <div>
+                    <span>{label}</span>
+                    <select {...input} id="tip">
+                        <option value="0">0%</option>
+                        <option value="5">5%</option>
+                        <option value="10">10%</option>
+                        <option value="15">15%</option>
+                        <option value="20">20%</option>
+                    </select>
+                </div>
+            )
+        }
         let delivery = subtotal * .14
         let total = subtotal + delivery
+        let cartTotal = {
+            subtotal: subtotal,
+            delivery: delivery,
+            // tip: tip
+        }
+        let submitForm = (formValues) => {
+            let cartTotal = {
+                subtotal: subtotal,
+                delivery: delivery,
+                tip: formValues.tip * .01 * (subtotal + delivery)
+            }
+            console.log(cartTotal)
             
+        }
+    
             return (
             <div>
-                <h3>
-                    {`$${subtotal.toFixed(2)}`}
-                </h3>
-                <h3>
-                    {`$${delivery.toFixed(2)}`}
-                </h3>
-                <h3>
-                    <span>
-                        Tip(% of total order)
-                                </span>
-                    <span>
-                        <select id="cars">
-                            <option value="0">0%</option>
-                            <option value="5">5%</option>
-                            <option value="10">10%</option>
-                            <option value="15">15%</option>
-                            <option value="20">20%</option>
-                        </select>
-                    </span>
-                    {/* {`$${}`} */}
-                </h3>
-                <h3>
-                    {`$${total.toFixed(2)}`}
-                </h3>
+                <form onSubmit={this.props.handleSubmit(submitForm)}>
+                    <div>
+                        <h2>
+                            {`$${subtotal.toFixed(2)}`}
+                        </h2>
+                        <h2>
+                            {`$${delivery.toFixed(2)}`}
+                        </h2>
+                        <h2>
+                            <span>
+                                Tip(% of total order)
+                                        </span>
+                            <span>
+                                        
+
+                                    <Field name = "tip" component = "select">
+                                            <option value="0">0%</option>
+                                            <option value="5">5%</option>
+                                            <option value="10">10%</option>
+                                            <option value="15">15%</option>
+                                            <option value="20">20%</option>
+                                    </Field>
+                               
+                            </span>
+                            {/* {`$${tip}`} */}
+                        </h2>
+                        <h2>
+                            {`$${total.toFixed(2)}`}
+                        </h2>
+                            
+                            <button type="submit">
+                                Checkout
+                    </button>
+                    </div>
+                    
+                    
+                </form>
             </div>
             )
-        
+    }
 
+    checkOut(cartTotal){
+        
+        if (isEmpty(this.props.cart_items)) {
+            alert('Your cart is empty!')
+        } else {
+            console.log(cartTotal)
+            // this.props.checkOut(cartTotal)
+            this.props.history.push('/checkout')
+        }
         
     }
 
@@ -91,6 +146,7 @@ class Cart extends Component{
                             <h3>
                                 Total:
                             </h3>
+                            <br></br>
                         </div>
                         <div>
                             <h3>
@@ -105,10 +161,12 @@ class Cart extends Component{
                             <h3>
                                 ................................................
                             </h3>
+                            <br></br>
                         </div>
 
                         {this.renderCartTotal()}
                     </div>
+                    
                 </div>
                 
             </div> 
@@ -116,11 +174,18 @@ class Cart extends Component{
     }
 }
 
+let formWrapped = reduxForm({
+    form: 'checkoutForm'
+})(Cart)
+
+
 const mapStateToProps = state => {
     return({
-       cart_id: state.cart.cart_id,
-       cart_items: state.cart.cart_items
+        state: state,
+        tip: state.form.checkoutForm,
+        cart_id: state.cart.cart_id,
+        cart_items: state.cart.cart_items
     })
 }
 
-export default connect(mapStateToProps, {getCart, removeCartItem})(Cart)
+export default connect(mapStateToProps, {getCart, removeCartItem, checkOut})(formWrapped)

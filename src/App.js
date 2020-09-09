@@ -9,6 +9,7 @@ import NavBar from './containers/NavBar'
 import Home from './pages/Home'
 import About from './pages/About'
 import Cart from './pages/Cart'
+import Checkout from './pages/CheckOut'
 import EditShopper from './pages/EditShopper'
 import OrderPage from './pages/OrderPage'
 import OrderHistory from './pages/OrderHistory'
@@ -34,6 +35,7 @@ class App extends Component  {
             <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
             <Route exact path='/about' render={(props) => <About {...props} />} />
             <Route exact path='/cart' render={(props) => <Cart {...props} />} />
+            <Route exact path='/checkout' render={(props) => <Checkout {...props} />} />
             <Route exact path='/edit_shopper/:section' render={(props) => <EditShopper {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
