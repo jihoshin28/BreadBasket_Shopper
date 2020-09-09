@@ -88,12 +88,19 @@ export const checkoutPage = cartTotal => {
 export const placeOrder = orderInfo => async dispatch => {
     const response = await rails.post(`orders`, {order: orderInfo})
     let data = response.data 
-    console.log(data)
-    // dispatch({type: "POST_CURRENT_ORDER", payload: data})
+    console.log(data.data.id)
+    dispatch({type: "PLACED_ORDER", payload: data.data.id})
 }
 
-export const makeOrderItem = orderItemInfo => async dispatch => {
-    const response = await rails.post(`order_items`)
+export const addOrderItem = orderItemInfo => async dispatch => {
+    const response = await rails.post(`order_items`, {order_item: orderItemInfo})
+    let data = response.data
+    console.log(data)
+    dispatch({ type: "ADD_ORDER_ITEM", payload: {
+            order_item: data.data,
+            id: data.data.id
+        }
+    })
 }
 
 export const editShopper = (form, id) =>  async dispatch => {

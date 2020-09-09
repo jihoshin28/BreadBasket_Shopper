@@ -26,7 +26,7 @@ class Cart extends Component{
 
     renderCartTotal(){
         let subtotal = 0
-        if (!this.props.cart_items || this.props.cart_items === {}){
+        if (!!isEmpty(this.props.cart_items)){
             subtotal = 0
         } else {
             let keys = Object.keys(this.props.cart_items)
