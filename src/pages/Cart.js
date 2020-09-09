@@ -66,8 +66,8 @@ class Cart extends Component{
                 delivery: delivery,
                 tip: formValues.tip * .01 * (subtotal + delivery)
             }
-            console.log(cartTotal)
-            
+            this.props.checkOut(cartTotal)
+            this.props.history.push('/checkout')
         }
     
             return (
