@@ -1,7 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import CheckoutItem from '../components/CheckoutItem'
 
 class CheckOut extends React.Component{
+    componentDidMount(){
+        console.log(this.props.cartItems)
+    }
+
+    renderItems(){
+        this.props.cartItems.map(item => {
+            return <div>
+                {/* <CheckoutItem name = {}></CheckoutItem> */}
+            </div>
+        })
+    }
 
     render(){
         return(

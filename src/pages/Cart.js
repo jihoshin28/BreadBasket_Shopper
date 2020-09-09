@@ -39,32 +39,15 @@ class Cart extends Component{
                 return sum + (current.attributes.quantity_num * (current.attributes.item.price * .01))
             }, 0)
         }
-        function renderSelect({input, label}){
-            return(
-                <div>
-                    <span>{label}</span>
-                    <select {...input} id="tip">
-                        <option value="0">0%</option>
-                        <option value="5">5%</option>
-                        <option value="10">10%</option>
-                        <option value="15">15%</option>
-                        <option value="20">20%</option>
-                    </select>
-                </div>
-            )
-        }
+        
         let delivery = subtotal * .14
         let total = subtotal + delivery
-        let cartTotal = {
-            subtotal: subtotal,
-            delivery: delivery,
-            // tip: tip
-        }
         let submitForm = (formValues) => {
+            let tip = !!formValues.tip ? formValues.tip * .01 * (subtotal + delivery) : 0
             let cartTotal = {
                 subtotal: subtotal,
                 delivery: delivery,
-                tip: formValues.tip * .01 * (subtotal + delivery)
+                tip: tip
             }
             this.props.checkOut(cartTotal)
             this.props.history.push('/checkout')
