@@ -8,10 +8,14 @@ class CheckOut extends React.Component{
     }
 
     renderItems(){
-        this.props.cartItems.map(item => {
-            return <div>
-                {/* <CheckoutItem name = {}></CheckoutItem> */}
-            </div>
+        let keys = Object.keys(this.props.cartItems)
+        let cartItems = keys.map(key => this.props.cartItems[key])
+        return cartItems.map(item => {
+            let attributes = item.attributes
+            console.log(attributes)
+            return (
+                <CheckoutItem price = {attributes.item.price} image = {attributes.item.image} count = {attributes.quantity_num} units = {attributes.item.quantity_unit} name = {attributes.item.name}></CheckoutItem>
+            )
         })
     }
 
@@ -20,7 +24,7 @@ class CheckOut extends React.Component{
             <div className = "container">
                 <h1> Checkout </h1>
                 <div> 
-
+                    {this.renderItems()}
                 </div>
                 <div >
                     <h3>SubTotal: {`$${this.props.cartSubTotal.toFixed(2) }`}</h3>
