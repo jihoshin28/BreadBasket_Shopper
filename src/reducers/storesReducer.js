@@ -11,5 +11,6 @@ export default (state = INITIAL_STATE, action) => {
     if(action.type === 'SELECT_STORE'){
         return {...state, selectedStore: action.payload}
     }
+    
     return state
 }

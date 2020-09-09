@@ -6,16 +6,13 @@ import { isEmpty } from 'lodash'
 import {reduxForm, Field } from 'redux-form'
 
 class Cart extends Component{
-    componentDidMount(){
-        this.props.getCart(this.props.cart_id)
-    }
 
     componentDidUpdate(){
         console.log(this.props.tip)
     }
 
     renderCart(){ 
-        if (!!this.props.cart_items || this.props.cart_items === {}){
+        if (!isEmpty(this.props.cart_items)){
             let keys = Object.keys(this.props.cart_items)
             let cartItems = keys.map(key => this.props.cart_items[key])
             return (
@@ -43,14 +40,18 @@ class Cart extends Component{
         let delivery = subtotal * .14
         let total = subtotal + delivery
         let submitForm = (formValues) => {
-            let tip = !!formValues.tip ? formValues.tip * .01 * (subtotal + delivery) : 0
-            let cartTotal = {
-                subtotal: subtotal,
-                delivery: delivery,
-                tip: tip
+            if(!!isEmpty(this.props.cart_items)){
+                alert('Your cart is empty!')
+            } else {
+                let tip = !!formValues.tip ? formValues.tip * .01 * (subtotal + delivery) : 0
+                let cartTotal = {
+                    subtotal: subtotal,
+                    delivery: delivery,
+                    tip: tip
+                }
+                this.props.checkoutPage(cartTotal)
+                this.props.history.push('/checkout')
             }
-            this.props.checkoutPage(cartTotal)
-            this.props.history.push('/checkout')
         }
     
             return (

@@ -1,11 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CheckoutItem from '../components/CheckoutItem'
-import {checkout} from '../actions'
+import {placeOrder} from '../actions'
 
 class CheckOut extends React.Component{
     componentDidMount(){
-        console.log(this.props.cartItems)
+        console.log(this.props.cartTip)
+        console.log(this.props.cartTotal)
+        console.log(this.props.cartDelivery)
+        console.log(this.props.storeId)
+        console.log(this.props.shopperId)
+    }
+    placeOrder = () => {
+        let orderInfo = {
+            payment: this.props.cartDelivery, 
+            tip: this.props.cartTip,
+            total: this.props.cartTotal,
+            store_id: this.props.storeId,
+            shopper_id: this.props.shopperId,
+            status: 'active'
+        }
+        this.props.placeOrder(orderInfo)
+        this.props.history.push('/')
+
     }
 
     renderItems(){
@@ -33,7 +50,7 @@ class CheckOut extends React.Component{
                     <h3>Tip: {`$${this.props.cartTip.toFixed(2)}`}</h3>
                     <h3>Total: {`$${this.props.cartTotal.toFixed(2)}`}</h3>
                 </div>
-
+                <button onClick ={() => this.placeOrder()}>Place Order</button>
             </div>
 
         )
@@ -43,6 +60,8 @@ class CheckOut extends React.Component{
 
 const mapStateToProps = (state) => {
     return({
+        shopperId: state.auth.currentShopper.shopper_info.id,
+        storeId: state.stores.selectedStore.id,
         cartItems: state.cart.cart_items,
         cartSubTotal: state.cart.subtotal,
         cartDelivery: state.cart.delivery,
@@ -51,4 +70,4 @@ const mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, {})(CheckOut)
+export default connect(mapStateToProps, {placeOrder})(CheckOut)
