@@ -14,7 +14,6 @@ export const getStores = () => async dispatch => {
 }
 
 export const selectStore = (store) => {
-    console.log(store, 'selected store')
     return ({
         type: 'SELECT_STORE',
         payload: store
@@ -60,6 +59,12 @@ export const dropCart = () => {
     })
 }
 
+export const dropOrder = () => {
+    return ({
+        type: "DROP_ORDER"
+    })
+}
+
 export const addCartItem = cartItemInfo => async dispatch => {
     const response = await rails.post('/cart_items', {cart_item: cartItemInfo})
     let data = response.data
@@ -80,14 +85,21 @@ export const removeCartItem = cartItemId => async dispatch => {
 }
 
 export const placeOrder = orderInfo => async dispatch => {
-    const response = await rails.post(`orders`, {order: orderInfo})
+    const response = await rails.post(`/orders`, {order: orderInfo})
     let data = response.data 
     console.log(data.data.id)
     dispatch({type: "PLACED_ORDER", payload: data.data.id})
 }
 
+export const getActiveOrders = shopperId => async dispatch => {
+    const response = await rails.get(`/orders?shopper_id=${shopperId}&status=active`)
+    let data = response.data
+    console.log(data)
+    // dispatch({type: "GET_ACTIVE_ORDERS", payload: data})
+}
+
 export const addOrderItem = orderItemInfo => async dispatch => {
-    const response = await rails.post(`order_items`, {order_item: orderItemInfo})
+    const response = await rails.post(`/order_items`, {order_item: orderItemInfo})
     let data = response.data
     console.log(data)
     dispatch({ type: "ADD_ORDER_ITEM", payload: {

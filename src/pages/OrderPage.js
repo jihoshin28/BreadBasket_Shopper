@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { getItems, selectStore, startCart, getCart } from '../actions'
+import { getItems, selectStore, startCart, getCart, getActiveOrders} from '../actions'
 import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
@@ -13,6 +13,7 @@ class OrderPage extends Component {
         if (!!this.props.shopperId) {
             console.log("Hello shopper! Welcome to BreadBasket!")
             this.props.startCart({ shopper_id: this.props.shopperId })
+            this.props.getActiveOrders(this.props.shopperId)
         }
     }
 
@@ -71,4 +72,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps,{getItems, selectStore, startCart, getCart})(OrderPage)
+export default connect(mapStateToProps,{getItems, selectStore, startCart, getCart, getActiveOrders})(OrderPage)
