@@ -11,10 +11,10 @@ class CheckOut extends React.Component{
 
                 </div>
                 <div >
-                    <h3>SubTotal:</h3>
-                    <h3>Delivery:</h3>
-                    <h3>Tip:</h3>
-                    <h3>Total: {`${3}`}</h3>
+                    <h3>SubTotal: {`$${this.props.cartSubTotal.toFixed(2) }`}</h3>
+                    <h3>Delivery: {`$${this.props.cartDelivery.toFixed(2)}`}</h3>
+                    <h3>Tip: {`$${this.props.cartTip.toFixed(2)}`}</h3>
+                    <h3>Total: {`$${this.props.cartTotal.toFixed(2)}`}</h3>
                 </div>
 
             </div>
@@ -28,8 +28,9 @@ const mapStateToProps = (state) => {
     return({
         cartItems: state.cart.cart_items,
         cartSubTotal: state.cart.subtotal,
-        cartPayment: state.cart.payment,
-        cartTip: state.cart.tip
+        cartDelivery: state.cart.delivery,
+        cartTip: state.cart.tip,
+        cartTotal: (state.cart.subtotal + state.cart.delivery + state.cart.tip)
     })
 }
 
