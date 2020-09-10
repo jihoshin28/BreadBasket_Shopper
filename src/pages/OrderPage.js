@@ -23,7 +23,6 @@ class OrderPage extends Component {
     }
     
     render() {
-        console.log(this.props.selectedStore)
         return (
             <div>
                 <br></br>
@@ -59,7 +58,6 @@ class OrderPage extends Component {
 }
 
 let mapStateToProps = (state) => {
-    console.log(state)
     return ({
         items: state.items.itemsList.data,
         categories: state.categories,

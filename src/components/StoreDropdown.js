@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {selectStore, getItems, removeCartItem, dropCart} from '../actions'
+import {selectStore, getItems, removeCartItem, dropCart, startCart} from '../actions'
 import {isEmpty} from 'lodash'
 
 class StoreDropdown extends React.Component {
@@ -16,6 +16,7 @@ class StoreDropdown extends React.Component {
                     this.props.removeCartItem(keys[i])
                 }
             }
+            this.props.startCart({ shopper_id: this.props.shopperId })
         }
     }
     
@@ -29,7 +30,6 @@ class StoreDropdown extends React.Component {
 
     selectStore = (e) => {
         let store = this.props.stores.find(store => store.id == e.target.id)
-        console.log(store)
         this.props.selectStore(store)
         // window.history.pushState({}, '', '/orderpage')
         // window.history.go()
@@ -53,10 +53,11 @@ class StoreDropdown extends React.Component {
 
 let mapStateToProps = state => {
     return ({
+        shopperId: state.auth.currentShopper.id,
         stores: state.stores.storesList,
         selectedStore: state.stores.selectedStore,
         cartItems: state.cart.cart_items
     })
 }
 
-export default connect(mapStateToProps, {selectStore, getItems, removeCartItem, dropCart})(StoreDropdown)
+export default connect(mapStateToProps, {selectStore, getItems, removeCartItem, dropCart, startCart})(StoreDropdown)

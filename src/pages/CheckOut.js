@@ -27,7 +27,7 @@ class CheckOut extends React.Component{
         this.props.changeOrderStatus(this.props.orderId, {status: "active"})
         this.props.dropCart()
         this.props.dropOrder()
-        this.props.history.push('/')
+        this.props.history.push('/orderpage')
         alert("Order has been placed!")
     }
 
