@@ -54,14 +54,6 @@ export default (state = INITIAL_STATE, action) => {
                     }
                 }
     }
-
-    if (action.type === "CHECKOUT"){
-        return {...state,
-            subtotal: action.payload.subtotal,
-            delivery: action.payload.delivery,
-            tip: action.payload.tip
-        }
-    }
             
         return state
     }

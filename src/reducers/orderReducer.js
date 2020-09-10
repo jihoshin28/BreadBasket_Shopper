@@ -1,12 +1,20 @@
 let INITIAL_STATE = {
     current_order_id: null,
     order_items: {},
-    active_order_ids: []
+    active_order_ids: [],
+    payment: null,
+    tip: null, 
+    total: null
 }
 
 export default (state = INITIAL_STATE, action) => {
-    if(action.type === "PLACED_ORDER"){
-        return {...state, current_order_id: action.payload}
+    if(action.type === "PRE_ORDER"){
+        return {...state, current_order_id: action.payload.id, 
+            subtotal: parseInt(action.payload.order.subtotal),
+            payment: parseInt(action.payload.order.payment),
+            tip: parseInt(action.payload.order.tip),
+            total: parseInt(action.payload.order.total)
+        }
     }
 
     if (action.type === 'ADD_ORDER_ITEM') {
@@ -14,7 +22,7 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     if(action.type === 'DROP_ORDER'){
-        return {...state, order_id: null, order_items: {}}
+        return {...state, current_order_id: null, order_items: {}}
     }
 
     if(action.type === "GET_ACTIVE_ORDERS"){

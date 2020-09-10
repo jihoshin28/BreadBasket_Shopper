@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { getCart, removeCartItem, placeOrder, updateOrder} from '../actions'
+import { getCart, removeCartItem, preOrder, updatePreOrder} from '../actions'
 import CartItem from '../components/CartItem'
 import { isEmpty } from 'lodash'
 import {reduxForm, Field } from 'redux-form'
@@ -33,26 +33,26 @@ class Cart extends Component{
             }, 0)
         }
         
-        let delivery = subtotal * .14
-        let total = subtotal + delivery
+        let payment = subtotal * .14
+        let total = subtotal + payment
         let submitForm = (formValues) => {
             if(!!isEmpty(this.props.cart_items)){
                 alert('Your cart is empty!')
             } else {
-                let tip = !!formValues.tip ? formValues.tip * .01 * (subtotal + delivery) : 0
+                let tip = !!formValues.tip ? formValues.tip * .01 * (subtotal + payment) : 0
                 let orderInfo = {
-                    payment: (delivery * 100).toFixed(2),
-                    tip: (tip * 100).toFixed(2),
-                    total: (total * 100).toFixed(2),
+                    payment: (payment * 100).toFixed(0),
+                    tip: (tip * 100).toFixed(0),
+                    subtotal: (subtotal * 100).toFixed(0),
+                    total: (total * 100).toFixed(0),
                     store_id: this.props.storeId,
                     shopper_id: this.props.shopperId,
                     status: 'active'
                 }
-                console.log(orderInfo, formValues.tip)
                     if(!this.props.currentOrderId){
-                        this.props.placeOrder(orderInfo)
+                        this.props.preOrder(orderInfo)
                     }else {
-                        this.props.updateOrder(this.props.orderId, orderInfo)
+                        this.props.updatePreOrder(this.props.orderId, orderInfo)
                     }              
                 this.props.history.push('/checkout')
             }
@@ -66,7 +66,7 @@ class Cart extends Component{
                             {`$${subtotal.toFixed(2)}`}
                         </h2>
                         <h2>
-                            {`$${delivery.toFixed(2)}`}
+                            {`$${payment.toFixed(2)}`}
                         </h2>
                         <h2>
                             <span>
@@ -166,4 +166,4 @@ const mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, {getCart, removeCartItem, placeOrder, updateOrder})(formWrapped)
+export default connect(mapStateToProps, {getCart, removeCartItem, preOrder, updatePreOrder})(formWrapped)

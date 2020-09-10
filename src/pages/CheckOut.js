@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CheckoutItem from '../components/CheckoutItem'
-import {placeOrder, addOrderItem, removeCartItem, dropCart} from '../actions'
+import { addOrderItem, removeCartItem, dropCart} from '../actions'
 
 class CheckOut extends React.Component{
     componentDidMount(){
@@ -49,10 +49,10 @@ class CheckOut extends React.Component{
                     {this.renderItems()}
                 </div>
                 <div >
-                    <h3>SubTotal: {`$${this.props.cartSubTotal.toFixed(2) }`}</h3>
-                    <h3>Delivery: {`$${this.props.cartDelivery.toFixed(2)}`}</h3>
-                    <h3>Tip: {`$${this.props.cartTip.toFixed(2)}`}</h3>
-                    <h3>Total: {`$${this.props.cartTotal.toFixed(2)}`}</h3>
+                    <h3>SubTotal: {`$${(this.props.orderSubTotal/100).toFixed(2)}`}</h3>
+                    <h3>Delivery: {`$${(this.props.orderPayment/100).toFixed(2)}`}</h3>
+                    <h3>Tip: {`$${(this.props.orderTip/100).toFixed(2)}`}</h3>
+                    <h3>Total: {`$${(this.props.orderTotal/100).toFixed(2)}`}</h3>
                 </div>
                 <button onClick ={() => this.placeOrder()}>Place Order</button>
             </div>
@@ -68,11 +68,11 @@ const mapStateToProps = (state) => {
         shopperId: state.auth.currentShopper.shopper_info.id,
         storeId: state.stores.selectedStore.id,
         cartItems: state.cart.cart_items,
-        cartSubTotal: state.cart.subtotal,
-        cartDelivery: state.cart.delivery,
-        cartTip: state.cart.tip,
-        cartTotal: (state.cart.subtotal + state.cart.delivery + state.cart.tip)
+        orderPayment: state.order.payment,
+        orderTip: state.order.tip,
+        orderTotal: state.order.total,
+        orderSubTotal: state.order.subtotal
     })
 }
 
-export default connect(mapStateToProps, { placeOrder, addOrderItem, removeCartItem, dropCart})(CheckOut)
+export default connect(mapStateToProps, { addOrderItem, removeCartItem, dropCart})(CheckOut)
