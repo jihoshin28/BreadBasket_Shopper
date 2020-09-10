@@ -46,6 +46,13 @@ export class Navbar extends Component {
                         <li class="nav-item active">
                             <a class="nav-link"><Link to='/orderpage'>Make an Order</Link></a>
                         </li>
+                        {(!!this.props.activeOrders) ? 
+                                <li class="nav-item">
+                                    <a class="nav-link"><Link to='/current_orders'>Current Orders</Link></a>
+                                </li>
+                                :
+                                null
+                        }
                         <li class="nav-item">
                             <a class="nav-link"><Link to='/orderhistory'>Order History</Link></a>
                         </li>
@@ -94,6 +101,7 @@ export class Navbar extends Component {
 }
 let mapStateToProps = (state) => {
     return ({
+        activeOrders: state.order.active_order_ids,
         signedIn: state.auth.signedIn,
         userAuthPic: state.auth.currentShopper.image,
         cartItems: state.cart.cart_items
