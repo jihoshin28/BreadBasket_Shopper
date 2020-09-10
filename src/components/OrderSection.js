@@ -2,10 +2,18 @@ import React, { Component } from "react"
 import {connect} from 'react-redux'
 import {cancelOrder} from '../actions'
 
-class OrderItem extends Component {
+class OrderSection extends Component {
+    componentDidMount(){
+        console.log(this.props.history)
+    }
     cancelOrder(){
         this.props.cancelOrder(this.props.id)
     }
+
+    viewOrderItems(){
+        this.props.history.push(`/view_order_items/${this.props.id}`)
+    }
+
     render() {
         return (
             <div class="orderBox">
@@ -28,9 +36,9 @@ class OrderItem extends Component {
                     <button class="detailsButton">
                         View Payment Details
                         </button>
-                    <button class="detailsButton">
+                    <button onClick={() => this.viewOrderItems()} class="detailsButton">
                         View Items
-                        </button>
+                    </button>
                     <button onClick = {()=> this.cancelOrder()}class="detailsButton">
                         Cancel Order
                     </button>
@@ -43,4 +51,4 @@ class OrderItem extends Component {
     }
 }
 
-export default connect(null, {cancelOrder})(OrderItem)
+export default connect(null, {cancelOrder})(OrderSection)

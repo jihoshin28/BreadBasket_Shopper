@@ -18,6 +18,7 @@ import Profile from './pages/Profile'
 import Products from './pages/Products'
 import ProfileSignup from './pages/ProfileSignup'
 import SearchPage from './pages/SearchPage'
+import ViewItems from './pages/ViewOrderItems'
 import {getStores, getCategories, signOut} from './actions'
 
 class App extends Component  {
@@ -45,6 +46,7 @@ class App extends Component  {
             <Route exact path='/profile_signup' render={(props) => <ProfileSignup {...props} />} />
             <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>
             <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
+            <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
         </div>
 
         <footer className="footer">

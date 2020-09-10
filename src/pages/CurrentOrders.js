@@ -6,12 +6,14 @@ import OrderSection from '../components/OrderSection'
 class CurrentOrder extends React.Component {
     componentDidMount(){
         this.props.getActiveOrders(this.props.shopperId)
+        console.log(this.props.history)
     }
     renderOrders = () => {
         return this.props.activeOrders.map((order, id) => {
             let attributes = order.attributes
             return (
                 <OrderSection 
+                    history = {this.props.history}
                     position = {id + 1} 
                     id = {order.id}
                     store = {this.props.stores[attributes.store_id - 1].attributes.name}

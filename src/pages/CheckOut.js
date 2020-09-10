@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import CheckoutItem from '../components/CheckoutItem'
+import OrderItem from '../components/OrderItem'
 import { addOrderItem, removeCartItem, dropCart, completeOrder, changeOrderStatus} from '../actions'
 
 class CheckOut extends React.Component{
@@ -37,7 +37,7 @@ class CheckOut extends React.Component{
         return cartItems.map(item => {
             let attributes = item.attributes
             return (
-                <CheckoutItem price = {attributes.item.price} image = {attributes.item.image} count = {attributes.quantity_num} units = {attributes.item.quantity_unit} name = {attributes.item.name}></CheckoutItem>
+                <OrderItem price = {attributes.item.price} image = {attributes.item.image} count = {attributes.quantity_num} units = {attributes.item.quantity_unit} name = {attributes.item.name}/>
             )
         })
     }
