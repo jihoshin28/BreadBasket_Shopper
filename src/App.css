@@ -67,6 +67,16 @@
   height: 100%;
 }
 
+.cart-item-button {
+  width: 10px;
+  height: 10px;
+}
+
+.item-added{
+  background-color: lawngreen;
+  border: lawngreen
+}
+
 .log-button{
   font-size: 15px;
 }

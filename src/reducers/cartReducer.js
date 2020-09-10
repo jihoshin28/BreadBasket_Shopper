@@ -24,7 +24,8 @@ export default (state = INITIAL_STATE, action) => {
     if(action.type === 'DROP_CART'){
         return {...state, 
             cart_id: null, 
-            cart_items: {}
+            cart_items: {},
+           
         }
     }
 
