@@ -17,12 +17,16 @@ export default (state = INITIAL_STATE, action) => {
         }
     }
 
-    if(action.type === 'DROP_ORDER'){
+    if(action.type === 'COMPLETE_ORDER'){
         return {...state, current_order_id: null}
     }
 
     if(action.type === "GET_ACTIVE_ORDERS"){
         return {...state, active_orders: action.payload}
+    }
+
+    if(action.type === "CANCEL_ORDER"){
+        return {...state, active_orders: state.active_orders.filter(order => order.id !== action.payload)}
     }
     
     return state

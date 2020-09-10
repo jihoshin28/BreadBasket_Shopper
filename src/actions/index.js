@@ -59,10 +59,16 @@ export const dropCart = () => {
     })
 }
 
-export const dropOrder = () => {
+export const completeOrder = () => {
     return ({
-        type: "DROP_ORDER"
+        type: "COMPLETE_ORDER"
     })
+}
+
+export const cancelOrder = (id) => async dispatch => {
+    const response = await rails.delete(`/orders/${id}`)
+    console.log(response.data)
+    dispatch({type: "CANCEL_ORDER", payload: id})
 }
 
 export const addCartItem = cartItemInfo => async dispatch => {

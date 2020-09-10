@@ -1,13 +1,16 @@
 import React, { Component } from "react"
+import {connect} from 'react-redux'
+import {cancelOrder} from '../actions'
 
 class OrderItem extends Component {
+    cancelOrder(){
+        this.props.cancelOrder(this.props.id)
+    }
     render() {
         return (
-
-
             <div class="orderBox">
                 <div class="orderHeader">
-                    <h3>Order {this.props.id}</h3>
+                    <h3>Order {this.props.position}</h3>
                 </div>
 
                 <div class="orderInfo">
@@ -28,6 +31,9 @@ class OrderItem extends Component {
                     <button class="detailsButton">
                         View Items
                         </button>
+                    <button onClick = {()=> this.cancelOrder()}class="detailsButton">
+                        Cancel Order
+                    </button>
                 </div>
 
             </div>
@@ -37,4 +43,4 @@ class OrderItem extends Component {
     }
 }
 
-export default OrderItem
+export default connect(null, {cancelOrder})(OrderItem)

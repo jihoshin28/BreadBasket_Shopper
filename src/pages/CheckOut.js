@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CheckoutItem from '../components/CheckoutItem'
-import { addOrderItem, removeCartItem, dropCart, dropOrder, changeOrderStatus} from '../actions'
+import { addOrderItem, removeCartItem, dropCart, completeOrder, changeOrderStatus} from '../actions'
 
 class CheckOut extends React.Component{
     componentDidMount(){
@@ -26,7 +26,7 @@ class CheckOut extends React.Component{
         }
         this.props.changeOrderStatus(this.props.orderId, {status: "active"})
         this.props.dropCart()
-        this.props.dropOrder()
+        this.props.completeOrder()
         this.props.history.push('/orderpage')
         alert("Order has been placed!")
     }
@@ -77,4 +77,4 @@ const mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { addOrderItem, removeCartItem, dropCart, dropOrder, changeOrderStatus})(CheckOut)
+export default connect(mapStateToProps, { addOrderItem, removeCartItem, dropCart, completeOrder, changeOrderStatus})(CheckOut)

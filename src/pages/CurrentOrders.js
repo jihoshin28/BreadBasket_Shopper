@@ -12,7 +12,8 @@ class CurrentOrder extends React.Component {
             let attributes = order.attributes
             return (
                 <OrderSection 
-                    id = {id + 1} 
+                    position = {id + 1} 
+                    id = {order.id}
                     store = {this.props.stores[attributes.store_id - 1].attributes.name}
                     total = {attributes.total}
                 />
