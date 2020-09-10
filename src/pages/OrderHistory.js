@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import OrderHistoryItem from '../components/OrderHistoryItem'
+import OrderHistorySection from '../components/OrderHistorySection'
 
 export class OrderHistory extends Component {
     componentDidMount(){
@@ -12,7 +12,7 @@ export class OrderHistory extends Component {
             <div class = "container">
                 <h1>Order History</h1>
                 {orders.map(order => {
-                    return <OrderHistoryItem order = {order} />
+                    return <OrderHistorySection order = {order} />
                 })}
                 
             </div>

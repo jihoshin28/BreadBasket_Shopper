@@ -1,16 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import OrderItem from '../components/OrderItem'
+import { getActiveOrders } from '../actions'
+import OrderSection from '../components/OrderSection'
 
 class CurrentOrder extends React.Component {
     componentDidMount(){
-        console.log(this.props.activeOrders)
+        this.props.getActiveOrders(this.props.shopperId)
     }
     renderOrders = () => {
         return this.props.activeOrders.map((order, id) => {
             let attributes = order.attributes
             return (
-                <OrderItem 
+                <OrderSection 
                     id = {id + 1} 
                     store = {this.props.stores[attributes.store_id - 1].attributes.name}
                     total = {attributes.total}
@@ -33,9 +34,10 @@ class CurrentOrder extends React.Component {
 
 let mapStateToProps = state => {
     return ({
+        shopperId: state.auth.currentShopper.id,
         stores: state.stores.storesList,
         activeOrders: state.order.active_orders
     })
 }
 
-export default connect(mapStateToProps, {})(CurrentOrder)
+export default connect(mapStateToProps, {getActiveOrders})(CurrentOrder)
