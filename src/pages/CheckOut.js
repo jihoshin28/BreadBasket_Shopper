@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CheckoutItem from '../components/CheckoutItem'
-import { addOrderItem, removeCartItem, dropCart} from '../actions'
+import { addOrderItem, removeCartItem, dropCart, dropOrder, changeOrderStatus} from '../actions'
 
 class CheckOut extends React.Component{
     componentDidMount(){
@@ -24,10 +24,11 @@ class CheckOut extends React.Component{
         for (let i = 0; i < keys.length; i++) {
             this.props.removeCartItem(keys[i])
         }
-        
+        this.props.changeOrderStatus(this.props.orderId, {status: "active"})
         this.props.dropCart()
+        this.props.dropOrder()
         this.props.history.push('/')
-
+        alert("Order has been placed!")
     }
 
     renderItems(){
@@ -68,6 +69,7 @@ const mapStateToProps = (state) => {
         shopperId: state.auth.currentShopper.shopper_info.id,
         storeId: state.stores.selectedStore.id,
         cartItems: state.cart.cart_items,
+        orderId: state.order.current_order_id,
         orderPayment: state.order.payment,
         orderTip: state.order.tip,
         orderTotal: state.order.total,
@@ -75,4 +77,4 @@ const mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { addOrderItem, removeCartItem, dropCart})(CheckOut)
+export default connect(mapStateToProps, { addOrderItem, removeCartItem, dropCart, dropOrder, changeOrderStatus})(CheckOut)

@@ -47,7 +47,7 @@ class Cart extends Component{
                     total: (total * 100).toFixed(0),
                     store_id: this.props.storeId,
                     shopper_id: this.props.shopperId,
-                    status: 'active'
+                    status: 'pending'
                 }
                     if(!this.props.currentOrderId){
                         this.props.preOrder(orderInfo)

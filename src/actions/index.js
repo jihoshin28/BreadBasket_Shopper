@@ -122,6 +122,11 @@ export const getCurrentOrder = orderId => async dispatch => {
     console.log(data)
 }
 
+export const changeOrderStatus = (id, status) => async dispatch => {
+    const response = await rails.patch(`orders/${id}`, status)
+    console.log(response.data)
+}
+
 export const addOrderItem = orderItemInfo => async dispatch => {
     const response = await rails.post(`/order_items`, {order_item: orderItemInfo})
     let data = response.data

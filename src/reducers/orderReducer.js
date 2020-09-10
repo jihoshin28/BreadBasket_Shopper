@@ -22,7 +22,7 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     if(action.type === 'DROP_ORDER'){
-        return {...state, current_order_id: null, order_items: {}}
+        return {...state, current_order_id: null}
     }
 
     if(action.type === "GET_ACTIVE_ORDERS"){
