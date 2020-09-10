@@ -1,16 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import OrderItem from '../components/OrderItem'
 
 class CurrentOrder extends React.Component {
     componentDidMount(){
         console.log(this.props.activeOrders)
-        console.log(this.props.activeOrders.map(order => order.id))
     }
-
     renderOrders = () => {
-        return this.props.activeOrders.map(order => {
+        return this.props.activeOrders.map((order, id) => {
+            let attributes = order.attributes
             return (
-                <h1> {order}</h1>
+                <OrderItem 
+                    id = {id + 1} 
+                    store = {this.props.stores[attributes.store_id - 1].attributes.name}
+                    total = {attributes.total}
+                />
             )   
         })
     }
@@ -18,7 +22,7 @@ class CurrentOrder extends React.Component {
     render(){
         return(
             <div className = "container">
-                <h1>Current Order</h1>
+                <h1>Current Orders</h1>
                 <div>
                     {this.renderOrders()}
                 </div>
@@ -29,7 +33,8 @@ class CurrentOrder extends React.Component {
 
 let mapStateToProps = state => {
     return ({
-        activeOrders: state.order.active_order_ids
+        stores: state.stores.storesList,
+        activeOrders: state.order.active_orders
     })
 }
 

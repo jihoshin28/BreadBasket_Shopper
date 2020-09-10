@@ -111,9 +111,9 @@ export const updatePreOrder = (orderId, orderInfo) => async dispatch => {
 
 export const getActiveOrders = shopperId => async dispatch => {
     const response = await rails.get(`/orders?shopper_id=${shopperId}&status=active`)
-    let orderIds = response.data.data.map(order => parseInt(order.id))
+    let data = response.data.data
     
-    dispatch({type: "GET_ACTIVE_ORDERS", payload: orderIds})
+    dispatch({type: "GET_ACTIVE_ORDERS", payload: data})
 }
 
 export const getCurrentOrder = orderId => async dispatch => {
@@ -155,9 +155,6 @@ export const editShopperProfile = (form, id) => async dispatch => {
 
 
 export const cartItemCount = (newCount, cartItemId) => {
-    // const response = await rails.patch(`/cart_items/${cartItemId}`, {cart_item: newCount})
-    // console.log(response.data)
-    // // dispatch({type: "CHANGE_COUNT_CART_ITEM"})
     console.log(newCount, cartItemId)
     return ({
         type: "CHANGE_COUNT_CART_ITEM",
