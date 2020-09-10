@@ -86,16 +86,26 @@ export const removeCartItem = cartItemId => async dispatch => {
 
 export const placeOrder = orderInfo => async dispatch => {
     const response = await rails.post(`/orders`, {order: orderInfo})
-    let data = response.data 
-    console.log(data.data.id)
-    dispatch({type: "PLACED_ORDER", payload: data.data.id})
+    let id = parseInt(response.data.data.id)
+    dispatch({type: "PLACED_ORDER", payload: id})
+}
+
+export const updateOrder = (orderId, orderInfo) => async dispatch => {
+    const response = await rails.patch(`/orders/${orderId}`, {order: orderInfo})
+    console.log(response.data)
 }
 
 export const getActiveOrders = shopperId => async dispatch => {
     const response = await rails.get(`/orders?shopper_id=${shopperId}&status=active`)
+    let orderIds = response.data.data.map(order => parseInt(order.id))
+    
+    dispatch({type: "GET_ACTIVE_ORDERS", payload: orderIds})
+}
+
+export const getCurrentOrder = orderId => async dispatch => {
+    const response = await rails.get(`/orders/${orderId}`)
     let data = response.data
     console.log(data)
-    // dispatch({type: "GET_ACTIVE_ORDERS", payload: data})
 }
 
 export const addOrderItem = orderItemInfo => async dispatch => {

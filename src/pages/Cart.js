@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { getCart, removeCartItem, placeOrder} from '../actions'
+import { getCart, removeCartItem, placeOrder, updateOrder} from '../actions'
 import CartItem from '../components/CartItem'
 import { isEmpty } from 'lodash'
 import {reduxForm, Field } from 'redux-form'
@@ -40,18 +40,20 @@ class Cart extends Component{
                 alert('Your cart is empty!')
             } else {
                 let tip = !!formValues.tip ? formValues.tip * .01 * (subtotal + delivery) : 0
-                if(!this.props.currentOrderId){
-                    let orderInfo = {
-                        payment: delivery,
-                        tip: tip,
-                        total: total,
-                        store_id: this.props.storeId,
-                        shopper_id: this.props.shopperId,
-                        status: 'active'
-                    }
-                    this.props.placeOrder(orderInfo)
+                let orderInfo = {
+                    payment: (delivery * 100).toFixed(2),
+                    tip: (tip * 100).toFixed(2),
+                    total: (total * 100).toFixed(2),
+                    store_id: this.props.storeId,
+                    shopper_id: this.props.shopperId,
+                    status: 'active'
                 }
-                
+                console.log(orderInfo, formValues.tip)
+                    if(!this.props.currentOrderId){
+                        this.props.placeOrder(orderInfo)
+                    }else {
+                        this.props.updateOrder(this.props.orderId, orderInfo)
+                    }              
                 this.props.history.push('/checkout')
             }
         }
@@ -155,6 +157,7 @@ let formWrapped = reduxForm({
 
 const mapStateToProps = state => {
     return({
+        orderId: state.order.current_order_id,
         shopperId: state.auth.currentShopper.shopper_info.id,
         storeId: state.stores.selectedStore.id,
         currentOrderId: state.order.current_order_id,
@@ -163,4 +166,4 @@ const mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, {getCart, removeCartItem, placeOrder})(formWrapped)
+export default connect(mapStateToProps, {getCart, removeCartItem, placeOrder, updateOrder})(formWrapped)

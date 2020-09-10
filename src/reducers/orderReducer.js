@@ -1,6 +1,7 @@
 let INITIAL_STATE = {
     current_order_id: null,
-    order_items: {}
+    order_items: {},
+    active_order_ids: []
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -17,7 +18,7 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     if(action.type === "GET_ACTIVE_ORDERS"){
-        return 
+        return {...state, active_order_ids: action.payload}
     }
     return state
 }
