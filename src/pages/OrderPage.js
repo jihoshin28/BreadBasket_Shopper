@@ -9,6 +9,7 @@ import FoodList from '../containers/FoodList'
 class OrderPage extends Component {
 
     componentDidMount(){
+        
         if (!!this.props.shopperId) {
             console.log("Hello shopper! Welcome to BreadBasket!")
             this.props.startCart({ shopper_id: this.props.shopperId })
@@ -23,6 +24,10 @@ class OrderPage extends Component {
     }
     
     render() {
+        let keys = Object.keys(this.props.cartItems)
+        let cartItems = keys.map(key => this.props.cartItems[key])
+        let currentCartItems = cartItems.map(item => item.attributes.item.id)
+        console.log(currentCartItems)
         return (
             <div>
                 <br></br>
@@ -48,7 +53,7 @@ class OrderPage extends Component {
                     this.props.categories.map(category => {
                         let categoryItems = this.props.items.filter(item => item.attributes.category === category.name)
                         return (
-                            <FoodList items = {categoryItems} title={category.title} />
+                            <FoodList currentCartItems= {currentCartItems} items = {categoryItems} title={category.title} />
                         )   
                     })
                 }

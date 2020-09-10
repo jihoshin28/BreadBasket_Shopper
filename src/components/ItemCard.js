@@ -5,22 +5,26 @@ import { addCartItem } from '../actions'
 let ItemCard = (props) => {
     let[ref] = useState(React.createRef())
     useEffect(() => {
-        
-    }, [])
+        if (!!props.currentCartItems.find(item => item === props.item_id)){
+            ref.current.children[1].children[2].children[0].src = process.env.PUBLIC_URL + 'check.svg'
+            ref.current.children[1].children[2].classList.add('item-added')
+        }
+    })
+
     let addCartItem = (e) => {
         
         e.preventDefault()
         
         ref.current.children[1].children[2].children[0].src = process.env.PUBLIC_URL + 'check.svg'
         ref.current.children[1].children[2].classList.add('item-added')
-        // let cartItemInfo = {
-        //     cart_id: props.cart_id,
-        //     item_id: props.item_id,
-        //     quantity_num: 1
-        // }
-        // console.log(cartItemInfo)
+        let cartItemInfo = {
+            cart_id: props.cart_id,
+            item_id: props.item_id,
+            quantity_num: 1
+        }
+        console.log(cartItemInfo)
         
-        // props.addCartItem(cartItemInfo)
+        props.addCartItem(cartItemInfo)
     }
 
 
