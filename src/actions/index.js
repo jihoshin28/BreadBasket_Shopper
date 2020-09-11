@@ -1,13 +1,7 @@
 import rails from '../services/Rails'
 import categories from '../categories'
 
-// export const testRoute = history => async dispatch => {
-//     const response = await rails.get('/shoppers')
-    
-//     dispatch({type: "ROUTE_TEST", payload: response.data})
-//     dispatch({type: "ROUTE_CHANGE", payload: history})
-// }
-
+//STORE ACTIONS
 export const getStores = () => async dispatch => {
     const response = await rails.get(`/stores`)
     dispatch({ type: 'GET_STORES', payload: response.data.data })
@@ -19,6 +13,8 @@ export const selectStore = (store) => {
         payload: store
     })
 }
+
+//SEEDED ITEMS AND CATEGORIES
 
 export const getCategories = () => {
     return {
@@ -33,16 +29,13 @@ export const getItems = (store_id) => async dispatch => {
     dispatch({type: 'GET_ITEMS', payload: response.data})
 }
 
+//CART ACTIONS
+
 export const getCart = (cart_id) => async dispatch => {
     const response = await rails.get(`/cart_items?cart_id=${cart_id}`)
     let data = response.data
     console.log(data.data)
     dispatch({type: "GET_CART", payload: data.data})
-}
-
-export const changeCart = (cart_id) => async dispatch => {
-    const response = await rails.delete(`/cart_items/${cart_id}`)
-    
 }
 
 export const startCart = cartInfo => async dispatch => {
@@ -59,17 +52,7 @@ export const dropCart = () => {
     })
 }
 
-export const completeOrder = () => {
-    return ({
-        type: "COMPLETE_ORDER"
-    })
-}
-
-export const cancelOrder = (id) => async dispatch => {
-    const response = await rails.delete(`/orders/${id}`)
-    console.log(response.data)
-    dispatch({type: "CANCEL_ORDER", payload: id})
-}
+//CART ITEM ACTIONS
 
 export const addCartItem = cartItemInfo => async dispatch => {
     const response = await rails.post('/cart_items', {cart_item: cartItemInfo})
@@ -89,6 +72,17 @@ export const removeCartItem = cartItemId => async dispatch => {
     console.log(data)
     dispatch({type: "DROP_CART_ITEM", payload: cartItemId})
 }
+
+export const cartItemCount = (newCount, cartItemId) => {
+    console.log(newCount, cartItemId)
+    return ({
+        type: "CHANGE_COUNT_CART_ITEM",
+        payload: { count: newCount, cartItemId: cartItemId }
+    })
+}
+
+
+//ORDER ACTIONS
 
 export const preOrder = orderInfo => async dispatch => {
     const response = await rails.post(`/orders`, {order: orderInfo})
@@ -118,14 +112,14 @@ export const updatePreOrder = (orderId, orderInfo) => async dispatch => {
 export const getActiveOrders = shopperId => async dispatch => {
     const response = await rails.get(`/orders?shopper_id=${shopperId}&status=active`)
     let data = response.data.data
-    
+    console.log('active orders', data)
     dispatch({type: "GET_ACTIVE_ORDERS", payload: data})
 }
 
-export const getCurrentOrder = orderId => async dispatch => {
-    const response = await rails.get(`/orders/${orderId}`)
-    let data = response.data
-    console.log(data)
+export const completeOrder = () => {
+    return ({
+        type: "COMPLETE_ORDER"
+    })
 }
 
 export const changeOrderStatus = (id, status) => async dispatch => {
@@ -137,46 +131,27 @@ export const addOrderItem = orderItemInfo => async dispatch => {
     const response = await rails.post(`/order_items`, {order_item: orderItemInfo})
     let data = response.data
     console.log(data)
-    dispatch({ type: "ADD_ORDER_ITEM", payload: {
-            order_item: data.data,
-            id: data.data.id
-        }
+}
+
+export const cancelOrder = (id) => async dispatch => {
+    const response = await rails.delete(`/orders/${id}`)
+    console.log(response.data)
+    dispatch({ type: "CANCEL_ORDER", payload: id })
+}
+
+export const getOrderItems = (order_id) => async dispatch => {
+    const response = await rails.get(`order_items?order_id=${order_id}`)
+    console.log(response.data)
+    dispatch({type: "GET_ORDER_ITEMS", payload: response.data.data})
+}
+
+export const clearOrderItems = () => {
+    return({
+        type: "CLEAR_ORDER_ITEMS"
     })
 }
 
-export const editShopper = (form, id) =>  async dispatch => {
-    console.log(form)
-    const response = await rails.patch(`/shoppers/${id}`, form)
-    let data = response.data
-    console.log(data.data)
-    dispatch({type: "EDIT_SHOPPER", payload: data.data.attributes})
-}
-
-export const editShopperProfile = (form, id) => async dispatch => {
-    const response = await rails.patch(`/shopper_infos/${id}`, form)
-    let data = response.data.data
-    console.log(data)
-    dispatch({type: "EDIT_PROFILE", payload: data.attributes})
-}
-
-
-export const cartItemCount = (newCount, cartItemId) => {
-    console.log(newCount, cartItemId)
-    return ({
-        type: "CHANGE_COUNT_CART_ITEM",
-        payload: {count: newCount, cartItemId: cartItemId}
-    })
-}
-
-export const createShopperProfile = (shopperInfo) => async dispatch=> {
-    const response = await rails.post('/shopper_infos/', shopperInfo)
-    let data = response.data
-    console.log(data)
-    dispatch({
-        type: 'PROFILE_INFO',
-        payload: data.data
-    })
-}
+//AUTH ACTIONS
 
 export const signIn = (userInfo) => async dispatch => {
     const response = await rails.post('/login', {shopper: userInfo})
@@ -195,3 +170,31 @@ export const signOut = () => {
         type: 'SIGN_OUT'
     }
 }
+
+//USER PROFILE ACTIONS
+
+export const createShopperProfile = (shopperInfo) => async dispatch => {
+    const response = await rails.post('/shopper_infos/', shopperInfo)
+    let data = response.data
+    console.log(data)
+    dispatch({
+        type: 'PROFILE_INFO',
+        payload: data.data
+    })
+}
+
+export const editShopper = (form, id) => async dispatch => {
+    console.log(form)
+    const response = await rails.patch(`/shoppers/${id}`, form)
+    let data = response.data
+    console.log(data.data)
+    dispatch({ type: "EDIT_SHOPPER", payload: data.data.attributes })
+}
+
+export const editShopperProfile = (form, id) => async dispatch => {
+    const response = await rails.patch(`/shopper_infos/${id}`, form)
+    let data = response.data.data
+    console.log(data)
+    dispatch({ type: "EDIT_PROFILE", payload: data.attributes })
+}
+

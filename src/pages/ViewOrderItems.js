@@ -1,13 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import OrderItem from '../components/OrderItem'
+import {getOrderItems} from '../actions'
+import { map } from 'lodash'
 
 
 class ViewOrderItems extends React.Component{
-    renderItems() {
-        let keys = Object.keys(this.props.cartItems)
-        let cartItems = keys.map(key => this.props.cartItems[key])
-        return cartItems.map(item => {
+
+    componentDidMount(){
+        console.log(this.props.match.params)
+        console.log(this.props.orderItems)
+        this.props.getOrderItems(this.props.match.params.order_id)
+    }
+
+    renderItems(){   
+        return this.props.orderItems.map(item => {
             let attributes = item.attributes
             return (
                 <OrderItem price={attributes.item.price} image={attributes.item.image} count={attributes.quantity_num} units={attributes.item.quantity_unit} name={attributes.item.name}/>
@@ -27,8 +34,8 @@ class ViewOrderItems extends React.Component{
 
 let mapStateToProps = state => {
     return({
-        orderItems: state.order
+        orderItems: state.order.order_items
     })
 }
 
-export default connect(null)(ViewOrderItems)
+export default connect(mapStateToProps, {getOrderItems})(ViewOrderItems)
