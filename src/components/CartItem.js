@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import { cartItemCount, removeCartItem } from '../actions'
+import { cartItemCount, removeCartItem, clearItem } from '../actions'
 
 
 class CartItem extends Component {
@@ -25,6 +25,11 @@ class CartItem extends Component {
         }
         this.props.cartItemCount(newCount, this.props.cartItemId)
         // this.props.cartItemCount(newCount, this.props.cartItemId)
+    }
+
+    itemDetailsNav(){
+        this.props.clearItem()
+        this.props.history.push(`/item_details/${this.props.item_id}`)
     }
 
     render(){
@@ -53,11 +58,11 @@ class CartItem extends Component {
                 </div>
                 <div>
                     <button onClick = {() => this.removeItem(this.props.cartItemId)}>Remove Item</button>
-                    <button>Item Details</button>
+                    <button onClick = {()=> {this.itemDetailsNav()}}>Item Details</button>
                 </div>
             </div>
         )
     }
 }
 
-export default connect(null, {cartItemCount, removeCartItem})(CartItem)
+export default connect(null, {cartItemCount, removeCartItem, clearItem})(CartItem)

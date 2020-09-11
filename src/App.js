@@ -12,6 +12,7 @@ import Cart from './pages/Cart'
 import Checkout from './pages/CheckOut'
 import CurrentOrders from './pages/CurrentOrders'
 import EditShopper from './pages/EditShopper'
+import ItemDetails from './pages/ItemDetails'
 import OrderPage from './pages/OrderPage'
 import OrderHistory from './pages/OrderHistory'
 import Profile from './pages/Profile'
@@ -40,6 +41,7 @@ class App extends Component  {
             <Route exact path='/checkout' render={(props) => <Checkout {...props} />} />
             <Route exact path='/current_orders' render={(props) => <CurrentOrders {...props} />} />
             <Route exact path='/edit_shopper/:section' render={(props) => <EditShopper {...props} />} />
+            <Route exact path='/item_details/:item_id' render={(props) => <ItemDetails {...props} />} />
             <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
             <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
             <Route exact path='/profile' render={(props) => <Profile {...props} />} />

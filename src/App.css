@@ -82,6 +82,11 @@
   border: lawngreen
 }
 
+.itemDetails img {
+  height: 500px;
+  width: 500px;
+}
+
 .log-button{
   font-size: 15px;
 }

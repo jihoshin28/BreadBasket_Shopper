@@ -14,13 +14,27 @@ export const selectStore = (store) => {
     })
 }
 
-//SEEDED ITEMS AND CATEGORIES
+//CATEGORY ACTIONS
 
 export const getCategories = () => {
     return {
         type: 'GET_CATEGORIES',
         payload: categories
     }
+}
+
+//ITEM ACTIONS
+
+export const clearItem = () => {
+    return ({
+        type: 'CLEAR_ITEM'
+    })
+}
+
+export const getItem = (item_id) => async dispatch => {
+    const response = await rails.get(`/items/${item_id}`)
+    console.log(response.data, "items")
+    dispatch({ type: 'GET_ITEM', payload: response.data })
 }
 
 export const getItems = (store_id) => async dispatch => {
