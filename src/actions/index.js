@@ -112,7 +112,6 @@ export const updatePreOrder = (orderId, orderInfo) => async dispatch => {
 export const getActiveOrders = shopperId => async dispatch => {
     const response = await rails.get(`/orders?shopper_id=${shopperId}&status=active`)
     let data = response.data.data
-    console.log('active orders', data)
     dispatch({type: "GET_ACTIVE_ORDERS", payload: data})
 }
 

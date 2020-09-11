@@ -6,25 +6,31 @@ let ItemCard = (props) => {
     let[ref] = useState(React.createRef())
     useEffect(() => {
         if (!!props.currentCartItems.find(item => item === props.item_id)){
-            ref.current.children[1].children[2].children[0].src = process.env.PUBLIC_URL + 'check.svg'
-            ref.current.children[1].children[2].classList.add('item-added')
+            buttonChange()
         }
     })
 
+    let buttonChange = () => {
+        let button = ref.current.children[1].children[2]
+        button.children[0].src = process.env.PUBLIC_URL + 'check.svg'
+        button.classList.add('item-added')
+        button.onclick = null
+    }
+
     let addCartItem = (e) => {
-        
         e.preventDefault()
-        
-        ref.current.children[1].children[2].children[0].src = process.env.PUBLIC_URL + 'check.svg'
-        ref.current.children[1].children[2].classList.add('item-added')
-        let cartItemInfo = {
-            cart_id: props.cart_id,
-            item_id: props.item_id,
-            quantity_num: 1
+        if (!props.currentCartItems.find(item => item === props.item_id)){
+            
+            buttonChange()
+            let cartItemInfo = {
+                cart_id: props.cart_id,
+                item_id: props.item_id,
+                quantity_num: 1
+            }
+            console.log(cartItemInfo)
+            props.addCartItem(cartItemInfo)
         }
-        console.log(cartItemInfo)
         
-        props.addCartItem(cartItemInfo)
     }
 
 
