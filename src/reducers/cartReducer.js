@@ -3,6 +3,7 @@ import _ from 'lodash'
 let INITIAL_STATE = {
     cart_id: null,
     cart_items: {},
+    item_ids: [],
     subtotal: 0,
     delivery: 0,
     tip: 0
@@ -17,7 +18,9 @@ export default (state = INITIAL_STATE, action) => {
     }
     if (action.type === 'GET_CART'){
         return{
-            ...state, cart_items: {...state.cart_items, ..._.mapKeys(action.payload,'id')}
+            ...state, 
+            cart_items: {...state.cart_items, ..._.mapKeys(action.payload,'id')},
+            item_ids: action.payload.map(item => item.attributes.item_id)
         }
     }
 
@@ -25,6 +28,7 @@ export default (state = INITIAL_STATE, action) => {
         return {...state, 
             cart_id: null, 
             cart_items: {},
+            item_ids: []
            
         }
     }
@@ -37,11 +41,17 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     if(action.type === 'ADD_CART_ITEM'){
-        return {...state, cart_items: {...state.cart_items, [action.payload.id]: action.payload.cart_item}}
+        return {...state, 
+            cart_items: {...state.cart_items, [action.payload.id]: action.payload.cart_item},
+            item_ids: [...state.item_ids, action.payload.item_id]
+        }
     }
 
     if(action.type === 'DROP_CART_ITEM'){
-        return {...state, cart_items: _.omit(state.cart_items, action.payload) }
+        return {...state, 
+            cart_items: _.omit(state.cart_items, action.payload.cart_item_id), 
+            item_ids: [...state.item_ids.filter(item_id => item_id !== action.payload.item_id)]
+        }
     }
     
     if(action.type === 'CHANGE_COUNT_CART_ITEM'){

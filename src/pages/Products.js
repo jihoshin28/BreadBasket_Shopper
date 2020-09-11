@@ -6,10 +6,8 @@ import FoodList from '../containers/FoodList'
 
 
 class Products extends Component {
-
     componentDidMount(){
         document.getElementById(`${this.props.match.params.category}`).checked = true
-        
     }
  
     onCategoryChange = (e) => {
@@ -22,6 +20,7 @@ class Products extends Component {
         let filteredItems = this.props.items.filter(item => item.attributes.category === category)
         let categoryData = this.props.categories.find((category) => category.name === this.props.match.params.category)
         let categoryTitle = categoryData.title
+
         return (
             <div class = "products">
                 <div class = "sidebar">
@@ -73,7 +72,6 @@ class Products extends Component {
                         <FoodList items = {filteredItems}/>
                     </div>
                 </div>
-
             </div>
         )
     }

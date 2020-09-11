@@ -75,16 +75,22 @@ export const addCartItem = cartItemInfo => async dispatch => {
     dispatch({ type: "ADD_CART_ITEM", 
                 payload: { 
                     cart_item: data.data,
-                    id: data.data.id
+                    id: data.data.id,
+                    item_id: data.data.attributes.item_id
                 }
             })
 }
 
-export const removeCartItem = cartItemId => async dispatch => {
+export const removeCartItem = (cartItemId, itemId) => async dispatch => {
     const response = await rails.delete(`/cart_items/${cartItemId}`)
     let data = response.data 
     console.log(data)
-    dispatch({type: "DROP_CART_ITEM", payload: cartItemId})
+    dispatch({type: "DROP_CART_ITEM", 
+        payload: {
+            cart_item_id: cartItemId,
+            item_id: itemId
+        }
+    })
 }
 
 export const cartItemCount = (newCount, cartItemId) => {
@@ -95,6 +101,11 @@ export const cartItemCount = (newCount, cartItemId) => {
     })
 }
 
+export const currentCartItems = () => {
+    return({
+        type: ""
+    })
+}
 
 //ORDER ACTIONS
 
@@ -142,6 +153,12 @@ export const changeOrderStatus = (id, status) => async dispatch => {
 
 export const addOrderItem = orderItemInfo => async dispatch => {
     const response = await rails.post(`/order_items`, {order_item: orderItemInfo})
+    let data = response.data
+    console.log(data)
+}
+
+export const removeOrderItem = orderItemId => async dispatch => {
+    const response = await rails.delete(`/order_items/${orderItemId}`)
     let data = response.data
     console.log(data)
 }

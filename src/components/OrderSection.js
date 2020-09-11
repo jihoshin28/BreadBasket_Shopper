@@ -24,13 +24,13 @@ class OrderSection extends Component {
                 <div class="orderInfo">
                     <p>
                         Order Cost: {(this.props.total/100).toFixed(2)}$
-                        </p>
+                    </p>
                     <p>
                         Name of Driver: Bob Clark
-                        </p>
+                    </p>
                     <p>
                         Grocery Store: {this.props.store}
-                        </p>
+                    </p>
                 </div>
                 <div class="orderButtonBox">
                     <button class="detailsButton">
@@ -49,6 +49,12 @@ class OrderSection extends Component {
 
         )
     }
+}
+
+let mapStateToProps = () => {
+    return ({
+        
+    })
 }
 
 export default connect(null, {cancelOrder})(OrderSection)

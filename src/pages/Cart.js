@@ -6,16 +6,23 @@ import { isEmpty } from 'lodash'
 import {reduxForm, Field } from 'redux-form'
 
 class Cart extends Component{
+    componentDidMount(){
+        console.log(this.props.item_ids)
+        this.props.getCart(this.props.cart_id)
+    }
+    cartItemsArray = (cartItems) => {
+        let keys = Object.keys(cartItems)
+        return keys.map(key => this.props.cart_items[key])
+    }
 
     renderCart(){ 
         if (!isEmpty(this.props.cart_items)){
-            let keys = Object.keys(this.props.cart_items)
-            let cartItems = keys.map(key => this.props.cart_items[key])
+            let cartItems = this.cartItemsArray(this.props.cart_items)
             return (
-                    cartItems.map(cart_item => {
-                        let item_attribute = cart_item.attributes.item
-                        return <CartItem cartItemId={cart_item.id} image={item_attribute.image} name={item_attribute.name} count={cart_item.attributes.quantity_num} price={item_attribute.price} history = {this.props.history} item_id={item_attribute.id}/>
-                    })
+                cartItems.map(cart_item => {
+                    let item_attribute = cart_item.attributes.item
+                    return <CartItem cartItemId={cart_item.id} image={item_attribute.image} name={item_attribute.name} count={cart_item.attributes.quantity_num} price={item_attribute.price} history = {this.props.history} item_id={item_attribute.id}/>
+                })
             )
         }
     }
@@ -25,8 +32,7 @@ class Cart extends Component{
         if (!!isEmpty(this.props.cart_items)){
             subtotal = 0
         } else {
-            let keys = Object.keys(this.props.cart_items)
-            let cartItems = keys.map(key => this.props.cart_items[key])
+            let cartItems = this.cartItemsArray(this.props.cart_items)
             console.log(cartItems)
             subtotal = cartItems.reduce((sum, current) => {
                 return sum + (current.attributes.quantity_num * (current.attributes.item.price * .01))
@@ -162,7 +168,8 @@ const mapStateToProps = state => {
         storeId: state.stores.selectedStore.id,
         currentOrderId: state.order.current_order_id,
         cart_id: state.cart.cart_id,
-        cart_items: state.cart.cart_items
+        cart_items: state.cart.cart_items,
+        item_ids: state.cart.item_ids
     })
 }
 

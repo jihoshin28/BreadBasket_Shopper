@@ -29,7 +29,6 @@ class ViewOrderItems extends React.Component{
             </div>
         )
     }
-
 }
 
 let mapStateToProps = state => {

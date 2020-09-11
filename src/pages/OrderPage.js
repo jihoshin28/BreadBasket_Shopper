@@ -24,10 +24,6 @@ class OrderPage extends Component {
     }
     
     render() {
-        let keys = Object.keys(this.props.cartItems)
-        let cartItems = keys.map(key => this.props.cartItems[key])
-        let currentCartItems = cartItems.map(item => item.attributes.item.id)
-        console.log(currentCartItems)
         return (
             <div>
                 <br></br>
@@ -53,7 +49,7 @@ class OrderPage extends Component {
                     this.props.categories.map(category => {
                         let categoryItems = this.props.items.filter(item => item.attributes.category === category.name)
                         return (
-                            <FoodList currentCartItems= {currentCartItems} items = {categoryItems} title={category.title} />
+                            <FoodList items = {categoryItems} title={category.title} />
                         )   
                     })
                 }
@@ -70,7 +66,8 @@ let mapStateToProps = (state) => {
         selectedStore: state.stores.selectedStore,
         shopperId: state.auth.currentShopper.id,
         cartId: state.cart.cart_id,
-        cartItems: state.cart.cart_items
+        cartItems: state.cart.cart_items,
+        cartItemIds: state.cart.item_ids
     })
 }
 

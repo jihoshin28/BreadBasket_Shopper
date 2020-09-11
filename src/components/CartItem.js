@@ -7,7 +7,7 @@ class CartItem extends Component {
 
     removeItem(cartItemId){
         console.log(cartItemId)
-        this.props.removeCartItem(this.props.cartItemId)
+        this.props.removeCartItem(this.props.cartItemId, this.props.item_id)
     }
 
     changeCount(type){
