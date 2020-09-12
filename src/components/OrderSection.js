@@ -57,11 +57,4 @@ class OrderSection extends Component {
     }
 }
 
-let mapStateToProps = (state) => {
-    return ({
-        orderInfo: state.order.order_info,
-        orderItems: state.order.order_items
-    })
-}
-
-export default connect(mapStateToProps, {cancelOrder, clearOrderItems, clearOrder})(OrderSection)
+export default connect(null, {cancelOrder, clearOrderItems, clearOrder})(OrderSection)

@@ -1,6 +1,18 @@
 import React, {Component} from "react"
+import {connect} from 'react-redux'
+import { clearOrderItems, clearOrder} from '../actions'
 
 class OrderHistoryItem extends Component {
+
+    viewOrderItems() {
+        this.props.clearOrderItems()
+        this.props.history.push(`/view_order_items/${this.props.id}`)
+    }
+
+    paymentDetails() {
+        this.props.clearOrder()
+        this.props.history.push(`/payment_details/${this.props.id}`)
+    }
     render(){
         return (
           
@@ -22,10 +34,10 @@ class OrderHistoryItem extends Component {
                         </p>
                     </div> 
                     <div class = "orderButtonBox">
-                        <button class="detailsButton">
+                        <button onClick = {() => this.paymentDetails()} class="detailsButton">
                             View Payment Details
                         </button>
-                        <button class="detailsButton">
+                    <button onClick={() => this.viewOrderItems()} class="detailsButton">
                             View Items
                         </button>
                     </div>
@@ -37,4 +49,4 @@ class OrderHistoryItem extends Component {
     }
 }
 
-export default OrderHistoryItem
+export default connect(null, { clearOrderItems, clearOrder})(OrderHistoryItem)

@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 import OrderHistorySection from '../components/OrderHistorySection'
+import { connect } from 'react-redux'
 
 export class OrderHistory extends Component {
     componentDidMount(){
-        console.log(this.props)
+        // this.props.getCompletedOrders(this.props.shopperId)
     }
     
     render() {
         let orders = [1, 2, 3, 4, 5]
+        // this.props.completedOrders.map
         return (
             <div class = "container">
                 <h1>Order History</h1>
                 {orders.map(order => {
-                    return <OrderHistorySection order = {order} />
+                    return <OrderHistorySection history={this.props.history} order = {order} />
                 })}
                 
             </div>
@@ -21,4 +23,12 @@ export class OrderHistory extends Component {
     }
 }
 
-export default OrderHistory
+let mapStateToProps = state => {
+    return({
+        shopperId: state.auth.currentShopper.id,
+        stores: state.stores.storesList,
+        completedOrders: state.order.completed_orders
+    })
+}
+
+export default connect(mapStateToProps)(OrderHistory)
