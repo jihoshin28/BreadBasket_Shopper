@@ -13,7 +13,7 @@ class ItemDetails extends React.Component{
                 <div>
                     <img src={this.props.item.data.attributes.image}></img>
                     <h3>{this.props.item.data.attributes.name}</h3>
-                    <h3>${(this.props.item.data.attributes.price / 100).toFixed(2)} per {this.props.item.data.attributes.quantity_unit.slice(0, -1)}</h3>
+                    <h3>${(this.props.item.data.attributes.price / 100).toFixed(2)} per {this.props.item.data.attributes.quantity_unit}</h3>
                 </div>
             )
         }

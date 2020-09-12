@@ -18,7 +18,7 @@ class Cart extends Component{
             return (
                 cartItems.map(cart_item => {
                     let item_attribute = cart_item.attributes.item
-                    return <CartItem cartItemId={cart_item.id} image={item_attribute.image} name={item_attribute.name} count={cart_item.attributes.quantity_num} price={item_attribute.price} history = {this.props.history} item_id={item_attribute.id}/>
+                    return <CartItem cartItemId={cart_item.id} image={item_attribute.image} name={item_attribute.name} count={cart_item.attributes.quantity_num} price={item_attribute.price} history = {this.props.history} item_id={item_attribute.id} unit = {item_attribute.quantity_unit}/>
                 })
             )
         }
