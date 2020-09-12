@@ -6,10 +6,7 @@ import { isEmpty } from 'lodash'
 import {reduxForm, Field } from 'redux-form'
 
 class Cart extends Component{
-    componentDidMount(){
-        console.log(this.props.item_ids)
-        this.props.getCart(this.props.cart_id)
-    }
+
     cartItemsArray = (cartItems) => {
         let keys = Object.keys(cartItems)
         return keys.map(key => this.props.cart_items[key])
@@ -41,6 +38,7 @@ class Cart extends Component{
         
         let payment = subtotal * .14
         let total = subtotal + payment
+
         let submitForm = (formValues) => {
             if(!!isEmpty(this.props.cart_items)){
                 alert('Your cart is empty!')
@@ -77,18 +75,15 @@ class Cart extends Component{
                         <h2>
                             <span>
                                 Tip(% of total order)
-                                        </span>
+                            </span>
                             <span>
-                                        
-
-                                    <Field name = "tip" component = "select">
-                                            <option value="0">0%</option>
-                                            <option value="5">5%</option>
-                                            <option value="10">10%</option>
-                                            <option value="15">15%</option>
-                                            <option value="20">20%</option>
-                                    </Field>
-                               
+                                <Field name = "tip" component = "select">
+                                    <option value="0">0%</option>
+                                    <option value="5">5%</option>
+                                    <option value="10">10%</option>
+                                    <option value="15">15%</option>
+                                    <option value="20">20%</option>
+                                </Field>   
                             </span>
                             {/* {`$${tip}`} */}
                         </h2>

@@ -15,10 +15,6 @@ class OrderSection extends Component {
             // this.deleteOrderItems(this.props.id)
     }
 
-    // deleteOrderItems= (id) =>{
-    //     console.log("delete function", this.props.orderItems)
-    // }
-
     viewOrderItems(){
         this.props.clearOrderItems()
         this.props.history.push(`/view_order_items/${this.props.id}`)

@@ -7,12 +7,13 @@ import FoodList from '../containers/FoodList'
 
 class Products extends Component {
     componentDidMount(){
+        console.log(process.env.PUBLIC_URL)
         document.getElementById(`${this.props.match.params.category}`).checked = true
     }
  
     onCategoryChange = (e) => {
         console.log(e.target.value)
-        this.props.history.replace(`/products/${e.target.value}`)
+        this.props.history.push(`/products/${e.target.value}`)
     }
 
     render(){

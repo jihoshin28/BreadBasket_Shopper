@@ -66,8 +66,7 @@ let mapStateToProps = (state) => {
         selectedStore: state.stores.selectedStore,
         shopperId: state.auth.currentShopper.id,
         cartId: state.cart.cart_id,
-        cartItems: state.cart.cart_items,
-        cartItemIds: state.cart.item_ids
+        cartItems: state.cart.cart_items
     })
 }
 

@@ -77,11 +77,6 @@
   border: lawngreen
 }
 
-.item-added:hover{
-  background-color: lawngreen;
-  border: lawngreen
-}
-
 .itemDetails img {
   height: 500px;
   width: 500px;

@@ -6,21 +6,30 @@ let ItemCard = (props) => {
     let[ref] = useState(React.createRef())
     useEffect(() => {
         if (!!props.item_ids.find(item => item === props.item_id)){
-            buttonChange()
+            buttonAdd()
+        } else {
+            buttonCheck()
         }
     })
 
-    let buttonChange = () => {
+    let buttonAdd = () => {
         let button = ref.current.children[1].children[2]
-        button.children[0].src = process.env.PUBLIC_URL + 'check.svg'
+        button.children[0].src = `${process.env.PUBLIC_URL}/check.svg`
         button.classList.add('item-added')
+        button.onclick = null
+    }
+
+    let buttonCheck = () => {
+        let button = ref.current.children[1].children[2]
+        button.children[0].src = `${process.env.PUBLIC_URL}/plus.svg`
+        button.classList.remove('item-added')
         button.onclick = null
     }
 
     let addCartItem = (e) => {
         e.preventDefault()
         if (!props.item_ids.find(item => item === props.item_id)){
-            buttonChange()
+            buttonAdd()
             let cartItemInfo = {
                 cart_id: props.cart_id,
                 item_id: props.item_id,
@@ -44,7 +53,7 @@ let ItemCard = (props) => {
                     <h6 class="card-title">{props.name}</h6>
                     <p style={{fontSize: "10px"}}> ${props.price}</p>
                     <a class= "btn btn-primary cart-item-button" onClick={addCartItem} class="btn btn-primary">
-                        <img class = "cart-item-button" src={process.env.PUBLIC_URL + 'plus.svg'} alt="Image" />
+                        <img class = "cart-item-button" alt="Image" />
                     </a>
                 </div>
             </div>

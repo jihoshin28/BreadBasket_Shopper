@@ -28,8 +28,7 @@ export default (state = INITIAL_STATE, action) => {
         return {...state, 
             cart_id: null, 
             cart_items: {},
-            item_ids: []
-           
+            item_ids: []   
         }
     }
 
