@@ -8,6 +8,14 @@ const OrderItem = props => {
         props.clearItem()
         props.history.push(`/item_details/${props.item_id}`)
     }
+
+    let renderUnits = () => {
+        if(props.count > 1){
+            return `${props.units}s`
+        } else {
+            return `${props.units}`
+        }
+    }
     return (
         <div className = 'row orderItem'> 
             <div>
@@ -16,7 +24,7 @@ const OrderItem = props => {
             </div>
             <div>
                 <h3>
-                    Quantity: {props.count} {props.units}
+                    Quantity: {props.count} {renderUnits()}
                 </h3>
                 <h3>
                     Price: ${(props.price * props.count * .01).toFixed(2)}

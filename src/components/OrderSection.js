@@ -1,23 +1,23 @@
 import React, { Component } from "react"
 import {connect} from 'react-redux'
-import {cancelOrder, clearOrderItems, getOrderItems} from '../actions'
+import {cancelOrder, clearOrderItems, clearOrder} from '../actions'
 
 class OrderSection extends Component {
     componentDidMount(){
         console.log(this.props.history)
     }
     cancelOrder(){
-        if(!!this.props.orderItems){
-            this.props.clearOrderItems()
-        }
-            this.props.cancelOrder(this.props.id)
-            // this.props.getOrderItems(this.props.id)
-            // this.deleteOrderItems(this.props.id)
+        this.props.cancelOrder(this.props.id)
     }
 
     viewOrderItems(){
         this.props.clearOrderItems()
         this.props.history.push(`/view_order_items/${this.props.id}`)
+    }
+
+    paymentDetails() {
+        this.props.clearOrder()
+        this.props.history.push(`/payment_details/${this.props.id}`)
     }
 
     render() {
@@ -39,7 +39,7 @@ class OrderSection extends Component {
                     </p>
                 </div>
                 <div class="orderButtonBox">
-                    <button class="detailsButton">
+                    <button onClick = {() => this.paymentDetails()}class="detailsButton">
                         View Payment Details
                         </button>
                     <button onClick={() => this.viewOrderItems()} class="detailsButton">
@@ -59,8 +59,9 @@ class OrderSection extends Component {
 
 let mapStateToProps = (state) => {
     return ({
+        orderInfo: state.order.order_info,
         orderItems: state.order.order_items
     })
 }
 
-export default connect(mapStateToProps, {cancelOrder, clearOrderItems, getOrderItems})(OrderSection)
+export default connect(mapStateToProps, {cancelOrder, clearOrderItems, clearOrder})(OrderSection)

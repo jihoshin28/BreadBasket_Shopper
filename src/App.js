@@ -15,6 +15,7 @@ import EditShopper from './pages/EditShopper'
 import ItemDetails from './pages/ItemDetails'
 import OrderPage from './pages/OrderPage'
 import OrderHistory from './pages/OrderHistory'
+import PaymentDetails from './pages/PaymentDetails'
 import Profile from './pages/Profile'
 import Products from './pages/Products'
 import ProfileSignup from './pages/ProfileSignup'
@@ -47,6 +48,7 @@ class App extends Component  {
             <Route exact path='/profile' render={(props) => <Profile {...props} />} />
             <Route exact path='/profile_signup' render={(props) => <ProfileSignup {...props} />} />
             <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>
+            <Route exact path='/payment_details/:order_id' render={(props) => <PaymentDetails {...props} />} />
             <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
             <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import OrderItem from '../components/OrderItem'
-import { addOrderItem, removeCartItem, dropCart, completeOrder, changeOrderStatus} from '../actions'
+import { addOrderItem, removeCartItem, dropCart, completeOrder, changeOrderStatus } from '../actions'
 
 class CheckOut extends React.Component{
     componentDidMount(){

@@ -103,6 +103,22 @@ export const cartItemCount = (newCount, cartItemId) => {
 
 //ORDER ACTIONS
 
+export const getOrder = orderId => async dispatch => {
+    const response = await rails.get(`/orders/${orderId}`)
+    let id = parseInt(response.data.data.id)
+    let orderData = response.data.data.attributes
+    console.log(id, orderData)
+    dispatch({
+        type: "GET_ORDER", payload: orderData
+    })
+}
+
+export const clearOrder = () => {
+    return({
+        type: "CLEAR_ORDER"
+    })
+}
+
 export const preOrder = orderInfo => async dispatch => {
     const response = await rails.post(`/orders`, {order: orderInfo})
     let id = parseInt(response.data.data.id)

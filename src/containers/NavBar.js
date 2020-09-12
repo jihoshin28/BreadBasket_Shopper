@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import GoogleAuth from '../components/GoogleAuth'
 import { connect } from 'react-redux'
+import { getActiveOrders} from '../actions'
 import { isEmpty } from 'lodash'
 
 export class Navbar extends Component {
-    componentDidMount(){
-        // console.log(Object.keys(this.props.cartItems).length)
-        // console.log()
+    componentDidUpdate(prevState){
+        if(prevState.activeOrders !== this.props.activeOrders){
+            this.props.getActiveOrders(this.props.shopperId)
+        }
     }
 
     renderUser = () => {
@@ -102,10 +104,11 @@ export class Navbar extends Component {
 let mapStateToProps = (state) => {
     return ({
         activeOrders: state.order.active_orders,
+        shopperId: state.auth.currentShopper.id,
         signedIn: state.auth.signedIn,
         userAuthPic: state.auth.currentShopper.image,
         cartItems: state.cart.cart_items
     })
 }
 
-export default connect(mapStateToProps)(Navbar)
+export default connect(mapStateToProps, { getActiveOrders})(Navbar)
