@@ -101,12 +101,6 @@ export const cartItemCount = (newCount, cartItemId) => {
     })
 }
 
-export const currentCartItems = () => {
-    return({
-        type: ""
-    })
-}
-
 //ORDER ACTIONS
 
 export const preOrder = orderInfo => async dispatch => {

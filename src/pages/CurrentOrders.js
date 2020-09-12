@@ -4,10 +4,12 @@ import { getActiveOrders } from '../actions'
 import OrderSection from '../components/OrderSection'
 
 class CurrentOrder extends React.Component {
+    
     componentDidMount(){
         this.props.getActiveOrders(this.props.shopperId)
         console.log(this.props.history)
     }
+
     renderOrders = () => {
         return this.props.activeOrders.map((order, id) => {
             let attributes = order.attributes

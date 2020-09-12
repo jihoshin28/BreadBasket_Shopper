@@ -1,16 +1,26 @@
 import React, { Component } from "react"
 import {connect} from 'react-redux'
-import {cancelOrder} from '../actions'
+import {cancelOrder, clearOrderItems, getOrderItems} from '../actions'
 
 class OrderSection extends Component {
     componentDidMount(){
         console.log(this.props.history)
     }
     cancelOrder(){
-        this.props.cancelOrder(this.props.id)
+        if(!!this.props.orderItems){
+            this.props.clearOrderItems()
+        }
+            this.props.cancelOrder(this.props.id)
+            // this.props.getOrderItems(this.props.id)
+            // this.deleteOrderItems(this.props.id)
     }
 
+    // deleteOrderItems= (id) =>{
+    //     console.log("delete function", this.props.orderItems)
+    // }
+
     viewOrderItems(){
+        this.props.clearOrderItems()
         this.props.history.push(`/view_order_items/${this.props.id}`)
     }
 
@@ -51,10 +61,10 @@ class OrderSection extends Component {
     }
 }
 
-let mapStateToProps = () => {
+let mapStateToProps = (state) => {
     return ({
-        
+        orderItems: state.order.order_items
     })
 }
 
-export default connect(null, {cancelOrder})(OrderSection)
+export default connect(mapStateToProps, {cancelOrder, clearOrderItems, getOrderItems})(OrderSection)
