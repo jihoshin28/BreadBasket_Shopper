@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {signIn, signOut, dropCart, completeOrder} from '../actions'
+import {signIn, signOut, dropCart, checkoutOrder} from '../actions'
 
 class GoogleAuth extends React.Component{
     componentDidMount() {
@@ -55,7 +55,7 @@ class GoogleAuth extends React.Component{
         if(!!this.auth){
             this.auth.signOut()
             this.props.dropCart()
-            this.props.completeOrder()
+            this.props.checkoutOrder()
         }
   
         // localStorage.removeItem('rails_token')
@@ -123,4 +123,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, {signIn, signOut, dropCart, completeOrder})(GoogleAuth)
+export default connect(mapStateToProps, {signIn, signOut, dropCart, checkoutOrder})(GoogleAuth)

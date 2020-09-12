@@ -150,9 +150,15 @@ export const getActiveOrders = shopperId => async dispatch => {
     dispatch({type: "GET_ACTIVE_ORDERS", payload: data})
 }
 
-export const completeOrder = () => {
+export const getCompletedOrders = shopperId => async dispatch => {
+    const response = await rails.get(`/orders?shopper_id=${shopperId}&status=complete`)
+    let data = response.data.data
+    dispatch({ type: "GET_COMPLETED_ORDERS", payload: data })
+}
+
+export const checkoutOrder = () => {
     return ({
-        type: "COMPLETE_ORDER"
+        type: "CHECKOUT_ORDER"
     })
 }
 

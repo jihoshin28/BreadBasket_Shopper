@@ -1,6 +1,7 @@
 let INITIAL_STATE = {
     current_order_id: null,
     active_orders: [],
+    completed_orders: [],
     order_items: [],
     order_info: {},
     subtotal:null,
@@ -20,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     
-    if(action.type === 'COMPLETE_ORDER'){
+    if(action.type === 'CHECKOUT_ORDER'){
         return {...state, current_order_id: null}
     }
     
@@ -30,6 +31,10 @@ export default (state = INITIAL_STATE, action) => {
     
     if(action.type === "GET_ACTIVE_ORDERS"){
         return {...state, active_orders: action.payload}
+    }
+
+    if (action.type === "GET_COMPLETED_ORDERS") {
+        return { ...state, completed_orders: action.payload }
     }
     
     if(action.type === "GET_ORDER_ITEMS"){
