@@ -6,11 +6,11 @@ import { getActiveOrders} from '../actions'
 import { isEmpty } from 'lodash'
 
 export class Navbar extends Component {
-    // componentDidUpdate(prevState){
-    //     if(prevState.activeOrders.length != this.props.activeOrders.length){
-    //         this.props.getActiveOrders(this.props.shopperId)
-    //     }
-    // }
+    componentDidUpdate(prevState){
+        if(prevState.activeOrders.length != this.props.activeOrders.length){
+            this.props.getActiveOrders(this.props.shopperId)
+        }
+    }
 
     renderUser = () => {
         if(!!this.props.signedIn){   

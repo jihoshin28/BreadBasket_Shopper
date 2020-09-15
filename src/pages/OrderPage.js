@@ -13,7 +13,7 @@ class OrderPage extends Component {
         if (!!this.props.shopperId) {
             console.log("Hello shopper! Welcome to BreadBasket!")
             this.props.startCart({ shopper_id: this.props.shopperId })
-            // this.props.getActiveOrders(this.props.shopperId)
+            this.props.getActiveOrders(this.props.shopperId)
         }
         
     }
@@ -23,10 +23,7 @@ class OrderPage extends Component {
             this.props.getCart(this.props.cartId)
         }
 
-        if(prevState.activeOrders !== this.props.activeOrders){
-            this.props.getActiveOrders(this.props.shopperId)
-        }
-      
+    
     }
     
     render() {
