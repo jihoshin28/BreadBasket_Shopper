@@ -37,7 +37,7 @@ class CheckOut extends React.Component{
         return cartItems.map(item => {
             let attributes = item.attributes
             return (
-                <OrderItem price = {attributes.item.price} image = {attributes.item.image} count = {attributes.quantity_num} units = {attributes.item.quantity_unit} name = {attributes.item.name}/>
+                <OrderItem price = {attributes.item.price} image = {attributes.item.image} count = {attributes.quantity_num} units = {attributes.item.quantity_unit} name = {attributes.item.name} item_id= {attributes.item.id}/>
             )
         })
     }

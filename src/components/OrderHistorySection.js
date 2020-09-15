@@ -15,8 +15,6 @@ class OrderHistoryItem extends Component {
     }
     render(){
         return (
-          
-                
                 <div class = "orderBox">
                     <div class = "orderHeader">
                         <h3>Order {this.props.order}</h3>
@@ -24,7 +22,7 @@ class OrderHistoryItem extends Component {
                     
                     <div class = "orderInfo">
                         <p>
-                            Order Cost: {this.props.order}0$
+                            Order Cost: ${this.props.order}0
                         </p>
                         <p>
                             Name of Driver: Bob Clark

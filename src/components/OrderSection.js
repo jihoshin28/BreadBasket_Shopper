@@ -29,7 +29,7 @@ class OrderSection extends Component {
 
                 <div class="orderInfo">
                     <p>
-                        Order Cost: {(this.props.total/100).toFixed(2)}$
+                        Order Cost: ${(this.props.total/100).toFixed(2)}
                     </p>
                     <p>
                         Name of Driver: Bob Clark
