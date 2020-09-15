@@ -6,6 +6,7 @@ import { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatu
 class CheckOut extends React.Component{
     componentDidMount(){
         console.log(this.props.currentOrderId)
+        console.log(this.props.history)
     }
 
     placeOrder = () => {
@@ -37,7 +38,7 @@ class CheckOut extends React.Component{
         return cartItems.map(item => {
             let attributes = item.attributes
             return (
-                <OrderItem price = {attributes.item.price} image = {attributes.item.image} count = {attributes.quantity_num} units = {attributes.item.quantity_unit} name = {attributes.item.name} item_id= {attributes.item.id}/>
+                <OrderItem history = {this.props.history} price = {attributes.item.price} image = {attributes.item.image} count = {attributes.quantity_num} units = {attributes.item.quantity_unit} name = {attributes.item.name} item_id= {attributes.item.id}/>
             )
         })
     }

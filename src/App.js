@@ -21,13 +21,14 @@ import Products from './pages/Products'
 import ProfileSignup from './pages/ProfileSignup'
 import SearchPage from './pages/SearchPage'
 import ViewItems from './pages/ViewOrderItems'
-import {getStores, getCategories, signOut} from './actions'
+import {getStores, getCategories, signOut, getActiveOrders} from './actions'
 
 class App extends Component  {
   
   componentDidMount(){
     this.props.getCategories()
     this.props.getStores()
+    // this.props.getActiveOrders(this.props.shopperId)
     console.log(this.props.state)
   }
   
@@ -63,8 +64,9 @@ class App extends Component  {
 
 let mapStateToProps = state => {
   return({
-    state: state
+    state: state,
+    shopperId: state.auth.currentShopper.id
   })
 }
 
-export default connect(mapStateToProps, {getStores, getCategories, signOut})(App)
+export default connect(mapStateToProps, {getStores, getCategories, signOut, getActiveOrders})(App)

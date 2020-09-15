@@ -6,7 +6,6 @@ import OrderSection from '../components/OrderSection'
 class CurrentOrder extends React.Component {
     
     componentDidMount(){
-        this.props.getActiveOrders(this.props.shopperId)
         console.log(this.props.history)
     }
 

@@ -9,18 +9,24 @@ import FoodList from '../containers/FoodList'
 class OrderPage extends Component {
 
     componentDidMount(){
-        
+        // this.props.getActiveOrders(this.props.shopperId)
         if (!!this.props.shopperId) {
             console.log("Hello shopper! Welcome to BreadBasket!")
             this.props.startCart({ shopper_id: this.props.shopperId })
-            this.props.getActiveOrders(this.props.shopperId)
+            // this.props.getActiveOrders(this.props.shopperId)
         }
+        
     }
 
     componentDidUpdate(prevState){
         if (prevState.cartId !== this.props.cartId){
             this.props.getCart(this.props.cartId)
         }
+
+        if(prevState.activeOrders !== this.props.activeOrders){
+            this.props.getActiveOrders(this.props.shopperId)
+        }
+      
     }
     
     render() {
@@ -60,6 +66,7 @@ class OrderPage extends Component {
 
 let mapStateToProps = (state) => {
     return ({
+        activeOrders: state.order.active_orders,
         items: state.items.itemsList.data,
         categories: state.categories,
         stores: state.stores.storesList,
