@@ -15,15 +15,12 @@ class OrderPage extends Component {
             this.props.startCart({ shopper_id: this.props.shopperId })
             this.props.getActiveOrders(this.props.shopperId)
         }
-        
     }
 
     componentDidUpdate(prevState){
         if (prevState.cartId !== this.props.cartId){
             this.props.getCart(this.props.cartId)
         }
-
-    
     }
     
     render() {
