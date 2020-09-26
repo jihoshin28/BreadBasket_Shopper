@@ -29,12 +29,13 @@ class GoogleAuth extends React.Component{
         if (!!userStatus) {
 
             let user = this.auth.currentUser.get()
+            console.log(user)
             let userInfo =
             {
-                email: user.rt.$t,
-                first_name: user.rt.tV,
-                last_name: user.rt.uT,
-                image: user.rt.TJ
+                email: user.nt.Ad,
+                first_name: user.nt.dv,
+                last_name: user.nt.fT,
+                image: user.nt.JJ
             }
             this.props.signIn(userInfo)
            
