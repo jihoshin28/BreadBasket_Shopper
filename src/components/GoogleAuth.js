@@ -32,8 +32,8 @@ class GoogleAuth extends React.Component{
             console.log(user)
             let userInfo =
             {
-                email: user.nt.Ad,
-                first_name: user.nt.dv,
+                email: user.nt.Wt,
+                first_name: user.nt.dV,
                 last_name: user.nt.fT,
                 image: user.nt.JJ
             }
