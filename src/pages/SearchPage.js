@@ -4,10 +4,9 @@ import Searchbar from '../components/Searchbar'
 import FoodList from '../containers/FoodList'
 
 class SearchPage extends React.Component{
+
     componentDidMount(){
-
-
-        console.log(!!this.props.items.find(item => item.attributes.name == this.props.match.params.item), "REALLY GOD EXISTS")
+        console.log(!!this.props.items.find(item => item.attributes.name == this.props.match.params.item))
     }
 
     // searchTerm = () => {

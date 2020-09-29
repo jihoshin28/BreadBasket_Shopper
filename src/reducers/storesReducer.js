@@ -5,7 +5,7 @@ let INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
     if(action.type === 'GET_STORES'){
-        return {...state, storesList: action.payload}
+        return { storesList: action.payload.stores, selectedStore: action.payload.store }
     }
 
     if(action.type === 'SELECT_STORE'){

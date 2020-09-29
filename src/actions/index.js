@@ -4,7 +4,12 @@ import categories from '../categories'
 //STORE ACTIONS
 export const getStores = () => async dispatch => {
     const response = await rails.get(`/stores`)
-    dispatch({ type: 'GET_STORES', payload: response.data.data })
+    let store = response.data.data.find(store => store.id == 1)
+    console.log(store)
+    dispatch({ type: 'GET_STORES', payload: {
+        stores: response.data.data,
+        store: store
+    }})
 }
 
 export const selectStore = (store) => {

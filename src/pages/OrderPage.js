@@ -9,6 +9,7 @@ import FoodList from '../containers/FoodList'
 class OrderPage extends Component {
 
     componentDidMount(){
+        this.props.getItems(this.props.selectedStore.attributes.id)
         // this.props.getActiveOrders(this.props.shopperId)
         if (!!this.props.shopperId) {
             console.log("Hello shopper! Welcome to BreadBasket!")
