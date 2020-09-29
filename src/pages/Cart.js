@@ -56,7 +56,7 @@ class Cart extends Component{
                     if(!this.props.currentOrderId){
                         this.props.preOrder(orderInfo)
                     }else {
-                        this.props.updatePreOrder(this.props.orderId, orderInfo)
+                        this.props.updatePreOrder(this.props.currentOrderId, orderInfo)
                     }              
                 this.props.history.push('/checkout')
             }
@@ -158,7 +158,6 @@ let formWrapped = reduxForm({
 
 const mapStateToProps = state => {
     return({
-        orderId: state.order.current_order_id,
         shopperId: state.auth.currentShopper.shopper_info.id,
         storeId: state.stores.selectedStore.id,
         currentOrderId: state.order.current_order_id,

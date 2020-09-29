@@ -65,8 +65,9 @@ export const startCart = cartInfo => async dispatch => {
     dispatch({ type: 'START_CART', payload: data.cart})
 }
 
-export const dropCart = () => {
-    return ({
+export const dropCart = cartId => async dispatch => {
+    const response = await rails.delete(`/carts/${cartId}`)
+    dispatch ({
         type: 'DROP_CART'
     })
 }

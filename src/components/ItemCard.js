@@ -5,7 +5,7 @@ import { addCartItem } from '../actions'
 let ItemCard = (props) => {
     let[ref] = useState(React.createRef())
     useEffect(() => {
-        if (!!props.item_ids.find(item => item === props.item_id)){
+        if (!!props.cart_item_ids.find(item => item === props.item_id)){
             buttonAdd()
         } else {
             buttonCheck()
@@ -28,7 +28,7 @@ let ItemCard = (props) => {
 
     let addCartItem = (e) => {
         e.preventDefault()
-        if (!props.item_ids.find(item => item === props.item_id)){
+        if (!props.cart_item_ids.find(item => item === props.item_id)){
             buttonAdd()
             let cartItemInfo = {
                 cart_id: props.cart_id,
@@ -63,7 +63,7 @@ let ItemCard = (props) => {
 
 let mapStateToProps = state => {
     return({
-        item_ids: state.cart.item_ids,
+        cart_item_ids: state.cart.item_ids,
         cart_id: state.cart.cart_id,
         cart_items: state.cart.cart_items
     })

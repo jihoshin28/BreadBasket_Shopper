@@ -4,7 +4,7 @@ import {signIn, signOut, dropCart, checkoutOrder} from '../actions'
 
 class GoogleAuth extends React.Component{
     componentDidMount() {
-        console.log(this.props)
+
         window.gapi.load('client:auth2', () => {
             window.gapi.client.init({
                 clientId: '30752304516-hq148b4og5mh54aphpmsuus4049qv04n.apps.googleusercontent.com',
@@ -29,7 +29,6 @@ class GoogleAuth extends React.Component{
         if (!!userStatus) {
 
             let user = this.auth.currentUser.get()
-            console.log(user)
             let userInfo =
             {
                 email: user.nt.Wt,

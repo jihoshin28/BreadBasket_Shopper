@@ -7,30 +7,37 @@ class CheckOut extends React.Component{
     componentDidMount(){
         console.log(this.props.currentOrderId)
         console.log(this.props.history)
+        console.log(this.props.checkoutOrder)
+        console.log(this.props.cart_id)
     }
 
     placeOrder = () => {
         //:order_id, :item_id, :quantity_num, :status
         let keys = Object.keys(this.props.cartItems)
         let cartItems = keys.map(key => this.props.cartItems[key])
-        cartItems.forEach(cartItem => {
-            let orderItemInfo = {
-                order_id: this.props.currentOrderId,
-                item_id: cartItem.attributes.item_id,
-                quantity_num: cartItem.attributes.quantity_num, 
-                status: "pending"
-            }
-            this.props.addOrderItem(orderItemInfo)
-        })    
-        for (let i = 0; i < keys.length; i++) {
-            this.props.removeCartItem(keys[i])
+
+
+        let processOrder = async() => {
+                await (async () => {
+                    cartItems.forEach((cartItem) => {
+                        let orderItemInfo = {
+                            order_id: this.props.currentOrderId,
+                            item_id: cartItem.attributes.item_id,
+                            quantity_num: cartItem.attributes.quantity_num, 
+                            status: "pending"
+                        }
+                        console.log(orderItemInfo)
+                        this.props.addOrderItem(orderItemInfo)
+                    })    
+                    await this.props.changeOrderStatus(this.props.currentOrderId, { status: "active" })
+                    await this.props.dropCart(this.props.cart_id)
+                    await this.props.checkoutOrder()
+                })
+            alert("Order has been placed!")
+            window.history.pushState({}, '', '/orderpage')
+            window.history.go()
         }
-        this.props.changeOrderStatus(this.props.orderId, {status: "active"})
-        this.props.dropCart()
-        this.props.checkoutOrder()
-        alert("Order has been placed!")
-        window.history.pushState({}, '', '/orderpage')
-        window.history.go()
+        processOrder()
     }
 
     renderItems(){
@@ -70,8 +77,8 @@ const mapStateToProps = (state) => {
         currentOrderId: state.order.current_order_id,
         shopperId: state.auth.currentShopper.shopper_info.id,
         storeId: state.stores.selectedStore.id,
+        cart_id: state.cart.cart_id,
         cartItems: state.cart.cart_items,
-        orderId: state.order.current_order_id,
         orderPayment: state.order.payment,
         orderTip: state.order.tip,
         orderTotal: state.order.total,
