@@ -10,12 +10,6 @@ class StoreDropdown extends React.Component {
 
             this.props.getItems(this.props.selectedStore.attributes.id)
             this.props.dropCart()
-            if(!isEmpty(this.props.cartItems)){
-                let keys = Object.keys(this.props.cartItems)
-                for(let i = 0; i < keys.length; i++){
-                    this.props.removeCartItem(keys[i])
-                }
-            }
             this.props.startCart({ shopper_id: this.props.shopperId })
         }
     }

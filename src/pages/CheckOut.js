@@ -4,6 +4,12 @@ import OrderItem from '../components/OrderItem'
 import { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatus} from '../actions'
 
 class CheckOut extends React.Component{
+    constructor(){
+        super()
+        this.state = {
+            loading: false
+        }
+    }
     componentDidMount(){
         console.log(this.props.currentOrderId)
         console.log(this.props.history)
@@ -12,8 +18,9 @@ class CheckOut extends React.Component{
     }
     
     processOrder = () => {
-            
-
+        this.setState({
+            loading: true
+        })
         return new Promise ((resolve) => {
             let keys = Object.keys(this.props.cartItems)
             let cartItems = keys.map(key => this.props.cartItems[key])
@@ -27,10 +34,10 @@ class CheckOut extends React.Component{
                 console.log(orderItemInfo)
                 this.props.addOrderItem(orderItemInfo)
             })    
-        this.props.dropCart(this.props.cart_id)
-        this.props.changeOrderStatus(this.props.currentOrderId, { status: "active" })
-        this.props.checkoutOrder()
-        resolve('1')
+            this.props.dropCart(this.props.cart_id)
+            this.props.changeOrderStatus(this.props.currentOrderId, { status: "active" })
+            this.props.checkoutOrder()
+            resolve('done')
         })
     }
 

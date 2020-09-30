@@ -27,7 +27,6 @@ class GoogleAuth extends React.Component{
 
     authChange = (userStatus) => {
         if (!!userStatus) {
-
             let user = this.auth.currentUser.get().getBasicProfile()
             console.log(user)
             let userInfo =
