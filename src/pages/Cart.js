@@ -48,7 +48,7 @@ class Cart extends Component{
                     payment: (payment * 100).toFixed(0),
                     tip: (tip * 100).toFixed(0),
                     subtotal: (subtotal * 100).toFixed(0),
-                    total: (total * 100).toFixed(0),
+                    total: (total * 100 + tip * 100).toFixed(0),
                     store_id: this.props.storeId,
                     shopper_id: this.props.shopperId,
                     status: 'pending'

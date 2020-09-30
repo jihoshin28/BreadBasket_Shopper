@@ -10,34 +10,39 @@ class CheckOut extends React.Component{
         console.log(this.props.checkoutOrder)
         console.log(this.props.cart_id)
     }
+    
+    processOrder = () => {
+            
 
-    placeOrder = () => {
+        return new Promise ((resolve) => {
+            let keys = Object.keys(this.props.cartItems)
+            let cartItems = keys.map(key => this.props.cartItems[key])
+            cartItems.forEach((cartItem) => {
+                let orderItemInfo = {
+                    order_id: this.props.currentOrderId,
+                    item_id: cartItem.attributes.item_id,
+                    quantity_num: cartItem.attributes.quantity_num, 
+                    status: "pending"
+                }
+                console.log(orderItemInfo)
+                this.props.addOrderItem(orderItemInfo)
+            })    
+        this.props.dropCart(this.props.cart_id)
+        this.props.changeOrderStatus(this.props.currentOrderId, { status: "active" })
+        this.props.checkoutOrder()
+        resolve('1')
+        })
+    }
+
+        
+    placeOrder = async() => {
         //:order_id, :item_id, :quantity_num, :status
-        let keys = Object.keys(this.props.cartItems)
-        let cartItems = keys.map(key => this.props.cartItems[key])
 
+        await this.processOrder()
 
-        let processOrder = async() => {
-                await (async () => {
-                    cartItems.forEach((cartItem) => {
-                        let orderItemInfo = {
-                            order_id: this.props.currentOrderId,
-                            item_id: cartItem.attributes.item_id,
-                            quantity_num: cartItem.attributes.quantity_num, 
-                            status: "pending"
-                        }
-                        console.log(orderItemInfo)
-                        this.props.addOrderItem(orderItemInfo)
-                    })    
-                    await this.props.changeOrderStatus(this.props.currentOrderId, { status: "active" })
-                    await this.props.dropCart(this.props.cart_id)
-                    await this.props.checkoutOrder()
-                })
-            alert("Order has been placed!")
-            window.history.pushState({}, '', '/orderpage')
-            window.history.go()
-        }
-        processOrder()
+        alert("Order has been placed!")
+        window.history.pushState({}, '', '/orderpage')
+        window.history.go()
     }
 
     renderItems(){
