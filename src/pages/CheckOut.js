@@ -15,38 +15,64 @@ class CheckOut extends React.Component{
         console.log(this.props.history)
         console.log(this.props.checkoutOrder)
         console.log(this.props.cart_id)
+
+    }
+
+    addOrderItem = (orderItemInfo) => {
+        return new Promise(resolve => resolve(this.props.addOrderItem(orderItemInfo)))
+    }
+
+    asyncForEach = async (array, callback) => {
+        for (let index = 0; index < array.length; index++) {
+            await callback(array[index], index, array);
+        }
     }
     
-    processOrder = () => {
-        this.setState({
-            loading: true
+    processOrder = async() => {
+        let keys = Object.keys(this.props.cartItems)
+        let cartItems = keys.map(key => this.props.cartItems[key])
+        
+
+        await this.asyncForEach(cartItems, async (cartItem)=> {
+            let orderItemInfo = {
+                order_id: this.props.currentOrderId,
+                item_id: cartItem.attributes.item_id,
+                quantity_num: cartItem.attributes.quantity_num,
+                status: "pending"
+            }
+            console.log(orderItemInfo)
+            await (this.addOrderItem(orderItemInfo))
+        }) 
+        
+    }
+
+
+    changeOrderStatus = () => {
+        return new Promise(resolve => {
+            resolve(this.props.changeOrderStatus(this.props.currentOrderId, { status: "active" }))
+            console.log(2)
+            
         })
-        return new Promise ((resolve) => {
-            let keys = Object.keys(this.props.cartItems)
-            let cartItems = keys.map(key => this.props.cartItems[key])
-            cartItems.forEach((cartItem) => {
-                let orderItemInfo = {
-                    order_id: this.props.currentOrderId,
-                    item_id: cartItem.attributes.item_id,
-                    quantity_num: cartItem.attributes.quantity_num, 
-                    status: "pending"
-                }
-                console.log(orderItemInfo)
-                this.props.addOrderItem(orderItemInfo)
-            })    
-            this.props.dropCart(this.props.cart_id)
-            this.props.changeOrderStatus(this.props.currentOrderId, { status: "active" })
-            this.props.checkoutOrder()
-            resolve('done')
+    }
+
+    dropCart = () => {
+        return new Promise(resolve => {
+            resolve(this.props.dropCart(this.props.cart_id))
+            console.log(3)
+            
         })
     }
 
         
     placeOrder = async() => {
         //:order_id, :item_id, :quantity_num, :status
-
-        await this.processOrder()
-
+        this.setState({
+            loading: true
+        })
+        await this.changeOrderStatus()
+        await this.dropCart()
+        this.processOrder()
+        this.props.checkoutOrder()
         window.history.pushState({}, '', '/orderpage')
         window.history.go()
     }

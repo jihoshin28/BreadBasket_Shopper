@@ -75,6 +75,7 @@ export const dropCart = cartId => async dispatch => {
 //CART ITEM ACTIONS
 
 export const addCartItem = cartItemInfo => async dispatch => {
+    console.log(cartItemInfo)
     const response = await rails.post('/cart_items', {cart_item: cartItemInfo})
     let data = response.data
     console.log(data.data, 'cart_item added')
@@ -129,6 +130,7 @@ export const preOrder = orderInfo => async dispatch => {
     const response = await rails.post(`/orders`, {order: orderInfo})
     let id = parseInt(response.data.data.id)
     let orderData = response.data.data.attributes
+    console.log(response)
     dispatch({type: "PRE_ORDER", payload: {
             id: id,
             order: orderData
