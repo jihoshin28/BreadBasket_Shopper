@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {selectStore, getItems, removeCartItem, dropCart, startCart} from '../actions'
-import {isEmpty} from 'lodash'
 
 class StoreDropdown extends React.Component {
 

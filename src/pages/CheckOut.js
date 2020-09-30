@@ -64,18 +64,32 @@ class CheckOut extends React.Component{
 
     render(){
         return(
-            <div className = "container">
-                <h1> Checkout </h1>
-                <div> 
-                    {this.renderItems()}
-                </div>
-                <div >
-                    <h3>SubTotal: {`$${(this.props.orderSubTotal/100).toFixed(2)}`}</h3>
-                    <h3>Delivery: {`$${(this.props.orderPayment/100).toFixed(2)}`}</h3>
-                    <h3>Tip: {`$${(this.props.orderTip/100).toFixed(2)}`}</h3>
-                    <h3>Total: {`$${(this.props.orderTotal/100).toFixed(2)}`}</h3>
-                </div>
-                <button onClick ={() => this.placeOrder()}>Place Order</button>
+            <div>
+                {
+                    !this.state.loading ? 
+                        <div className = "container">
+                            <h1> Checkout </h1>
+                            <div> 
+                                {this.renderItems()}
+                            </div>
+                            <div >
+                                <h3>SubTotal: {`$${(this.props.orderSubTotal/100).toFixed(2)}`}</h3>
+                                <h3>Delivery: {`$${(this.props.orderPayment/100).toFixed(2)}`}</h3>
+                                <h3>Tip: {`$${(this.props.orderTip/100).toFixed(2)}`}</h3>
+                                <h3>Total: {`$${(this.props.orderTotal/100).toFixed(2)}`}</h3>
+                            </div>
+                            <button onClick ={() => this.placeOrder()}>Place Order</button>
+                        </div>
+                        :
+                        <div className = "container">
+                            <div className = "row" style = {{marginTop: '40%', justifyContent: 'center'}}>
+                                <div className = "loaderDiv">
+                                    <div class = "loader"></div>
+                                    <h1>Processing Order</h1>
+                                </div>
+                            </div>
+                        </div>
+                }
             </div>
 
         )
