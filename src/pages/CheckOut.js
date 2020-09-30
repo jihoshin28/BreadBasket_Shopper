@@ -40,7 +40,6 @@ class CheckOut extends React.Component{
 
         await this.processOrder()
 
-        alert("Order has been placed!")
         window.history.pushState({}, '', '/orderpage')
         window.history.go()
     }
