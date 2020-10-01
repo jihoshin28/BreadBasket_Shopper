@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import {connect} from 'react-redux'
 import { clearOrderItems, clearOrder} from '../actions'
 
+
 class OrderHistoryItem extends Component {
 
     constructor() {
@@ -20,18 +21,7 @@ class OrderHistoryItem extends Component {
         this.props.history.push(`/payment_details/${this.props.id}`)
     }
 
-    initMap(){
-        var options = {
-            zoom: 8,
-            center: {lat: 42.3601, lng: -71.0589}
-        }
 
-        var map = new google.maps.Map(this.ref, options)
-        var marker = new google.maps.Marker({
-            position: {lat: 42, lng: -70},
-            map: map
-        })
-    }
     render(){
         return (
                 <div class = "orderBox">
@@ -39,18 +29,15 @@ class OrderHistoryItem extends Component {
                 <div ref = {this.ref} id = "map"></div>
                 
 
-                <script>
-                    {this.initMap()}
-                </script>
-
-                    {/* <div class = "orderHeader">
+                
+                    <div class = "orderHeader">
                         <h3>Order {this.props.order}</h3>
                     </div>
                     
                     <div class = "orderInfo">
                         <p>
-                        </p>
                             Order Cost: ${this.props.order}0
+                        </p>
                         <p>
                             Name of Driver: Bob Clark
                         </p>
@@ -65,7 +52,7 @@ class OrderHistoryItem extends Component {
                     <button onClick={() => this.viewOrderItems()} class="detailsButton">
                             View Items
                         </button>
-                    </div> */}
+                    </div>
                     
                 </div>
            
