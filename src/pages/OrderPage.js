@@ -7,11 +7,6 @@ import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodList from '../containers/FoodList'
 
 class OrderPage extends Component {
-    constructor(){
-        super()
-        this.ref = React.createRef()
-
-    }
 
     componentDidMount(){
         this.props.getItems(this.props.selectedStore.attributes.id)
@@ -41,14 +36,7 @@ class OrderPage extends Component {
                         <div class = "map" ref={this.ref}>
 
                         </div>
-                        {/* <button onClick={()=> {
-                            var uluru = { lat: -25.344, lng: 131.036 };
-
-                            var map = new google.maps.Map(this.ref, {
-                                zoom: 4,
-                                center: uluru
-                            });
-                        }}>Check Location</button> */}
+                        
                     </div>
                     
                     <div class="col-sm-4">
