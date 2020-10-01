@@ -10,11 +10,11 @@ class OrderPage extends Component {
 
     componentDidMount(){
         this.props.getItems(this.props.selectedStore.attributes.id)
+        this.props.getActiveOrders(this.props.shopperId)
         
-        if (!!this.props.shopperId) {
+        if (!!this.props.shopperId && !this.props.cartId) {
             console.log("Hello shopper! Welcome to BreadBasket!")
             this.props.startCart({ shopper_id: this.props.shopperId })
-            this.props.getActiveOrders(this.props.shopperId)
         }
     }
 
