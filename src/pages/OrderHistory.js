@@ -13,6 +13,7 @@ export class OrderHistory extends Component {
         return (
             <div class = "container">
                 <h1>Order History</h1>
+                <h3>*Currently under construction!!*</h3> 
                 {orders.map(order => {
                     return <OrderHistorySection history={this.props.history} order = {order} />
                 })}
