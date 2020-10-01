@@ -164,7 +164,27 @@ export const getCompletedOrders = shopperId => async dispatch => {
     dispatch({ type: "GET_COMPLETED_ORDERS", payload: data })
 }
 
-export const checkoutOrder = () => {
+export const processOrder = (cartItems, cartId, orderId, status) => async dispatch => {
+    for (const cartItem of cartItems) {
+        let orderItemInfo = {
+            order_id: orderId,
+            item_id: cartItem.attributes.item_id,
+            quantity_num: cartItem.attributes.quantity_num,
+            status: "pending"
+        }
+        await rails.post(`/order_items`, { order_item: orderItemInfo })
+        console.log(orderItemInfo)
+    }
+    console.log(1)
+    await rails.patch(`orders/${orderId}`, status)
+    console.log(2)
+    await rails.delete(`/carts/${cartId}`)
+    console.log(3)
+    dispatch({ type: 'DROP_CART' })
+    dispatch({type: 'CHECKOUT_ORDER'})
+} 
+
+export const checkoutOrder = (cartItems) => {
     return ({
         type: "CHECKOUT_ORDER"
     })
