@@ -1,8 +1,17 @@
 import React from 'react'
 import connect from 'react-redux'
+import mapContainer from '../components/MapContainer'
 
 class MapPage extends React.Component {
+    componentDidMount(){
+
+    }
     
+    render(){
+        return(
+            <MapContainer></MapContainer>
+        )
+    }
 }
 
 const mapStateToProps = (state) => {

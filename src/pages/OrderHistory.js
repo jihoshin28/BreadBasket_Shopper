@@ -19,10 +19,6 @@ export class OrderHistory extends Component {
                 <h1>Order History</h1>
 
                 <h3>*Currently under construction!!*</h3>
-                <div className = "row" style = {{width: "500px", height: "500px"}}>
-                    <MapContainer></MapContainer> 
-
-                </div>
                 {orders.map(order => {
                     return <OrderHistorySection history={this.props.history} order = {order} />
                 })}                
