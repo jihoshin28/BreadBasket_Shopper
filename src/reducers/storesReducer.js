@@ -14,7 +14,11 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     if(action.type === 'STORE_COORDS'){
-        return {...state, coords: action.payload}
+        return {...state, store_coords: action.payload}
+    }
+
+    if(action.type === 'USER_COORDS'){
+        return{...state, user_coords: action.payload}
     }
     
     return state

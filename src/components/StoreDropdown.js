@@ -1,9 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
-import {selectStore, getItems, removeCartItem, dropCart, startCart, storeAddress} from '../actions'
+import {selectStore, getItems, removeCartItem, dropCart, startCart, storeCoords} from '../actions'
 
 class StoreDropdown extends React.Component {
+
+    componentDidMount(){
+        this.getAddress()
+    }
 
     componentDidUpdate(prevState){
         if(prevState.selectedStore !== this.props.selectedStore){
@@ -16,8 +20,9 @@ class StoreDropdown extends React.Component {
 
     getAddress = async () => {
         let location = await axios.post(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.props.store_params}&key=AIzaSyD-d4NIENxdIYOCE7gIRwvzTIZGRLobMdg`)
-        this.props.storeAddress(location.data.results[0].geometry.location)
+        this.props.storeCoords(location.data.results[0].geometry.location)
     }
+
     
     storeOptions = () => {
         return this.props.stores.map((store)=> {
@@ -64,4 +69,4 @@ let mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, {selectStore, getItems, removeCartItem, dropCart, startCart, storeAddress})(StoreDropdown)
+export default connect(mapStateToProps, {selectStore, getItems, removeCartItem, dropCart, startCart, storeCoords})(StoreDropdown)

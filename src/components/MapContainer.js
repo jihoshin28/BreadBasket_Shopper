@@ -1,13 +1,11 @@
-import Axios from 'axios';
+import axios from 'axios';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import {storeCoords} from '../actions'
 import React from 'react'
 import {connect} from 'react-redux'
 
 
 class MapContainer extends React.Component {
-    componentDidMount (){
-        console.log(this.props.store_coords)
-    }
 
 
     mapStyles = {
@@ -50,11 +48,11 @@ const LoadingContainer = (props) => (
 
 const mapStateToProps = (state) =>{
     return({
-        store_coords: state.stores.coords
+        store_coords: state.stores.store_coords
     })
 }
 
-export default connect(mapStateToProps)(GoogleApiWrapper({
+export default connect(mapStateToProps, {storeCoords})(GoogleApiWrapper({
     apiKey: "AIzaSyD-d4NIENxdIYOCE7gIRwvzTIZGRLobMdg",
     LoadingContainer: LoadingContainer
 })(MapContainer))

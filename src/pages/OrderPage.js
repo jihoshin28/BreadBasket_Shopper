@@ -1,10 +1,11 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { getItems, selectStore, dropCart, startCart, getCart, getActiveOrders} from '../actions'
+import { getItems, selectStore, dropCart, startCart, getCart, getActiveOrders, storeCoords} from '../actions'
 import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodList from '../containers/FoodList'
+import axios from 'axios'
 
 class OrderPage extends Component {
 
@@ -23,6 +24,8 @@ class OrderPage extends Component {
             this.props.getCart(this.props.cartId)
         }
     }
+    
+
     
     render() {
         return (
@@ -76,4 +79,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps,{getItems, selectStore, dropCart, startCart, getCart, getActiveOrders})(OrderPage)
+export default connect(mapStateToProps,{getItems, selectStore, dropCart, startCart, getCart, getActiveOrders, storeCoords})(OrderPage)
