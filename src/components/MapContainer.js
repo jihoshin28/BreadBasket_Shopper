@@ -7,13 +7,13 @@ import {connect} from 'react-redux'
 
 class MapContainer extends React.Component {
     componentDidMount(){
-        console.log(this.props.store_coords, this.props.user_coords)
+        console.log(this.props.store_coords, this.props.user)
     }
 
     mapStyles = {
-        position: 'absolute',
         width: '100%',
-        height: '100%'
+        position: 'absolute',
+        height: '87%'
     };
 
     onHover = () => {
@@ -24,6 +24,7 @@ class MapContainer extends React.Component {
     // 5600%Pacific%Grove%Way%Union
     render(){
         return (
+            <div>
             <Map
                 google={this.props.google}
                 zoom={13}
@@ -31,27 +32,28 @@ class MapContainer extends React.Component {
                 initialCenter={
                     this.props.store_coords
                 }
-            > 
+                > 
                 <Marker
                     name={'Your position'}
                     position={this.props.user_coords}
                     // icon={{
-                    //     url: "/path/to/custom_icon.png",
-                    //     anchor: new google.maps.Point(32, 32),
-                    //     scaledSize: new google.maps.Size(64, 64)
-                    // }} 
-                />
+                        //     url: "/path/to/custom_icon.png",
+                        //     anchor: new google.maps.Point(32, 32),
+                        //     scaledSize: new google.maps.Size(64, 64)
+                        // }} 
+                        />
 
                 <Marker
                     name={`${this.props.store_name}`}
                     position={this.props.store_coords}
-                // icon={{
-                //     url: "/path/to/custom_icon.png",
-                //     anchor: new google.maps.Point(32, 32),
+                    // icon={{
+                        //     url: "/path/to/custom_icon.png",
+                        //     anchor: new google.maps.Point(32, 32),
                 //     scaledSize: new google.maps.Size(64, 64)
                 // }} 
                 />
             </Map>
+            </div>
         );
     }
 }
