@@ -8,11 +8,6 @@ import axios from 'axios'
 
 class MapContainer extends React.Component {
     componentDidMount (){
-        this.getAddress()
-    }
-
-    getAddress = async() => {
-        let location = await axios.post('https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyD-d4NIENxdIYOCE7gIRwvzTIZGRLobMdg')
         
     }
 
