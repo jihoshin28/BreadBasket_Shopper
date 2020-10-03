@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { getItems, selectStore, dropCart, startCart, getCart, getActiveOrders, storeCoords} from '../actions'
+import { getItems, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords} from '../actions'
 import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
@@ -10,6 +10,8 @@ import axios from 'axios'
 class OrderPage extends Component {
 
     componentDidMount(){
+        console.log(this.props.user_coords)
+        navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error)
         this.props.getItems(this.props.selectedStore.attributes.id)
         this.props.getActiveOrders(this.props.shopperId)
         
@@ -17,6 +19,19 @@ class OrderPage extends Component {
             console.log("Hello shopper! Welcome to BreadBasket!")
             this.props.startCart({ shopper_id: this.props.shopperId })
         }
+    }
+
+    success(pos){
+        console.log(this.props)
+        if(!!pos){
+            var crd = pos.coords
+            console.log("HEY LISTEN", { lat: crd.latitude, lng: crd.longitude })
+            this.props.userCoords({lat: crd.latitude, lng: crd.longitude})
+        }
+    }
+    
+    error(err){
+        console.warn(`ERROR: ${err.code}: ${err.message}`)
     }
 
     componentDidUpdate(prevState){
@@ -79,4 +94,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps,{getItems, selectStore, dropCart, startCart, getCart, getActiveOrders, storeCoords})(OrderPage)
+export default connect(mapStateToProps,{getItems, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords})(OrderPage)

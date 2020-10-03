@@ -19,14 +19,14 @@ class MapPage extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return({
-        store_params: [
-            state.stores.selectedStore.attributes.address.split(' ').join('+'),
-            state.stores.selectedStore.attributes.city.split(' ').join('+'),
-            state.stores.selectedStore.attributes.state
-        ].join('+')
-    })
-}
+// const mapStateToProps = (state) => {
+//     return({
+//         store_params: [
+//             state.stores.selectedStore.attributes.address.split(' ').join('+'),
+//             state.stores.selectedStore.attributes.city.split(' ').join('+'),
+//             state.stores.selectedStore.attributes.state
+//         ].join('+')
+//     })
+// }
 
-export default connect(mapStateToProps, {storeCoords})(MapPage)
+export default MapPage

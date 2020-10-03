@@ -278,3 +278,10 @@ export const storeCoords = (coords) => {
         payload: coords
     })
 }
+
+export const userCoords = (coords) => {
+    return ({
+        type: 'USER_COORDS',
+        payload: coords
+    })
+}

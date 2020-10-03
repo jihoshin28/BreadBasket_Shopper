@@ -28,12 +28,22 @@ class MapContainer extends React.Component {
             > 
                 <Marker
                     name={'Your position'}
-                    position={this.props.store_coords}
+                    position={this.props.user_coords}
                     // icon={{
                     //     url: "/path/to/custom_icon.png",
                     //     anchor: new google.maps.Point(32, 32),
                     //     scaledSize: new google.maps.Size(64, 64)
                     // }} 
+                />
+
+                <Marker
+                    name={'Your position'}
+                    position={this.props.store_coords}
+                // icon={{
+                //     url: "/path/to/custom_icon.png",
+                //     anchor: new google.maps.Point(32, 32),
+                //     scaledSize: new google.maps.Size(64, 64)
+                // }} 
                 />
                  
             
@@ -48,7 +58,8 @@ const LoadingContainer = (props) => (
 
 const mapStateToProps = (state) =>{
     return({
-        store_coords: state.stores.store_coords
+        store_coords: state.stores.store_coords,
+        user_coords: state.stores.user_coords
     })
 }
 
