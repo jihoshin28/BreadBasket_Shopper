@@ -1,9 +1,7 @@
 import Axios from 'axios';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import React from 'react'
-import connect from 'react-redux'
-import rails from '../services/Rails';
-import axios from 'axios'
+import {connect} from 'react-redux'
 
 
 class MapContainer extends React.Component {
@@ -24,7 +22,7 @@ class MapContainer extends React.Component {
         return (
             <Map
                 google={this.props.google}
-                zoom={13}
+                zoom={15}
                 style={this.mapStyles}
                 initialCenter={
                     this.props.store_coords
@@ -38,7 +36,7 @@ class MapContainer extends React.Component {
                     //     anchor: new google.maps.Point(32, 32),
                     //     scaledSize: new google.maps.Size(64, 64)
                     // }} 
-                    />
+                />
                  
             
             </Map>
@@ -50,7 +48,13 @@ const LoadingContainer = (props) => (
     <div>Loading</div>
 )
 
-export default GoogleApiWrapper({
+const mapStateToProps = (state) =>{
+    return({
+        store_coords: state.stores.coords
+    })
+}
+
+export default connect(mapStateToProps)(GoogleApiWrapper({
     apiKey: "AIzaSyD-d4NIENxdIYOCE7gIRwvzTIZGRLobMdg",
     LoadingContainer: LoadingContainer
-})(MapContainer)
+})(MapContainer))

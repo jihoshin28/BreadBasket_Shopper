@@ -1,16 +1,22 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {selectStore, getItems, removeCartItem, dropCart, startCart} from '../actions'
+import axios from 'axios'
+import {selectStore, getItems, removeCartItem, dropCart, startCart, storeAddress} from '../actions'
 
 class StoreDropdown extends React.Component {
 
     componentDidUpdate(prevState){
         if(prevState.selectedStore !== this.props.selectedStore){
-
+            this.getAddress()
             this.props.getItems(this.props.selectedStore.attributes.id)
             this.props.dropCart()
             this.props.startCart({ shopper_id: this.props.shopperId })
         }
+    }
+
+    getAddress = async () => {
+        let location = await axios.post(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.props.store_params}&key=AIzaSyD-d4NIENxdIYOCE7gIRwvzTIZGRLobMdg`)
+        this.props.storeAddress(location.data.results[0].geometry.location)
     }
     
     storeOptions = () => {
@@ -49,8 +55,13 @@ let mapStateToProps = state => {
         shopperId: state.auth.currentShopper.id,
         stores: state.stores.storesList,
         selectedStore: state.stores.selectedStore,
-        cartItems: state.cart.cart_items
+        cartItems: state.cart.cart_items,
+        store_params: [
+            state.stores.selectedStore.attributes.address.split(' ').join('+'),
+            state.stores.selectedStore.attributes.city.split(' ').join('+'),
+            state.stores.selectedStore.attributes.state
+        ].join('+')
     })
 }
 
-export default connect(mapStateToProps, {selectStore, getItems, removeCartItem, dropCart, startCart})(StoreDropdown)
+export default connect(mapStateToProps, {selectStore, getItems, removeCartItem, dropCart, startCart, storeAddress})(StoreDropdown)
