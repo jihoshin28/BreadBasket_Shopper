@@ -6,6 +6,7 @@ import axios from 'axios'
 class MapPage extends React.Component {
     componentDidMount(){
         this.getAddress()
+        
     }
 
     getAddress = async () => {
@@ -26,7 +27,8 @@ const mapStateToProps = (state) => {
             state.stores.selectedStore.attributes.address.split(' ').join('+'), 
             state.stores.selectedStore.attributes.city.split(' ').join('+'), 
             state.stores.selectedStore.attributes.state
-        ].join('+')
+        ].join('+'),
+        store_coords: state.stores.store_coords,
     })
 }
 

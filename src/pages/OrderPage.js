@@ -32,10 +32,9 @@ class OrderPage extends Component {
                 <br></br>
                 <div class = "row">
                     <div class="col-sm-4">
-                        <StoreDropdown/>
-                        <div class = "map" ref={this.ref}>
-
-                        </div>
+                        <StoreDropdown />
+                        
+                        <button style = {{marginTop: "10px"}} onClick = {() => this.props.history.push('/map_page')}>See Location</button> 
                         
                     </div>
                     
