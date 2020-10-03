@@ -6,7 +6,9 @@ import {connect} from 'react-redux'
 
 
 class MapContainer extends React.Component {
-
+    componentDidMount(){
+        console.log(this.props.store_coords, this.props.user_coords)
+    }
 
     mapStyles = {
         position: 'absolute',
@@ -14,13 +16,17 @@ class MapContainer extends React.Component {
         height: '100%'
     };
 
+    onHover = () => {
+
+    }
+
     // address
     // 5600%Pacific%Grove%Way%Union
     render(){
         return (
             <Map
                 google={this.props.google}
-                zoom={15}
+                zoom={13}
                 style={this.mapStyles}
                 initialCenter={
                     this.props.store_coords
@@ -37,7 +43,7 @@ class MapContainer extends React.Component {
                 />
 
                 <Marker
-                    name={'Your position'}
+                    name={`${this.props.store_name}`}
                     position={this.props.store_coords}
                 // icon={{
                 //     url: "/path/to/custom_icon.png",
@@ -45,8 +51,6 @@ class MapContainer extends React.Component {
                 //     scaledSize: new google.maps.Size(64, 64)
                 // }} 
                 />
-                 
-            
             </Map>
         );
     }
@@ -59,7 +63,11 @@ const LoadingContainer = (props) => (
 const mapStateToProps = (state) =>{
     return({
         store_coords: state.stores.store_coords,
-        user_coords: state.stores.user_coords
+        user_coords: state.stores.user_coords,
+        store_name: state.stores.selectedStore.attributes.name
+        // start_lat: state.stores.store_coords.lat + state.stores.user_coords.lat,
+        // start_lng: state.stores.store_coords.lng + state.stores.user_coords.lng
+        
     })
 }
 
