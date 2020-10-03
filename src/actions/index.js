@@ -272,9 +272,9 @@ export const editShopperProfile = (form, id) => async dispatch => {
     dispatch({ type: "EDIT_PROFILE", payload: data.attributes })
 }
 
-export const getAddress = (coords) => {
+export const storeAddress = (coords) => {
     return({
-        type: "STORE_COORDS",
+        type: 'STORE_COORDS',
         payload: coords
     })
 }

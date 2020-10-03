@@ -8,7 +8,7 @@ import axios from 'axios'
 
 class MapContainer extends React.Component {
     componentDidMount (){
-        
+        console.log(this.props.store_coords)
     }
 
 
@@ -27,15 +27,12 @@ class MapContainer extends React.Component {
                 zoom={13}
                 style={this.mapStyles}
                 initialCenter={
-                    {
-                        lat: -1.2884,
-                        lng: 36.8233
-                    }
+                    this.props.store_coords
                 }
             > 
                 <Marker
                     name={'Your position'}
-                    position={{ lat: 37.762391, lng: -122.439192 }}
+                    position={this.props.store_coords}
                     // icon={{
                     //     url: "/path/to/custom_icon.png",
                     //     anchor: new google.maps.Point(32, 32),
