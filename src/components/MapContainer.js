@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import React from 'react'
+import connect from 'react-redux'
 import rails from '../services/Rails';
 import axios from 'axios'
 
@@ -12,8 +13,9 @@ class MapContainer extends React.Component {
 
     getAddress = async() => {
         let location = await axios.post('https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyD-d4NIENxdIYOCE7gIRwvzTIZGRLobMdg')
-        console.log(location)
+        
     }
+
 
     mapStyles = {
         position: 'absolute',
@@ -35,15 +37,28 @@ class MapContainer extends React.Component {
                         lng: 36.8233
                     }
                 }
-                
-            >
-                <InfoWindow visible = {true}>
-                </InfoWindow>    
+            > 
+                <Marker
+                    name={'Your position'}
+                    position={{ lat: 37.762391, lng: -122.439192 }}
+                    // icon={{
+                    //     url: "/path/to/custom_icon.png",
+                    //     anchor: new google.maps.Point(32, 32),
+                    //     scaledSize: new google.maps.Size(64, 64)
+                    // }} 
+                    />
+                 
+            
             </Map>
         );
     }
 }
 
+const LoadingContainer = (props) => (
+    <div>Loading</div>
+)
+
 export default GoogleApiWrapper({
-    apiKey: "AIzaSyD-d4NIENxdIYOCE7gIRwvzTIZGRLobMdg"
+    apiKey: "AIzaSyD-d4NIENxdIYOCE7gIRwvzTIZGRLobMdg",
+    LoadingContainer: LoadingContainer
 })(MapContainer)
