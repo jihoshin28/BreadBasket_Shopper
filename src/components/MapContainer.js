@@ -8,6 +8,7 @@ import {connect} from 'react-redux'
 class MapContainer extends React.Component {
     componentDidMount(){
         console.log(this.props.store_coords, this.props.user)
+        // Map.setCenter(this.props.store_coords)
     }
 
     mapStyles = {
@@ -36,21 +37,11 @@ class MapContainer extends React.Component {
                 <Marker
                     name={'Your position'}
                     position={this.props.user_coords}
-                    // icon={{
-                        //     url: "/path/to/custom_icon.png",
-                        //     anchor: new google.maps.Point(32, 32),
-                        //     scaledSize: new google.maps.Size(64, 64)
-                        // }} 
-                        />
+                />
 
                 <Marker
                     name={`${this.props.store_name}`}
                     position={this.props.store_coords}
-                    // icon={{
-                        //     url: "/path/to/custom_icon.png",
-                        //     anchor: new google.maps.Point(32, 32),
-                //     scaledSize: new google.maps.Size(64, 64)
-                // }} 
                 />
             </Map>
             </div>

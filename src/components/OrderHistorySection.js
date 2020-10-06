@@ -21,7 +21,6 @@ class OrderHistoryItem extends Component {
         this.props.history.push(`/payment_details/${this.props.id}`)
     }
 
-
     render(){
         return (
                 <div class = "orderBox">
