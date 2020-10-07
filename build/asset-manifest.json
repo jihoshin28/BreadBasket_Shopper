@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/git@github.com:geeuho/BreadBasket_Backend.git/static/css/main.5cf99db4.chunk.css",
-    "main.js": "/git@github.com:geeuho/BreadBasket_Backend.git/static/js/main.a97ec460.chunk.js",
-    "main.js.map": "/git@github.com:geeuho/BreadBasket_Backend.git/static/js/main.a97ec460.chunk.js.map",
-    "runtime-main.js": "/git@github.com:geeuho/BreadBasket_Backend.git/static/js/runtime-main.8c1a0f37.js",
-    "runtime-main.js.map": "/git@github.com:geeuho/BreadBasket_Backend.git/static/js/runtime-main.8c1a0f37.js.map",
-    "static/js/2.e8082fe4.chunk.js": "/git@github.com:geeuho/BreadBasket_Backend.git/static/js/2.e8082fe4.chunk.js",
-    "static/js/2.e8082fe4.chunk.js.map": "/git@github.com:geeuho/BreadBasket_Backend.git/static/js/2.e8082fe4.chunk.js.map",
-    "index.html": "/git@github.com:geeuho/BreadBasket_Backend.git/index.html",
-    "precache-manifest.db2101f56d9bdd6267baae447225e74c.js": "/git@github.com:geeuho/BreadBasket_Backend.git/precache-manifest.db2101f56d9bdd6267baae447225e74c.js",
-    "service-worker.js": "/git@github.com:geeuho/BreadBasket_Backend.git/service-worker.js",
-    "static/css/main.5cf99db4.chunk.css.map": "/git@github.com:geeuho/BreadBasket_Backend.git/static/css/main.5cf99db4.chunk.css.map",
-    "static/js/2.e8082fe4.chunk.js.LICENSE.txt": "/git@github.com:geeuho/BreadBasket_Backend.git/static/js/2.e8082fe4.chunk.js.LICENSE.txt"
+    "main.css": "/BreadBasket_Shopper/static/css/main.5cf99db4.chunk.css",
+    "main.js": "/BreadBasket_Shopper/static/js/main.185e23b0.chunk.js",
+    "main.js.map": "/BreadBasket_Shopper/static/js/main.185e23b0.chunk.js.map",
+    "runtime-main.js": "/BreadBasket_Shopper/static/js/runtime-main.9616cb0a.js",
+    "runtime-main.js.map": "/BreadBasket_Shopper/static/js/runtime-main.9616cb0a.js.map",
+    "static/js/2.e8082fe4.chunk.js": "/BreadBasket_Shopper/static/js/2.e8082fe4.chunk.js",
+    "static/js/2.e8082fe4.chunk.js.map": "/BreadBasket_Shopper/static/js/2.e8082fe4.chunk.js.map",
+    "index.html": "/BreadBasket_Shopper/index.html",
+    "precache-manifest.a43bb0d8398494a74d405f06580290d7.js": "/BreadBasket_Shopper/precache-manifest.a43bb0d8398494a74d405f06580290d7.js",
+    "service-worker.js": "/BreadBasket_Shopper/service-worker.js",
+    "static/css/main.5cf99db4.chunk.css.map": "/BreadBasket_Shopper/static/css/main.5cf99db4.chunk.css.map",
+    "static/js/2.e8082fe4.chunk.js.LICENSE.txt": "/BreadBasket_Shopper/static/js/2.e8082fe4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.8c1a0f37.js",
+    "static/js/runtime-main.9616cb0a.js",
     "static/js/2.e8082fe4.chunk.js",
     "static/css/main.5cf99db4.chunk.css",
-    "static/js/main.a97ec460.chunk.js"
+    "static/js/main.185e23b0.chunk.js"
   ]
 }
