@@ -7,7 +7,7 @@ export class Home extends Component {
         return (
             <div>
                
-                    <h1>Welcome to BreadBasket</h1>
+                <h1>Welcome to BreadBasket</h1>
                 <img src={process.env.PUBLIC_URL + "/bread_basket_icon.jpg"} />
              
                 <div className='textBox'>
