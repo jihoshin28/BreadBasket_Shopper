@@ -1,7 +1,7 @@
 {
   "name": "bread_basket_shopper",
   "version": "0.1.0",
-  "homepage": "https://geeuho.github.io/BreadBasket_Shopper/",
+  "homepage": "https://www.breadbasketdelivery.com",
   "private": true,
   "dependencies": {
     "@popperjs/core": "^2.4.2",
