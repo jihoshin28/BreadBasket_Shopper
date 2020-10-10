@@ -1,5 +1,28 @@
 import React from 'react'
-import {CardNumberElement, CardExpiryElement, CardCvcElement, CardElement, ElementsConsumer} from '@stripe/react-stripe-js'
+import {CardNumberElement, CardExpiryElement, CardCvcElement,IdealBankElement, CardElement, ElementsConsumer} from '@stripe/react-stripe-js'
+
+const CARD_ELEMENT_OPTIONS = {
+    
+        style: {
+            base: {
+                padding: '10px 12px',
+                color: '#32325d',
+                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+                fontSmoothing: 'antialiased',
+                fontSize: '16px',
+                '::placeholder': {
+                    color: '#aab7c4'
+                },
+                border: '3px #999',
+            },
+            invalid: {
+                color: '#fa755a',
+            }
+        }
+
+    
+   
+};
 
 class PaymentElement extends React.Component {
     handleSubmit = async(event) => {
@@ -12,6 +35,7 @@ class PaymentElement extends React.Component {
         const cardNumberElement = elements.getElement(CardNumberElement)
         const cardExpiryElement = elements.getElement(CardExpiryElement)
         const cardCvcElement = elements.getElement(CardNumberElement)
+        const idealBankElement = elements.getElement(IdealBankElement)
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: 'card',
             card: cardNumberElement
@@ -26,20 +50,26 @@ class PaymentElement extends React.Component {
     render(){
         const {stripe} = this.props
         return(
-            <form>
-                        <div class="form-group">
-                            <CardNumberElement class = "form-control"/>
-                        </div>
+            <form onSubmit = {this.handleSubmit}>
+
+
+                <div class="form-group">
+                    <label for = "card-number">Card Number</label>
+                    <CardNumberElement options={CARD_ELEMENT_OPTIONS} id="card-number" class= "payment-input"/>
+                </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputEmail4">Expiration Date</label>
-                            <CardExpiryElement class = "form-control" />
+                        <label for="card-expiry">Expiration Date</label>
+                        <CardExpiryElement options={CARD_ELEMENT_OPTIONS} id = "card-expiry" class = "payment-input" />
                     </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">CVC</label>
-                            <CardCvcElement class = "form-control" />
+                            <label for="card-cvc">CVC</label>
+                            <CardCvcElement options={CARD_ELEMENT_OPTIONS} id="card-cvc" class= "payment-input" />
                         </div>
                 </div>
+                <button type='submit' disabled={!stripe}>
+                    Pay
+                </button>
             </form>
             // <form onSubmit = {this.handleSubmit}>
             //     <CardElement options={{
