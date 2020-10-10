@@ -1,11 +1,10 @@
-import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js'
+import React from 'react'
+import {CardElement, ElementsConsumer} from '@stripe/react-stripe-js'
 
-const CheckoutForm = () => {
-    const stripe = useStripe()
-    const elements = useElements()
-    
-    const handleSubmit = async(event) => {
+class CheckoutElement extends React.Component {
+    handleSubmit = async(event) => {
         event.preventDefault()
+        const { stripe, elements } = this.props
         if(!stripe || !elements){
             return
         }
@@ -22,13 +21,26 @@ const CheckoutForm = () => {
             console.log('payment', paymentMethod)
         }
     }
+    render(){
+        const {stripe} = this.props
+        return(
+            <form onSumbit = {this.handleSubmit}>
+                <CardElement/>
+                <button type = 'submit' disabled = {!stripe}>
+                    Checkout
+                </button>
+            </form>
+        )
+    }
+}
+
+const CheckoutForm = () => {
     return(
-        <form onSumbit = {handleSubmit}>
-            <CardElement/>
-            <button type = {submit} disabled = {!stripe}>
-                Checkout
-            </button>
-        </form>
+        <ElementsConsumer>
+            {({elements, stripe}) => (
+                <CheckoutElement elements={elements} stripe = {stripe}/>
+            )}
+        </ElementsConsumer>
     )
 }
 
