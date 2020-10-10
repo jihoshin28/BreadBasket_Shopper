@@ -179,7 +179,16 @@
 }
 
 .payment-box{
-  margin: 50px;
+  margin-top: 5%;
+  margin-left: 5%;
+  padding: 50px;
+  -webkit-box-shadow: 0 0 5px rgb(122, 122, 122);
+  border-radius: 2px;
+}
+
+.payment-total{
+  margin-top: 5%;
+  margin-left: 5%;
   padding: 50px;
   -webkit-box-shadow: 0 0 5px rgb(122, 122, 122);
   border-radius: 2px;

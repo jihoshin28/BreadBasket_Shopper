@@ -41,16 +41,23 @@ class Payment extends React.Component {
             <div>
                 {!this.state.loading ? 
                     <div className = "container">
-                        <div className="payment-box">
-                            <div className = "row"> 
-                                <h2>Total</h2>
-
-                                
-                            </div>
-                            <div>
+                        <div class = "row">
+                        
+                            <div class = 'col-10 payment-box'>
+                                <h2>Payment</h2>
                                 <Elements stripe={stripePromise}>
                                     <PaymentForm />
                                 </Elements>
+                            </div>
+                        </div>
+                        <div className = "row">
+                            <div class= "col-7 payment-box">
+                                <h2>Items</h2>
+                                        
+                            </div>
+                            <div class="col-3 payment-total">
+                                <h2>Total</h2>
+                                <button >Pay</button>
                             </div>
                         </div>
                     </div>
