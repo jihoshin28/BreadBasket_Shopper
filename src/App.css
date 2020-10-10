@@ -178,12 +178,17 @@
   animation: spin 2s linear infinite;
 }
 
-.stripe-box{
+.payment-box{
   margin: 50px;
-  border: 1px solid black;
+  padding: 50px;
+  border:8px outset white;
+  -webkit-box-shadow: 0 0 10px rgb(0,0,0);
+  -moz-box-shadow: 0 0 10px rgb(0,0,0);
+  border-radius: 1em;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+

@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import OrderItem from '../components/OrderItem'
-import { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatus} from '../actions'
 
 class CheckOut extends React.Component{
     componentDidMount(){
@@ -10,6 +10,11 @@ class CheckOut extends React.Component{
         console.log(this.props.history)
         console.log(this.props.checkoutOrder)
         console.log(this.props.cart_id)
+
+    }
+
+    paymentNav(){
+        this.props.history.push('/payment')
 
     }
 
@@ -38,7 +43,11 @@ class CheckOut extends React.Component{
                         <h3>Tip: {`$${(this.props.orderTip/100).toFixed(2)}`}</h3>
                         <h3>Total: {`$${(this.props.orderTotal/100).toFixed(2)}`}</h3>
                     </div>
-                    <button onClick ={() => this.placeOrder()}>Place Order</button>
+                    <button>
+                        <Link to= '/payment'>
+                            Checkout
+                        </Link>
+                    </button>
                 </div>
             </div>
 
@@ -62,4 +71,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatus})(CheckOut)
+export default connect(mapStateToProps)(CheckOut)

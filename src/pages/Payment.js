@@ -1,7 +1,10 @@
 import React from 'react'
+import {connect} from 'react-redux'
+
 import PaymentForm from '../components/PaymentForm'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
+import { processOrder } from '../actions'
 
 const stripePromise = loadStripe('pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO')
 
@@ -38,7 +41,7 @@ class Payment extends React.Component {
             <div>
                 {!this.state.loading ? 
                     <div className = "container">
-                        <div className="stripe-box">
+                        <div className="payment-box">
                             <h2>
                                 Stripe Payment
                             </h2>
@@ -70,4 +73,4 @@ let mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, {})(Payment)
+export default connect(mapStateToProps, {processOrder})(Payment)

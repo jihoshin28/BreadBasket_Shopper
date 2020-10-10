@@ -1,5 +1,5 @@
 import React from 'react'
-import {CardElement, ElementsConsumer} from '@stripe/react-stripe-js'
+import {CardNumberElement, CardExpiryElement, CardCvcElement, CardElement, ElementsConsumer} from '@stripe/react-stripe-js'
 
 class PaymentElement extends React.Component {
     handleSubmit = async(event) => {
@@ -9,10 +9,12 @@ class PaymentElement extends React.Component {
             return
         }
 
-        const cardElement = elements.getElement(CardElement)
+        const cardNumberElement = elements.getElement(CardNumberElement)
+        const cardExpiryElement = elements.getElement(CardExpiryElement)
+        const cardCvcElement = elements.getElement(CardNumberElement)
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: 'card',
-            card: cardElement
+            card: cardNumberElement
         });
 
         if(error) {
@@ -24,26 +26,41 @@ class PaymentElement extends React.Component {
     render(){
         const {stripe} = this.props
         return(
-            <form onSubmit = {this.handleSubmit}>
-                <CardElement options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
-                            },
-                            padding: '50px'
-                        },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}/>
-                <button type = 'submit' disabled = {!stripe}>
-                    Checkout
-                </button>
+            <form>
+                        <div class="form-group">
+                            <CardNumberElement class = "form-control"/>
+                        </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Expiration Date</label>
+                            <CardExpiryElement class = "form-control" />
+                    </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">CVC</label>
+                            <CardCvcElement class = "form-control" />
+                        </div>
+                </div>
             </form>
+            // <form onSubmit = {this.handleSubmit}>
+            //     <CardElement options={{
+            //         style: {
+            //             base: {
+            //                 fontSize: '16px',
+            //                 color: '#424770',
+            //                 '::placeholder': {
+            //                     color: '#aab7c4',
+            //                 },
+            //                 padding: '50px'
+            //             },
+            //             invalid: {
+            //                 color: '#9e2146',
+            //             },
+            //         },
+            //     }}/>
+            //     <button type = 'submit' disabled = {!stripe}>
+            //         Pay
+            //     </button>
+            // </form>
         )
 
     }
