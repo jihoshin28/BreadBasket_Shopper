@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import OrderItem from '../components/OrderItem'
+import CheckoutForm from '../components/CheckoutForm'
 import { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatus, processOrder} from '../actions'
 
 class CheckOut extends React.Component{
@@ -91,6 +92,9 @@ class CheckOut extends React.Component{
                                 <h3>Total: {`$${(this.props.orderTotal/100).toFixed(2)}`}</h3>
                             </div>
                             <button onClick ={() => this.placeOrder()}>Place Order</button>
+                            <div className = "row">
+                                <CheckoutForm/>
+                            </div>
                         </div>
                         :
                         <div className = "container">

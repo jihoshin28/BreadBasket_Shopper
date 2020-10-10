@@ -4,7 +4,7 @@ const CheckoutForm = () => {
     const stripe = useStripe()
     const elements = useElements()
     
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault()
         if(!stripe || !elements){
             return
@@ -23,7 +23,12 @@ const CheckoutForm = () => {
         }
     }
     return(
-        <CardElement/>
+        <form onSumbit = {handleSubmit}>
+            <CardElement/>
+            <button type = {submit} disabled = {!stripe}>
+                Checkout
+            </button>
+        </form>
     )
 }
 
