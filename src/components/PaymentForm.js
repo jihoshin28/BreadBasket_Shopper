@@ -1,5 +1,7 @@
 import React from 'react'
-import {CardNumberElement, CardExpiryElement, CardCvcElement,IdealBankElement, CardElement, ElementsConsumer} from '@stripe/react-stripe-js'
+import {connect} from 'react-redux'
+
+import {CardNumberElement, CardExpiryElement, CardCvcElement, ElementsConsumer} from '@stripe/react-stripe-js'
 
 const CARD_ELEMENT_OPTIONS = {
     
@@ -13,15 +15,12 @@ const CARD_ELEMENT_OPTIONS = {
                 '::placeholder': {
                     color: '#aab7c4'
                 },
-                border: '3px #999',
+                border: '2px solid black'
             },
             invalid: {
                 color: '#fa755a',
             }
         }
-
-    
-   
 };
 
 class PaymentElement extends React.Component {
@@ -35,10 +34,15 @@ class PaymentElement extends React.Component {
         const cardNumberElement = elements.getElement(CardNumberElement)
         const cardExpiryElement = elements.getElement(CardExpiryElement)
         const cardCvcElement = elements.getElement(CardNumberElement)
-        const idealBankElement = elements.getElement(IdealBankElement)
+
+        console.log(cardExpiryElement)
         const {error, paymentMethod} = await stripe.createPaymentMethod({
             type: 'card',
             card: cardNumberElement
+            // total: {
+            //     label: `Order Number ${this.props.currentOrderId}`,
+            //     amount: this.props.orderTotal
+            // }
         });
 
         if(error) {
@@ -95,6 +99,18 @@ class PaymentElement extends React.Component {
 
     }
 }
+
+let mapStateToProps = state => {
+    return({
+        currentOrderId: state.order.current_order_id,
+        orderPayment: state.order.payment,
+        orderTip: state.order.tip,
+        orderTotal: state.order.total,
+        orderSubTotal: state.order.subtotal
+    })
+}
+
+connect(mapStateToProps, {})(PaymentElement)
 
 const PaymentForm = () => {
     return(

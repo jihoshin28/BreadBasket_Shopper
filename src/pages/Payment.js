@@ -42,12 +42,16 @@ class Payment extends React.Component {
                 {!this.state.loading ? 
                     <div className = "container">
                         <div className="payment-box">
-                            <h2>
-                                Stripe Payment
-                            </h2>
-                            <Elements stripe={stripePromise}>
-                                <PaymentForm />
-                            </Elements>
+                            <div className = "row"> 
+                                <h2>Total</h2>
+
+                                
+                            </div>
+                            <div>
+                                <Elements stripe={stripePromise}>
+                                    <PaymentForm />
+                                </Elements>
+                            </div>
                         </div>
                     </div>
                     :
@@ -70,6 +74,10 @@ let mapStateToProps = state => {
         cart_id: state.cart.cart_id,
         currentOrderId: state.order.current_order_id,
         cartItems: state.cart.cart_items,
+        orderPayment: state.order.payment,
+        orderTip: state.order.tip,
+        orderTotal: state.order.total,
+        orderSubTotal: state.order.subtotal
     })
 }
 

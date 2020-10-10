@@ -11,6 +11,7 @@ let INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
+    
     if(action.type === "PRE_ORDER"){
         return {...state, current_order_id: action.payload.id, 
             subtotal: parseInt(action.payload.order.subtotal),
@@ -19,7 +20,6 @@ export default (state = INITIAL_STATE, action) => {
             total: parseInt(action.payload.order.total)
         }
     }
-
     
     if(action.type === 'CHECKOUT_ORDER'){
         return {...state, current_order_id: null}
