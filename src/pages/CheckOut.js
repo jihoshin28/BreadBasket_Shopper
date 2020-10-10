@@ -1,13 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {Elements} from '@stripe/react-stripe-js'
-import {loadStripe} from '@stripe/stripe-js'
 
 import OrderItem from '../components/OrderItem'
-import CheckoutForm from '../components/PaymentForm'
 import { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatus, processOrder} from '../actions'
-
-const stripePromise = loadStripe('pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO')
 
 class CheckOut extends React.Component{
     constructor(){
@@ -26,15 +21,6 @@ class CheckOut extends React.Component{
 
     addOrderItem = (orderItemInfo) => {
         return new Promise(resolve => resolve(this.props.addOrderItem(orderItemInfo)))
-    }
-    
-    processOrder = async() => {
-        let keys = Object.keys(this.props.cartItems)
-        let cartItems = keys.map(key => this.props.cartItems[key])
-            
-        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
-
-        
     }
 
 
@@ -65,7 +51,7 @@ class CheckOut extends React.Component{
         // await this.changeOrderStatus()
         // await this.dropCart()
         // this.props.checkoutOrder()
-        window.history.pushState({}, '', '/orderpage')
+        window.history.pushState({}, '', '/payment')
         window.history.go()
     }
 
@@ -83,31 +69,19 @@ class CheckOut extends React.Component{
     render(){
         return(
             <div>
-                {
-                    !this.state.loading ? 
-                        <div className = "container">
-                            <h1> Checkout </h1>
-                            <div> 
-                                {this.renderItems()}
-                            </div>
-                            <div >
-                                <h3>SubTotal: {`$${(this.props.orderSubTotal/100).toFixed(2)}`}</h3>
-                                <h3>Delivery: {`$${(this.props.orderPayment/100).toFixed(2)}`}</h3>
-                                <h3>Tip: {`$${(this.props.orderTip/100).toFixed(2)}`}</h3>
-                                <h3>Total: {`$${(this.props.orderTotal/100).toFixed(2)}`}</h3>
-                            </div>
-                            <button onClick ={() => this.placeOrder()}>Place Order</button>
-                        </div>
-                        :
-                        <div className = "container">
-                            <div className = "row" style = {{marginTop: '40%', justifyContent: 'center'}}>
-                                <div className = "loaderDiv">
-                                    <div class = "loader"></div>
-                                    <h1>Processing Order</h1>
-                                </div>
-                            </div>
-                        </div>
-                }
+                <div className = "container">
+                    <h1> Checkout </h1>
+                    <div> 
+                        {this.renderItems()}
+                    </div>
+                    <div >
+                        <h3>SubTotal: {`$${(this.props.orderSubTotal/100).toFixed(2)}`}</h3>
+                        <h3>Delivery: {`$${(this.props.orderPayment/100).toFixed(2)}`}</h3>
+                        <h3>Tip: {`$${(this.props.orderTip/100).toFixed(2)}`}</h3>
+                        <h3>Total: {`$${(this.props.orderTotal/100).toFixed(2)}`}</h3>
+                    </div>
+                    <button onClick ={() => this.placeOrder()}>Place Order</button>
+                </div>
             </div>
 
         )
