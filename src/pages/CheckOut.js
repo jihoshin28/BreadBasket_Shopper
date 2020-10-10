@@ -1,8 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {Elements} from '@stripe/react-stripe-js'
+import {loadStripe} from '@stripe/stripe-js'
+
 import OrderItem from '../components/OrderItem'
-import CheckoutForm from '../components/CheckoutForm'
+import CheckoutForm from '../components/PaymentForm'
 import { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatus, processOrder} from '../actions'
+
+const stripePromise = loadStripe('pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO')
 
 class CheckOut extends React.Component{
     constructor(){
@@ -92,9 +97,6 @@ class CheckOut extends React.Component{
                                 <h3>Total: {`$${(this.props.orderTotal/100).toFixed(2)}`}</h3>
                             </div>
                             <button onClick ={() => this.placeOrder()}>Place Order</button>
-                            <div className = "row">
-                                <CheckoutForm/>
-                            </div>
                         </div>
                         :
                         <div className = "container">

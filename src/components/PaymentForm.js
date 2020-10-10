@@ -1,7 +1,7 @@
 import React from 'react'
 import {CardElement, ElementsConsumer} from '@stripe/react-stripe-js'
 
-class CheckoutElement extends React.Component {
+class PaymentElement extends React.Component {
     handleSubmit = async(event) => {
         event.preventDefault()
         const { stripe, elements } = this.props
@@ -24,24 +24,39 @@ class CheckoutElement extends React.Component {
     render(){
         const {stripe} = this.props
         return(
-            <form onSumbit = {this.handleSubmit}>
-                <CardElement/>
+            <form onSubmit = {this.handleSubmit}>
+                <CardElement options={{
+                    style: {
+                        base: {
+                            fontSize: '16px',
+                            color: '#424770',
+                            '::placeholder': {
+                                color: '#aab7c4',
+                            },
+                            padding: '50px'
+                        },
+                        invalid: {
+                            color: '#9e2146',
+                        },
+                    },
+                }}/>
                 <button type = 'submit' disabled = {!stripe}>
                     Checkout
                 </button>
             </form>
         )
+
     }
 }
 
-const CheckoutForm = () => {
+const PaymentForm = () => {
     return(
         <ElementsConsumer>
             {({elements, stripe}) => (
-                <CheckoutElement elements={elements} stripe = {stripe}/>
+                <PaymentElement elements={elements} stripe = {stripe}/>
             )}
         </ElementsConsumer>
     )
 }
 
-export default CheckoutForm
+export default PaymentForm
