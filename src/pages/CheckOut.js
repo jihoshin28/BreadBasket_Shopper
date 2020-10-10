@@ -2,57 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import OrderItem from '../components/OrderItem'
-import { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatus, processOrder} from '../actions'
+import { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatus} from '../actions'
 
 class CheckOut extends React.Component{
-    constructor(){
-        super()
-        this.state = {
-            loading: false
-        }
-    }
     componentDidMount(){
         console.log(this.props.currentOrderId)
         console.log(this.props.history)
         console.log(this.props.checkoutOrder)
         console.log(this.props.cart_id)
 
-    }
-
-    addOrderItem = (orderItemInfo) => {
-        return new Promise(resolve => resolve(this.props.addOrderItem(orderItemInfo)))
-    }
-
-
-    changeOrderStatus = () => {
-        return new Promise(resolve => {
-            resolve(this.props.changeOrderStatus(this.props.currentOrderId, { status: "active" }))
-            console.log(2)
-            
-        })
-    }
-
-    dropCart = () => {
-        return new Promise(resolve => {
-            resolve(this.props.dropCart(this.props.cart_id))
-            console.log(3)
-            
-        })
-    }
-
-        
-    placeOrder = async() => {
-        //:order_id, :item_id, :quantity_num, :status
-        this.setState({
-            loading: true
-        })
-
-        await this.processOrder()
-        // await this.changeOrderStatus()
-        // await this.dropCart()
-        // this.props.checkoutOrder()
-        window.history.pushState({}, '', '/payment')
-        window.history.go()
     }
 
     renderItems(){
@@ -91,7 +49,7 @@ class CheckOut extends React.Component{
 
 const mapStateToProps = (state) => {
     return({
-        currentOrderId: state.order.current_order_id,
+        
         shopperId: state.auth.currentShopper.shopper_info.id,
         storeId: state.stores.selectedStore.id,
         cart_id: state.cart.cart_id,
@@ -103,4 +61,5 @@ const mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatus, processOrder})(CheckOut)
+
+export default connect(mapStateToProps, { addOrderItem, removeCartItem, dropCart, checkoutOrder, changeOrderStatus})(CheckOut)

@@ -6,11 +6,30 @@ import { loadStripe } from '@stripe/stripe-js'
 const stripePromise = loadStripe('pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO')
 
 class Payment extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            loading: false
+        }
+    }
+
+    placeOrder = async () => {
+        //:order_id, :item_id, :quantity_num, :status
+        this.setState({
+            loading: true
+        })
+
+        await this.processOrder()
+        // await this.changeOrderStatus()
+        // await this.dropCart()
+        // this.props.checkoutOrder()
+        window.history.pushState({}, '', '/payment')
+        window.history.go()
+    }
 
     processOrder = async () => {
         let keys = Object.keys(this.props.cartItems)
         let cartItems = keys.map(key => this.props.cartItems[key])
-
         await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
     }
 
@@ -38,10 +57,17 @@ class Payment extends React.Component {
                         </div>
                     </div>
                 }
-
             </div>
         )
     }
 }
 
-export default Payment
+let mapStateToProps = state => {
+    return({
+        cart_id: state.cart.cart_id,
+        currentOrderId: state.order.current_order_id,
+        cartItems: state.cart.cart_items,
+    })
+}
+
+export default connect(mapStateToProps, {})(Payment)
