@@ -51,6 +51,10 @@
   height: 270px;
 }
 
+.container{
+  margin-bottom: 5%;
+}
+
 .orderItem {
   padding: 5px;
   margin: 5px;
@@ -178,21 +182,39 @@
   animation: spin 2s linear infinite;
 }
 
+.payment-bg-1 {
+  /* padding: 50px; */
+  position: relative;
+  height: 900px;
+  background-image: linear-gradient(#8dc525, #b2fd27);
+  /* transform: skewY(-30deg); */
+  clip-path: polygon( 0 100%, 0 0%, 65% 0, 35% 100%);
+  background-size: 50% 50%
+}
+
+
 .payment-box{
-  margin-top: 5%;
-  margin-left: 5%;
+  /* transform: skewY(30deg); */
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842);
+}
+
+.payment-items{
+  background-color: white;
   padding: 50px;
-  -webkit-box-shadow: 0 0 5px rgb(122, 122, 122);
-  border-radius: 2px;
+  /* background-color: rgba(255, 255, 255, 0.842); */
+  height: 100%;
+  width: 100%;
+  
 }
 
 .payment-total{
-  margin-top: 5%;
-  margin-left: 5%;
   padding: 50px;
-  -webkit-box-shadow: 0 0 5px rgb(122, 122, 122);
-  border-radius: 2px;
+  height: 100%;
+  -webkit-box-shadow: 0px 0 5px rgba(80, 196, 27, 0.842);
+  /* background-image: linear-gradient(345deg, #8dc525, #b2fd27) */
 }
+
 
 @keyframes spin {
   0% { transform: rotate(0deg); }

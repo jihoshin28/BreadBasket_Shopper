@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import PaymentForm from '../components/PaymentForm'
+import StripeCheckout from 'react-stripe-checkout'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { processOrder } from '../actions'
@@ -36,41 +37,46 @@ class Payment extends React.Component {
         await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
     }
 
+    stripePay = () => {
+        this.testFunction()
+    }
+
+
     render(){
         return(
-            <div>
-                {!this.state.loading ? 
-                    <div className = "container">
-                        <div class = "row">
+            
+            <div >
+                <div class = "payment-bg-1">
+                    {!this.state.loading ? 
                         
-                            <div class = 'col-10 payment-box'>
-                                <h2>Payment</h2>
-                                <Elements stripe={stripePromise}>
-                                    <PaymentForm />
-                                </Elements>
+                        <Elements stripe={stripePromise}>
+                            
+                            <div className = "row payment-box">
+                                <div class= "col-4 payment-items">
+                                    <h2>Items</h2>
+                                            <h3>Hello</h3>
+                                </div>
+                                <div class="col-4 payment-total">
+                                    <h2>Total</h2>
+                                    <button onClick = {this.stripePay} type="submit" disabled={!stripePromise}>Pay</button>
+                                </div>
+                            </div>
+                        </Elements>
+                    
+                        :
+                        <div className = "container">
+                            <div className = "row" style = {{marginTop: '40%', justifyContent: 'center'}}>
+                                <div className = "loaderDiv">
+                                    <div class = "loader"></div>
+                                    <h1>Processing Order</h1>
+                                </div>
                             </div>
                         </div>
-                        <div className = "row">
-                            <div class= "col-7 payment-box">
-                                <h2>Items</h2>
-                                        
-                            </div>
-                            <div class="col-3 payment-total">
-                                <h2>Total</h2>
-                                <button >Pay</button>
-                            </div>
-                        </div>
-                    </div>
-                    :
-                    <div className = "container">
-                        <div className = "row" style = {{marginTop: '40%', justifyContent: 'center'}}>
-                            <div className = "loaderDiv">
-                                <div class = "loader"></div>
-                                <h1>Processing Order</h1>
-                            </div>
-                        </div>
-                    </div>
-                }
+                    }
+                </div>
+                
+
+                
             </div>
         )
     }
@@ -87,5 +93,6 @@ let mapStateToProps = state => {
         orderSubTotal: state.order.subtotal
     })
 }
+
 
 export default connect(mapStateToProps, {processOrder})(Payment)
