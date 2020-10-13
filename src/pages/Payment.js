@@ -45,24 +45,28 @@ class Payment extends React.Component {
     render(){
         return(
             
-            <div >
-                <div class = "payment-bg-1">
+            <div class = "container-flex wrapper">
+                
+                
                     {!this.state.loading ? 
                         
                         <Elements stripe={stripePromise}>
-                            
                             <div className = "row payment-box">
-                                <div class= "col-4 payment-items">
+                                <div class= "col-6 payment-items">
                                     <h2>Items</h2>
                                             <h3>Hello</h3>
                                 </div>
-                                <div class="col-4 payment-total">
+                            
+                                <div class="col-6 payment-total">
                                     <h2>Total</h2>
                                     <button onClick = {this.stripePay} type="submit" disabled={!stripePromise}>Pay</button>
                                 </div>
+
+                            </div>
+                            <div class="payment-bg-1">
+                                
                             </div>
                         </Elements>
-                    
                         :
                         <div className = "container">
                             <div className = "row" style = {{marginTop: '40%', justifyContent: 'center'}}>
@@ -73,9 +77,6 @@ class Payment extends React.Component {
                             </div>
                         </div>
                     }
-                </div>
-                
-
                 
             </div>
         )
