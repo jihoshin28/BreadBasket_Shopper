@@ -7,9 +7,13 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { processOrder } from '../actions'
 
-const stripePromise = loadStripe('pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO')
+const stripePromise = loadStripe('')
 
 class Payment extends React.Component {
+    componentDidMount(){
+        console.log(process.env.STRIPE_TEST_KEY)
+        console.log(this.props.cartItems)
+    }
     constructor() {
         super()
         this.state = {
@@ -41,32 +45,38 @@ class Payment extends React.Component {
         this.testFunction()
     }
 
+    renderItems = ()  => {
+        
+    }
+
 
     render(){
         return(
             
-            <div class = "container-flex wrapper">
-                
-                
+                <div>
                     {!this.state.loading ? 
-                        
-                        <Elements stripe={stripePromise}>
+                    <div class="wrapper"> 
                             <div className = "row payment-box">
                                 <div class= "col-6 payment-items">
-                                    <h2>Items</h2>
-                                            <h3>Hello</h3>
+                                    <h2 class = "payment-header">Checkout</h2>
+                                    <div class = "checkout-items">
+                                        hello
+                                    </div> 
                                 </div>
                             
                                 <div class="col-6 payment-total">
-                                    <h2>Total</h2>
-                                    <button onClick = {this.stripePay} type="submit" disabled={!stripePromise}>Pay</button>
+                                    <StripeCheckout
+                                    stripeKey= "pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO"
+                                    >
+
+                                    </StripeCheckout>
                                 </div>
 
                             </div>
                             <div class="payment-bg-1">
                                 
                             </div>
-                        </Elements>
+                        </div>
                         :
                         <div className = "container">
                             <div className = "row" style = {{marginTop: '40%', justifyContent: 'center'}}>
