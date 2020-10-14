@@ -192,7 +192,7 @@
   /* padding: 50px; */
   z-index: -100;
   position: absolute;
-  height: 1000px;
+  height: 100%;
   width: 100%;
   background-image: linear-gradient(#8dc525, #b2fd27);
   /* transform: skewY(-30deg); */
@@ -200,12 +200,16 @@
 }
 
 .payment-divider{
+  margin: 2%;
   border-bottom: 1px solid black;
   opacity: .2;
 }
 
 .payment-box{
   /* transform: skewY(30deg); */
+  display: flex;
+  justify-content: center;
+  align-self: center;
   position: relative;
   margin: 12.5%;
   z-index: 100;
@@ -225,6 +229,30 @@
   /* background-color: rgba(255, 255, 255, 0.842); */
   height: 100%;
   width: 50%;
+}
+
+.payment-items h1{
+  color: green;
+  font-size: 3em;
+  margin-bottom: 7%;
+}
+
+.checkout-item{
+  display:flex; 
+  align-items: center;
+  width: 100%;
+  margin-top: 5%;
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
+}
+
+.checkout-item h3{
+  margin: 13%;
+}
+
+.checkout-item :nth-child(3) h3{
+  margin: 5%;
 }
 
 .payment-total{
