@@ -196,9 +196,13 @@
   width: 100%;
   background-image: linear-gradient(#8dc525, #b2fd27);
   /* transform: skewY(-30deg); */
-  clip-path: polygon( 0 100%, 0 0%, 65% 0, 35% 100%);
+  clip-path: polygon( 0 100%, 0 0%, 65% 0, 20% 100%);
 }
 
+.payment-divider{
+  border-bottom: 1px solid black;
+  opacity: .2;
+}
 
 .payment-box{
   /* transform: skewY(30deg); */
