@@ -60,7 +60,7 @@ class App extends Component  {
         </div>
 
         <footer className="footer">
-          <p>Allen Shin</p>
+          <p>Allen Shin Copyright @2020</p>
         </footer>
       </div>
     );

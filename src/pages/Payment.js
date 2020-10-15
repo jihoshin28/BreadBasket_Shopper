@@ -54,7 +54,7 @@ class Payment extends React.Component {
                             <img src={item.attributes.item.image} style={{ height: "100%" }} class="card-img-top" alt="..." />
                         </div>
                     <h3>{item.attributes.item.name}</h3>
-                    <div class = "row">
+                    <div class = "row" >
                         <h3>+</h3>
                         <h3>
                             {item.attributes.quantity_num}
@@ -77,7 +77,7 @@ class Payment extends React.Component {
                             <div className = "row payment-box">
                                 <div class= "col-6 payment-items">
                                     <h1 class = "payment-header">Checkout</h1>
-                                    <div class = "row">
+                                    <div class = "row payment-labels">
                                         <p>Items</p>
                                         <p>Quantity</p>
                                         <p>Price</p>
@@ -91,11 +91,18 @@ class Payment extends React.Component {
                                 </div>
                             
                                 <div class="col-6 payment-total">
-                                    <StripeCheckout
-                                        token = {this.onToken}
-                                        stripeKey= "pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO"
-                                    >
-                                    </StripeCheckout>
+                                    <div>
+                                            <div class="payment-item">
+                                                <input type = "radio" id = "stripe" value = "stripe" checked> 
+                                                </input>
+                                                <label for = "stripe"> Stripe Payment</label>
+                                                <StripeCheckout
+                                                    token={this.onToken}
+                                                    stripeKey="pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO"
+                                                >
+                                                </StripeCheckout>
+                                            </div>
+                                    </div>
                                 </div>
 
                             </div>
