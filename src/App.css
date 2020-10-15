@@ -238,7 +238,7 @@
 }
 
 .payment-labels p{
-  margin-left: 20%;  
+  margin-left: 15%;  
 }
 
 .payment-labels :nth-child(2){
@@ -246,7 +246,7 @@
 }
 
 .payment-labels :nth-child(3){
-  margin-left: 10%;
+  margin-left: 5%;
 }
 
 .checkout-item{
@@ -260,7 +260,7 @@
   -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
 }
 
-.payment-item {
+.payment-method {
   display: flex;
   align-items: center;
   width: 100%;
@@ -270,6 +270,16 @@
   border-radius: 10px;
   -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
 }
+
+.payment-method > :first-child{
+  margin-right: auto;
+  margin-left: 10%;
+}
+
+.payment-method > :last-child{
+  margin-left: auto;
+}
+
 
 .checkout-item h3{
   margin: 13%;

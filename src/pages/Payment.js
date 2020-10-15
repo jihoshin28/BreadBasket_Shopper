@@ -43,6 +43,10 @@ class Payment extends React.Component {
 
     }
 
+    onPaymentChange = (e) => {
+        console.log(e.target.value)
+    }
+
     renderItems(){
         let keys = Object.keys(this.props.cartItems)
         let cartItems = keys.map(key => this.props.cartItems[key])
@@ -71,7 +75,7 @@ class Payment extends React.Component {
     render(){
         return(
             
-                <div>
+                <div >
                     {!this.state.loading ? 
                     <div class="wrapper"> 
                             <div className = "row payment-box">
@@ -92,16 +96,34 @@ class Payment extends React.Component {
                             
                                 <div class="col-6 payment-total">
                                     <div>
-                                            <div class="payment-item">
-                                                <input type = "radio" id = "stripe" value = "stripe" checked> 
-                                                </input>
-                                                <label for = "stripe"> Stripe Payment</label>
+                                        <form onChange = {this.onPaymentChange}>
+                                            <div class="payment-method">
+                                                <div>
+                                                    <input type = "radio" id = "stripe" value = "stripe" name = "payment-method"> 
+                                                    </input>
+                                                    <label for = "stripe"> Stripe Payment</label>
+                                                </div>
                                                 <StripeCheckout
                                                     token={this.onToken}
                                                     stripeKey="pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO"
                                                 >
                                                 </StripeCheckout>
                                             </div>
+                                            <div class="payment-method">
+                                                <div>
+                                                    <input type="radio" id = "paypal" value = "paypal" name = "payment-method">
+                                                    </input>
+                                                    <label for="paypal"> Paypal</label>
+
+                                                </div>
+                                                <StripeCheckout
+                                                    token={this.onToken}
+                                                    stripeKey="pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO"
+                                                >
+                                                </StripeCheckout>
+                                            </div>
+
+                                        </form>
                                     </div>
                                 </div>
 

@@ -28,7 +28,7 @@ class Products extends Component {
                     <div class = "sidebar-header">
                         <h3>Categories</h3>
                     </div>
-                    <form onChange = {this.onCategoryChange} onSubmit = {this.formSubmit}>
+                    <form onChange = {this.onCategoryChange}>
 
                             <div class="input-group-text">
                                 <input type="radio" id = "meats" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
