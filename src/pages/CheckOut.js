@@ -33,15 +33,9 @@ class CheckOut extends React.Component{
         return(
             <div>
                 <div className = "container">
-                    <h1> Checkout </h1>
+                    <h1> Order </h1>
                     <div> 
                         {this.renderItems()}
-                    </div>
-                    <div >
-                        <h3>SubTotal: {`$${(this.props.orderSubTotal/100).toFixed(2)}`}</h3>
-                        <h3>Delivery: {`$${(this.props.orderPayment/100).toFixed(2)}`}</h3>
-                        <h3>Tip: {`$${(this.props.orderTip/100).toFixed(2)}`}</h3>
-                        <h3>Total: {`$${(this.props.orderTotal/100).toFixed(2)}`}</h3>
                     </div>
                     <button>
                         <Link to= '/payment'>

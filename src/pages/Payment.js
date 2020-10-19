@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import PaymentForm from '../components/PaymentForm'
 import StripeCheckout from 'react-stripe-checkout'
 import { processOrder } from '../actions'
-import OrderItem from '..'
 
 class Payment extends React.Component {
     componentDidMount(){
@@ -54,17 +53,16 @@ class Payment extends React.Component {
         return cartItems.map(item => {
             console.log(item.attributes)
             return <div class = "row checkout-item">
-                        <div class = "card" style = {{height: "20%", width: "20%"}}>
+                        <div class = "card" style = {{height: "10%", width: "10%"}}>
                             <img src={item.attributes.item.image} style={{ height: "100%" }} class="card-img-top" alt="..." />
                         </div>
                     <h3>{item.attributes.item.name}</h3>
-                    <div class = "row" >
-                        <h3>+</h3>
+                    
                         <h3>
                             {item.attributes.quantity_num}
                         </h3>
-                        <h3>-</h3>
-                    </div>
+
+                
                     <h3>{`$${(item.attributes.item.price * .01 * item.attributes.quantity_num).toFixed(2)}`}</h3>
                 </div>
             
@@ -101,29 +99,31 @@ class Payment extends React.Component {
                                                 <div>
                                                     <input type = "radio" id = "stripe" value = "stripe" name = "payment-method"> 
                                                     </input>
-                                                    <label for = "stripe"> Stripe Payment</label>
+                                                    <label for="stripe"><h4>Card Payment</h4></label>
                                                 </div>
-                                                <StripeCheckout
-                                                    token={this.onToken}
-                                                    stripeKey="pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO"
-                                                >
-                                                </StripeCheckout>
+                                                <img class = 'payment-icon' src={process.env.PUBLIC_URL + '/stripeIcon.png'} /> 
                                             </div>
                                             <div class="payment-method">
                                                 <div>
                                                     <input type="radio" id = "paypal" value = "paypal" name = "payment-method">
                                                     </input>
-                                                    <label for="paypal"> Paypal</label>
+                                                    <label for="paypal"><h4>Paypal</h4></label>
 
                                                 </div>
-                                                <StripeCheckout
-                                                    token={this.onToken}
-                                                    stripeKey="pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO"
-                                                >
-                                                </StripeCheckout>
+                                                <img class='payment-icon' src={process.env.PUBLIC_URL + '/paypalIcon.svg.png'} />
+                                            </div>
+                                            <div class="payment-method">
+                                                <div>
+                                                    <input type="radio" id="venmo" value="venmo" name="payment-method">
+                                                    </input>
+                                                    <label for="venmo"><h4>Venmo</h4></label>
+
+                                                </div>
+                                                <img class='payment-icon' src={process.env.PUBLIC_URL + '/venmoIcon.png'} />
                                             </div>
 
                                         </form>
+                                        <button class = 'payment-button'>Pay ${(this.props.orderTotal * .01).toFixed(2)}</button> 
                                     </div>
                                 </div>
 
@@ -142,7 +142,6 @@ class Payment extends React.Component {
                             </div>
                         </div>
                     }
-                
             </div>
         )
     }
