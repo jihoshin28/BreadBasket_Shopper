@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import PaymentForm from '../components/PaymentForm'
 import StripeCheckout from 'react-stripe-checkout'
+import {PayPaButton} from 'react-paypal-button-v2'
 import { processOrder } from '../actions'
 
 class Payment extends React.Component {
@@ -57,12 +58,9 @@ class Payment extends React.Component {
                             <img src={item.attributes.item.image} style={{ height: "100%" }} class="card-img-top" alt="..." />
                         </div>
                     <h3>{item.attributes.item.name}</h3>
-                    
-                        <h3>
-                            {item.attributes.quantity_num}
-                        </h3>
-
-                
+                    <h3>
+                        {item.attributes.quantity_num}
+                    </h3>
                     <h3>{`$${(item.attributes.item.price * .01 * item.attributes.quantity_num).toFixed(2)}`}</h3>
                 </div>
             
@@ -123,7 +121,20 @@ class Payment extends React.Component {
                                             </div>
 
                                         </form>
-                                        <button class = 'payment-button'>Pay ${(this.props.orderTotal * .01).toFixed(2)}</button> 
+                                        <div class="payment-divider">
+
+                                        </div>
+                                        <div class = "payment-details">
+                                            <h3>SubTotal: {`$${(this.props.orderSubTotal / 100).toFixed(2)}`}</h3>
+                                            <h3>Delivery: {`$${(this.props.orderPayment / 100).toFixed(2)}`}</h3>
+                                            <h3>Tip: {`$${(this.props.orderTip / 100).toFixed(2)}`}</h3>
+                                            <div class="payment-divider">
+
+                                            </div>
+                                            <h3>Total: {`$${(this.props.orderTotal / 100).toFixed(2)}`}</h3>
+                                        <button class='payment-button'>Pay ${(this.props.orderTotal * .01).toFixed(2)}</button> 
+                                        </div>
+                                        
                                     </div>
                                 </div>
 
