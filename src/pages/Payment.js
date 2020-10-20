@@ -1,9 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import PaymentForm from '../components/PaymentForm'
-import StripeCheckout from 'react-stripe-checkout'
-import {PayPaButton} from 'react-paypal-button-v2'
+import StripeButton from '../components/StripeButton'
+import PayPalButton from '../components/PaypalButton'
 import { processOrder } from '../actions'
 
 class Payment extends React.Component {
@@ -98,15 +97,17 @@ class Payment extends React.Component {
                                                     <input type = "radio" id = "stripe" value = "stripe" name = "payment-method"> 
                                                     </input>
                                                     <label for="stripe"><h4>Card Payment</h4></label>
+                                                    <StripeButton></StripeButton>
                                                 </div>
                                                 <img class = 'payment-icon' src={process.env.PUBLIC_URL + '/stripeIcon.png'} /> 
+
                                             </div>
                                             <div class="payment-method">
                                                 <div>
                                                     <input type="radio" id = "paypal" value = "paypal" name = "payment-method">
                                                     </input>
                                                     <label for="paypal"><h4>Paypal</h4></label>
-
+                                                    <PayPalButton></PayPalButton>
                                                 </div>
                                                 <img class='payment-icon' src={process.env.PUBLIC_URL + '/paypalIcon.svg.png'} />
                                             </div>

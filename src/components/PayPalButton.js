@@ -2,11 +2,11 @@ import { data } from 'jquery'
 import React from 'react'
 import {PayPalButton} from 'react-paypal-button-v2'
 
-class PayPalButton extends React.Component {
+class PaypalButton extends React.Component {
     render(){
         return(
             <PayPalButton
-                amount = ".01"
+                amount = {this.props.amount}
                 onSuccess = {(details, data) => {
                     alert(details)
                     return fetch("/paypal-transaction-complete", {
@@ -24,4 +24,4 @@ class PayPalButton extends React.Component {
     }
 }
 
-export default PayPalButton
+export default PaypalButton
