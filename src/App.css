@@ -283,11 +283,6 @@
   width: 15%;
 }
 
-input[type="radio"] {
-    margin-top: -1px;
-    vertical-align: middle;
-}
-
 .payment-method > :first-child{
   margin-right: auto;
   margin-left: 10%;

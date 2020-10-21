@@ -14,8 +14,8 @@ class CartItem extends Component {
         let newCount = 0
         if(type === '+'){
             newCount = this.props.count + 1
-            
         }
+
         if(type === '-'){
             if(this.props.count > 1){
                 newCount = this.props.count - 1 
@@ -23,6 +23,7 @@ class CartItem extends Component {
                 newCount = 1
             }
         }
+        
         this.props.cartItemCount(newCount, this.props.cartItemId)
         // this.props.cartItemCount(newCount, this.props.cartItemId)
     }

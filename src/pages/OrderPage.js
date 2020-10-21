@@ -51,9 +51,7 @@ class OrderPage extends Component {
                 <div class = "row">
                     <div class="col-sm-4">
                         <StoreDropdown />
-                        
-                        <button style = {{marginTop: "10px"}} onClick = {() => this.props.history.push('/map_page')}>See Location</button> 
-                        
+                        <button style = {{marginTop: "10px"}} onClick = {() => this.props.history.push('/map_page')}>See Location</button>     
                     </div>
                     
                     <div class="col-sm-4">
@@ -94,4 +92,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps,{getItems, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords})(OrderPage)
+export default connect(mapStateToProps, {getItems, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords})(OrderPage)

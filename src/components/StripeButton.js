@@ -15,12 +15,12 @@ class StripeButton extends React.Component {
     
     render(){
         return( 
-            <StripeButton
+            <StripeCheckout
                 token = {this.onToken}
                 stripeKey= "pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO"
                 >
 
-            </StripeButton>
+            </StripeCheckout>
         )
     }
 }
