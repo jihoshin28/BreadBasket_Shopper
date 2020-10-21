@@ -107,7 +107,7 @@ class Payment extends React.Component {
                                                     <input type="radio" id = "paypal" value = "paypal" name = "payment-method">
                                                     </input>
                                                     <label for="paypal"><h4>Paypal</h4></label>
-                                                    {/* <PayPalButton></PayPalButton> */}
+                                                    <PayPalButton></PayPalButton>
                                                 </div>
                                                 <img class='payment-icon' src={process.env.PUBLIC_URL + '/paypalIcon.svg.png'} />
                                             </div>

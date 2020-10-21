@@ -1,11 +1,11 @@
 import React from 'react'
-import {PayPalButton} from 'react-paypal-button-v2'
+import { PayPalButton } from 'react-paypal-button-v2'
 
 class PaypalButton extends React.Component {
     render(){
         return(
             <PayPalButton
-                amount = {this.props.amount}
+                amount = ".01"
                 onSuccess = {(details, data) => {
                     alert(details)
                     return fetch("/paypal-transaction-complete", {
@@ -15,9 +15,7 @@ class PaypalButton extends React.Component {
                         })
                     })
                 }}
-                options ={{
-                    clientId: "Aef4WiQOrgTXuMCJ7yrTuJ75h1TfnhbaWg_XatCXfSeVb7WBCGtE0EE0Uyid5JN5NYPn27vIHT6IE8iR"
-                }}
+                
             ></PayPalButton>
         )
     }
