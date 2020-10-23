@@ -15,7 +15,8 @@ class Payment extends React.Component {
     constructor() {
         super()
         this.state = {
-            loading: false
+            loading: false,
+            paymentOption: null
         }
     }
 
@@ -44,7 +45,9 @@ class Payment extends React.Component {
     }
 
     onPaymentChange = (e) => {
-        console.log(e.target.value)
+        this.setState({
+            paymentOption: e.target.value
+        })
     }
 
     renderItems(){
@@ -98,7 +101,7 @@ class Payment extends React.Component {
                                                     <input type = "radio" id = "stripe" value = "stripe" name = "payment-method"> 
                                                     </input>
                                                     <label for="stripe"><h4>Card Payment</h4></label>
-                                                    <StripeButton></StripeButton>
+                                                    
                                                 </div>
                                                 <img class = 'payment-icon' src={process.env.PUBLIC_URL + '/stripeIcon.png'} /> 
 
@@ -108,18 +111,8 @@ class Payment extends React.Component {
                                                     <input type="radio" id = "paypal" value = "paypal" name = "payment-method">
                                                     </input>
                                                     <label for="paypal"><h4>Paypal</h4></label>
-                                                    <PayPalButton amount = {this.props.orderTotal}></PayPalButton>
                                                 </div>
                                                 <img class='payment-icon' src={process.env.PUBLIC_URL + '/paypalIcon.svg.png'} />
-                                            </div>
-                                            <div class="payment-method">
-                                                <div>
-                                                    <input type="radio" id="venmo" value="venmo" name="payment-method">
-                                                    </input>
-                                                    <label for="venmo"><h4>Venmo</h4></label>
-
-                                                </div>
-                                                <img class='payment-icon' src={process.env.PUBLIC_URL + '/venmoIcon.png'} />
                                             </div>
 
                                         </form>
@@ -134,7 +127,12 @@ class Payment extends React.Component {
 
                                             </div>
                                             <h3>Total: {`$${(this.props.orderTotal / 100).toFixed(2)}`}</h3>
-                                        <button class='payment-button'>Pay ${(this.props.orderTotal * .01).toFixed(2)}</button> 
+                                            {
+                                                this.state.paymentOption === "paypal" ? 
+                                                <PayPalButton amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
+                                                :
+                                                <StripeButton></StripeButton>
+                                            }
                                         </div>
                                         
                                     </div>
