@@ -9,6 +9,7 @@ class Payment extends React.Component {
     componentDidMount(){
         console.log(process.env.STRIPE_TEST_KEY)
         console.log(this.props.cartItems)
+        console.log(this.props.orderPayment)
     }
 
     constructor() {
@@ -107,7 +108,7 @@ class Payment extends React.Component {
                                                     <input type="radio" id = "paypal" value = "paypal" name = "payment-method">
                                                     </input>
                                                     <label for="paypal"><h4>Paypal</h4></label>
-                                                    <PayPalButton></PayPalButton>
+                                                    <PayPalButton amount = {this.props.orderTotal}></PayPalButton>
                                                 </div>
                                                 <img class='payment-icon' src={process.env.PUBLIC_URL + '/paypalIcon.svg.png'} />
                                             </div>
