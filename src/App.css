@@ -301,6 +301,7 @@
 
 .checkout-item h3{
   margin-left: 7%;
+  width: 15%;
 }
 
 .checkout-item :nth-child(3) h3{
