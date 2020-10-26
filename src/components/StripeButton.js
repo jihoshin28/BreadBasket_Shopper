@@ -2,6 +2,9 @@ import React from 'react'
 import StripeCheckout from 'react-stripe-checkout'
 
 class StripeButton extends React.Component {
+    componentDidMount(){
+        console.log(this.props.userEmail, this.props.amount)
+    }
     onToken = (token) => {
         fetch('/save-stripe-token', {
             method: 'POST',
@@ -17,6 +20,9 @@ class StripeButton extends React.Component {
         return( 
             <StripeCheckout
                 token = {this.onToken}
+                amount = {this.props.amount}
+                currency = "USD"
+                email ={this.props.userEmail}
                 stripeKey= "pk_test_51HN5XFKYkELgOBXmFpEJqnw7WynOS5irzHdnuse7CMysCArWYZPwclIdO73m8Ot8CVNn6pQANPfuPkbDmLk3HRdD00ss20lGUO"
                 >
 

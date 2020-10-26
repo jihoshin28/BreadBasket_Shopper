@@ -131,7 +131,7 @@ class Payment extends React.Component {
                                                 this.state.paymentOption === "paypal" ? 
                                                 <PayPalButton amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
                                                 :
-                                                <StripeButton></StripeButton>
+                                                <StripeButton userEmail = {this.props.userEmail} amount= {this.props.orderTotal}></StripeButton>
                                             }
                                         </div>
                                         
@@ -160,6 +160,7 @@ class Payment extends React.Component {
 
 let mapStateToProps = state => {
     return({
+        userEmail: state.auth.currentShopper.email,
         cart_id: state.cart.cart_id,
         currentOrderId: state.order.current_order_id,
         cartItems: state.cart.cart_items,
