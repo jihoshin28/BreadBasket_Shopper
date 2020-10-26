@@ -106,7 +106,7 @@ class Cart extends Component{
         return(
             <div class = 'container'>
                 
-                <div class = 'wrapper cart'>
+                <div class =  'cart'>
                     <h1>Cart</h1>
                     {this.renderCart()}
                     <div class = "row cartItem total">

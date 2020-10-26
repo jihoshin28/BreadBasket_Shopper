@@ -26,11 +26,6 @@
   color: #61dafb;
 }
 
-.wrapper {
-  display: grid;
-  width: 100%;
-}
-
 .cart {
   background-color: greenyellow;
   padding: 20px;
@@ -183,9 +178,10 @@
 }
 
 .wrapper{
+  display: grid;
   position: relative;
   height: 100%;
-  width: 100%;
+  width: 2000px;
 }
 
 .payment-header{
@@ -248,17 +244,18 @@
   margin-bottom: 7%;
 }
 
-.payment-labels p{
+
+/* .payment-labels p{
   margin-left: 15%;  
 }
 
 .payment-labels :nth-child(2){
-  margin-left: 40%;
+  margin-left: 37%;
 }
 
 .payment-labels :nth-child(3){
-  margin-left: 10%;
-}
+  margin-left: 14%;
+} */
 
 .checkout-item{
   display: flex; 

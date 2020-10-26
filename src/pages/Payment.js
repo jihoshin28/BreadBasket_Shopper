@@ -57,11 +57,11 @@ class Payment extends React.Component {
         return cartItems.map(item => {
             console.log(item.attributes)
             return <div class = "row checkout-item">
-                        <div class = "card" style = {{height: "100%", width: "20%"}}>
+                        <div class = "card col-3" style = {{height: "100%", width: "20%"}}>
                             <img src={item.attributes.item.image} style={{ height: "100%" }} class="card-img-top" alt="..." />
                         </div>
-                    <h3>{item.attributes.item.name}</h3>
-                    <h3>
+                    <h3 class = "col-2">{item.attributes.item.name}</h3>
+                    <h3 class = "col-2">
                         {item.attributes.quantity_num}
                     </h3>
                     <h3>{`$${(item.attributes.item.price * .01 * item.attributes.quantity_num).toFixed(2)}`}</h3>
@@ -81,9 +81,9 @@ class Payment extends React.Component {
                                 <div class= "col-6 payment-items">
                                     <h1 class = "payment-header">Checkout</h1>
                                     <div class = "row payment-labels">
-                                        <p>Items</p>
-                                        <p>Quantity</p>
-                                        <p>Price</p>
+                                        <p class = "col-6">Items</p>
+                                        <p class = "col-3">Quantity</p>
+                                        <p class = "col-3" >Price</p>
                                     </div>
                                     <div class = "payment-divider">
 
