@@ -57,7 +57,7 @@ class Payment extends React.Component {
         return cartItems.map(item => {
             console.log(item.attributes)
             return <div class = "row checkout-item">
-                        <div class = "card" style = {{height: "10%", width: "10%"}}>
+                        <div class = "card" style = {{height: "100%", width: "20%"}}>
                             <img src={item.attributes.item.image} style={{ height: "100%" }} class="card-img-top" alt="..." />
                         </div>
                     <h3>{item.attributes.item.name}</h3>
@@ -89,7 +89,7 @@ class Payment extends React.Component {
 
                                     </div>
                                     <div class = "checkout-items">
-                                        {this.renderItems()}
+                                        {this.renderItems()}                           
                                     </div> 
                                 </div>
                             
