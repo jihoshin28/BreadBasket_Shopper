@@ -15,7 +15,7 @@ export class About extends Component {
                         <div class = "col-4">
                             <h3>Get your grocery shopping done with BreadBasket!</h3>
                             <p>
-                                Try out our grocery delivery service with a 
+                                Browse from popular locations to shop for all your essential groceries and household items delievered straight to your door.
                             </p>
                         </div>
                         <div class = "col-8">
@@ -29,22 +29,22 @@ export class About extends Component {
                             <div class = "aboutPicBox">
                             <img class="aboutPic" src="https://voxytalksy.com/wp-content/uploads/2018/08/google-voxytalksy.png"/>
                             </div>
-                            <h4>Section 1 </h4>
-                            <p>Section 1 Content </p>
+                            <h4>Google Authentication </h4>
+                            <p>Easily create an account with personal information by signing in with your personal Google account.</p>
                         </div> 
                         <div class="col-4">
                             <div class="aboutPicBox">
                                     <img class="aboutPic" src="https://localyse.eu/wp-content/uploads/2020/06/google_maps_featured_image-1024x597.jpg" />
                                 </div>
-                                <h4>Section 2 </h4>
-                                <p>Section 2 Content </p>
+                                <h4>Look for nearby stores</h4>
+                                <p>Google Maps is available on BreadBasket to search for nearby available store locations. </p>
                             </div> 
                         <div class="col-4">
                         <div class="aboutPicBox">
                             <img class="aboutPic" src="https://ecommercebooth.com/wp-content/uploads/2020/08/paypal-vs-strirpe-for-ecommere-business-.png" />
                             </div>
-                            <h4>Section 3 </h4>
-                            <p>Section 3 Content </p>
+                            <h4>Easy Payment</h4>
+                            <p>Pay for your order with either Stripe or Paypal for a convenient checkout experience</p>
                         </div> 
                     </div>     
             </div>
