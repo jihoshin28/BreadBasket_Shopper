@@ -13,10 +13,9 @@ export class About extends Component {
 
                     <div class = "row aboutBox">
                         <div class = "col-4">
-                            <h3>Get your groceries delievered today! </h3>
+                            <h3>Get your grocery shopping done with BreadBasket!</h3>
                             <p>
                                 Try out our grocery delivery service with a 
-
                             </p>
                         </div>
                         <div class = "col-8">
@@ -26,23 +25,23 @@ export class About extends Component {
 
 
                     <div class = "row aboutRow"> 
-                        <div class = "col-4">
-                            <div>
-                                <img class="aboutPic" src="https://itk-assets.nyc3.digitaloceanspaces.com/2020/03/grocery-delivery-services-1024x690.jpg"/>
+                        <div class="col-4" >
+                            <div class = "aboutPicBox">
+                            <img class="aboutPic" src="https://voxytalksy.com/wp-content/uploads/2018/08/google-voxytalksy.png"/>
                             </div>
                             <h4>Section 1 </h4>
                             <p>Section 1 Content </p>
                         </div> 
                         <div class="col-4">
-                            <div>
-                                <img class="aboutPic" src="https://itk-assets.nyc3.digitaloceanspaces.com/2020/03/grocery-delivery-services-1024x690.jpg" />
-                            </div>
-                            <h4>Section 2 </h4>
-                            <p>Section 2 Content </p>
-                        </div> 
+                            <div class="aboutPicBox">
+                                    <img class="aboutPic" src="https://localyse.eu/wp-content/uploads/2020/06/google_maps_featured_image-1024x597.jpg" />
+                                </div>
+                                <h4>Section 2 </h4>
+                                <p>Section 2 Content </p>
+                            </div> 
                         <div class="col-4">
-                            <div>
-                                <img class="aboutPic" src="https://itk-assets.nyc3.digitaloceanspaces.com/2020/03/grocery-delivery-services-1024x690.jpg" />
+                        <div class="aboutPicBox">
+                            <img class="aboutPic" src="https://ecommercebooth.com/wp-content/uploads/2020/08/paypal-vs-strirpe-for-ecommere-business-.png" />
                             </div>
                             <h4>Section 3 </h4>
                             <p>Section 3 Content </p>
