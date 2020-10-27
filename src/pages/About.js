@@ -26,14 +26,26 @@ export class About extends Component {
 
 
                     <div class = "row aboutRow"> 
-                        <div class = "col-4 aboutBox">
-                            <h3>Hello</h3>
+                        <div class = "col-4">
+                            <div>
+                                <img class="aboutPic" src="https://itk-assets.nyc3.digitaloceanspaces.com/2020/03/grocery-delivery-services-1024x690.jpg"/>
+                            </div>
+                            <h4>Section 1 </h4>
+                            <p>Section 1 Content </p>
                         </div> 
-                        <div class="col-4 aboutBox">
-                            <h3>Hello</h3>
+                        <div class="col-4">
+                            <div>
+                                <img class="aboutPic" src="https://itk-assets.nyc3.digitaloceanspaces.com/2020/03/grocery-delivery-services-1024x690.jpg" />
+                            </div>
+                            <h4>Section 2 </h4>
+                            <p>Section 2 Content </p>
                         </div> 
-                        <div class="col-4 aboutBox">
-                            <h3>Hello</h3>
+                        <div class="col-4">
+                            <div>
+                                <img class="aboutPic" src="https://itk-assets.nyc3.digitaloceanspaces.com/2020/03/grocery-delivery-services-1024x690.jpg" />
+                            </div>
+                            <h4>Section 3 </h4>
+                            <p>Section 3 Content </p>
                         </div> 
                     </div>     
             </div>
