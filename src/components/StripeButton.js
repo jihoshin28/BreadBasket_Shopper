@@ -5,7 +5,9 @@ class StripeButton extends React.Component {
     componentDidMount(){
         console.log(this.props.userEmail, this.props.amount)
     }
+
     onToken = (token) => {
+        console.log(token)
         fetch('/save-stripe-token', {
             method: 'POST',
             body: JSON.stringify(token),
@@ -20,6 +22,7 @@ class StripeButton extends React.Component {
         return( 
             <StripeCheckout
                 token = {this.onToken}
+                description = "Bread Basket Order Payment"
                 amount = {this.props.amount}
                 currency = "USD"
                 email ={this.props.userEmail}
