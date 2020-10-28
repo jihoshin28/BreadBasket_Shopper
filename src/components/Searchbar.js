@@ -8,10 +8,11 @@ class Searchbar extends React.Component {
     renderInput = ({ input, meta, label }) => {
     console.log(input)
         return (
-            <div class="input-group-prepend">
+            <div class="input-group-prepend searchBar">
                 <label>{label}</label>
                 <input {...input} />
-                <div> {meta.error}</div>
+                {/* <div> {meta.error}</div> */}
+                <button type="submit" id="button-addon1">Search Item</button>
             </div>
         )
     }
@@ -24,8 +25,7 @@ class Searchbar extends React.Component {
         return (
             <div>
                 <form onSubmit = {this.props.handleSubmit(this.searchSubmit)}>
-                    <Field name = "searchItem" component = {this.renderInput} label = "Search for Item"/>
-                    <button type="submit" id="button-addon1">Search Item</button>
+                    <Field name = "searchItem" component = {this.renderInput} label = "Search"/>
                 </form>
             </div>
         )
