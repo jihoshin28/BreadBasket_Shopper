@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import { Link } from 'react-router-dom'
 // import aboutPic from '../public/logo192.png'
 export class Home extends Component {
+    componentDidMount(){
+        console.log(this.props.signedIn)
+    }
     
     render() {
         return (
@@ -84,11 +88,19 @@ export class Home extends Component {
                                     </p>
                                 </div> 
                             </div> 
-                            
-
+                        <h1>Make your first order today!</h1>
+                        <div >
+                            {
+                                !!this.props.signedIn ? 
+                                <Link to = '/orderpage'>
+                                    Get Started
+                                </Link>
+                                :
+                                <h3>But first, please sign in!</h3>
+                            }
+                        </div>
                             
                 </div>
-
             </div>
         )
     }
@@ -96,7 +108,7 @@ export class Home extends Component {
 
 let mapStateToProps= state => {
     return ({
-        signedIn: state.auth.currentUser
+        signedIn: state.auth.signedIn
     })
 }
 
