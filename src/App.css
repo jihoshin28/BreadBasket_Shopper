@@ -1,10 +1,15 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.App-window{
+  margin-top: 2%;
 }
 
 @media screen and (max-width: 992px) {
@@ -32,7 +37,7 @@
   margin-top: 20px;
 }
 
-.cart-nav{
+.nav-right-btn{
   padding-right: 10px;
   padding-left: 10px;
 }
@@ -152,6 +157,7 @@
 .searchResult{
   margin: 30px;
 }
+
 
 .total {
   justify-content: 'space-around'
@@ -366,9 +372,9 @@
 }
 
 .homeMainPic{
-  margin-top: 5%;
-  height: 70%;
-  width: 70%;
+  
+  height: 90%;
+  width: 90%;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
@@ -384,11 +390,13 @@
 
 .homeRow{
   justify-content: center;
+  align-items: center;
   margin: 10%; 
 }
 
 .homeSection{
   margin: 10%;
+  
 }
 
 .storeLogoBubble{
@@ -428,10 +436,14 @@
 .footer-logo{
   margin-left: 10%;
 }
+.header-logo{
+  width: 5%;
+  height: 100%; 
+}
 
 .breadbasket-icon{
-  width: 10%;
-  height: 10%;
+  width: 80%;
+  height: 80%;
   border-radius: 50%;
   -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
 }
@@ -441,6 +453,14 @@
   flex-direction: row; 
   margin-left: 50%;
   align-items: center;
+}
+
+.foodCategoryNav{
+  margin-top: 2%;
+  background: linear-gradient(right, rgba(255,255,255,0), rgba(255,255,255,1));
+  padding: 1%;
+  padding-left: 10%; 
+  padding-right: 10%;
 }
 
 .mapSearchComponent > :nth-child(2){

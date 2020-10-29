@@ -40,23 +40,25 @@ class App extends Component  {
       <div className="App">
         <div class="ui segment">
             <NavBar history = {this.props.history}/>
-            <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
-            <Route exact path='/about' render={(props) => <About {...props} />} />
-            <Route exact path='/cart' render={(props) => <Cart {...props} />} />
-            <Route exact path='/checkout' render={(props) => <Checkout {...props} />} />
-            <Route exact path='/current_orders' render={(props) => <CurrentOrders {...props} />} />
-            <Route exact path='/edit_shopper/:section' render={(props) => <EditShopper {...props} />} />
-            <Route exact path='/item_details/:item_id' render={(props) => <ItemDetails {...props} />} />
-            <Route exact path='/map_page' render={(props) => <MapPage {...props} />} />
-            <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
-            <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
-            <Route exact path='/profile' render={(props) => <Profile {...props} />} />
-            <Route exact path='/profile_signup' render={(props) => <ProfileSignup {...props} />} />
-            <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>
-            <Route exact path='/payment_details/:order_id' render={(props) => <PaymentDetails {...props} />} />
-            <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
-            <Route exact path='/payment' render={(props) => <Payment {...props} />} />
-            <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
+            <div class = "App-window">
+              <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
+              <Route exact path='/about' render={(props) => <About {...props} />} />
+              <Route exact path='/cart' render={(props) => <Cart {...props} />} />
+              <Route exact path='/checkout' render={(props) => <Checkout {...props} />} />
+              <Route exact path='/current_orders' render={(props) => <CurrentOrders {...props} />} />
+              <Route exact path='/edit_shopper/:section' render={(props) => <EditShopper {...props} />} />
+              <Route exact path='/item_details/:item_id' render={(props) => <ItemDetails {...props} />} />
+              <Route exact path='/map_page' render={(props) => <MapPage {...props} />} />
+              <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
+              <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
+              <Route exact path='/profile' render={(props) => <Profile {...props} />} />
+              <Route exact path='/profile_signup' render={(props) => <ProfileSignup {...props} />} />
+              <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>
+              <Route exact path='/payment_details/:order_id' render={(props) => <PaymentDetails {...props} />} />
+              <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
+              <Route exact path='/payment' render={(props) => <Payment {...props} />} />
+              <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
+              </div> 
         </div>
 
         <footer className="footer">
@@ -73,7 +75,8 @@ class App extends Component  {
                 
               </div>
               <div className = "col-6">
-                <p>Allen Shin Copyright @2020</p>
+                <p>© 2020 BreadBasket</p>
+                <p>Allen Shin</p>
               </div>
             </div> 
           </div> 

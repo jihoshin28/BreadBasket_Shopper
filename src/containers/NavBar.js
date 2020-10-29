@@ -36,16 +36,29 @@ export class Navbar extends Component {
         return ( 
             
             <nav class="navbar navbar-expand-lg navbar-expand-med navbar-expand-sm navbar-light bg-light ">
-                <a class="navbar-brand" ><Link to='/'>BreadBasket</Link> </a>       
+            
+                   
                 {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button> */}
                 <div class="collapse navbar-collapse" id="navbarNav">
+                    <Link class='header-logo' to='/'>
+
+                        <img class="breadbasket-icon" src={process.env.PUBLIC_URL + '/bread_basket_icon.jpg'}></img>
+                      
+
+                    {/* <svg>
+                        <rect x="0" y="0" fill="none" width="100%" height="100%" />
+                    </svg>   */}
+                    </Link>
                     {(!!this.props.signedIn) ?
+                    
                     <ul class="navbar-nav">
                         <li class="nav-item active">
                             <a class="nav-link"><Link to='/orderpage'>Make an Order</Link></a>
+                                
                         </li>
+                            
                         {(!isEmpty(this.props.activeOrders)) ? 
                                 <li class="nav-item">
                                     <a class="nav-link"><Link to='/current_orders'>Current Orders</Link></a>
@@ -69,7 +82,7 @@ export class Navbar extends Component {
                     }
                 </div>
                 {(!!this.props.signedIn) ? 
-                <ul class="navbar-nav cart-nav">
+                <ul class="navbar-nav nav-right-btn">
                     <li class="nav-item">
     
                             <button class="btn btn-outline-success" type="button">
@@ -88,7 +101,7 @@ export class Navbar extends Component {
                 }
                 
                 <GoogleAuth history = {this.props.history} />
-                <ul class="navbar-nav cart-nav">
+                <ul class="navbar-nav nav-right-btn">
                     <li class="nav-item">
                         {this.renderUser()}
                     </li>
