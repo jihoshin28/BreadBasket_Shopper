@@ -68,11 +68,16 @@
   height: 270px;
 }
 
-.cartItem div {
+.cartItem div{
   display: flex;
   flex-flow: column;
   justify-content: space-around;
   height: 100%;
+  
+}
+
+.cartItem {
+  -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
 }
 
 .cart-item-button {

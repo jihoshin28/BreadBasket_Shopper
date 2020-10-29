@@ -89,7 +89,6 @@ class App extends Component  {
 
 let mapStateToProps = state => {
   return({
-    state: state,
     shopperId: state.auth.currentShopper.id,
     selectedStore: state.stores.selectedStore
   })

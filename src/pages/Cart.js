@@ -158,7 +158,7 @@ let formWrapped = reduxForm({
 
 const mapStateToProps = state => {
     return({
-        shopperId: state.auth.currentShopper.shopper_info.id,
+        shopperId: state.auth.currentShopper.id,
         storeId: state.stores.selectedStore.id,
         currentOrderId: state.order.current_order_id,
         cart_id: state.cart.cart_id,
