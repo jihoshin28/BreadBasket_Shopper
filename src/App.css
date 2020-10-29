@@ -37,6 +37,10 @@
   padding-left: 10px;
 }
 
+.nav-bar{
+  background-color: lawngreen;
+}
+
 .cartItem {
   padding: 5px;
   margin: 5px;
@@ -401,4 +405,33 @@
 
 .searchBar > *{
   margin-left: 1%;
+}
+
+.footer-curve{
+  height: 150px;
+  border-radius: 100% / 70% 70% 0 0 ;
+  background: lawngreen;
+  
+}
+
+.footer{
+  border-radius: 100% / 50% 50% 0 0;
+  background-color: lawngreen;
+  padding-bottom: 50px;
+  -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
+}
+
+.footer-div {
+  margin-bottom: 50px; 
+}
+
+.footer-logo{
+  margin-left: 10%;
+}
+
+.breadbasket-icon{
+  width: 10%;
+  height: 10%;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
 }

@@ -60,7 +60,24 @@ class App extends Component  {
         </div>
 
         <footer className="footer">
-          <p>Allen Shin Copyright @2020</p>
+          <div class = 'footer-curve'>
+          </div> 
+          <div class = 'footer-div'>
+            <div className = "row">
+              <div className = "col-6">
+               
+                  <div className = "footer-logo">
+                    <img class = "breadbasket-icon" src= {process.env.PUBLIC_URL + '/bread_basket_icon.jpg'}></img> 
+                    <h6>BreadBasket</h6>
+                  </div>
+                
+              </div>
+              <div className = "col-6">
+                <p>Allen Shin Copyright @2020</p>
+              </div>
+            </div> 
+          </div> 
+          
         </footer>
       </div>
     );
