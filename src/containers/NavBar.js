@@ -44,7 +44,7 @@ export class Navbar extends Component {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <Link class='header-logo' to='/'>
 
-                        <img class="breadbasket-icon" src={process.env.PUBLIC_URL + '/bread_basket_icon.jpg'}></img>
+                        <img class="header-icon" src={process.env.PUBLIC_URL + '/bread_basket_icon.jpg'}></img>
                       
 
                     {/* <svg>

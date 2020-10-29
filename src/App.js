@@ -69,8 +69,8 @@ class App extends Component  {
               <div className = "col-6">
                
                   <div className = "footer-logo">
-                    <img class = "breadbasket-icon" src= {process.env.PUBLIC_URL + '/bread_basket_icon.jpg'}></img> 
-                    <h6>BreadBasket</h6>
+                    <img class = "footer-icon" src= {process.env.PUBLIC_URL + '/bread_basket_icon.jpg'}></img> 
+                    <h3>BreadBasket</h3>
                   </div>
                 
               </div>
