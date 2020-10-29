@@ -41,13 +41,16 @@ class StoreDropdown extends React.Component {
 
     render() {
         return (
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {this.props.selectedStore.attributes.name}
-                </button>
-                <div onClick = {(e) => this.selectStore(e)} class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    {this.storeOptions()}
+            <div class = "mapSearchComponent">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {this.props.selectedStore.attributes.name}
+                    </button>
+                    <div onClick = {(e) => this.selectStore(e)} class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        {this.storeOptions()}
+                    </div>
                 </div>
+                <button style={{ marginTop: "10px" }} onClick={() => this.props.history.push('/map_page')}>See Location</button>     
             </div>
     
             

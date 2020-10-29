@@ -33,8 +33,7 @@ export class Home extends Component {
                                 </div> 
                                 <div className='col-2'>
                                 <div className="storeLogoBubble">
-                                <img class="storeLogo" src="https://sunrisemarketplace.com/wp-content/uploads/2020/03/3979_SMP-cvs-logo.jpg" />
-
+                                    <img class="storeLogo" src="https://sunrisemarketplace.com/wp-content/uploads/2020/03/3979_SMP-cvs-logo.jpg" />
                                 </div>
                                 </div> 
                                 <div className='col-2'>

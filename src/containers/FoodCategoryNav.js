@@ -3,7 +3,7 @@ import CategoryLink from '../components/CategoryLink'
 
 const FoodCategories = props => {
     return (
-        <div class="row justify-content-center">
+        <div class="row justify-content-center foodCategoryNav" >
             {props.categories.map(category => {
                 return <CategoryLink history = {props.history} name = {category.name} title = {category.title} />
             })}
