@@ -28,12 +28,12 @@ export class Home extends Component {
                             <div className = 'row homeRow'>
                                 <div className = 'col-2'>
                                     <div className = "storeLogoBubble">
-                                        <img class = "storeLogo" src= "https://1000logos.net/wp-content/uploads/2019/08/Costco-Logo-1997%E2%80%93present.jpg"/> 
+                                <img class="storeLogo" src= "https://images.barrons.com/im-78993?width=1280&size=1"/> 
                                     </div>
                                 </div> 
                                 <div className='col-2'>
                                 <div className="storeLogoBubble">
-                                    <img class="storeLogo" src="https://lh3.googleusercontent.com/proxy/UDOluroL4Y1ZHaYTHEg_BkWuTQ2fQ-kdvSPnrjvxYS8eZ7n2bANmqhiBlVnz5ps56-UqwKBcOeWF9p-xa2oFlsL6a7vKvfycBn7qKVMxnOvBQwazaF-chDw" />
+                                <img class="storeLogo" src="https://sunrisemarketplace.com/wp-content/uploads/2020/03/3979_SMP-cvs-logo.jpg" />
 
                                 </div>
                                 </div> 
@@ -51,7 +51,7 @@ export class Home extends Component {
                                 </div> 
                                 <div className='col-2'>
                                 <div className="storeLogoBubble">
-                                    <img class="storeLogo" src="https://s4745.pcdn.co/wp-content/uploads/2015/05/safeway-logo_10729611.jpg" />
+                                <img class="storeLogo" src="https://photos.prnewswire.com/prnfull/20140919/147279" />
 
                                 </div>
                                 </div> 
