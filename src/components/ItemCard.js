@@ -45,15 +45,15 @@ let ItemCard = (props) => {
     return (
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <div class="card" ref = {ref}>
-                <div style = {{height: "45%", width: "45%", alignSelf: "center", marginTop: "5px"}}>
+                <div style = {{height: "50%", width: "50%", alignSelf: "center", marginTop: "5px"}}>
                     <img src={props.image} style={{ height: "100%" }} class="card-img-top" alt="..." />
                 </div>
                 
-                <div class="card-body">
+                <div class="card-body-2">
                     <h6 class="card-title">{props.name}</h6>
                     <p style={{fontSize: "10px"}}> ${props.price}</p>
-                    <a class= "btn btn-primary cart-item-button" onClick={addCartItem} class="btn btn-primary">
-                        <img class = "cart-item-button" alt="Image" />
+                    <a class= "btn btn-primary card-button" onClick={addCartItem} class="btn btn-primary">
+                        <img class = "card-button" alt="Image" />
                     </a>
                 </div>
             </div>

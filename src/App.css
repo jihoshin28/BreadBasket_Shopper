@@ -76,13 +76,27 @@
   
 }
 
+.card{
+  padding: 10%; 
+ max-height: 100%; 
+ -webkit-box-shadow: 0px 0 3px rgba(99, 99, 99, 0.842)
+}
+
+.card-body-2{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center; 
+  margin-top: 20%;
+}
+
 .cartItem {
   -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
 }
 
-.cart-item-button {
-  width: 10px;
-  height: 10px;
+.card-button {
+  width: 10%;
+  height: 10%;
 }
 
 .item-added{
@@ -160,12 +174,17 @@
 }
 
 .sidebar-menu{
+  height: 85%;
   -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842);
   margin-left: 10%; 
   margin-top: 14%; 
   padding: 10%; 
   border-radius: 10px; 
-  background-color: rgb(233, 233, 233)
+  background-color: rgb(245, 245, 245)
+}
+
+.sidebar-menu > :nth-child(2){
+  margin-top: 20%;
 }
 
 .searchResult{
