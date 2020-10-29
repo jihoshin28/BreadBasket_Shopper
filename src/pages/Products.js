@@ -25,36 +25,38 @@ class Products extends Component {
         return (
             <div class = "products">
                 <div class = "sidebar">
-                    <div class = "sidebar-header">
+                    
+                    <div class = "sidebar-menu">
                         <h3>Categories</h3>
-                    </div>
-                    <form onChange = {this.onCategoryChange}>
+                        <form onChange = {this.onCategoryChange}>
 
-                            <div class="input-group-text">
-                                <input type="radio" id = "meats" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
-                            </div>
-                            <div class="input-group-text">
-                                <input type="radio" id="produce" name="food-category" value="produce" aria-label="Produce Input"/> Produce
-                            </div>
-                            <div class="input-group-text">
-                                <input type="radio" id="dairy" name="food-category" value="dairy" aria-label="Dairy Input"/> Dairy
-                            </div>
-                            <div class="input-group-text">
-                                <input type="radio" id="bakery" name="food-category" value="bakery" aria-label="Bakery Input" /> Bakery
-                            </div>
-                            <div class="input-group-text">
-                                <input type="radio" id="snacks" name="food-category" value="snacks" aria-label="Snacks Input"/> Snacks
-                            </div>
-                            <div class="input-group-text">
-                                <input type="radio" id="beverages" name="food-category" value="beverages" aria-label="Beverages Input"/> Beverages
-                            </div>
-                            <div class="input-group-text">
-                                <input type="radio" id="frozen" name="food-category" value="frozen" aria-label="Frozen Input"/> Frozen
-                            </div>
-                            <div class="input-group-text">
-                                <input type="radio" id="household" name="food-category" value="household" aria-label="Household Input"/> Household
-                            </div>
-                    </form>
+                                <div class="input-group-text">
+                                    <input type="radio" id = "meats" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
+                                </div>
+                                <div class="input-group-text">
+                                    <input type="radio" id="produce" name="food-category" value="produce" aria-label="Produce Input"/> Produce
+                                </div>
+                                <div class="input-group-text">
+                                    <input type="radio" id="dairy" name="food-category" value="dairy" aria-label="Dairy Input"/> Dairy
+                                </div>
+                                <div class="input-group-text">
+                                    <input type="radio" id="bakery" name="food-category" value="bakery" aria-label="Bakery Input" /> Bakery
+                                </div>
+                                <div class="input-group-text">
+                                    <input type="radio" id="snacks" name="food-category" value="snacks" aria-label="Snacks Input"/> Snacks
+                                </div>
+                                <div class="input-group-text">
+                                    <input type="radio" id="beverages" name="food-category" value="beverages" aria-label="Beverages Input"/> Beverages
+                                </div>
+                                <div class="input-group-text">
+                                    <input type="radio" id="frozen" name="food-category" value="frozen" aria-label="Frozen Input"/> Frozen
+                                </div>
+                                <div class="input-group-text">
+                                    <input type="radio" id="household" name="food-category" value="household" aria-label="Household Input"/> Household
+                                </div>
+                        </form>
+                
+                    </div>
                     
                 </div>
 

@@ -142,7 +142,7 @@
 
 .products {
   display: grid;
-  grid-template-columns: 15% 85%
+  grid-template-columns: 20% 80%
 }
 
 .products-search{
@@ -157,6 +157,15 @@
 .sidebar {
   grid-column: 1/2;
   margin: 20px;
+}
+
+.sidebar-menu{
+  -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842);
+  margin-left: 10%; 
+  margin-top: 14%; 
+  padding: 10%; 
+  border-radius: 10px; 
+  background-color: rgb(233, 233, 233)
 }
 
 .searchResult{
@@ -258,7 +267,6 @@
   font-size: 3em;
   margin-bottom: 7%;
 }
-
 
 /* .payment-labels p{
   margin-left: 15%;  
