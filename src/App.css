@@ -376,8 +376,20 @@
   margin-bottom: 20%;
 }
 
+.homeMain{
+  position: relative;
+}
+
+.homeMain h1{
+  top: 45%;
+  left: 37%;
+  color: white; 
+  position: absolute;
+  z-index: 1;
+}
+
 .homeMainPic{
-  
+  vertical-align: middle;  
   height: 90%;
   width: 90%;
   background-color: rgb(255, 255, 255);

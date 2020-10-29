@@ -10,9 +10,15 @@ export class Home extends Component {
     render() {
         return (
             <div>
-               
-                <h1>Welcome to BreadBasket</h1>
-                <img class = "homeMainPic" src='https://secureservercdn.net/45.40.150.81/0m4.91e.myftpupload.com/wp-content/uploads/2020/03/groceries-and-meat-image-1038x576.jpg' />
+                <div class = "homeMain">
+                    <h1>
+                        Welcome to BreadBasket
+                    </h1>
+                        <img class="homeMainPic" src='https://secureservercdn.net/45.40.150.81/0m4.91e.myftpupload.com/wp-content/uploads/2020/03/groceries-and-meat-image-1038x576.jpg' />
+
+                </div>
+                
+                
                 <div class = "container">
                     <div class = "homeSection">
                         <div className = "row homeRow">
