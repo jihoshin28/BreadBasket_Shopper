@@ -65,7 +65,7 @@ class App extends Component  {
           <div class = 'footer-curve'>
           </div> 
           <div class = 'footer-div'>
-            <div className = "row">
+            <div className = "row footer-row">
               <div className = "col-6">
                
                   <div className = "footer-logo">
@@ -75,8 +75,8 @@ class App extends Component  {
                 
               </div>
               <div className = "col-6">
-                <p>© 2020 BreadBasket</p>
-                <p>Allen Shin</p>
+                <h5>© 2020 BreadBasket</h5>
+                <h5>Allen Shin</h5>
               </div>
             </div> 
           </div> 

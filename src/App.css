@@ -433,7 +433,7 @@
 }
 
 .footer-curve{
-  height: 150px;
+  height: 100px;
   border-radius: 100% / 70% 70% 0 0 ;
   background: lawngreen;
   
@@ -442,18 +442,29 @@
 .footer{
   border-radius: 100% / 50% 50% 0 0;
   background-color: lawngreen;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
 }
 
 .footer-div {
-  margin-bottom: 50px; 
+  margin-bottom: 30px; 
 }
 
 .footer-logo{
   margin-left: 10%;
+  /* bottom: 5%;  */
 }
+
+.footer-row{
+  align-items: center;
+}
+
+.footer-logo > :nth-child(1){
+  margin-bottom: 3%;
+}
+
 .header-logo{
+  margin-left: 1%;
   width: 5%;
 }
 
