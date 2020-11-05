@@ -50,7 +50,7 @@ let ItemCard = (props) => {
                 </div>
                 
                 <div class="card-body-2">
-                    <h6 class="card-title">{props.name}</h6>
+                    <p class="card-title" style = {{ fontSize: "15px"}}>{props.name}</p>
                     <p style={{fontSize: "10px"}}> ${props.price}</p>
                     <a class= "btn btn-primary" onClick={addCartItem} class="btn btn-primary">
                         <img class = "card-button-img" alt="Image" />
