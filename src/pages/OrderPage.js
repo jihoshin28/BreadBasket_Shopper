@@ -10,7 +10,7 @@ import FoodListCarousel from '../containers/FoodListCarousel'
 class OrderPage extends Component {
 
     componentDidMount(){
-        console.log(this.props.user_coords)
+        console.log(this.props.items)
         navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error)
         this.props.getItems(this.props.selectedStore.attributes.id)
         this.props.getActiveOrders(this.props.shopperId)
@@ -64,17 +64,22 @@ class OrderPage extends Component {
                     <FoodCategoryNav history={this.props.history} categories= {this.props.categories}/>
                 </div>
 
-                <FoodListCarousel categories = {this.props.categories} class = "food-list-carousel"/>
+               
                 
                 <br></br><br></br>
-                {/* {
+                {
                     this.props.categories.map(category => {
                         let categoryItems = this.props.items.filter(item => item.attributes.category === category.name)
                         return (
-                            <FoodList items = {categoryItems} title={category.title} />
+                            <div class = "food-items-section">
+                                <h1>{category.title}</h1>
+                                <FoodListCarousel class="food-list-carousel" categoryItems={categoryItems} category = {category.name}>
+                                    
+                                </FoodListCarousel>
+                            </div>
                         )   
                     })
-                } */}
+                }
 
                 
             </div>
