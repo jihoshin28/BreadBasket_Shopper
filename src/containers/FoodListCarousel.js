@@ -8,16 +8,21 @@ class FoodListCarousel extends Component {
     componentDidMount(){
         console.log(this.props.categoryItems)
         console.log(this.props.category)
-        console.log(this.currentItems())
+        console.log(this.sliceList(0))
+        console.log(this.sliceList(1))
     }
 
-    currentItems(){
-        return this.props.categoryItems.filter(item => item.attributes.category === this.props.category)
-    }
+    sliceList(index){
+        let list = this.props.categoryItems
+        let length = list.length/6
+        let newList = []
+        for (let i = 0; i < length; i++){
+            let start = i * 6
+            let end = (i + 1) * 6
+            newList.push(list.slice(start, end))
 
-    sliceList(){
-        
-        return this.currentItems().slice(0, 6)
+        }
+        return newList[index]
     }
 
     render(){
@@ -29,7 +34,7 @@ class FoodListCarousel extends Component {
             </ol>
             <div class="carousel-inner">
                     <div class="carousel-item active food-list-section">
-                            {this.props.children}
+                        {}
                     </div>
                     <div class="carousel-item food-list-section">
                         <h1>
