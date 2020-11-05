@@ -64,7 +64,7 @@ class OrderPage extends Component {
                     <FoodCategoryNav history={this.props.history} categories= {this.props.categories}/>
                 </div>
 
-                <FoodListCarousel class = "food-list-carousel"/>
+                <FoodListCarousel categories = {this.props.categories} class = "food-list-carousel"/>
                 
                 <br></br><br></br>
                 {/* {

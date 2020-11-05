@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 import FoodList from '../containers/FoodListCarousel'
 
 
@@ -41,4 +42,11 @@ class FoodListCarousel extends Component {
         )
     }    
 }
-export default FoodListCarousel
+
+let mapStateToProps = (state) => {
+    return ({
+        items: state.items.itemsList.data
+    })
+}
+
+export default connect(mapStateToProps, {})(FoodListCarousel)
