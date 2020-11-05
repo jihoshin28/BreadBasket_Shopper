@@ -111,18 +111,16 @@
 }
 
 .food-list-carousel{
+  margin-left: 10%;
   display: flex;
   align-items: center;
-  height: 200px;
-  width: 50%;
+  height: 300px;
+  width: 80%;
   background-color: blue;
 }
 
 .food-list-section{
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  height: 90%;
+  width: 100%;
   background-color: red;
 }
 
