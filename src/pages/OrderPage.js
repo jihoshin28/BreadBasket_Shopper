@@ -5,7 +5,7 @@ import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodList from '../containers/FoodList'
-import axios from 'axios'
+import FoodListCarousel from '../containers/FoodListCarousel'
 
 class OrderPage extends Component {
 
@@ -63,16 +63,18 @@ class OrderPage extends Component {
                 <div class = "row justify-content-center">
                     <FoodCategoryNav history={this.props.history} categories= {this.props.categories}/>
                 </div>
+
+                <FoodListCarousel class = "food-list-carousel"/>
                 
                 <br></br><br></br>
-                {
+                {/* {
                     this.props.categories.map(category => {
                         let categoryItems = this.props.items.filter(item => item.attributes.category === category.name)
                         return (
                             <FoodList items = {categoryItems} title={category.title} />
                         )   
                     })
-                }
+                } */}
 
                 
             </div>

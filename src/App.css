@@ -110,6 +110,22 @@
   height: 70%;
 }
 
+.food-list-carousel{
+  display: flex;
+  align-items: center;
+  height: 200px;
+  width: 50%;
+  background-color: blue;
+}
+
+.food-list-section{
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 90%;
+  background-color: red;
+}
+
 .item-added{
   background-color: lawngreen;
   border: lawngreen
