@@ -4,32 +4,29 @@ import FoodList from '../containers/FoodListCarousel'
 
 
 class FoodListCarousel extends Component {
-    constructor(){
-        super()
-        this.state = {
-            itemsArray: []
-        }
-    }
+
 
     componentDidMount(){
+        console.log(this.props.items)
         this.sliceList(this.props.categoryItems)
     }
 
-    sliceList(list){
+    categoryItems(){
+        return this.props.items.filter(item => item.attributes.category === this.props.category)
+    }
+
+    sliceList(list, index){
         let rows = list.length/6
-    
+        let newList = []
         for (let i = 0; i < rows; i++){
             let start = i * 6
             let end = (i + 1) * 6
-            this.setState({
-                itemsArray: [...this.state.itemsArray, [list.slice(start, end)]]
-            })
-
+            newList.push(list.slice(start, end))
         }
+        return newList[index]
     }
 
     render(){
-        console.log(this.state.itemsArray)
         return (
             <div id="carouselExampleIndicators" class="carousel slide center food-list-carousel" data-interval="false" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -39,11 +36,11 @@ class FoodListCarousel extends Component {
             <div class="carousel-inner">
 
                     <div class="carousel-item active food-list-section">
-               
-                        {/* <FoodList items = {this.state.itemsArray[0]}/> */}
+                
+                        <FoodList items = {this.sliceList(this.categoryItems(), 0)}/>
                     </div>
                     <div class="carousel-item food-list-section">
-                        {/* <FoodList items = {this.state.itemsArray[1]} /> */}
+                        {/* <FoodList items = {this.state.secondArray} /> */}
                     </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

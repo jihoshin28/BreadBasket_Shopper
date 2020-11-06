@@ -6,7 +6,7 @@ import cartReducer from './cartReducer'
 import orderReducer from './orderReducer'
 // import routesReducer from './routesReducers'
 import { reducer as formReducer} from 'redux-form'
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
