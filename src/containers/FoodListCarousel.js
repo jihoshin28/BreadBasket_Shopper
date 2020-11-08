@@ -11,10 +11,6 @@ class FoodListCarousel extends Component {
         this.sliceList(this.props.categoryItems)
     }
 
-    categoryItems(){
-        return this.props.items.filter(item => item.attributes.category === this.props.category)
-    }
-
     sliceList(list, index){
         let rows = list.length/6
         let newList = []
@@ -59,7 +55,7 @@ class FoodListCarousel extends Component {
 
 let mapStateToProps = (state) => {
     return ({
-        items: state.items.itemsList.data
+        items: state.items.itemsList.data.filter(item => item.attributes.category === this.props.category)
     })
 }
 
