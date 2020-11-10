@@ -5,21 +5,14 @@ import FoodList from '../containers/FoodListCarousel'
 
 class FoodListCarousel extends Component {
 
-
     componentDidMount(){
-        console.log(this.props.items)
-        this.sliceList(this.props.categoryItems)
+        console.log(this.sliceItemsArray(0))
+        console.log(this.sliceItemsArray(1))
     }
 
-    sliceList(list, index){
-        let rows = list.length/6
-        let newList = []
-        for (let i = 0; i < rows; i++){
-            let start = i * 6
-            let end = (i + 1) * 6
-            newList.push(list.slice(start, end))
-        }
-        return newList[index]
+    sliceItemsArray = (index) => {
+        let items = this.props.items.filter(item => item.attributes.category === this.props.category)
+        return items.slice(index * 6, (index + 1) * 6)
     }
 
     render(){
@@ -32,11 +25,10 @@ class FoodListCarousel extends Component {
             <div class="carousel-inner">
 
                     <div class="carousel-item active food-list-section">
-                
-                        <FoodList items = {this.sliceList(this.categoryItems(), 0)}/>
+                        <FoodList items={this.sliceItemsArray(0)}/>
                     </div>
                     <div class="carousel-item food-list-section">
-                        {/* <FoodList items = {this.state.secondArray} /> */}
+                        {/* <FoodList items = {this.sliceItemsArray(1)} /> */}
                     </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -55,7 +47,7 @@ class FoodListCarousel extends Component {
 
 let mapStateToProps = (state) => {
     return ({
-        items: state.items.itemsList.data.filter(item => item.attributes.category === this.props.category)
+        items: state.items.itemsList.data
     })
 }
 
