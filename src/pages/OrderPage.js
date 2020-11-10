@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { getItems, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords} from '../actions'
+import { getItems, getCategories, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords} from '../actions'
 import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
@@ -11,6 +11,7 @@ class OrderPage extends Component {
 
     componentDidMount(){
         console.log(this.props.items)
+        this.getCategories()
         navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error)
         this.props.getItems(this.props.selectedStore.attributes.id)
         this.props.getActiveOrders(this.props.shopperId)
@@ -97,4 +98,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, {getItems, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords})(OrderPage)
+export default connect(mapStateToProps, {getItems, getCategories, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords})(OrderPage)

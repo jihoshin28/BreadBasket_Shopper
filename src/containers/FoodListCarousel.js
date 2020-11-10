@@ -6,6 +6,7 @@ import FoodList from '../containers/FoodListCarousel'
 class FoodListCarousel extends Component {
 
     componentDidMount(){
+        console.log(this.props.categories)
         console.log(this.sliceItemsArray(0))
         console.log(this.sliceItemsArray(1))
     }
@@ -25,7 +26,7 @@ class FoodListCarousel extends Component {
             <div class="carousel-inner">
 
                     <div class="carousel-item active food-list-section">
-                        <FoodList items={this.sliceItemsArray(0)}/>
+                        {/* <FoodList items={this.sliceItemsArray(0)}/> */}
                     </div>
                     <div class="carousel-item food-list-section">
                         {/* <FoodList items = {this.sliceItemsArray(1)} /> */}
@@ -47,6 +48,7 @@ class FoodListCarousel extends Component {
 
 let mapStateToProps = (state) => {
     return ({
+        categories: state.categories, 
         items: state.items.itemsList.data
     })
 }

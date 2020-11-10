@@ -21,7 +21,7 @@ export const selectStore = (store) => {
 
 //CATEGORY ACTIONS
 
-export const getCategories = () => {
+export const getCategories = (store_id) => {
     return {
         type: 'GET_CATEGORIES',
         payload: categories

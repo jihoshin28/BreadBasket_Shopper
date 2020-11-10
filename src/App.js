@@ -28,7 +28,6 @@ import {getStores, getCategories, signOut, getActiveOrders, getItems, selectStor
 class App extends Component  {
   
   componentDidMount(){
-    this.props.getCategories()
     this.props.getStores()
     this.props.getItems(1)
     // this.props.getActiveOrders(this.props.shopperId)
