@@ -4,14 +4,12 @@ import { getItems, getCategories, selectStore, dropCart, startCart, getCart, get
 import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
-import FoodList from '../containers/FoodList'
 import FoodListCarousel from '../containers/FoodListCarousel'
 
 class OrderPage extends Component {
 
     componentDidMount(){
-        console.log(this.props.items)
-        this.getCategories()
+        this.props.getCategories(0)
         navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error)
         this.props.getItems(this.props.selectedStore.attributes.id)
         this.props.getActiveOrders(this.props.shopperId)

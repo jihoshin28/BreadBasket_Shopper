@@ -24,7 +24,7 @@ export const selectStore = (store) => {
 export const getCategories = (store_id) => {
     return {
         type: 'GET_CATEGORIES',
-        payload: categories
+        payload: categories[store_id]
     }
 }
 

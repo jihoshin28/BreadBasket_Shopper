@@ -9,7 +9,6 @@ const FoodList = props => {
 
     return (
         <div class= "container">
-            
             <br></br>
                 <div class = "row justify-content-center">
                     {itemCards}
