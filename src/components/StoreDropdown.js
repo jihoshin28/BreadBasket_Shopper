@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
-import {selectStore, getItems, removeCartItem, dropCart, startCart, storeCoords} from '../actions'
+import {selectStore, getCategories, getItems, removeCartItem, dropCart, startCart, storeCoords} from '../actions'
 
 class StoreDropdown extends React.Component {
 
@@ -15,6 +15,7 @@ class StoreDropdown extends React.Component {
             this.props.getItems(this.props.selectedStore.attributes.id)
             this.props.dropCart()
             this.props.startCart({ shopper_id: this.props.shopperId })
+            this.props.getCategories(this.props.selectedStore.attributes.id - 1)
         }
     }
 
@@ -72,4 +73,4 @@ let mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, {selectStore, getItems, removeCartItem, dropCart, startCart, storeCoords})(StoreDropdown)
+export default connect(mapStateToProps, {selectStore, getCategories, getItems, removeCartItem, dropCart, startCart, storeCoords})(StoreDropdown)
