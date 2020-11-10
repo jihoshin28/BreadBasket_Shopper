@@ -9,7 +9,7 @@ import FoodListCarousel from '../containers/FoodListCarousel'
 class OrderPage extends Component {
 
     componentDidMount(){
-        this.props.getCategories(0)
+        
         navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error)
         this.props.getItems(this.props.selectedStore.attributes.id)
         this.props.getActiveOrders(this.props.shopperId)
