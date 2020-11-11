@@ -5,11 +5,11 @@ import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodListCarousel from '../containers/FoodListCarousel'
+import FoodList from '../containers/FoodList'
 
 class OrderPage extends Component {
 
     componentDidMount(){
-        
         navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error)
         this.props.getItems(this.props.selectedStore.attributes.id)
         this.props.getActiveOrders(this.props.shopperId)
@@ -38,7 +38,6 @@ class OrderPage extends Component {
             this.props.getCart(this.props.cartId)
         }
     }
-    
 
     
     render() {
@@ -62,8 +61,6 @@ class OrderPage extends Component {
                 <div class = "row justify-content-center">
                     <FoodCategoryNav history={this.props.history} categories= {this.props.categories}/>
                 </div>
-
-               
                 
                 <br></br><br></br>
                 {
@@ -76,8 +73,6 @@ class OrderPage extends Component {
                         )   
                     })
                 }
-
-                
             </div>
         )
     }

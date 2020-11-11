@@ -2,7 +2,7 @@ import React from 'react'
 import ItemCard from '../components/ItemCard'
 
 const FoodList = props => {
-
+    console.log(props.items, "foodlist")
     let itemCards = props.items.map((item, id) => {
         return <ItemCard key = {id} item_id = {parseInt(item.id)} image = {item.attributes.image} price = {(item.attributes.price * .01).toFixed(2)} name = {item.attributes.name}/>
     })
@@ -22,8 +22,6 @@ const FoodList = props => {
                         <button type="button" class="btn btn-primary btn-sm">Next</button>
                     </div>
                 </div>
-                
-            <br></br><br></br>
         </div>
     )
 }
