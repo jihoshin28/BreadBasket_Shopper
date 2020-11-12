@@ -124,7 +124,7 @@ export default [
         },
         {
             title: "Meat/Seafood",
-            name: "meats"
+            name: "meatnseafood"
         },
         {
             title: "Snacks",
@@ -158,7 +158,7 @@ export default [
         },
         {
             title: "Meat/Seafood",
-            name: "meats"
+            name: "meatnseafood"
         },
         {
             title: "Produce",
