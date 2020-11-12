@@ -11,11 +11,6 @@ class FoodListCarousel extends Component {
         console.log(this.sliceItemsArray(1))
     }
 
-    sliceItemsArray = (index) => {
-        let items = this.props.items.filter(item => item.attributes.category === this.props.category)
-        return items.slice(index * 6, (index + 1) * 6)
-    }
-
     render(){
         return (
             <div id="carouselExampleIndicators" class="carousel slide center food-list-carousel" data-interval="false" data-ride="carousel">

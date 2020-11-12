@@ -65,10 +65,12 @@ class OrderPage extends Component {
                 <br></br><br></br>
                 {
                     this.props.categories.map(category => {
+                        let items = this.props.items.filter(item => item.attributes.category === category.name)
                         return (
                             <div class = "food-items-section">
                                 <h1>{category.title}</h1>
-                                <FoodListCarousel className="food-list-carousel" category = {category.name}/>
+                                <FoodList items = {items}/> 
+                                {/* <FoodListCarousel className="food-list-carousel" category = {category.name}/> */}
                             </div>
                         )   
                     })
