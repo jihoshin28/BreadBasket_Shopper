@@ -42,7 +42,6 @@ class FoodListCarousel extends Component {
 
 let mapStateToProps = (state) => {
     return ({
-        categories: state.categories, 
         items: state.items.itemsList.data
     })
 }
