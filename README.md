@@ -85,4 +85,7 @@ For the current orders, you have the ability to update live orders, to which the
 If you have any ideas you would like to contribute or would love to collaborate on the project I would love to connect! 
 
 Email: geeuho@gmail.com
+
 Github: [https://github.com/geeuho/](https://github.com/geeuho/)
+
+LinkedIn: [https://www.linkedin.com/in/allen-shin/](https://www.linkedin.com/in/allen-shin/)
