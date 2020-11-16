@@ -4,11 +4,43 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This application provides a realistic grocery delivery service interface, where add items to a cart, which can be checked out to create an order. These orders are sent to a server which then makes the same orders for drivers on the driver application. The application includes a realistic checkout experience where users can pay using either Paypal or the Stripe API. There a variety of familiar shopping locations to choose from, each with their own unique items, and a variety of browsing options. 
 
-### Getting Started
+## Getting Started
 
 There are 2 ways you can run the application. 
 
-## Run the applicaition locally.
+### 1) Run the application locally.
+
+### Installation
+
+To run the application locally first clone the source code onto your local machine.
+
+```
+git clone git@github.com:geeuho/BreadBasket_Shopper.git
+cd BreadBasket_Shopper
+npm install 
+```
+
+### Start
+
+Once you've done that, you can run the following command to start the React application.
+
+```
+npm start
+```
+
+### 2) Visit the hosted website
+
+You can also just visit the hosted live website. 
+
+[https://www.breadbasketdelivery.com/](https://www.breadbasketdelivery.com/)
+
+## Backend
+
+The backend that the shopper application is currently being hosted on heroku, so you don't have to run the server locally. 
+
+This is the heroku [link]().
+
+This is the github [link](). 
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
