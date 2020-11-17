@@ -1,6 +1,6 @@
 ## BreadBasket Shopper Application
 
-This application provides a realistic grocery delivery service interface, where add items to a cart, which can be checked out to create an order. These orders are sent to a server which then makes the same orders for drivers on the driver application. The application includes a realistic checkout experience where users can pay using either Paypal or the Stripe API. There a variety of familiar shopping locations to choose from, each with their own unique items, and a variety of browsing options. 
+BreadBasket Shopper provides a realistic grocery delivery service interface, where add items to a cart, which can be checked out to create an order. These orders are sent to a server which then makes the same orders for drivers on the driver application. The application includes a realistic checkout experience where users can pay using either Paypal or the Stripe API. There a variety of familiar shopping locations to choose from, each with their own unique items, and a variety of browsing options. 
 
 ## Getting Started
 
