@@ -7,8 +7,7 @@ class FoodListCarousel extends Component {
 
     componentDidMount(){
         console.log(this.props.categories)
-        console.log(this.sliceItemsArray(0))
-        console.log(this.sliceItemsArray(1))
+        
     }
 
     render(){
@@ -20,7 +19,7 @@ class FoodListCarousel extends Component {
             </ol>
                 <div class="carousel-inner">
                 <div class="carousel-item active food-list-section">
-                    {/* <FoodList items={this.props.items.filter(item => item.attributes.category === this.props.category).slice(0,6)}/> */}
+                    <FoodList items={this.props.items}/>
                 </div>
                 <div class="carousel-item food-list-section">
                     {/* <FoodList items = {this.sliceItemsArray(1)} /> */}

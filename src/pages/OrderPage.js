@@ -70,7 +70,7 @@ class OrderPage extends Component {
                             <div class = "food-items-section">
                                 <h1>{category.title}</h1>
                                 <FoodList items = {items}/> 
-                                {/* <FoodListCarousel className="food-list-carousel" category = {category.name}/> */}
+                                {/* <FoodListCarousel className="food-list-carousel" items = {items} category = {category.name}/> */}
                             </div>
                         )   
                     })
