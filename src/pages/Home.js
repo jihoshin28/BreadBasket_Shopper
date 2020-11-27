@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom'
 export class Home extends Component {
     componentDidMount(){
         console.log(this.props.signedIn)
+        console.log("test")
+
+
+
     }
     
     render() {
@@ -12,7 +16,7 @@ export class Home extends Component {
             <div>
                 <div class = "homeMain">
                     <h1>
-                        Welcome to BreadBasket
+                        Welcome to BreadBasket!
                     </h1>
                         <img class="homeMainPic" src='https://secureservercdn.net/45.40.150.81/0m4.91e.myftpupload.com/wp-content/uploads/2020/03/groceries-and-meat-image-1038x576.jpg' />
 

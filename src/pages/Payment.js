@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import StripeButton from '../components/StripeButton'
-import PayPalButton from '../components/PaypalButton'
+import PayPalButton from '../components/PayPalButton'
 import { processOrder } from '../actions'
 
 class Payment extends React.Component {
