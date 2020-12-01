@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom'
 import {signIn, signOut, dropCart, checkoutOrder} from '../actions'
 
 class GoogleAuth extends React.Component{
-    componentDidMount() {
-
+    componentDidMount(){
         window.gapi.load('client:auth2', () => {
             window.gapi.client.init({
-                clientId: '30752304516-ggggsie2ovojktqo5u0hfomi1gt9518v.apps.googleusercontent.com',
+                clientId: '30752304516-o6laupndg02km70f10st00em8lujsc28.apps.googleusercontent.com',
                 scope: 'profile'
             }).then(() => {
                 this.auth = window.gapi.auth2.getAuthInstance()
