@@ -31,7 +31,7 @@ class App extends Component  {
     this.props.getStores()
     this.props.getItems(1)
     // this.props.getActiveOrders(this.props.shopperId)
-    console.log(this.props.state)
+    console.log(this.props.items)
   }
   
   render (){

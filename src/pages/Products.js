@@ -8,12 +8,25 @@ import FoodList from '../containers/FoodList'
 class Products extends Component {
     componentDidMount(){
         console.log(process.env.PUBLIC_URL)
-        document.getElementById(`${this.props.match.params.category}`).checked = true
+        // (`${this.props.match.params.category}`)
+        console.log(document.getElementById("category-form"))
+        console.log(this.props.categories)
     }
  
     onCategoryChange = (e) => {
         console.log(e.target.value)
         this.props.history.push(`/products/${e.target.value}`)
+    }
+
+    renderSideBar = () => {
+        return (
+            
+                <div class="input-group-text">
+                    <input type="radio" id = "meats" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
+                </div>
+                
+           
+        )
     }
 
     render(){
@@ -28,32 +41,9 @@ class Products extends Component {
                     
                     <div class = "sidebar-menu">
                         <h3>Categories</h3>
-                        <form onChange = {this.onCategoryChange}>
-
-                                <div class="input-group-text">
-                                    <input type="radio" id = "meats" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
-                                </div>
-                                <div class="input-group-text">
-                                    <input type="radio" id="produce" name="food-category" value="produce" aria-label="Produce Input"/> Produce
-                                </div>
-                                <div class="input-group-text">
-                                    <input type="radio" id="dairy" name="food-category" value="dairy" aria-label="Dairy Input"/> Dairy
-                                </div>
-                                <div class="input-group-text">
-                                    <input type="radio" id="bakery" name="food-category" value="bakery" aria-label="Bakery Input" /> Bakery
-                                </div>
-                                <div class="input-group-text">
-                                    <input type="radio" id="snacks" name="food-category" value="snacks" aria-label="Snacks Input"/> Snacks
-                                </div>
-                                <div class="input-group-text">
-                                    <input type="radio" id="beverages" name="food-category" value="beverages" aria-label="Beverages Input"/> Beverages
-                                </div>
-                                <div class="input-group-text">
-                                    <input type="radio" id="frozen" name="food-category" value="frozen" aria-label="Frozen Input"/> Frozen
-                                </div>
-                                <div class="input-group-text">
-                                    <input type="radio" id="household" name="food-category" value="household" aria-label="Household Input"/> Household
-                                </div>
+                        <form id= "category-form" onChange = {this.onCategoryChange}>
+                            {this.renderSideBar()}
+                            
                         </form>
                 
                     </div>
