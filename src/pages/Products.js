@@ -20,12 +20,13 @@ class Products extends Component {
 
     renderSideBar = () => {
         return (
-            
-                <div class="input-group-text">
-                    <input type="radio" id = "meats" name= "food-category" value="meats" aria-label="Meat/Seafood Input"/> Meat/Seafood
-                </div>
-                
-           
+            this.props.categories.map( category => {
+                return (
+                    <div class="input-group-text">
+                        <input type="radio" id = "meats" name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input"/> {`${category.title}`}
+                    </div>
+                )
+            })
         )
     }
 
