@@ -231,7 +231,7 @@ export const signIn = (userInfo) => async dispatch => {
     const response = await rails.post('/login', {shopper: userInfo})
     let data = response.data
     localStorage.setItem('shopper_token', data.jwt)
-    console.log(data.shopper.data.attributes)
+    console.log(data.shopper)
     dispatch({
         type: 'SIGN_IN',
         payload: data.shopper.data.attributes

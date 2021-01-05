@@ -48,7 +48,7 @@ class OrderPage extends Component {
                 <br></br>
                 <div class = "row">
                     <div class="col-sm-4">
-                        <StoreDropdown />
+                        <StoreDropdown history = {this.props.history}/>
                     </div>
                     
                     <div class="col-sm-4">

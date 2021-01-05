@@ -6,11 +6,11 @@ import OrderItem from '../components/OrderItem'
 
 class CheckOut extends React.Component{
     componentDidMount(){
+        console.log(this.props.shopperId)
         console.log(this.props.currentOrderId)
         console.log(this.props.history)
         console.log(this.props.checkoutOrder)
         console.log(this.props.cart_id)
-
     }
 
     paymentNav(){
@@ -53,7 +53,7 @@ class CheckOut extends React.Component{
 const mapStateToProps = (state) => {
     return({
         
-        shopperId: state.auth.currentShopper.shopper_info.id,
+        shopperId: state.auth.currentShopper,
         storeId: state.stores.selectedStore.id,
         cart_id: state.cart.cart_id,
         cartItems: state.cart.cart_items,

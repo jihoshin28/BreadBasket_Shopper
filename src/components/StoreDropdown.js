@@ -6,6 +6,7 @@ import {selectStore, getCategories, getItems, removeCartItem, dropCart, startCar
 class StoreDropdown extends React.Component {
 
     componentDidMount(){
+        console.log(this.props)
         this.getAddress()
     }
 
@@ -21,6 +22,7 @@ class StoreDropdown extends React.Component {
 
     getAddress = async () => {
         let location = await axios.post(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.props.store_params}&key=AIzaSyD-d4NIENxdIYOCE7gIRwvzTIZGRLobMdg`)
+        console.log(location)
         this.props.storeCoords(location.data.results[0].geometry.location)
     }
 
