@@ -1,13 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import StripeButton from '../components/StripeButton'
+import {loadStripe} from '@stripe/stripe-js'
 import PayPalButton from '../components/PayPalButton'
 import { processOrder } from '../actions'
 
+const STRIPE_KEY = process.env.STRIPE_TEST_KEY
+
 class Payment extends React.Component {
     componentDidMount(){
-        console.log(process.env.STRIPE_TEST_KEY)
+        console.log(process.env)
+        console.log(STRIPE_KEY)
         console.log(this.props.cartItems)
         console.log(this.props.orderPayment)
     }
@@ -127,12 +130,12 @@ class Payment extends React.Component {
 
                                             </div>
                                             <h3>Total: {`$${(this.props.orderTotal / 100).toFixed(2)}`}</h3>
-                                            {
+                                            {/* {
                                                 this.state.paymentOption === "paypal" ? 
                                                 <PayPalButton amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
                                                 :
                                                 <StripeButton userEmail = {this.props.userEmail} amount= {this.props.orderTotal}></StripeButton>
-                                            }
+                                            } */}
                                         </div>
                                         
                                     </div>
