@@ -6,13 +6,11 @@ import {selectStore, getCategories, getItems, removeCartItem, dropCart, startCar
 class StoreDropdown extends React.Component {
 
     componentDidMount(){
-        console.log(this.props)
         this.getAddress()
     }
 
     componentDidUpdate(prevState){
         if(prevState.selectedStore !== this.props.selectedStore){
-            this.getAddress()
             this.props.getItems(this.props.selectedStore.attributes.id)
             this.props.dropCart()
             this.props.startCart({ shopper_id: this.props.shopperId })

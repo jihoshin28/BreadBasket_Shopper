@@ -13,7 +13,7 @@ class MapContainer extends React.Component {
 
     mapStyles = {
         width: '100%',
-        position: 'absolute',
+        position: 'absolute', 
         height: '87%'
     };
 
@@ -25,7 +25,7 @@ class MapContainer extends React.Component {
     // 5600%Pacific%Grove%Way%Union
     render(){
         return (
-            <div>
+            <div class = "mapDiv">
             <Map
                 google={this.props.google}
                 zoom={13}

@@ -34,7 +34,10 @@ class MapPage extends React.Component {
                     </button>
 
                 </div>
-                <MapContainer></MapContainer>
+                <div className = "row">
+
+                    <MapContainer></MapContainer>
+                </div>
             </div>
         )
     }
