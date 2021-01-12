@@ -3,14 +3,14 @@ import {connect} from 'react-redux'
 
 import {loadStripe} from '@stripe/stripe-js'
 import PayPalButton from '../components/PayPalButton'
-import { processOrder } from '../actions'
+import { processOrder, stripePayment } from '../actions'
 
-const STRIPE_KEY = process.env.STRIPE_TEST_KEY
-
+const STRIPE_KEY = process.env.REACT_APP_STRIPE_TEST_KEY
+const stripePromise = loadStripe(STRIPE_KEY)
 class Payment extends React.Component {
     componentDidMount(){
         console.log(process.env)
-        console.log(STRIPE_KEY)
+        console.log(stripePromise, STRIPE_KEY)
         console.log(this.props.cartItems)
         console.log(this.props.orderPayment)
     }
@@ -43,8 +43,8 @@ class Payment extends React.Component {
         await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
     }
 
-    onToken = () => {
-
+    handleClick = (e) => {
+        this.props.stripePayment(e, stripePromise)
     }
 
     onPaymentChange = (e) => {
@@ -130,6 +130,9 @@ class Payment extends React.Component {
 
                                             </div>
                                             <h3>Total: {`$${(this.props.orderTotal / 100).toFixed(2)}`}</h3>
+                                            <button onClick = {this.handleClick}>
+                                                Checkout
+                                            </button>
                                             {/* {
                                                 this.state.paymentOption === "paypal" ? 
                                                 <PayPalButton amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
@@ -175,4 +178,4 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, {processOrder})(Payment)
+export default connect(mapStateToProps, {processOrder, stripePayment })(Payment)
