@@ -291,11 +291,12 @@ export const userCoords = (coords) => {
 export const stripePayment = (event, stripePromise) => async dispatch => {
     const stripe = await stripePromise
 
-    const response = await rails.post('/stripe-checkout')
+    const response = await rails.post('/stripe_payments', )
     
     const session = await response.json()
 
     const result = await stripe.redirectToCheckout({
         sessionId: session.id
     })
+    console.log(result)
 }
