@@ -293,9 +293,9 @@ export const stripePayment = (event, stripePromise) => async dispatch => {
     
     const response = await rails.post('/stripe_payments/checkout')
     
-    const session = await response.json()
+    const session = await response.data
     
-    debugger;
+    // debugger;
     const result = await stripe.redirectToCheckout({
         sessionId: session.id
     })
