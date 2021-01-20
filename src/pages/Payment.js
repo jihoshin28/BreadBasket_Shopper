@@ -43,7 +43,7 @@ class Payment extends React.Component {
         await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
     }
 
-    handleClick = (e) => {
+    stripeCheckout = (e) => {
         this.props.stripePayment(e, stripePromise)
     }
 
@@ -103,7 +103,7 @@ class Payment extends React.Component {
                                                 <div>
                                                     <input type = "radio" id = "stripe" value = "stripe" name = "payment-method"> 
                                                     </input>
-                                                    <label for="stripe"><h4>Card Payment</h4></label>
+                                                    <label for="stripe"><h4>Stripe</h4></label>
                                                     
                                                 </div>
                                                 <img class = 'payment-icon' src={process.env.PUBLIC_URL + '/stripeIcon.png'} /> 
@@ -117,7 +117,7 @@ class Payment extends React.Component {
                                                 </div>
                                                 <img class='payment-icon' src={process.env.PUBLIC_URL + '/paypalIcon.svg.png'} />
                                             </div>
-
+                                            
                                         </form>
                                         <div class="payment-divider">
 
@@ -130,15 +130,19 @@ class Payment extends React.Component {
 
                                             </div>
                                             <h3>Total: {`$${(this.props.orderTotal / 100).toFixed(2)}`}</h3>
-                                            <button onClick = {this.handleClick}>
-                                                Checkout
-                                            </button>
-                                            {/* {
+                                            
+                                            {
                                                 this.state.paymentOption === "paypal" ? 
                                                 <PayPalButton amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
                                                 :
-                                                <StripeButton userEmail = {this.props.userEmail} amount= {this.props.orderTotal}></StripeButton>
-                                            } */}
+                                                <div></div>
+                                            }
+                                            {
+                                                this.state.paymentOption === "stripe" ? 
+                                                <button onClick = {this.stripeCheckout}>Stripe Checkout</button>
+                                                :
+                                                <div></div>
+                                            }
                                         </div>
                                         
                                     </div>

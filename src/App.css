@@ -253,7 +253,7 @@
   display: grid;
   position: relative;
   height: 100%;
-  width: 1950px;
+  width: 100%;
 }
 
 .payment-header{

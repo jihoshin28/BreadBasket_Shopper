@@ -295,7 +295,6 @@ export const stripePayment = (event, stripePromise) => async dispatch => {
     
     const session = await response.data
     
-    debugger;
     const result = await stripe.redirectToCheckout({
         sessionId: session.id
     })
