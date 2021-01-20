@@ -7,12 +7,17 @@ import { processOrder, stripePayment } from '../actions'
 
 const STRIPE_KEY = process.env.REACT_APP_STRIPE_TEST_KEY
 const stripePromise = loadStripe(STRIPE_KEY)
+
+
+
 class Payment extends React.Component {
+    
     componentDidMount(){
         console.log(process.env)
         console.log(stripePromise, STRIPE_KEY)
         console.log(this.props.cartItems)
         console.log(this.props.orderPayment)
+        console.log(this.cartItems())
     }
 
     constructor() {
@@ -21,6 +26,11 @@ class Payment extends React.Component {
             loading: false,
             paymentOption: null
         }
+    }
+
+    cartItems(){
+        let keys = Object.keys(this.props.cartItems)
+        return keys.map(key => this.props.cartItems[key])
     }
 
     placeOrder = async () => {
@@ -38,13 +48,28 @@ class Payment extends React.Component {
     }
 
     processOrder = async () => {
-        let keys = Object.keys(this.props.cartItems)
-        let cartItems = keys.map(key => this.props.cartItems[key])
+        let cartItems = this.cartItems()
         await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
     }
 
     stripeCheckout = (e) => {
-        this.props.stripePayment(e, stripePromise)
+        let checkoutItems = this.cartItems()
+        let result = checkoutItems.map((checkoutItem) => {
+            let item = checkoutItem.attributes.item
+            return {
+                price_data: {
+                    currency: 'usd',
+                    product_data: {
+                        name: item.name,
+                    },
+                    unit_amount: item.price,
+                },
+                quantity: checkoutItem.attributes.quantity_num,
+            }
+        })
+        console.log(result)
+        console.log(result)
+        this.props.stripePayment(e, stripePromise, result)
     }
 
     onPaymentChange = (e) => {
@@ -53,12 +78,39 @@ class Payment extends React.Component {
         })
     }
 
+    // [
+    //     {
+    //         price_data: {
+    //             currency: 'usd',
+    //             product_data: {
+    //                 name: 'Bible',
+    //             },
+    //             unit_amount: 3000,
+    //         },
+    //         quantity: 1,
+    //     },
+    //     {
+    //         price_data: {
+    //             currency: 'usd',
+    //             product_data: {
+    //                 name: 'Bible',
+    //             },
+    //             unit_amount: 3000,
+    //         },
+    //         quantity: 1,
+    //     }
+    // ]
+
+    stripeItemList = () => {
+        
+
+    }
+
     renderItems(){
         let keys = Object.keys(this.props.cartItems)
         let cartItems = keys.map(key => this.props.cartItems[key])
         console.log(cartItems)
         return cartItems.map(item => {
-            console.log(item.attributes)
             return <div class = "row checkout-item">
                         <div class = "card col-3" style = {{height: "100%", width: "20%"}}>
                             <img src={item.attributes.item.image} style={{ height: "100%" }} class="card-img-top" alt="..." />
@@ -72,6 +124,7 @@ class Payment extends React.Component {
             
         }) 
     }
+
 
 
     render(){

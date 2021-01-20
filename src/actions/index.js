@@ -288,10 +288,10 @@ export const userCoords = (coords) => {
 
 //PAYMENT ACTIONS
 
-export const stripePayment = (event, stripePromise) => async dispatch => {
+export const stripePayment = (event, stripePromise, checkoutItems) => async dispatch => {
     const stripe = await stripePromise
     
-    const response = await rails.post('/stripe_payments/checkout')
+    const response = await rails.post('/stripe_payments/checkout', {checkout_items: checkoutItems})
     
     const session = await response.data
     
