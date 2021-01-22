@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
-import { addCartItem } from '../actions'
+import { addCartItem, removeCartItem } from '../actions'
 
 let ItemCard = (props) => {
     let[ref] = useState(React.createRef())
     useEffect(() => {
-        if (!!props.cart_item_ids.find(item => item === props.item_id)){
+        if (!!props.cart_item_ids.find(item => item[0] === props.item_id)){
             buttonAdd()
         } else {
             buttonCheck()
@@ -26,9 +26,10 @@ let ItemCard = (props) => {
         button.onclick = null
     }
 
-    let addCartItem = (e) => {
+    let cartItemToggle = (e) => {
         e.preventDefault()
-        if (!props.cart_item_ids.find(item => item === props.item_id)){
+        let cartItem = props.cart_item_ids.find(item => item[0] === props.item_id)
+        if (!cartItem){
             buttonAdd()
             let cartItemInfo = {
                 cart_id: props.cart_id,
@@ -37,10 +38,13 @@ let ItemCard = (props) => {
             }
             console.log(cartItemInfo)
             props.addCartItem(cartItemInfo)
+        } else {
+            console.log(cartItem, props.cart_item_ids)
+            buttonCheck()
+            props.removeCartItem(cartItem[1], props.item_id)
         }
         
     }
-
 
     return (
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
@@ -52,7 +56,7 @@ let ItemCard = (props) => {
                 <div class="card-body-2">
                     <p class="card-title" style = {{ fontSize: "15px"}}>{props.name}</p>
                     <p style={{fontSize: "10px"}}> ${props.price}/{props.unit}</p>
-                    <a class= "btn btn-primary" onClick={addCartItem} class="btn btn-primary">
+                    <a class= "btn btn-primary" onClick={cartItemToggle} class="btn btn-primary">
                         <img class = "card-button-img" alt="Image" />
                     </a>
                 </div>
@@ -70,4 +74,4 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, {addCartItem})(ItemCard)
+export default connect(mapStateToProps, {addCartItem, removeCartItem})(ItemCard)

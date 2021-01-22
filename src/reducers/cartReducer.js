@@ -42,14 +42,14 @@ export default (state = INITIAL_STATE, action) => {
     if(action.type === 'ADD_CART_ITEM'){
         return {...state, 
             cart_items: {...state.cart_items, [action.payload.id]: action.payload.cart_item},
-            item_ids: [...state.item_ids, action.payload.item_id]
+            item_ids: [...state.item_ids, [action.payload.item_id, action.payload.id]]
         }
     }
 
     if(action.type === 'DROP_CART_ITEM'){
         return {...state, 
             cart_items: _.omit(state.cart_items, action.payload.cart_item_id), 
-            item_ids: [...state.item_ids.filter(item_id => item_id !== action.payload.item_id)]
+            item_ids: [...state.item_ids.filter(item_id => item_id[0] !== action.payload.item_id)]
         }
     }
     

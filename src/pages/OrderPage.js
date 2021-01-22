@@ -24,7 +24,7 @@ class OrderPage extends Component {
         console.log(this.props)
         if(!!pos){
             var crd = pos.coords
-            console.log("HEY LISTEN", { lat: crd.latitude, lng: crd.longitude })
+            console.log("YOU ARE CURRENTLY HERE -->", { lat: crd.latitude, lng: crd.longitude })
             this.props.userCoords({lat: crd.latitude, lng: crd.longitude})
         }
     }
