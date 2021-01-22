@@ -21,6 +21,7 @@ class Payment extends React.Component {
             this.placeOrder()
         } else if(successParam === "failure") {
             alert("Payment was unsuccessful!")
+            this.setState({error: true})
         }
 
     }
@@ -28,6 +29,7 @@ class Payment extends React.Component {
     constructor() {
         super()
         this.state = {
+            error: false,
             loading: false,
             paymentOption: null
         }

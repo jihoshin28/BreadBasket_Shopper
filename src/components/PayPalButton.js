@@ -7,10 +7,12 @@ class PaypalButton extends React.Component {
             <PayPalButton
                 amount = {`${this.props.amount}`}
                 onSuccess = {(details, data) => {
-                    this.props.placeOrder()
+                    window.history.pushState({}, '', '/payment/success')
+                    window.history.go()
                 }}
                 catchError = {(err) => {
-                    alert(err)
+                    window.history.pushState({}, '', '/payment/failure')
+                    window.history.go()
                 }}
                 options = {{
                     clientId: "A21AALEwYbmiEE-VVyHvCmQwmNxAvBYMrf68I1KVDgAN754OEbhEdW2i9DrAWZmU0vTFPFk6wifJhLT0IeouxD3tTBYZ9gnGg"

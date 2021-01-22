@@ -13,11 +13,6 @@ class CheckOut extends React.Component{
         console.log(this.props.cart_id)
     }
 
-    paymentNav(){
-        this.props.history.push('/payment/pending')
-
-    }
-
     renderItems(){
         let keys = Object.keys(this.props.cartItems)
         let cartItems = keys.map(key => this.props.cartItems[key])
@@ -38,7 +33,7 @@ class CheckOut extends React.Component{
                         {this.renderItems()}
                     </div>
                     <button>
-                        <Link to= '/payment'>
+                        <Link to= '/payment/checkout'>
                             Checkout
                         </Link>
                     </button>
