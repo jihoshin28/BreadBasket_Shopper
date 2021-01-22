@@ -13,11 +13,16 @@ const stripePromise = loadStripe(STRIPE_KEY)
 class Payment extends React.Component {
     
     componentDidMount(){
-        console.log(process.env)
-        console.log(stripePromise, STRIPE_KEY)
-        console.log(this.props.cartItems)
-        console.log(this.props.orderPayment)
-        console.log(this.cartItems())
+        let currentURL = window.location.href.split('/')
+        let successParam = currentURL[currentURL.length - 1]
+        console.log(currentURL.length) 
+        if(successParam === "success"){
+            console.log('hello')
+            this.placeOrder()
+        } else if(successParam === "failure") {
+            alert("Payment was unsuccessful!")
+        }
+
     }
 
     constructor() {
@@ -48,7 +53,7 @@ class Payment extends React.Component {
         await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
     }
 
-    stripeCheckout = (e) => {
+    stripeCheckout = async(e) => {
         let checkoutItems = this.cartItems()
         let result = checkoutItems.map((checkoutItem) => {
             let item = checkoutItem.attributes.item
@@ -66,7 +71,8 @@ class Payment extends React.Component {
             
         console.log(result)
         console.log(result)
-        this.props.stripePayment(e, stripePromise, result)
+        await this.props.stripePayment(e, stripePromise, result)
+        this.placeOrder()
     }
 
     onPaymentChange = (e) => {

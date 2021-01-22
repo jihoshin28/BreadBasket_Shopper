@@ -14,7 +14,7 @@ class CheckOut extends React.Component{
     }
 
     paymentNav(){
-        this.props.history.push('/payment')
+        this.props.history.push('/payment/pending')
 
     }
 

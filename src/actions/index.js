@@ -298,5 +298,5 @@ export const stripePayment = (event, stripePromise, checkoutItems) => async disp
     const result = await stripe.redirectToCheckout({
         sessionId: session.id
     })
-    console.log(result)
+    console.log(result, "payment result!")
 }

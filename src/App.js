@@ -55,7 +55,7 @@ class App extends Component  {
               <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>
               <Route exact path='/payment_details/:order_id' render={(props) => <PaymentDetails {...props} />} />
               <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
-              <Route exact path='/payment' render={(props) => <Payment {...props} />} />
+              <Route exact path='/payment/:status' render={(props) => <Payment {...props} />} />
               <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
               </div> 
         </div>
