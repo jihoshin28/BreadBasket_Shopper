@@ -38,12 +38,8 @@ class Payment extends React.Component {
         this.setState({
             loading: true
         })
-
         await this.processOrder()
-        // await this.changeOrderStatus()
-        // await this.dropCart()
-        // this.props.checkoutOrder()
-        window.history.pushState({}, '', '/payment')
+        window.history.pushState({}, '', '/orderpage')
         window.history.go()
     }
 
@@ -56,17 +52,18 @@ class Payment extends React.Component {
         let checkoutItems = this.cartItems()
         let result = checkoutItems.map((checkoutItem) => {
             let item = checkoutItem.attributes.item
-            return {
-                price_data: {
-                    currency: 'usd',
-                    product_data: {
-                        name: item.name,
+                return {
+                    price_data: {
+                        currency: 'usd',
+                        product_data: {
+                            name: item.name,
+                        },
+                        unit_amount: item.price,
                     },
-                    unit_amount: item.price,
-                },
-                quantity: checkoutItem.attributes.quantity_num,
-            }
-        })
+                    quantity: checkoutItem.attributes.quantity_num,
+                }
+            })
+            
         console.log(result)
         console.log(result)
         this.props.stripePayment(e, stripePromise, result)
@@ -179,14 +176,12 @@ class Payment extends React.Component {
                                             <h3>SubTotal: {`$${(this.props.orderSubTotal / 100).toFixed(2)}`}</h3>
                                             <h3>Delivery: {`$${(this.props.orderPayment / 100).toFixed(2)}`}</h3>
                                             <h3>Tip: {`$${(this.props.orderTip / 100).toFixed(2)}`}</h3>
-                                            <div class="payment-divider">
-
-                                            </div>
+                                            <div class="payment-divider"></div>
                                             <h3>Total: {`$${(this.props.orderTotal / 100).toFixed(2)}`}</h3>
                                             
                                             {
                                                 this.state.paymentOption === "paypal" ? 
-                                                <PayPalButton amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
+                                                <PayPalButton placeOrder = {this.placeOrder} amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
                                                 :
                                                 <div></div>
                                             }

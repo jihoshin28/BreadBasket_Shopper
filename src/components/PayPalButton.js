@@ -7,13 +7,13 @@ class PaypalButton extends React.Component {
             <PayPalButton
                 amount = {`${this.props.amount}`}
                 onSuccess = {(details, data) => {
-                    alert(details)
-                    return fetch("/paypal-transaction-complete", {
-                        method: 'post',
-                        body: JSON.stringify({
-                            orderId: data.orderID
-                        })
-                    })
+                    this.props.placeOrder()
+                }}
+                catchError = {(err) => {
+                    alert(err)
+                }}
+                options = {{
+                    clientId: "A21AALEwYbmiEE-VVyHvCmQwmNxAvBYMrf68I1KVDgAN754OEbhEdW2i9DrAWZmU0vTFPFk6wifJhLT0IeouxD3tTBYZ9gnGg"
                 }}
                 
             ></PayPalButton>
