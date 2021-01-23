@@ -7,7 +7,7 @@ import {connect} from 'react-redux'
 
 class MapContainer extends React.Component {
     componentDidMount(){
-        console.log(this.props.store_coords, this.props.user)
+        console.log(this.props.store_coords, "COORDINATES")
         // Map.setCenter(this.props.store_coords)
     }
 

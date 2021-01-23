@@ -49,7 +49,6 @@ let ItemCard = (props) => {
                 item_id: props.item_id,
                 quantity_num: 1
             }
-            console.log(cartItemInfo)
             props.addCartItem(cartItemInfo)
         } else {
             console.log(cartItem, props.cart_item_ids)
@@ -62,7 +61,7 @@ let ItemCard = (props) => {
     return (
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <div class="card" ref = {ref}>
-                <div style = {{height: "80%", width: "80%", alignSelf: "center", marginTop: "5px"}}>
+                <div >
                     <img src={props.image}  class="card-img-top card-image" alt="..." />
                 </div>
                 

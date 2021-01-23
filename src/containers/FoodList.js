@@ -12,15 +12,6 @@ const FoodList = props => {
                 <div class = "row justify-content-center">
                     {itemCards}
                 </div>
-                <br></br>
-                <div class = "row justify-content-center">
-                    <div class = "col-1">
-                        <button type="button" class="btn btn-primary btn-sm">Previous</button>
-                    </div>
-                    <div class = "col-1">
-                        <button type="button" class="btn btn-primary btn-sm">Next</button>
-                    </div>
-                </div>
         </div>
     )
 }

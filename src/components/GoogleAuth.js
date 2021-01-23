@@ -15,7 +15,6 @@ class GoogleAuth extends React.Component{
                 this.auth.isSignedIn.listen(this.authChange)
             })
         })
-        
     }   
 
     componentDidUpdate(prevState){

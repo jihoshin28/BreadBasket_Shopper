@@ -1,48 +1,38 @@
 import React, { Component } from 'react';
+import FoodList from '../containers/FoodList'
 import {connect} from 'react-redux'
-import FoodList from '../containers/FoodListCarousel'
-
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import { Carousel } from 'react-responsive-carousel';
 
 class FoodListCarousel extends Component {
 
     componentDidMount(){
-        console.log(this.props.categories)
-        
+        console.log(this.props.items)
+    }
+    
+    splitItems = (index) => {
+        let rowLength = this.props.items.length
+        let iterations = rowLength/6
+        let currentItems = this.props.items.slice((rowLength*index), (rowLength * (index+1) - 1))
+        console.log(currentItems)
+        return <FoodList items = {currentItems}/>
     }
 
     render(){
         return (
-            <div id="carouselExampleIndicators" class="carousel slide center food-list-carousel" data-interval="false" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            </ol>
-                <div class="carousel-inner">
-                <div class="carousel-item active food-list-section">
-                    <FoodList items={this.props.items}/>
-                </div>
-                <div class="carousel-item food-list-section">
-                    {/* <FoodList items = {this.sliceItemsArray(1)} /> */}
-                </div>
+            <div>
+                <Carousel>
+                    <div>
+                    {this.splitItems(0)}
+                        </div> 
+                    <div>
+                    {this.splitItems(1)}
+                        </div> 
+                </Carousel>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
 
         )
     }    
 }
 
-let mapStateToProps = (state) => {
-    return ({
-        items: state.items.itemsList.data
-    })
-}
-
-export default connect(mapStateToProps, {})(FoodListCarousel)
+export default connect(null, {})(FoodListCarousel)

@@ -15,6 +15,7 @@ class StoreDropdown extends React.Component {
             this.props.dropCart()
             this.props.startCart({ shopper_id: this.props.shopperId })
             this.props.getCategories(this.props.selectedStore.attributes.id - 1)
+            this.getAddress()
         }
     }
 
@@ -53,8 +54,6 @@ class StoreDropdown extends React.Component {
                 </div>
                 <button style={{ marginTop: "10px" }} onClick={() => this.props.history.push('/map_page')}>See Location</button>     
             </div>
-    
-            
         )
     }
 }

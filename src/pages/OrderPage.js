@@ -42,6 +42,7 @@ class OrderPage extends Component {
     
     render() {
         return (
+            
             <div>
                 <br></br>
                 <h1>Order Page</h1>
@@ -61,16 +62,15 @@ class OrderPage extends Component {
                 <div class = "row justify-content-center">
                     <FoodCategoryNav history={this.props.history} categories= {this.props.categories}/>
                 </div>
-                
                 <br></br><br></br>
+                
                 {
                     this.props.categories.map(category => {
                         let items = this.props.items.filter(item => item.attributes.category === category.name)
                         return (
                             <div class = "food-items-section">
                                 <h1>{category.title}</h1>
-                                <FoodList items = {items}/> 
-                                {/* <FoodListCarousel className="food-list-carousel" items = {items} category = {category.name}/> */}
+                                <FoodListCarousel items = {items}/> 
                             </div>
                         )   
                     })
