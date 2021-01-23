@@ -133,6 +133,11 @@
   border: lawngreen
 }
 
+.item-added:hover{
+  background-color: red;
+  border: red; 
+}
+
 .itemDetails img {
   height: 500px;
   width: 500px;

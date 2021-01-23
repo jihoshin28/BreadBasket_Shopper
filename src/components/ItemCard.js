@@ -4,33 +4,46 @@ import { addCartItem, removeCartItem } from '../actions'
 
 let ItemCard = (props) => {
     let[ref] = useState(React.createRef())
+    
     useEffect(() => {
         if (!!props.cart_item_ids.find(item => item[0] === props.item_id)){
-            buttonAdd()
+            buttonToggle("add")
         } else {
-            buttonCheck()
+            buttonToggle("remove")
         }
-    })
+        
+    }, [])
 
-    let buttonAdd = () => {
+    let buttonToggle = (toggle) => {
         let button = ref.current.children[1].children[2]
-        button.children[0].src = `${process.env.PUBLIC_URL}/check.svg`
-        button.classList.add('item-added')
-        button.onclick = null
-    }
-
-    let buttonCheck = () => {
-        let button = ref.current.children[1].children[2]
-        button.children[0].src = `${process.env.PUBLIC_URL}/plus.svg`
-        button.classList.remove('item-added')
-        button.onclick = null
+        let mouseOverFxn = (e)=> {
+            button.children[0].src = `${process.env.PUBLIC_URL}/minus.svg`
+        }
+        let mouseOutFxn = (e) => {
+            button.children[0].src = `${process.env.PUBLIC_URL}/check.svg`
+        }
+        if(toggle === "add"){
+            button.children[0].src = `${process.env.PUBLIC_URL}/check.svg`
+            button.classList.add('item-added')
+            button.addEventListener("mouseover", mouseOverFxn, true)
+            button.addEventListener("mouseout", mouseOutFxn, true)
+            button.addEventListener('click', () => {
+                button.removeEventListener("mouseover", mouseOverFxn, true)
+            })
+            button.addEventListener('click', () => {
+                button.removeEventListener("mouseout", mouseOutFxn, true)
+            })
+        } else if(toggle === "remove"){
+            button.children[0].src = `${process.env.PUBLIC_URL}/plus.svg`
+            button.classList.remove('item-added')
+        }
     }
 
     let cartItemToggle = (e) => {
         e.preventDefault()
         let cartItem = props.cart_item_ids.find(item => item[0] === props.item_id)
         if (!cartItem){
-            buttonAdd()
+            buttonToggle("add")
             let cartItemInfo = {
                 cart_id: props.cart_id,
                 item_id: props.item_id,
@@ -40,7 +53,7 @@ let ItemCard = (props) => {
             props.addCartItem(cartItemInfo)
         } else {
             console.log(cartItem, props.cart_item_ids)
-            buttonCheck()
+            buttonToggle("remove")
             props.removeCartItem(cartItem[1], props.item_id)
         }
         
