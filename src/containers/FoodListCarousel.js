@@ -10,10 +10,10 @@ class FoodListCarousel extends Component {
         console.log(this.props.items)
     }
     
-    splitItems = (index) => {
+    splitItems = (start, end) => {
         let rowLength = this.props.items.length
         let iterations = rowLength/6
-        let currentItems = this.props.items.slice((rowLength*index), (rowLength * (index+1) - 1))
+        let currentItems = this.props.items.slice(start, end)
         console.log(currentItems)
         return <FoodList items = {currentItems}/>
     }
@@ -23,10 +23,10 @@ class FoodListCarousel extends Component {
             <div>
                 <Carousel>
                     <div>
-                    {this.splitItems(0)}
+                    {this.splitItems(0, 6)}
                         </div> 
                     <div>
-                    {this.splitItems(1)}
+                    {this.splitItems(6, 12)}
                         </div> 
                 </Carousel>
             </div>
