@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { getFilteredItems } from '../actions'
 import Searchbar from '../components/Searchbar'
 import FoodList from '../containers/FoodList'
+import FoodListCarousel from '../containers/FoodListCarousel'
 
 
 class Products extends Component {
@@ -63,7 +64,7 @@ class Products extends Component {
                             </div>
                         </div>
                     
-                        <FoodList items = {filteredItems}/>
+                        <FoodListCarousel items = {filteredItems}/>
                     </div>
                 </div>
             </div>
