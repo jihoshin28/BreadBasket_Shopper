@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { useParams } from 'react-router-dom'
 import { getFilteredItems } from '../actions'
 import Searchbar from '../components/Searchbar'
 import FoodList from '../containers/FoodList'
@@ -10,7 +11,6 @@ class Products extends Component {
     componentDidMount(){
         console.log(process.env.PUBLIC_URL)
         // (`${this.props.match.params.category}`)
-        console.log(document.getElementById("category-form"))
         console.log(this.props.categories)
     }
  
@@ -19,14 +19,24 @@ class Products extends Component {
         this.props.history.push(`/products/${e.target.value}`)
     }
 
-    renderSideBar = () => {
+    renderSideBar = (categoryTitle) => {
         return (
             this.props.categories.map( category => {
-                return (
-                    <div class="input-group-text">
-                        <input type="radio" id = "meats" name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input"/> {`${category.title}`}
-                    </div>
-                )
+                
+                    if(category.title === categoryTitle){
+                        return (
+                            <div class="input-group-text">
+                                <input type="radio" id = {`${category.name}`} name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input" checked/> {`${category.title}`}
+                            </div>
+                        )
+                    } else {
+                        return (
+                            <div class="input-group-text">
+                                <input type="radio" id = {`${category.name}`} name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input"/> {`${category.title}`}
+                            </div>
+                        )
+                    }
+                
             })
         )
     }
@@ -36,7 +46,7 @@ class Products extends Component {
         let filteredItems = this.props.items.filter(item => item.attributes.category === category)
         let categoryData = this.props.categories.find((category) => category.name === this.props.match.params.category)
         let categoryTitle = categoryData.title
-
+        console.log(categoryTitle)
         return (
             <div class = "products">
                 <div class = "sidebar">
@@ -44,8 +54,7 @@ class Products extends Component {
                     <div class = "sidebar-menu">
                         <h3>Categories</h3>
                         <form id= "category-form" onChange = {this.onCategoryChange}>
-                            {this.renderSideBar()}
-                            
+                            {this.renderSideBar(categoryTitle)}
                         </form>
                 
                     </div>
