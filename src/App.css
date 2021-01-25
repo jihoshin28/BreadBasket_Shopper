@@ -106,17 +106,13 @@
 }
 
 .card-button-img {
-  width: 70%;
-  height: 70%;
+  margin-top: 40%;
+  width: 30%;
+  height: 30%;
 }
 
-.food-list-carousel{
-  margin-left: 10%;
-  display: flex;
-  align-items: center;
-  height: 150px;
-  width: 80%;
-  background-color: blue;
+.carouselDiv > .carousel .slide{
+  background-color: 'transparent' !important; 
 }
 
 .food-list-section{

@@ -22,7 +22,7 @@ class FoodListCarousel extends Component {
     componentDidMount(){
         console.log(this.props.items)
     }
-    //test
+ 
     splitItems = (start, end) => {
         let rowLength = this.props.items.length
         let iterations = rowLength/6
@@ -35,6 +35,8 @@ class FoodListCarousel extends Component {
         return (
             <div>
                 <Carousel
+                    
+                    dyanamicHeight= {true}
                     statusFormatter = {(current, total)=> 
                         `${current} / ${total}`
                     }
@@ -52,8 +54,9 @@ class FoodListCarousel extends Component {
                             </button>
                         )
                     }
+                    render 
                 >
-                    <div>
+                    <div style = {{backgroundColor: "white"}}>
                     {this.splitItems(0, 6)}
                         </div> 
                     <div>
