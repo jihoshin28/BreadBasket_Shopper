@@ -5,7 +5,7 @@ import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodListCarousel from '../containers/FoodListCarousel'
-import FoodList from '../containers/FoodList'
+import Modal from '../components/Modal'
 
 class OrderPage extends Component {
 
@@ -44,6 +44,7 @@ class OrderPage extends Component {
         return (
             
             <div>
+                <Modal/>
                 <br></br>
                 <h1>Order Page</h1>
                 <br></br>

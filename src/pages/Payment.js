@@ -5,10 +5,7 @@ import {loadStripe} from '@stripe/stripe-js'
 import PayPalButton from '../components/PayPalButton'
 import { processOrder, stripePayment } from '../actions'
 
-const STRIPE_KEY = process.env.REACT_APP_STRIPE_TEST_KEY
-const stripePromise = loadStripe(STRIPE_KEY)
-
-
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_TEST_KEY)
 
 class Payment extends React.Component {
     

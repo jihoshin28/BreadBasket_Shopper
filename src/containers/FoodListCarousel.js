@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
 
-const arrowStyles: CSSProperties = {
+const arrowStyles : CSSProperties = {
     position: 'absolute',
     zIndex: 2,
     top: 'calc(50% - 15px)',
@@ -24,8 +24,6 @@ class FoodListCarousel extends Component {
     }
  
     splitItems = (start, end) => {
-        let rowLength = this.props.items.length
-        let iterations = rowLength/6
         let currentItems = this.props.items.slice(start, end)
         console.log(currentItems)
         return <FoodList items = {currentItems}/>
@@ -69,4 +67,4 @@ class FoodListCarousel extends Component {
     }    
 }
 
-export default connect(null, {})(FoodListCarousel)
+export default FoodListCarousel

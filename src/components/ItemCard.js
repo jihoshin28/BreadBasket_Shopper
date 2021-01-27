@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { addCartItem, removeCartItem } from '../actions'
 
 let ItemCard = (props) => {
@@ -61,9 +62,11 @@ let ItemCard = (props) => {
     return (
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <div class="card" ref = {ref}>
-                <div >
-                    <img src={props.image}  class="card-img-top card-image" alt="..." />
-                </div>
+                
+                    <Link to = "/food_display/1">
+                        <img src={props.image}  class="card-img-top card-image" alt="..." />
+                    </Link>
+                
                 
                 <div class="card-body-2">
                     <p class="card-title" style = {{ fontSize: "15px"}}>{props.name}</p>
