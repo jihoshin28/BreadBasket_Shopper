@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { getFilteredItems } from '../actions'
 import Searchbar from '../components/Searchbar'
-import FoodList from '../containers/FoodList'
+import Modal from '../components/Modal'
+import { getItem } from '../actions'
 import FoodListCarousel from '../containers/FoodListCarousel'
 
 
@@ -41,6 +40,11 @@ class Products extends Component {
         )
     }
 
+    seeItem = (id) => {
+        this.props.getItem(id)
+        return this.props.item
+    }
+
     render(){
         let category = this.props.match.params.category
         let filteredItems = this.props.items.filter(item => item.attributes.category === category)
@@ -63,6 +67,7 @@ class Products extends Component {
 
                 <div class = "content"> 
                     <div class = "container-fluid justify-content-center">
+                        <Modal content = {{"item": this.props.item}}/>
                         <h1 class = "productsHeader">{categoryTitle}</h1>
                         <div class = "row productsHeader">
                             <div className = "col-sm-5">
@@ -73,7 +78,7 @@ class Products extends Component {
                             </div>
                         </div>
                     
-                        <FoodListCarousel items = {filteredItems}/>
+                        <FoodListCarousel seeItem = {this.seeItem} items = {filteredItems}/>
                     </div>
                 </div>
             </div>
@@ -87,8 +92,9 @@ const mapStateToProps = state => {
     return({
         categories: state.categories,
         items: state.items.itemsList.data,
+        item: state.items.selectedItem,
         selectedStore: state.stores.selectedStore
     })
 }
 
-export default connect(mapStateToProps)(Products)
+export default connect(mapStateToProps, {getItem})(Products)
