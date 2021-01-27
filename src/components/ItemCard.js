@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { addCartItem, removeCartItem } from '../actions'
+import { addCartItem, removeCartItem, foodImage } from '../actions'
 
-let ItemCard = (props) => {
+const ItemCard = (props) => {
     let[ref] = useState(React.createRef())
     
     useEffect(() => {
@@ -62,11 +62,13 @@ let ItemCard = (props) => {
     return (
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <div class="card" ref = {ref}>
-                
-                    <Link to = "/food_display/1">
+                <div >
+                    {/* <ModalButton toggle= {()=> console.log('hello')} data-toggle="modal" data-target="#exampleModal"> */}
+                    <a onClick = {()=> props.seeItem(props.item_id)}style = {{cursor: "pointer", display:'block', height: '100%'}} data-toggle="modal" data-target="#exampleModal">
                         <img src={props.image}  class="card-img-top card-image" alt="..." />
-                    </Link>
-                
+                    </a>
+                 
+                </div>
                 
                 <div class="card-body-2">
                     <p class="card-title" style = {{ fontSize: "15px"}}>{props.name}</p>

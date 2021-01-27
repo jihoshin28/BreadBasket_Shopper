@@ -300,3 +300,5 @@ export const stripePayment = (event, stripePromise, checkoutItems) => async disp
     })
     console.log(result, "payment result!")
 }
+
+//FOOD IMAGE ACTIONS

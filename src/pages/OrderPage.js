@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { getItems, getCategories, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords} from '../actions'
+import { getItems, getCategories, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords, getItem} from '../actions'
 import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
@@ -39,12 +39,17 @@ class OrderPage extends Component {
         }
     }
 
-    
+    seeItem = (id) => {
+        console.log(id)
+        this.props.getItem(id)
+        return this.props.item
+    }
+
     render() {
         return (
             
             <div>
-                <Modal/>
+                <Modal content = {{"item": this.props.item}}/>
                 <br></br>
                 <h1>Order Page</h1>
                 <br></br>
@@ -71,7 +76,7 @@ class OrderPage extends Component {
                         return (
                             <div class = "food-items-section">
                                 <h1>{category.title}</h1>
-                                <FoodListCarousel items = {items}/> 
+                                <FoodListCarousel seeItem = {this.seeItem} items = {items}/> 
                             </div>
                         )   
                     })
@@ -90,8 +95,9 @@ let mapStateToProps = (state) => {
         selectedStore: state.stores.selectedStore,
         shopperId: state.auth.currentShopper.id,
         cartId: state.cart.cart_id,
-        cartItems: state.cart.cart_items
+        cartItems: state.cart.cart_items,
+        item: state.items.selectedItem
     })
 }
 
-export default connect(mapStateToProps, {getItems, getCategories, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords})(OrderPage)
+export default connect(mapStateToProps, {getItems, getItem, getCategories, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords})(OrderPage)

@@ -1,21 +1,9 @@
 import React, { Component } from 'react';
 import FoodList from '../containers/FoodList'
-import {connect} from 'react-redux'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
 
-const arrowStyles : CSSProperties = {
-    position: 'absolute',
-    zIndex: 2,
-    top: 'calc(50% - 15px)',
-    width: 30,
-    height: 30,
-    outline: 0,
-    background:'transparent',
-    border: 'none',
-    color: 'transparent', 
-    cursor: 'pointer',
-};
+
 
 class FoodListCarousel extends Component {
 
@@ -26,10 +14,22 @@ class FoodListCarousel extends Component {
     splitItems = (start, end) => {
         let currentItems = this.props.items.slice(start, end)
         console.log(currentItems)
-        return <FoodList items = {currentItems}/>
+        return <FoodList seeItem = {this.props.seeItem} items = {currentItems}/>
     }
 
     render(){
+        const arrowStyles : CSSProperties = {
+            position: 'absolute',
+            zIndex: 2,
+            top: 'calc(50% - 15px)',
+            width: 30,
+            height: 30,
+            outline: 0,
+            background:'transparent',
+            border: 'none',
+            color: 'transparent', 
+            cursor: 'pointer',
+        };
         return (
             <div>
                 <Carousel
