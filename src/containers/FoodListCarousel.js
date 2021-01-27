@@ -14,7 +14,7 @@ class FoodListCarousel extends Component {
     splitItems = (start, end) => {
         let currentItems = this.props.items.slice(start, end)
         console.log(currentItems)
-        return <FoodList seeItem = {this.props.seeItem} items = {currentItems}/>
+        return <FoodList items = {currentItems}/>
     }
 
     render(){

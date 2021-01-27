@@ -40,11 +40,6 @@ class Products extends Component {
         )
     }
 
-    seeItem = (id) => {
-        this.props.getItem(id)
-        return this.props.item
-    }
-
     render(){
         let category = this.props.match.params.category
         let filteredItems = this.props.items.filter(item => item.attributes.category === category)
@@ -67,7 +62,6 @@ class Products extends Component {
 
                 <div class = "content"> 
                     <div class = "container-fluid justify-content-center">
-                        <Modal content = {{"item": this.props.item}}/>
                         <h1 class = "productsHeader">{categoryTitle}</h1>
                         <div class = "row productsHeader">
                             <div className = "col-sm-5">

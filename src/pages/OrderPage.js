@@ -39,17 +39,11 @@ class OrderPage extends Component {
         }
     }
 
-    seeItem = (id) => {
-        console.log(id)
-        this.props.getItem(id)
-        return this.props.item
-    }
-
     render() {
         return (
             
             <div>
-                <Modal content = {{"item": this.props.item}}/>
+                {/* <Modal content = {{"item": this.props.item}}/> */}
                 <br></br>
                 <h1>Order Page</h1>
                 <br></br>
