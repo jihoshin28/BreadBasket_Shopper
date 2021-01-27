@@ -76,6 +76,10 @@
   
 }
 
+.cartItem-pic {
+  width: 18%;
+}
+
 .card{
   padding: 10%;
   max-height: 100%; 

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ItemPic from '../components/ItemPic'
 import { connect } from 'react-redux'
 import { cartItemCount, removeCartItem, clearItem } from '../actions'
 
@@ -37,9 +38,12 @@ class CartItem extends Component {
         
         return(
             <div class = "row cartItem">
-                <div>
+                <div class = "cartItem-pic">
                     <h3>{this.props.name}</h3>
-                    <img  height = "200px" src={this.props.image}/>
+                    
+                    <ItemPic image = {this.props.image}/>
+
+                    
                 </div>
                 <div>
                     <h3>Price per {this.props.unit}: ${(this.props.price * .01).toFixed(2)}</h3>
