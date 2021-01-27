@@ -19,7 +19,8 @@ class MapPage extends React.Component {
 
     render(){
         return(
-            <div>
+            
+            <div> 
                 <div className="row">
                     <button class="btn btn-outline-success" style = {{margin: '10px'}} type="button">
                         <Link class="text-reset" to='/orderpage'>

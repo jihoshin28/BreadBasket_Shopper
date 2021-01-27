@@ -13,6 +13,7 @@ const stripePromise = loadStripe(STRIPE_KEY)
 class Payment extends React.Component {
     
     componentDidMount(){
+        console.log(this.props.history)
         let currentURL = window.location.href.split('/')
         let successParam = currentURL[currentURL.length - 1]
         console.log(currentURL.length) 
@@ -40,14 +41,15 @@ class Payment extends React.Component {
         return keys.map(key => this.props.cartItems[key])
     }
 
-    placeOrder = async () => {
+    placeOrder = async() => {
         //:order_id, :item_id, :quantity_num, :status
         this.setState({
             loading: true
         })
         await this.processOrder()
-        window.history.pushState({}, '', '/orderpage')
-        window.history.go()
+        this.props.history.push('/orderpage')
+        this.props.history.go()
+        
     }
 
     processOrder = async () => {
@@ -195,7 +197,7 @@ class Payment extends React.Component {
                                             }
                                             {
                                                 this.state.paymentOption === "stripe" ? 
-                                                <button onClick = {this.stripeCheckout}>Stripe Checkout</button>
+                                                <button onClick = {this.placeOrder}>Stripe Checkout</button>
                                                 :
                                                 <div></div>
                                             }

@@ -43,6 +43,7 @@ class StoreDropdown extends React.Component {
 
     render() {
         return (
+            
             <div class = "mapSearchComponent">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

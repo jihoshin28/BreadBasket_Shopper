@@ -1,7 +1,8 @@
 import 'jquery/src/jquery';
 import React, {Component} from 'react';
 import {
-  Route
+  Route,
+  Router
 } from "react-router-dom"
 import {connect} from 'react-redux'
 import './App.css';
@@ -12,6 +13,7 @@ import Cart from './pages/Cart'
 import Checkout from './pages/CheckOut'
 import CurrentOrders from './pages/CurrentOrders'
 import EditShopper from './pages/EditShopper'
+import FoodDisplay from './pages/FoodDisplay'
 import ItemDetails from './pages/ItemDetails'
 import MapPage from './pages/MapPage'
 import OrderPage from './pages/OrderPage'
@@ -38,8 +40,8 @@ class App extends Component  {
     return (
       <div className="App">
         <div class="ui segment">
-            <NavBar history = {this.props.history}/>
-            <div class = "App-window">
+              <NavBar history = {this.props.history}/>
+              <div class = "App-window">
               <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
               <Route exact path='/about' render={(props) => <About {...props} />} />
               <Route exact path='/cart' render={(props) => <Cart {...props} />} />
@@ -56,8 +58,10 @@ class App extends Component  {
               <Route exact path='/payment_details/:order_id' render={(props) => <PaymentDetails {...props} />} />
               <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
               <Route exact path='/payment/:status' render={(props) => <Payment {...props} />} />
+              <Route exact path='/food_display/:item_id' render={(props) => <FoodDisplay {...props} />} />
               <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
               </div> 
+    
         </div>
 
         <footer className="footer">
