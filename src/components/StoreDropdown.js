@@ -27,9 +27,9 @@ class StoreDropdown extends React.Component {
 
     
     storeOptions = () => {
-        return this.props.stores.map((store)=> {
+        return this.props.stores.map((store, id)=> {
             return (
-                <button class="dropdown-item" id = {store.attributes.id} value={store.attributes.name}>{store.attributes.name}</button>
+                <button key = {id} class="dropdown-item" id = {store.attributes.id} value={store.attributes.name}>{store.attributes.name}</button>
             )
         })
     } 

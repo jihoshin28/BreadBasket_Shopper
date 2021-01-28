@@ -1,13 +1,10 @@
 import React, { Component } from "react"
 import {connect} from 'react-redux'
-import {cancelOrder, clearOrderItems, clearOrder} from '../actions'
+import {cancelOrder, clearOrderItems, clearOrder, confirmCancelOrder} from '../actions'
 
 class OrderSection extends Component {
     componentDidMount(){
         console.log(this.props.history)
-    }
-    cancelOrder(){
-        this.props.cancelOrder(this.props.id)
     }
 
     viewOrderItems(){
@@ -45,7 +42,7 @@ class OrderSection extends Component {
                     <button onClick={() => this.viewOrderItems()} class="detailsButton">
                         View Items
                     </button>
-                    <button class= "detailsButton" data-toggle="modal" data-target="#exampleModal">
+                    <button onClick = {() => this.props.confirmCancelOrder()}class= "detailsButton" data-toggle="modal" data-target="#exampleModal">
                         Cancel Order
                     </button>
                 </div>
@@ -57,4 +54,4 @@ class OrderSection extends Component {
     }
 }
 
-export default connect(null, {cancelOrder, clearOrderItems, clearOrder})(OrderSection)
+export default connect(null, {cancelOrder, clearOrderItems, clearOrder, confirmCancelOrder})(OrderSection)

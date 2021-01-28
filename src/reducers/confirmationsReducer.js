@@ -1,8 +1,5 @@
 let INITIAL_STATE = {
-    confirm: {
-        "title": "",
-        "message": "",
-    }
+    confirm: null
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -12,6 +9,10 @@ export default (state = INITIAL_STATE, action) => {
                 "title": "Delete Order",
                 "message": "Are you sure you want to delete this order?"
             }
+        }
+    } else if (action.type === "CLEAR_CONFIRM"){
+        return{
+            confirm: null
         }
     }
     

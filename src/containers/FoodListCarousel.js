@@ -8,12 +8,11 @@ import { Carousel } from 'react-responsive-carousel';
 class FoodListCarousel extends Component {
 
     componentDidMount(){
-        console.log(this.props.items)
+        
     }
  
     splitItems = (start, end) => {
         let currentItems = this.props.items.slice(start, end)
-        console.log(currentItems)
         return <FoodList items = {currentItems}/>
     }
 

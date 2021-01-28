@@ -48,6 +48,7 @@ export const getItems = (store_id) => async dispatch => {
     dispatch({type: 'GET_ITEMS', payload: response.data})
 }
 
+
 //CART ACTIONS
 
 export const getCart = (cart_id) => async dispatch => {
@@ -301,4 +302,16 @@ export const stripePayment = (event, stripePromise, checkoutItems) => async disp
     console.log(result, "payment result!")
 }
 
-//FOOD IMAGE ACTIONS
+//CONFIRMATION ACTIONS
+
+export const confirmCancelOrder = () => {
+    return({
+        type: "CONFIRM_CANCEL_ORDER"
+    })
+}
+
+export const clearConfirm = () => {
+    return({
+        type: "CLEAR_CONFIRM"
+    })
+}
