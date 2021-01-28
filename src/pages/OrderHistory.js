@@ -1,26 +1,35 @@
 import React, { Component } from 'react'
-import OrderHistorySection from '../components/OrderHistorySection'
+import OrderSection from '../components/OrderSection'
 import { connect } from 'react-redux'
+import { getCompletedOrders } from '../actions'
 import MapContainer from '../components/MapContainer'
 
 
 export class OrderHistory extends Component {
     componentDidMount(){
-        console.log(process.env)
+        this.props.getCompletedOrders(this.props.shopperId)
         // this.props.getCompletedOrders(this.props.shopperId)
     }
 
     render() {
         
-        let orders = [1, 2, 3, 4, 5]
+        
         // this.props.completedOrders.map
         return (
             <div class = "container">
                 <h1>Order History</h1>
 
-                <h3>*Currently under construction!!*</h3>
-                {orders.map(order => {
-                    return <OrderHistorySection history={this.props.history} order = {order} />
+                {this.props.completedOrders.map((order,id) => {
+                    let attributes = order.attributes
+                    return (
+                        <OrderSection 
+                            history = {this.props.history}
+                            position = {id + 1} 
+                            id = {order.id}
+                            store = {this.props.stores[attributes.store_id - 1].attributes.name}
+                            total = {attributes.total}
+                        />
+                    )   
                 })}                
             </div>
         )
@@ -35,4 +44,4 @@ let mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps)(OrderHistory)
+export default connect(mapStateToProps, {getCompletedOrders})(OrderHistory)

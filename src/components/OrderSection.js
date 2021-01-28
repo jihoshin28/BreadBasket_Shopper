@@ -45,7 +45,7 @@ class OrderSection extends Component {
                     <button onClick={() => this.viewOrderItems()} class="detailsButton">
                         View Items
                     </button>
-                    <button onClick = {()=> this.cancelOrder()}class="detailsButton">
+                    <button class= "detailsButton" data-toggle="modal" data-target="#exampleModal">
                         Cancel Order
                     </button>
                 </div>
