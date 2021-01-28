@@ -38,7 +38,7 @@ class App extends Component  {
   render (){
     return (
       <div className="App">
-        <div class="ui segment">
+        <div>
               <NavBar history = {this.props.history}/>
               <div class = "App-window">
               <Modal style = {{'z-index': 10}} content = {{"item": this.props.item}}/>
