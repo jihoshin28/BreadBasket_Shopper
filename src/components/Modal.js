@@ -3,30 +3,36 @@ import {connect} from 'react-redux'
 import { clearItem, clearConfirm } from '../actions'
 
 class Modal extends React.Component {
+    
+    constructor(){
+        super()
+        this.ref = React.createRef()
+    }
+
+    componentDidMount(){
+        this.ref.current.addEventListener('DOMAttrModified', (e) => {
+            if (e.attrName === 'class') {
+                console.log('prevValue: ' + e.prevValue, 'newValue: ' + e.newValue);
+            }
+        })
+    }
 
     componentDidUpdate(prevProps){
+        console.log(this.ref.current)
         if(this.props !== prevProps){
-            this.forceUpdate()
+            console.log(this.props, prevProps)
         }
     }
 
-    componentWillUnmount(){
-        if(!!this.props.content.item){
-            this.props.clearItem()
-            console.log('cleared item')
-        } else if(!!this.props.content.confirm){
-            this.props.clearConfirm()
-            console.log('cleared confirmation')
-        }
 
-    }
 
     renderContent(){
-        if(!this.props.content){
+        console.log(this.props)
+        if(!this.props.confirm && !this.props.item){
             console.log('this props')
             return "Loading..."
-        } else if(this.props.content.item){
-            let item = this.props.content.item.data.attributes
+        } else if(this.props.item){
+            let item = this.props.item.data.attributes
             return (
                 <div class = "modal-content">
                     <div class="modal-header">
@@ -40,7 +46,7 @@ class Modal extends React.Component {
                     </div>
                 </div>
             )
-        } else if(this.props.content.confirm){
+        } else if(this.props.confirm){
             return (
                 <div class="modal-content">
                     <div class="modal-header">
@@ -63,7 +69,7 @@ class Modal extends React.Component {
 
     render(){
         return (
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div ref = {this.ref} class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 {this.renderContent()}
             </div>

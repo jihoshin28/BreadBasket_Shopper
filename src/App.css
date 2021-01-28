@@ -191,8 +191,8 @@
 
 .google-pic {
   border-radius: 50%;
-  width: 2em;
-  height: 2em;
+  width: 2.5em;
+  height: 2.5em;
 }
 
 .detailsButton {
@@ -482,6 +482,15 @@
   justify-content: center;
   align-items: center;
   margin: 10%; 
+}
+
+.transition{
+  opacity: 0;
+  transition: opacity 1500ms ease-in;
+}
+
+.transition.appear{
+  opacity:1;
 }
 
 .homeSection{

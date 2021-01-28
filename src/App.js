@@ -41,7 +41,7 @@ class App extends Component  {
         <div>
               <NavBar history = {this.props.history}/>
               <div class = "App-window">
-              <Modal content = {{"item": this.props.item, "confirm": this.props.confirm}}/>
+              <Modal item = {this.props.item} confirm = {this.props.confirm}/>
               <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
               <Route exact path='/about' render={(props) => <About {...props} />} />
               <Route exact path='/cart' render={(props) => <Cart {...props} />} />

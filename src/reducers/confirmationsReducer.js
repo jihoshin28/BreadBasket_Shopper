@@ -3,11 +3,11 @@ let INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-    if(action.type === 'CONFIRM_DELETE_ORDER'){
+    if(action.type === 'CONFIRM_CANCEL_ORDER'){
         return { 
             ...state, confirm: {
                 "title": "Delete Order",
-                "message": "Are you sure you want to delete this order?"
+                "message": "Are you sure you want to cancel this order?"
             }
         }
     } else if (action.type === "CLEAR_CONFIRM"){
@@ -15,6 +15,6 @@ export default (state = INITIAL_STATE, action) => {
             confirm: null
         }
     }
-    
+    console.log(state)
     return state
 }

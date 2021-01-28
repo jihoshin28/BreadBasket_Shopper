@@ -160,7 +160,7 @@ export const getActiveOrders = shopperId => async dispatch => {
 }
 
 export const getCompletedOrders = shopperId => async dispatch => {
-    const response = await rails.get(`/orders?shopper_id=${shopperId}&status=complete`)
+    const response = await rails.get(`/orders?shopper_id=${shopperId}&status=completed`)
     let data = response.data.data
     dispatch({ type: "GET_COMPLETED_ORDERS", payload: data })
 }
