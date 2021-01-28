@@ -22,12 +22,12 @@ class OrderSection extends Component {
 
     render() {
         return (
-            <div class="orderBox">
+            <div class="orderSection">
                 <div class="orderHeader">
                     <h3>Order {this.props.position}</h3>
                 </div>
 
-                <div class="orderInfo">
+                <div class="orderSection-info">
                     <p>
                         Order Cost: ${(this.props.total/100).toFixed(2)}
                     </p>

@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {clearItem} from '../actions'
+import ItemPic from '../components/ItemPic'
 
 const OrderItem = props => {
 
@@ -18,9 +19,11 @@ const OrderItem = props => {
     }
     return (
         <div className = 'row orderItem'> 
-            <div>
+            <div class = "orderItem-pic">
                 <h3>{props.name}</h3>
-                <img height="200px" src={props.image} />
+                
+                    <ItemPic image = {props.image} item_id = {props.item_id}/>
+                
             </div>
             <div>
                 <h3>

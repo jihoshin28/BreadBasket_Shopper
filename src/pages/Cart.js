@@ -58,7 +58,7 @@ class Cart extends Component{
                     }else {
                         this.props.updatePreOrder(this.props.currentOrderId, orderInfo)
                     }              
-                this.props.history.push('/checkout')
+                this.props.history.push('/payment/checkout')
             }
         }
     
@@ -93,7 +93,7 @@ class Cart extends Component{
                             
                             <button type="submit">
                                 Checkout
-                    </button>
+                            </button>
                     </div>
                     
                     

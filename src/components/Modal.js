@@ -2,10 +2,10 @@ import React from 'react'
 
 class Modal extends React.Component {
 
-    componentDidUpdate(){
-
-        console.log(this.props.item)
-        console.log(this.props)
+    componentDidUpdate(prevProps){
+        if(this.props !== prevProps){
+            this.forceUpdate()
+        }
     }
 
     renderContent(){

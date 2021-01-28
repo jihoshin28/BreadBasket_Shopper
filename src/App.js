@@ -10,7 +10,6 @@ import NavBar from './containers/NavBar'
 import Home from './pages/Home'
 import About from './pages/About'
 import Cart from './pages/Cart'
-import Checkout from './pages/CheckOut'
 import CurrentOrders from './pages/CurrentOrders'
 import EditShopper from './pages/EditShopper'
 import ItemDetails from './pages/ItemDetails'
@@ -46,7 +45,6 @@ class App extends Component  {
               <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
               <Route exact path='/about' render={(props) => <About {...props} />} />
               <Route exact path='/cart' render={(props) => <Cart {...props} />} />
-              <Route exact path='/checkout' render={(props) => <Checkout {...props} />} />
               <Route exact path='/current_orders' render={(props) => <CurrentOrders {...props} />} />
               <Route exact path='/edit_shopper/:section' render={(props) => <EditShopper {...props} />} />
               <Route exact path='/item_details/:item_id' render={(props) => <ItemDetails {...props} />} />
@@ -60,8 +58,7 @@ class App extends Component  {
               <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
               <Route exact path='/payment/:status' render={(props) => <Payment {...props} />} />
               <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
-              </div> 
-    
+            </div> 
         </div>
 
         <footer className="footer">
