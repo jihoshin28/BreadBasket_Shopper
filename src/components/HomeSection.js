@@ -5,7 +5,7 @@ let HomeSection = (props) => {
     useEffect(() => {
 
         console.log(props)
-        const selectedImage = ref.current
+        const selectedSection = ref.current
         const options = {
             root: null,
             rootMargin: '100px',
@@ -26,7 +26,7 @@ let HomeSection = (props) => {
             }
             console.log(entry.isIntersecting, props)
         }, options)
-        observer.observe(selectedImage)
+        observer.observe(selectedSection)
     }, [])
 
     return (

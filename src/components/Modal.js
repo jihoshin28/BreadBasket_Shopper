@@ -10,24 +10,40 @@ class Modal extends React.Component {
     }
 
     componentDidMount(){
-        this.ref.current.addEventListener('DOMAttrModified', (e) => {
-            if (e.attrName === 'class') {
-                console.log('prevValue: ' + e.prevValue, 'newValue: ' + e.newValue);
+        const selectedDiv = this.ref.current
+        const options = {
+            root: null,
+            rootMargin: '100px',
+            threshold: 0
+        }
+
+        const observer = new MutationObserver(function (mutationList, observer) {
+            let mutation = mutationList[0]
+            console.log(mutation)
+            if(mutation.target.className === "modal fade show"){
+                return
+            } else {
+                console.log(this.props.item, this.props.confirm)
             }
+        }, options)
+        observer.observe(selectedDiv, {
+            attributes: true,
+            attributeFilter: ["class"]
         })
     }
 
     componentDidUpdate(prevProps){
-        console.log(this.ref.current)
         if(this.props !== prevProps){
-            console.log(this.props, prevProps)
+            this.forceUpdate()
         }
     }
 
-
+    clearContent(){
+        this.props.clearItem()
+        this.props.clearConfirm()
+    }
 
     renderContent(){
-        console.log(this.props)
         if(!this.props.confirm && !this.props.item){
             console.log('this props')
             return "Loading..."

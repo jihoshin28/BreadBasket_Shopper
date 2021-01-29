@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import {loadStripe} from '@stripe/stripe-js'
 import PayPalButton from '../components/PayPalButton'
-import { processOrder, stripePayment } from '../actions'
+import { processOrder, stripePayment, checkoutOrder } from '../actions'
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_TEST_KEY)
 
@@ -51,7 +51,8 @@ class Payment extends React.Component {
 
     processOrder = async () => {
         let cartItems = this.cartItems()
-        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
+        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "completed" })
+        this.props.checkoutOrder()
     }
 
     stripeCheckout = async(e) => {
@@ -104,11 +105,6 @@ class Payment extends React.Component {
     //         quantity: 1,
     //     }
     // ]
-
-    stripeItemList = () => {
-        
-
-    }
 
     renderItems(){
         let keys = Object.keys(this.props.cartItems)
@@ -237,4 +233,4 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, {processOrder, stripePayment })(Payment)
+export default connect(mapStateToProps, {processOrder, stripePayment, checkoutOrder })(Payment)

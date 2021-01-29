@@ -185,7 +185,7 @@ export const processOrder = (cartItems, cartId, orderId, status) => async dispat
     dispatch({type: 'CHECKOUT_ORDER'})
 } 
 
-export const checkoutOrder = (cartItems) => {
+export const checkoutOrder = () => {
     return ({
         type: "CHECKOUT_ORDER"
     })
