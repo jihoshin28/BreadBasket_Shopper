@@ -41,7 +41,7 @@ class App extends Component  {
         <div>
               <NavBar history = {this.props.history}/>
               <div class = "App-window">
-              <Modal item = {this.props.item} confirm = {this.props.confirm}/>
+              <Modal history = {this.props.history} item = {this.props.item} confirm = {this.props.confirm}/>
               <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
               <Route exact path='/about' render={(props) => <About {...props} />} />
               <Route exact path='/cart' render={(props) => <Cart {...props} />} />
@@ -60,7 +60,7 @@ class App extends Component  {
               <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
             </div> 
         </div>
-
+        <div class = "content-wrap"></div>
         <footer className="footer">
           <div class = 'footer-curve'>
           </div> 

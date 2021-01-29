@@ -51,7 +51,7 @@ class Payment extends React.Component {
 
     processOrder = async () => {
         let cartItems = this.cartItems()
-        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "completed" })
+        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
         this.props.checkoutOrder()
     }
 

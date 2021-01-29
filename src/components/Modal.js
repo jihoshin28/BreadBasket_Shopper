@@ -1,58 +1,56 @@
-import React from 'react' 
+import React, {useState, useEffect} from 'react' 
 import {connect} from 'react-redux'
-import { clearItem, clearConfirm } from '../actions'
+import { clearItem, clearConfirm, cancelOrder } from '../actions'
 
-class Modal extends React.Component {
+const Modal = (props) => {
     
-    constructor(){
-        super()
-        this.ref = React.createRef()
-    }
+    const[ref] = useState(React.createRef())
 
-    componentDidMount(){
-        const selectedDiv = this.ref.current
+    useEffect(() => {
+        const selectedDiv = ref.current
         const options = {
             root: null,
             rootMargin: '100px',
             threshold: 0
         }
 
+        function clearContent(){
+            props.clearItem()
+            props.clearConfirm()
+        }
+        
         const observer = new MutationObserver(function (mutationList, observer) {
             let mutation = mutationList[0]
-            console.log(mutation)
+            console.log(mutation, props.history)
             if(mutation.target.className === "modal fade show"){
                 return
             } else {
-                console.log(this.props.item, this.props.confirm)
+                clearContent()
             }
         }, options)
         observer.observe(selectedDiv, {
             attributes: true,
             attributeFilter: ["class"]
         })
-    }
+    }, [])
 
-    componentDidUpdate(prevProps){
-        if(this.props !== prevProps){
-            this.forceUpdate()
+    let confirmAction = async (title, id) => {
+        console.log(props)
+        if(title === "Delete Order"){
+            await props.cancelOrder(id)
+            window.location.reload()
         }
     }
 
-    clearContent(){
-        this.props.clearItem()
-        this.props.clearConfirm()
-    }
-
-    renderContent(){
-        if(!this.props.confirm && !this.props.item){
-            console.log('this props')
-            return "Loading..."
-        } else if(this.props.item){
-            let item = this.props.item.data.attributes
+    let renderContent = () => {
+        if(!props.confirm && !props.item){
+            return 
+        } else if(props.item){
+            let item = props.item.data.attributes
             return (
                 <div class = "modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{item.name}</h5>
+                    <h5 class="modal-title" id="ModalLabel">{item.name}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -62,37 +60,34 @@ class Modal extends React.Component {
                     </div>
                 </div>
             )
-        } else if(this.props.confirm){
+        } else if(props.confirm){
             return (
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title" id = "ModalLabel">{props.confirm.title}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p>Modal body text goes here.</p>
+                    <p>{props.confirm.message}</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button onClick = {() => confirmAction(props.confirm.title, props.confirm.id)} type="button" class="btn btn-primary">Confirm</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             )
         }
     }
-
-    render(){
         return (
-            <div ref = {this.ref} class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                {this.renderContent()}
+            <div ref = {ref} class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                {renderContent()}
             </div>
             </div>
     
         )
-    }
 }
 
-export default connect(null, {clearItem, clearConfirm})(Modal)
+export default connect(null, {clearItem, clearConfirm, cancelOrder})(Modal)

@@ -304,9 +304,12 @@ export const stripePayment = (event, stripePromise, checkoutItems) => async disp
 
 //CONFIRMATION ACTIONS
 
-export const confirmCancelOrder = () => {
+export const confirmCancelOrder = (id) => {
     return({
-        type: "CONFIRM_CANCEL_ORDER"
+        type: "CONFIRM_CANCEL_ORDER",
+        payload: {
+            id
+        }
     })
 }
 

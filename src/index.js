@@ -16,7 +16,7 @@ ReactDOM.render(
     <Provider store = {store}>
         <Router history = {history}>
             <PersistGate persistor = {persistor}>
-                <App/>
+                <App history = {history}/>
             </PersistGate>
         </Router>
     </Provider>, document.querySelector('#root')

@@ -42,7 +42,7 @@ class OrderSection extends Component {
                     <button onClick={() => this.viewOrderItems()} class="detailsButton">
                         View Items
                     </button>
-                    <button onClick = {() => this.props.confirmCancelOrder()}class= "detailsButton" data-toggle="modal" data-target="#exampleModal">
+                    <button onClick = {() => this.props.confirmCancelOrder(this.props.id)}class= "detailsButton" data-toggle="modal" data-target="#Modal">
                         Cancel Order
                     </button>
                 </div>

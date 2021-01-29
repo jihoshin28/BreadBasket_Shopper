@@ -7,7 +7,8 @@ export default (state = INITIAL_STATE, action) => {
         return { 
             ...state, confirm: {
                 "title": "Delete Order",
-                "message": "Are you sure you want to cancel this order?"
+                "message": "Are you sure you want to cancel this order?",
+                "id": action.payload.id
             }
         }
     } else if (action.type === "CLEAR_CONFIRM"){
