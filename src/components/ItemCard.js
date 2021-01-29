@@ -40,7 +40,8 @@ const ItemCard = (props) => {
             })
         } else if(toggle === "remove"){
             button.children[0].src = `${process.env.PUBLIC_URL}/plus.svg`
-            button.classList.remove('item-added')
+            button.classList.remove('btn-danger')
+            button.classList.add('btn-primary')
         }
     }
 

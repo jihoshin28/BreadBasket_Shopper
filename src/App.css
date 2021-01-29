@@ -144,16 +144,6 @@
   height: 50%;
 }
 
-.item-added{
-  background-color: lawngreen;
-  border: lawngreen
-}
-
-.item-added-remove{
-  background-color: red;
-  border: red;
-}
-
 .itemDetails img {
   height: 500px;
   width: 500px;
@@ -594,6 +584,10 @@
 .mapDiv{
   height: 850px;
   padding:5px;
+}
+
+.category-radio p{
+  padding-left: 2%; 
 }
 
 .category-btn {

@@ -22,14 +22,16 @@ class Products extends Component {
                 
                     if(category.title === categoryTitle){
                         return (
-                            <div class="input-group-text">
-                                <input type="radio" id = {`${category.name}`} name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input" checked/> {`${category.title}`}
+                            <div class="input-group-text category-radio">
+                                <input type="radio" id = {`${category.name}`} name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input" checked/> 
+                                <p>{`${category.title}`}</p>
                             </div>
                         )
                     } else {
                         return (
-                            <div class="input-group-text">
-                                <input type="radio" id = {`${category.name}`} name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input"/> {`${category.title}`}
+                            <div class="input-group-text category-radio">
+                                <input type="radio" id = {`${category.name}`} name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input"/>
+                                <p>{`${category.title}`}</p>
                             </div>
                         )
                     }
