@@ -109,8 +109,9 @@ class Cart extends Component{
                 <div class =  'cart'>
                     <h1>Cart</h1>
                     {this.renderCart()}
-                    <div class = "row cartItem total">
-                        <div>
+                    <div class = "row cartItem total roboFont">
+                        
+                    <div>
                             <h4>
                                 SubTotal: 
                             </h4>
@@ -125,22 +126,6 @@ class Cart extends Component{
                             </h4>
                             <br></br>
                         </div>
-                        <div>
-                            <h4>
-                                ................................................
-                            </h4>
-                            <h4>
-                                ................................................
-                            </h4>
-                            <h4>
-                                ................................................
-                            </h4>
-                            <h4>
-                                ................................................
-                            </h4>
-                            <br></br>
-                        </div>
-
                         {this.renderCartTotal()}
                     </div>
                     

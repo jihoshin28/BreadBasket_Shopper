@@ -16,6 +16,5 @@ export default (state = INITIAL_STATE, action) => {
             confirm: null
         }
     }
-    console.log(state)
     return state
 }

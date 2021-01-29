@@ -45,7 +45,7 @@ class OrderPage extends Component {
             <div>
                 {/* <Modal content = {{"item": this.props.item}}/> */}
                 <br></br>
-                <h1>Order Page</h1>
+                <h1> Order Page</h1>
                 <br></br>
                 <div class = "row">
                     <div class="col-sm-4">

@@ -43,6 +43,15 @@
   padding-left: 10px;
 }
 
+.roboFont{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.titleFont{
+  font-family: 'sans-serif'
+}
+
 .nav-bar{
   background-color: lawngreen;
 }
@@ -54,10 +63,6 @@
   border-radius: 1em;
   justify-content: space-around;
   height: 270px;
-}
-
-.cartItem {
-  padding: 5%;
 }
 
 .container{
@@ -120,9 +125,8 @@
 }
 
 .card-button-img {
-  margin-top: 40%;
-  width: 30%;
-  height: 30%;
+  margin-top: 35%;
+  height: .75em;
 }
 
 .carouselDiv > .carousel .slide{
@@ -145,9 +149,9 @@
   border: lawngreen
 }
 
-.item-added:hover{
+.item-added-remove{
   background-color: red;
-  border: red; 
+  border: red;
 }
 
 .itemDetails img {

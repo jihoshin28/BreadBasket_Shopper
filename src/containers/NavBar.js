@@ -41,7 +41,7 @@ export class Navbar extends Component {
                 {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button> */}
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse roboFont" id="navbarNav">
                     <Link class='header-logo' to='/'>
 
                         <img class="header-icon" src={process.env.PUBLIC_URL + '/bread_basket_icon.jpg'}></img>

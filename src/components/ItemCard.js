@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import ItemPic from './ItemPic'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { addCartItem, removeCartItem, getItemPic } from '../actions'
 
 const ItemCard = (props) => {
@@ -20,13 +19,17 @@ const ItemCard = (props) => {
         let button = ref.current.children[1].children[2]
         let mouseOverFxn = (e)=> {
             button.children[0].src = `${process.env.PUBLIC_URL}/minus.svg`
+            button.classList.remove('btn-success')
+            button.classList.add('btn-danger')
         }
         let mouseOutFxn = (e) => {
             button.children[0].src = `${process.env.PUBLIC_URL}/check.svg`
+            button.classList.remove('btn-danger')
+            button.classList.add('btn-success')
         }
         if(toggle === "add"){
             button.children[0].src = `${process.env.PUBLIC_URL}/check.svg`
-            button.classList.add('item-added')
+            button.classList.add('btn-success')
             button.addEventListener("mouseover", mouseOverFxn, true)
             button.addEventListener("mouseout", mouseOutFxn, true)
             button.addEventListener('click', () => {
