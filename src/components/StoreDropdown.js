@@ -53,7 +53,7 @@ class StoreDropdown extends React.Component {
                         {this.storeOptions()}
                     </div>
                 </div>
-                <button class = "btn btn-primary"onClick={() => this.props.history.push('/map_page')}>See Location</button>     
+                <button class = "btn btn-primary" onClick={() => this.props.history.push('/map_page')}>See Location</button>     
             </div>
         )
     }

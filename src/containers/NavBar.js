@@ -35,13 +35,13 @@ export class Navbar extends Component {
         }
         return ( 
             
-            <nav class="navbar navbar-expand-lg navbar-expand-med navbar-expand-sm navbar-light bg-light ">
+            <nav class="navbar navbar-expand-lg navbar-expand-med navbar-expand-sm nav-bg">
             
                    
                 {/* <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button> */}
-                <div class="collapse navbar-collapse roboFont" id="navbarNav">
+                <div class="collapse navbar-collapse " id="navbarNav">
                     <Link class='header-logo' to='/'>
 
                         <img class="header-icon" src={process.env.PUBLIC_URL + '/bread_basket_icon.jpg'}></img>
@@ -54,29 +54,30 @@ export class Navbar extends Component {
                     {(!!this.props.signedIn) ?
                     
                     <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link"><Link to='/orderpage'>Make an Order</Link></a>
-                                
+                        <li class="nav-item nav-list active">
+                            <a href = "/order_page" class="menu-button">
+                                Order
+                            </a>
                         </li>
                             
                         {(!isEmpty(this.props.activeOrders)) ? 
-                                <li class="nav-item">
-                                    <a class="nav-link"><Link to='/current_orders'>Current Orders</Link></a>
+                                <li class="nav-item nav-list">
+                                    <a href = "/active_orders" class="menu-button">Active Orders</a>
                                 </li>
                                 :
                                 null
                         }
-                        <li class="nav-item">
-                            <a class="nav-link"><Link to='/orderhistory'>Order History</Link></a>
+                        <li class="nav-item nav-list">
+                            <a href= "/order_history" class="menu-button">Order History</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link"><Link to='/about'>About</Link></a>
+                        <li class="nav-item nav-list">
+                            <a href = "/about" class="menu-button">About</a>
                         </li>
                     </ul>
                     :
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link"><Link to='/about'>About</Link></a>
+                        <li class="nav-item nav-list">
+                            <a href = "/about" class="menu-button">About</a>
                         </li>
                     </ul>
                     }

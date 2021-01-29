@@ -17,6 +17,8 @@ class CurrentOrder extends React.Component {
                     history = {this.props.history}
                     position = {id + 1} 
                     id = {order.id}
+                    paymentText = "Update Payment"
+                    orderButtonTxt = "Update Order"
                     store = {this.props.stores[attributes.store_id - 1].attributes.name}
                     total = {attributes.total}
                 />

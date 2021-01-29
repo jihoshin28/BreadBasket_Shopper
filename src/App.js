@@ -9,7 +9,7 @@ import NavBar from './containers/NavBar'
 import Home from './pages/Home'
 import About from './pages/About'
 import Cart from './pages/Cart'
-import CurrentOrders from './pages/CurrentOrders'
+import ActiveOrders from './pages/ActiveOrders'
 import EditShopper from './pages/EditShopper'
 import ItemDetails from './pages/ItemDetails'
 import MapPage from './pages/MapPage'
@@ -44,12 +44,12 @@ class App extends Component  {
                 <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
                 <Route exact path='/about' render={(props) => <About {...props} />} />
                 <Route exact path='/cart' render={(props) => <Cart {...props} />} />
-                <Route exact path='/current_orders' render={(props) => <CurrentOrders {...props} />} />
+                <Route exact path='/active_orders' render={(props) => <ActiveOrders {...props} />} />
                 <Route exact path='/edit_shopper/:section' render={(props) => <EditShopper {...props} />} />
                 <Route exact path='/item_details/:item_id' render={(props) => <ItemDetails {...props} />} />
                 <Route exact path='/map_page' render={(props) => <MapPage {...props} />} />
                 <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
-                <Route exact path='/orderhistory' render={(props) => <OrderHistory {...props} />} />
+                <Route exact path='/order_history' render={(props) => <OrderHistory {...props} />} />
                 <Route exact path='/profile' render={(props) => <Profile {...props} />} />
                 <Route exact path='/profile_signup' render={(props) => <ProfileSignup {...props} />} />
                 <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>

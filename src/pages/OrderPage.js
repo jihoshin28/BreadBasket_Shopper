@@ -41,24 +41,22 @@ class OrderPage extends Component {
 
     render() {
         return (
-            
             <div>
                 {/* <Modal content = {{"item": this.props.item}}/> */}
-                <br></br>
-                <h1> Order Page</h1>
-                <br></br>
+                <br></br><br></br>
                 <div class = "row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 storeDropdown">
                         <StoreDropdown history = {this.props.history}/>
                     </div>
                     
-                    <div class="col-sm-4">
-                        <h2>{this.props.selectedStore.attributes.name}</h2>
+                    <div class="col-sm-4 storeName">
+                        <h1>{this.props.selectedStore.attributes.name}</h1>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4 searchBar">
                         <Searchbar history = {this.props.history}/>
                     </div>
                 </div>
+                <br></br>
                 <div class = "row justify-content-center">
                     <FoodCategoryNav history={this.props.history} categories= {this.props.categories}/>
                 </div>

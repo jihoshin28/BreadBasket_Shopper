@@ -14,7 +14,7 @@ class MapContainer extends React.Component {
     mapStyles = {
         width: '100%',
         position: 'absolute', 
-        height: '87%'
+        height: '75%'
     };
 
     onHover = () => {

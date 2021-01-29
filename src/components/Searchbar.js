@@ -10,7 +10,7 @@ class Searchbar extends React.Component {
         return (
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for = "input">{label}</label>
-                <div class = "col-smn-10">
+                <div class = "col-smn-9">
                     <input type = "text" class = "form-control" id = "input" {...input} />
                 </div>
                 {/* <div> {meta.error}</div> */}

@@ -36,7 +36,6 @@ class MapPage extends React.Component {
 
                 </div>
                 <div className = "row">
-
                     <MapContainer></MapContainer>
                 </div>
             </div>

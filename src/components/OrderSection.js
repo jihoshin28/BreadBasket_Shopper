@@ -36,15 +36,19 @@ class OrderSection extends Component {
                     </p>
                 </div>
                 <div class="orderButtonBox">
-                    <button onClick = {() => this.paymentDetails()}class="detailsButton">
-                        View Payment Details
+                    <button onClick = {() => this.paymentDetails()} class="btn btn-success orderSectionDetails">
+                        {this.props.paymentText}
+                    </button>
+                    <button onClick={() => this.viewOrderItems()} class="btn btn-primary orderSectionDetails">
+                        {this.props.orderButtonTxt}
+                    </button>
+                    {this.props.orderButtonTxt === "Update Order" ?
+                        <button onClick = {() => this.props.confirmCancelOrder(this.props.id)} class= "btn btn-warning orderSectionDetails" data-toggle="modal" data-target="#Modal">
+                            Cancel Order
                         </button>
-                    <button onClick={() => this.viewOrderItems()} class="detailsButton">
-                        View Items
-                    </button>
-                    <button onClick = {() => this.props.confirmCancelOrder(this.props.id)}class= "detailsButton" data-toggle="modal" data-target="#Modal">
-                        Cancel Order
-                    </button>
+                        :
+                        null
+                    }
                 </div>
 
             </div>
