@@ -546,10 +546,6 @@
   
 }
 
-.footer-div {
-  margin-bottom: 30px; 
-}
-
 .footer-logo{
   margin-left: 10%;
   /* bottom: 5%;  */
@@ -557,6 +553,8 @@
 
 .footer-row{
   align-items: center;
+  background-color: lawngreen;
+  padding-bottom: 70px;
 }
 
 .footer-logo > :nth-child(1){

@@ -69,7 +69,7 @@ const ItemCard = (props) => {
                 </div>
                 
                 <div class="card-body-2">
-                    <p class="card-title" style = {{ fontSize: "15px"}}>{props.name}</p>
+                    <p class="card-title" style = {{ fontSize: "12px"}}>{props.name}</p>
                     <p style={{fontSize: "10px"}}> ${props.price}/{props.unit}</p>
                     <a class= "btn btn-primary" onClick={cartItemToggle}>
                         <img class = "card-button-img" alt="Image" />
