@@ -77,16 +77,16 @@ class GoogleAuth extends React.Component{
         } else {
             if(this.props.signedIn === true){
                 return (
-                    <Link class="btn btn-outline-primary" to='/' onClick={this.signOut} >
+                    <Link class="btn btn-primary" to='/' onClick={this.signOut} >
 
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                              <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                         </svg>
                         Sign Out
                     </Link>
-                    // <button type="button" class= "btn btn-outline-primary" onClick = {this.signOut}> 
+                    // <button type="button" class= "btn btn-primary" onClick = {this.signOut}> 
                     //     <Link to='/'>Order History</Link>
-                    //     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    //     <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     //         <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                     //     </svg>
                     //     Sign Out
@@ -95,15 +95,15 @@ class GoogleAuth extends React.Component{
             } else {
                 
                 return (
-                    <Link class="btn btn-outline-primary" to='/orderpage' onClick={this.signIn}>
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <Link class="btn btn-primary" to='/orderpage' onClick={this.signIn}>
+                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                         </svg>
                         Sign In
                     </Link>
                     // <div class = 'log-button'>
-                    //     <button type="button" class="btn btn-outline-primary" onClick={this.signIn}>
-                    //         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    //     <button type="button" class="btn btn-primary" onClick={this.signIn}>
+                    //         <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     //             <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                     //         </svg>
                     //         Sign In

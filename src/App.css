@@ -586,7 +586,6 @@
 
 .mapDiv{
   height: 850px;
-  padding:5px;
 }
 
 .category-radio p{
@@ -608,14 +607,20 @@
   width: 100%; 
 }
 
+.mapBackButton{
+  position: absolute;
+  z-index: 10;
+  margin-top: 1%;
+  left: 10%;
+}
+
 .nav-bg{
   background-color: #7ddb24;
   -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
 }
 
-
-
 .nav-list{
+  color:black; 
   margin-left: .5em; 
   font-size: 1em;
   padding-left: 10px;
@@ -624,14 +629,15 @@
   background-size: 201% 100%;
   background-position:right bottom;
   transition: all 500ms ease-in-out;
+  border-radius: 3px;
 }
 
 .nav-list:hover{
-  color: #7ddb24;
   background-position:left bottom;
 }
-.nav-list text:hover{
-  
+
+.nav-list a :hover{
+  color:black;
 }
 
 .category-btn {

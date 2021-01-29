@@ -5,8 +5,7 @@ import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
 import FoodListCarousel from '../containers/FoodListCarousel'
-import Modal from '../components/Modal'
-
+import {Link} from 'react-router-dom'
 class OrderPage extends Component {
 
     componentDidMount(){

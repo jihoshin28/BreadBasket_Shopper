@@ -37,7 +37,6 @@ class Cart extends Component{
         }
         let payment = subtotal * .14
         let total = subtotal + payment
-
         let submitForm = (formValues) => {
             console.log(this.props.currentOrderId)
             if(!!isEmpty(this.props.cart_items)){
