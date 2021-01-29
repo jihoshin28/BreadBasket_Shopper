@@ -56,6 +56,10 @@
   height: 270px;
 }
 
+.cartItem {
+  padding: 5%;
+}
+
 .container{
   margin-bottom: 5%;
 }
@@ -238,7 +242,9 @@
 }
 
 
-.total {
+.cart-total {
+  padding-top: 10%;
+  padding-bottom: 10%;
   justify-content: 'space-around'
 }
 
@@ -516,11 +522,11 @@
 }
 
 .content-wrap{
-  padding-bottom: 20rem;
+  padding-bottom: 10rem;
 }
 
 .footer{
-  height: 20em;
+  height: 10rem;
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -580,12 +586,57 @@
   display: flex;
   flex-direction: row; 
   margin-left: 50%;
-  align-items: center;
+  justify-content: center;
 }
 
 .mapDiv{
   height: 850px;
   padding:5px;
+}
+
+.category-btn {
+  transition-property: all;
+  transition-duration: .6s;
+  transition-timing-function: ease;
+  color: black;
+  cursor: pointer;
+  display: block;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 30px;
+  max-width: 160px; 
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%; 
+}
+
+.btn-2 {
+  letter-spacing: 0;
+}
+
+.btn-2:hover,
+.btn-2:active {
+  color: black; 
+  letter-spacing: 2px;
+}
+
+.btn-2:after {
+  backface-visibility: hidden;
+  border: 1px solid black;
+  content: "";
+  display: block;
+  margin: 0 auto;
+  transition: all 280ms ease-in-out;
+  width: 0;
+}
+
+.btn-2:hover:after {
+  color: black;
+  backface-visibility: hidden;
+  border-color: black;
+  transition: width 350ms ease-in-out;
+  width: 100%;
 }
 
 .foodCategoryNav{

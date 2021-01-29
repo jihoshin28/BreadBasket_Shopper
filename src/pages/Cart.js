@@ -66,13 +66,13 @@ class Cart extends Component{
             <div>
                 <form onSubmit={this.props.handleSubmit(submitForm)}>
                     <div>
-                        <h2>
+                        <h4>
                             {`$${subtotal.toFixed(2)}`}
-                        </h2>
-                        <h2>
+                        </h4>
+                        <h4>
                             {`$${payment.toFixed(2)}`}
-                        </h2>
-                        <h2>
+                        </h4>
+                        <h4>
                             <span>
                                 Tip(% of total order)
                             </span>
@@ -86,12 +86,12 @@ class Cart extends Component{
                                 </Field>   
                             </span>
                             {/* {`$${tip}`} */}
-                        </h2>
-                        <h2>
+                        </h4>
+                        <h4>
                             {`$${total.toFixed(2)}`}
-                        </h2>
+                        </h4>
                             
-                            <button type="submit">
+                            <button className = "btn btn-secondary" type="submit">
                                 Checkout
                             </button>
                     </div>
@@ -111,33 +111,33 @@ class Cart extends Component{
                     {this.renderCart()}
                     <div class = "row cartItem total">
                         <div>
-                            <h3>
+                            <h4>
                                 SubTotal: 
-                            </h3>
-                            <h3>
+                            </h4>
+                            <h4>
                                 Delivery: 
-                            </h3>
-                            <h3>
+                            </h4>
+                            <h4>
                                 Tip:
-                            </h3>
-                            <h3>
+                            </h4>
+                            <h4>
                                 Total:
-                            </h3>
+                            </h4>
                             <br></br>
                         </div>
                         <div>
-                            <h3>
+                            <h4>
                                 ................................................
-                            </h3>
-                            <h3>
+                            </h4>
+                            <h4>
                                 ................................................
-                            </h3>
-                            <h3>
+                            </h4>
+                            <h4>
                                 ................................................
-                            </h3>
-                            <h3>
+                            </h4>
+                            <h4>
                                 ................................................
-                            </h3>
+                            </h4>
                             <br></br>
                         </div>
 

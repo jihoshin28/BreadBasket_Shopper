@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react' 
 import {connect} from 'react-redux'
-import { clearItem, clearConfirm, cancelOrder } from '../actions'
+import { clearItemPic, clearConfirm, cancelOrder } from '../actions'
 
 const Modal = (props) => {
     
@@ -15,7 +15,7 @@ const Modal = (props) => {
         }
 
         function clearContent(){
-            props.clearItem()
+            props.clearItemPic()
             props.clearConfirm()
         }
         
@@ -90,4 +90,4 @@ const Modal = (props) => {
         )
 }
 
-export default connect(null, {clearItem, clearConfirm, cancelOrder})(Modal)
+export default connect(null, {clearItemPic, clearConfirm, cancelOrder})(Modal)

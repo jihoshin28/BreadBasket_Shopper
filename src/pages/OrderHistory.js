@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import OrderSection from '../components/OrderSection'
 import { connect } from 'react-redux'
 import { getCompletedOrders } from '../actions'
-import MapContainer from '../components/MapContainer'
 
 
 export class OrderHistory extends Component {

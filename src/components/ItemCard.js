@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import ItemPic from './ItemPic'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { addCartItem, removeCartItem, getItem } from '../actions'
+import { addCartItem, removeCartItem, getItemPic } from '../actions'
 
 const ItemCard = (props) => {
     let[ref] = useState(React.createRef())
@@ -71,7 +71,7 @@ const ItemCard = (props) => {
                 <div class="card-body-2">
                     <p class="card-title" style = {{ fontSize: "15px"}}>{props.name}</p>
                     <p style={{fontSize: "10px"}}> ${props.price}/{props.unit}</p>
-                    <a class= "btn btn-primary" onClick={cartItemToggle} class="btn btn-primary">
+                    <a class= "btn btn-primary" onClick={cartItemToggle}>
                         <img class = "card-button-img" alt="Image" />
                     </a>
                 </div>
@@ -89,4 +89,4 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, {addCartItem, removeCartItem, getItem})(ItemCard)
+export default connect(mapStateToProps, {addCartItem, removeCartItem, getItemPic })(ItemCard)

@@ -5,9 +5,9 @@ const Category = props => {
 
     return (
         <div class = "col-sm-auto">
-            <Link to = {`/products/${props.name}`} data-category = {props.name}>
+            <a class = "category-btn btn-2" href = {`/products/${props.name}`} data-category = {props.name}>
                 {props.title}
-            </Link>
+            </a>
         </div>
     )
 }

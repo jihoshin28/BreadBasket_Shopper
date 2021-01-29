@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Searchbar from '../components/Searchbar'
-import Modal from '../components/Modal'
-import { getItem } from '../actions'
 import FoodListCarousel from '../containers/FoodListCarousel'
 
 
@@ -91,4 +89,4 @@ const mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, {getItem})(Products)
+export default connect(mapStateToProps)(Products)

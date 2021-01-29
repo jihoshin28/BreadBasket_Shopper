@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { reduxForm, Field} from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
 
 
 class Searchbar extends React.Component {
@@ -8,11 +8,13 @@ class Searchbar extends React.Component {
     renderInput = ({ input, meta, label }) => {
     console.log(input)
         return (
-            <div class="input-group-prepend searchBar">
-                <label>{label}</label>
-                <input {...input} />
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for = "input">{label}</label>
+                <div class = "col-smn-10">
+                    <input type = "text" class = "form-control" id = "input" {...input} />
+                </div>
                 {/* <div> {meta.error}</div> */}
-                <button type="submit" id="button-addon1">Search Item</button>
+                <button style = {{marginLeft: ".5em"}}className = "btn btn-primary" type="submit" id="button-addon1">Search Item</button>
             </div>
         )
     }

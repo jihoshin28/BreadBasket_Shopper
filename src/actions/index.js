@@ -42,6 +42,18 @@ export const getItem = (item_id) => async dispatch => {
     dispatch({ type: 'GET_ITEM', payload: response.data })
 }
 
+export const clearItemPic = () => {
+    return ({
+        type: 'CLEAR_ITEM_PIC'
+    })
+}
+
+export const getItemPic = (item_id) => async dispatch => {
+    const response = await rails.get(`/items/${item_id}`)
+    console.log(response.data, "items")
+    dispatch({ type: 'GET_ITEM_PIC', payload: response.data })
+}
+
 export const getItems = (store_id) => async dispatch => {
     const response = await rails.get(`/items?store_id=${store_id}`)
     console.log(response.data, "items")
