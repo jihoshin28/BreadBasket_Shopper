@@ -5,16 +5,29 @@ import FoodListCarousel from '../containers/FoodListCarousel'
 
 
 class Products extends Component {
-    componentDidMount(){
-        console.log(process.env.PUBLIC_URL)
-        // (`${this.props.match.params.category}`)
-        console.log(this.props.categories)
+    constructor(){
+        super()
+        this.state= {
+            mountState: true
+        }
+    }
+
+    componentDidUpdate(){
+        if(!this.state.mountState){
+            this.setState({
+                mountState: true
+            })
+        }
     }
  
     onCategoryChange = (e) => {
         console.log(e.target.value)
-        this.props.history.push(`/products/${e.target.value}`)
+        this.setState({
+            mountState: false
+        })
+        this.props.history.push(`/products/${e.target.value}`, {mountState: true})
     }
+
 
     renderSideBar = (categoryTitle) => {
         return (
@@ -35,17 +48,14 @@ class Products extends Component {
                             </div>
                         )
                     }
-                
             })
         )
     }
 
     render(){
-        let category = this.props.match.params.category
-        let filteredItems = this.props.items.filter(item => item.attributes.category === category)
         let categoryData = this.props.categories.find((category) => category.name === this.props.match.params.category)
         let categoryTitle = categoryData.title
-        console.log(categoryTitle)
+    
         return (
             <div class = "products">
                 <div class = "sidebar">
@@ -71,8 +81,11 @@ class Products extends Component {
                                 <Searchbar history = {this.props.history} onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange}/>
                             </div>
                         </div>
-                    
-                        <FoodListCarousel seeItem = {this.seeItem} items = {filteredItems}/>
+                        {this.state.mountState ?
+                            <FoodListCarousel items = {this.props.items}/>
+                            :
+                            <div></div>
+                        }
                     </div>
                 </div>
             </div>
@@ -81,11 +94,12 @@ class Products extends Component {
     
 }
 
-const mapStateToProps = state => {
-    console.log(state)
+        
+const mapStateToProps = (state, ownProps) => {
+    console.log(ownProps)
     return({
         categories: state.categories,
-        items: state.items.itemsList.data,
+        items: state.items.itemsList.data.filter(item => item.attributes.category === ownProps.match.params.category),
         item: state.items.selectedItem,
         selectedStore: state.stores.selectedStore
     })

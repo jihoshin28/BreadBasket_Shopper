@@ -14,7 +14,7 @@ class Profile extends Component{
             `${this.props.userInfo.address}, ${this.props.userInfo.city}, ${this.props.userInfo.state} ${this.props.userInfo.zip_code}`
         )
     }
-
+ 
     editPage = (e) => {
         this.props.history.push(`/edit_shopper/${e.target.value}`)
     }

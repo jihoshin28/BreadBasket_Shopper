@@ -41,7 +41,7 @@ class CartItem extends Component {
                 <div class = "cartItem-pic">
                     <h3>{this.props.name}</h3>
                     
-                    <ItemPic image = {this.props.image}/>
+                    <ItemPic image = {this.props.image} item_id = {this.props.item_id}/>
 
                     
                 </div>

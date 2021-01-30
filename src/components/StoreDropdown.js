@@ -66,9 +66,9 @@ let mapStateToProps = state => {
         selectedStore: state.stores.selectedStore,
         cartItems: state.cart.cart_items,
         store_params: [
-            state.stores.selectedStore.attributes.address.split(' ').join('+'),
-            state.stores.selectedStore.attributes.city.split(' ').join('+'),
-            state.stores.selectedStore.attributes.state
+            state.stores.selectedStore.attributes.address.street.split(' ').join('+'),
+            state.stores.selectedStore.attributes.address.city.split(' ').join('+'),
+            state.stores.selectedStore.attributes.address.state
         ].join('+')
     })
 }

@@ -31,7 +31,6 @@ export class Home extends Component {
                             </p>
                         </div> 
                     </div>
-                    
                             <HomeSection>
                                 <div className = 'col-2'>
                                     <div className = "storeLogoBubble">

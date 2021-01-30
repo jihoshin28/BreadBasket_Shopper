@@ -67,7 +67,7 @@ class OrderPage extends Component {
                         return (
                             <div class = "food-items-section">
                                 <h1>{category.title}</h1>
-                                <FoodListCarousel seeItem = {this.seeItem} items = {items}/> 
+                                <FoodListCarousel items = {items}/> 
                             </div>
                         )   
                     })

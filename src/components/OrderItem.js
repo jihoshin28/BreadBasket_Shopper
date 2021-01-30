@@ -21,9 +21,7 @@ const OrderItem = props => {
         <div className = 'row orderItem'> 
             <div class = "orderItem-pic">
                 <h3>{props.name}</h3>
-                
-                    <ItemPic image = {props.image} item_id = {props.item_id}/>
-                
+                <ItemPic image = {props.image} item_id = {props.item_id}/>
             </div>
             <div>
                 <h3>
