@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import {loadStripe} from '@stripe/stripe-js'
 import PayPalButton from '../components/PayPalButton'
 import { processOrder, stripePayment, checkoutOrder } from '../actions'

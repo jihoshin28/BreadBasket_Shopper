@@ -12,10 +12,7 @@ const ItemCard = (props) => {
         } else {
             buttonToggle("remove")
         }
-        
     }, [])
-
-    
 
     let buttonToggle = (toggle) => {
         let button = ref.current.children[1].children[2]
@@ -63,7 +60,6 @@ const ItemCard = (props) => {
             buttonToggle("remove")
             props.removeCartItem(cartItem[1], props.item_id)
         }
-        
     }
 
     return (

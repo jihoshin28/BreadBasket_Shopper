@@ -105,7 +105,7 @@ class Cart extends Component{
         return(
             <div class = 'container'>
                 
-                <div class =  'cart'>
+                <div class =  'cart-div'>
                     <h1>Cart</h1>
                     {this.renderCart()}
                     <div class = "row cartItem total roboFont">

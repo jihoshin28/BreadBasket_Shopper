@@ -32,8 +32,9 @@
   color: #61dafb;
 }
 
-.cart {
-  background-color: greenyellow;
+.cart-div {
+  background-color: #7ddb24;
+  border-radius: 10px; 
   padding: 20px;
   margin-top: 20px;
 }
@@ -57,8 +58,9 @@
 }
 
 .cartItem {
-  padding: 5px;
-  margin: 5px;
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: 15px;
   background-color: white;
   border-radius: 1em;
   justify-content: space-around;

@@ -49,11 +49,11 @@ class CartItem extends Component {
                     <h3>Price per {this.props.unit}: ${(this.props.price * .01).toFixed(2)}</h3>
                     <div>
                         <h3>Count: {this.props.count}</h3>
-                        <span>
-                            <button onClick= {() => this.changeCount('+')}>
+                        <span >
+                            <button style = {{marginRight: "3%"}} class = "btn btn-primary"onClick= {() => this.changeCount('+')}>
                                 +
                             </button>
-                            <button onClick = {() => this.changeCount('-')}>
+                            <button style = {{marginLeft: "3%"}} class = "btn btn-danger" onClick = {() => this.changeCount('-')}>
                                 -
                             </button>
                         </span>
@@ -62,8 +62,8 @@ class CartItem extends Component {
                     <h3>Total: ${(this.props.count * this.props.price * .01).toFixed(2)} </h3>
                 </div>
                 <div>
-                    <button onClick = {() => this.removeItem(this.props.cartItemId)}>Remove Item</button>
-                    <button onClick = {()=> {this.itemDetailsNav()}}>Item Details</button>
+                    <button class = "btn btn-danger" onClick = {() => this.removeItem(this.props.cartItemId)}>Remove Item</button>
+                    <button class = "btn btn-primary" onClick = {()=> {this.itemDetailsNav()}}>Item Details</button>
                 </div>
             </div>
         )
