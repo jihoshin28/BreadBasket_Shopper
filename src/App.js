@@ -39,25 +39,24 @@ class App extends Component  {
       <div className="App">
         <div>
             <NavBar history = {this.props.history}/>
-              <div class = "App-window">
-                <Modal history = {this.props.history} item = {this.props.itemPic} confirm = {this.props.confirm}/>
-                <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
-                <Route exact path='/about' render={(props) => <About {...props} />} />
-                <Route exact path='/cart' render={(props) => <Cart {...props} />} />
-                <Route exact path='/active_orders' render={(props) => <ActiveOrders {...props} />} />
-                <Route exact path='/edit_shopper/:section' render={(props) => <EditShopper {...props} />} />
-                <Route exact path='/item_details/:item_id' render={(props) => <ItemDetails {...props} />} />
-                <Route exact path='/map_page' render={(props) => <MapPage {...props} />} />
-                <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
-                <Route exact path='/order_history' render={(props) => <OrderHistory {...props} />} />
-                <Route exact path='/profile' render={(props) => <Profile {...props} />} />
-                <Route exact path='/profile_signup' render={(props) => <ProfileSignup {...props} />} />
-                <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>
-                <Route exact path='/payment_details/:order_id' render={(props) => <PaymentDetails {...props} />} />
-                <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
-                <Route exact path='/payment/:status' render={(props) => <Payment {...props} />} />
-                <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
-            </div> 
+           
+              <Modal history = {this.props.history} item = {this.props.itemPic} confirm = {this.props.confirm}/>
+              <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
+              <Route exact path='/order_history' render={(props) => <OrderHistory {...props} />} />
+              <Route exact path='/active_orders' render={(props) => <ActiveOrders {...props} />} />
+              <Route exact path='/about' render={(props) => <About {...props} />} />
+              <Route exact path='/cart' render={(props) => <Cart {...props} />} />
+              <Route exact path='/edit_shopper/:section' render={(props) => <EditShopper {...props} />} />
+              <Route exact path='/item_details/:item_id' render={(props) => <ItemDetails {...props} />} />
+              <Route exact path='/map_page' render={(props) => <MapPage {...props} />} />
+              <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
+              <Route exact path='/profile' render={(props) => <Profile {...props} />} />
+              <Route exact path='/profile_signup' render={(props) => <ProfileSignup {...props} />} />
+              <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>
+              <Route exact path='/payment/:status' render={(props) => <Payment {...props} />} />
+              <Route exact path='/payment_details/:order_id' render={(props) => <PaymentDetails {...props} />} />
+              <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
+              <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
         </div>
         <div class = "content-wrap"></div>
         <footer className="footer">
@@ -87,6 +86,7 @@ class App extends Component  {
 }
 
 let mapStateToProps = state => {
+  console.log(state, "STAAAAAAAAATE")
   return({
     shopperId: state.auth.currentShopper.id,
     selectedStore: state.stores.selectedStore,

@@ -11,7 +11,7 @@ export class Home extends Component {
     
     render() {
         return (
-            <div>
+            <div class = "App-margin">
                 <div class = "homeMain">
                     <h1>
                         Welcome to BreadBasket!

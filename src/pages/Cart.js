@@ -53,7 +53,8 @@ class Cart extends Component{
                     status: 'pending'
                 }
                     if(!this.props.currentOrderId){
-                        this.props.preOrder(orderInfo)
+                        console.log(orderInfo)
+                        // this.props.preOrder(orderInfo)
                     }else {
                         this.props.updatePreOrder(this.props.currentOrderId, orderInfo)
                     }              
@@ -103,8 +104,7 @@ class Cart extends Component{
 
     render() {
         return(
-            <div class = 'container'>
-                
+            <div class = 'App-margin container'>
                 <div class =  'cart-div'>
                     <h1>Cart</h1>
                     {this.renderCart()}

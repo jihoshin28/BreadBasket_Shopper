@@ -28,26 +28,25 @@ class Products extends Component {
         this.props.history.push(`/products/${e.target.value}`, {mountState: true})
     }
 
-
     renderSideBar = (categoryTitle) => {
         return (
             this.props.categories.map( category => {
                 
-                    if(category.title === categoryTitle){
-                        return (
-                            <div class="input-group-text category-radio">
-                                <input type="radio" id = {`${category.name}`} name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input" checked/> 
-                                <p>{`${category.title}`}</p>
-                            </div>
-                        )
-                    } else {
-                        return (
-                            <div class="input-group-text category-radio">
-                                <input type="radio" id = {`${category.name}`} name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input"/>
-                                <p>{`${category.title}`}</p>
-                            </div>
-                        )
-                    }
+                if(category.title === categoryTitle){
+                    return (
+                        <div class="input-group-text category-radio">
+                            <input type="radio" id = {`${category.name}`} name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input" checked/> 
+                            <p>{`${category.title}`}</p>
+                        </div>
+                    )
+                } else {
+                    return (
+                        <div class="input-group-text category-radio">
+                            <input type="radio" id = {`${category.name}`} name= "food-category" value={`${category.name}`} aria-label="Meat/Seafood Input"/>
+                            <p>{`${category.title}`}</p>
+                        </div>
+                    )
+                }
             })
         )
     }

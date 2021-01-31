@@ -28,7 +28,7 @@ class CurrentOrder extends React.Component {
 
     render(){
         return(
-            <div className = "container">
+            <div className = "App-margin container">
                 <h1>Current Orders</h1>
                 <div>
                     {this.renderOrders()}

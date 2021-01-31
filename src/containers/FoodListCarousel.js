@@ -5,16 +5,13 @@ import { Carousel } from 'react-responsive-carousel';
 
 class FoodListCarousel extends Component {
 
-    componentDidMount(){
-        
-    }
- 
     splitItems = (start, end) => {
         let currentItems = this.props.items.slice(start, end)
         return <FoodList items = {currentItems}/>
     }
 
     render(){
+
         const arrowStyles : CSSProperties = {
             position: 'absolute',
             zIndex: 2,
@@ -27,6 +24,7 @@ class FoodListCarousel extends Component {
             color: 'transparent', 
             cursor: 'pointer',
         };
+
         return (
             <div>
                 <Carousel
@@ -42,6 +40,7 @@ class FoodListCarousel extends Component {
                             </button>
                         )
                     }
+
                     renderArrowNext={(onClickHandler, hasNext, label) =>
                         hasNext && (
                             <button type="button" onClick={onClickHandler} title={label} style={{ ...arrowStyles, right: 15 }}>
@@ -49,7 +48,6 @@ class FoodListCarousel extends Component {
                             </button>
                         )
                     }
-                    render 
                 >
                     <div style = {{backgroundColor: "white"}}>
                     {this.splitItems(0, 6)}

@@ -10,9 +10,10 @@ class StoreDropdown extends React.Component {
     }
 
     componentDidUpdate(prevState){
-        if(prevState.selectedStore !== this.props.selectedStore){
+        console.log(prevState, this.props)
+        if(prevState.selectedStore.id !== this.props.selectedStore.id){
             this.props.getItems(this.props.selectedStore.attributes.id)
-            this.props.dropCart()
+            this.props.dropCart(this.props.cartId)
             this.props.startCart({ shopper_id: this.props.shopperId })
             this.props.getCategories(this.props.selectedStore.attributes.id - 1)
             this.getAddress()
@@ -65,6 +66,7 @@ let mapStateToProps = state => {
         stores: state.stores.storesList,
         selectedStore: state.stores.selectedStore,
         cartItems: state.cart.cart_items,
+        cartId: state.cart.cart_id,
         store_params: [
             state.stores.selectedStore.attributes.address.street.split(' ').join('+'),
             state.stores.selectedStore.attributes.address.city.split(' ').join('+'),

@@ -9,8 +9,8 @@
   pointer-events: none;
 }
 
-.App-window{
-  margin-top: 2%;
+.App-margin{
+  margin-top: 3%;
 }
 
 @media screen and (max-width: 992px) {

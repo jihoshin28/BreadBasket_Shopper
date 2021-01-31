@@ -15,7 +15,7 @@ export class OrderHistory extends Component {
         
         // this.props.completedOrders.map
         return (
-            <div class = "container">
+            <div class = "App-margin container">
                 <h1>Order History</h1>
 
                 {this.props.completedOrders.map((order,id) => {

@@ -330,3 +330,13 @@ export const clearConfirm = () => {
         type: "CLEAR_CONFIRM"
     })
 }
+
+//ADDRESS ACTIONS
+
+export const addAddressShopper = (address) => {
+    const response = rails.patch('/address')
+}
+
+export const addAddressOrder = (address) => {
+
+}

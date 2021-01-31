@@ -51,7 +51,7 @@ class GoogleAuth extends React.Component{
     signOut = () => {
         if(!!this.auth){
             this.auth.signOut()
-            this.props.dropCart()
+            this.props.dropCart(this.props.cartId)
             this.props.checkoutOrder()
         }
   
@@ -128,7 +128,8 @@ let mapStateToProps = (state) => {
     return ({
         shopperId: state.auth.currentShopper.id,
         signedIn: state.auth.signedIn,
-        shopperInfo: state.auth.currentShopper.shopper_info
+        shopperInfo: state.auth.currentShopper.shopper_info,
+        cartId: state.cart.cart_id
     })
 }
 

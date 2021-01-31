@@ -39,8 +39,9 @@ class OrderPage extends Component {
     }
 
     render() {
+        console.log(this.props.item_ids)
         return (
-            <div>
+            <div class = "App-margin">
                 {/* <Modal content = {{"item": this.props.item}}/> */}
                 <br></br><br></br>
                 <div class = "row">
@@ -87,7 +88,8 @@ let mapStateToProps = (state) => {
         shopperId: state.auth.currentShopper.id,
         cartId: state.cart.cart_id,
         cartItems: state.cart.cart_items,
-        item: state.items.selectedItem
+        item: state.items.selectedItem,
+        item_ids: state.cart.item_ids
     })
 }
 

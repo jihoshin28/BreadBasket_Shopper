@@ -20,7 +20,6 @@ class Payment extends React.Component {
             alert("Payment was unsuccessful!")
             this.setState({error: true})
         }
-
     }
 
     constructor() {

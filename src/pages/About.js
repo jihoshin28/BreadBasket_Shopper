@@ -7,7 +7,7 @@ export class About extends Component {
     }
     render() {
         return (
-            <div class = "container">
+            <div class = "App-margin container">
                 <h1>About</h1>
                 {/* <img width = '400px' src= {aboutPic} alt='Profile pic here!'></img> */}
 
