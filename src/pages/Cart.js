@@ -53,8 +53,7 @@ class Cart extends Component{
                     status: 'pending'
                 }
                     if(!this.props.currentOrderId){
-                        console.log(orderInfo)
-                        // this.props.preOrder(orderInfo)
+                        this.props.preOrder(orderInfo)
                     }else {
                         this.props.updatePreOrder(this.props.currentOrderId, orderInfo)
                     }              

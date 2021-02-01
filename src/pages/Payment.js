@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {loadStripe} from '@stripe/stripe-js'
 import PayPalButton from '../components/PayPalButton'
-import { processOrder, stripePayment, checkoutOrder } from '../actions'
+import { processOrder, stripePayment, checkoutOrder, dropCart } from '../actions'
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_TEST_KEY)
 
@@ -48,8 +48,9 @@ class Payment extends React.Component {
     }
 
     processOrder = async () => {
+        this.props.dropCart(this.props.cart_id)
         let cartItems = this.cartItems()
-        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
+        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "completed" })
         this.props.checkoutOrder()
     }
 
@@ -123,8 +124,6 @@ class Payment extends React.Component {
         }) 
     }
 
-
-
     render(){
         return(
             
@@ -188,7 +187,7 @@ class Payment extends React.Component {
                                             }
                                             {
                                                 this.state.paymentOption === "stripe" ? 
-                                                <button onClick = {this.placeOrder}>Stripe Checkout</button>
+                                                <button className = 'btn btn-secondary' onClick = {this.placeOrder}>Stripe Checkout</button>
                                                 :
                                                 <div></div>
                                             }
@@ -231,4 +230,4 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, {processOrder, stripePayment, checkoutOrder })(Payment)
+export default connect(mapStateToProps, {processOrder, stripePayment, checkoutOrder, dropCart })(Payment)

@@ -12,7 +12,7 @@ class OrderPage extends Component {
         navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error)
         this.props.getItems(this.props.selectedStore.attributes.id)
         this.props.getActiveOrders(this.props.shopperId)
-        console.log("selected store", this.props.selectedStore)
+        this.props.getCategories(this.props.selectedStore.attributes.id - 1)
         if (!!this.props.shopperId && !this.props.cartId) {
             console.log("Hello shopper! Welcome to BreadBasket!")
             this.props.startCart({ shopper_id: this.props.shopperId })
@@ -41,7 +41,6 @@ class OrderPage extends Component {
     render() {
         return (
             <div class = "App-margin">
-                {/* <Modal content = {{"item": this.props.item}}/> */}
                 <br></br><br></br>
                 <div class = "row">
                     <div class="col-sm-4 storeDropdown">
