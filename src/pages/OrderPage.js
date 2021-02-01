@@ -12,7 +12,7 @@ class OrderPage extends Component {
         navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error)
         this.props.getItems(this.props.selectedStore.attributes.id)
         this.props.getActiveOrders(this.props.shopperId)
-        
+        console.log("selected store", this.props.selectedStore)
         if (!!this.props.shopperId && !this.props.cartId) {
             console.log("Hello shopper! Welcome to BreadBasket!")
             this.props.startCart({ shopper_id: this.props.shopperId })
@@ -39,7 +39,6 @@ class OrderPage extends Component {
     }
 
     render() {
-        console.log(this.props.item_ids)
         return (
             <div class = "App-margin">
                 {/* <Modal content = {{"item": this.props.item}}/> */}
@@ -51,6 +50,7 @@ class OrderPage extends Component {
                     
                     <div class="col-sm-4 storeName">
                         <h1>{this.props.selectedStore.attributes.name}</h1>
+                        <img style = {{height: '70%', width: '25%', borderRadius: '10px'}} src = {`${this.props.selectedStore.attributes.logo}`}></img>
                     </div>
                     <div class="col-sm-4 searchBar">
                         <Searchbar history = {this.props.history}/>

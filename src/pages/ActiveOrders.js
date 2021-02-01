@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { getActiveOrders } from '../actions'
 import OrderSection from '../components/OrderSection'
 
-class CurrentOrder extends React.Component {
+class ActiveOrders extends React.Component {
     
     componentDidMount(){
         this.props.getActiveOrders(this.props.shopperId)
@@ -46,4 +46,4 @@ let mapStateToProps = state => {
     })
 }
 
-export default connect(mapStateToProps, {getActiveOrders})(CurrentOrder)
+export default connect(mapStateToProps, {getActiveOrders})(ActiveOrders)

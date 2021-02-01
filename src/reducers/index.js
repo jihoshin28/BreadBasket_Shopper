@@ -28,4 +28,9 @@ const reducer = combineReducers({
     form: formReducer
 })
 
+const rootReducer = (state) => {
+    state = undefined
+    return 
+}
+
 export default persistReducer(persistConfig, reducer)
