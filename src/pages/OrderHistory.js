@@ -7,12 +7,9 @@ import { getCompletedOrders } from '../actions'
 export class OrderHistory extends Component {
     componentDidMount(){
         this.props.getCompletedOrders(this.props.shopperId)
-        // this.props.getCompletedOrders(this.props.shopperId)
     }
 
     render() {
-        
-        
         // this.props.completedOrders.map
         return (
             <div class = "App-margin container">

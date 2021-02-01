@@ -291,7 +291,7 @@
   width: 100%;
   background-image: linear-gradient(#8dc525, #b2fd27);
   /* transform: skewY(-30deg); */
-  clip-path: polygon( 0 100%, 0 0%, 65% 0, 20% 100%);
+  clip-path: polygon( 0 100%, 0 0%, 80% 0, 20% 100%);
 }
 
 .payment-divider{
@@ -305,25 +305,23 @@
   display: flex;
   justify-content: center;
   align-self: center;
-  position: relative;
   margin: 6.25%;
-  z-index: 100;
+  z-index: 10;
   height: 85%;
   width: 85%;
   border-radius: 10px;
   font-family: Arial, Helvetica, sans-serif; 
   font-weight: bold;
-  -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842);
 }
 
-.payment-items{
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+.payment-options{
+  border-radius: 10px;
   background-color: white;
+  margin: 5px; 
   padding: 50px;
   /* background-color: rgba(255, 255, 255, 0.842); */
   height: 100%;
-  width: 50%;
+  width: 66.5%
 }
 
 .checkout-items{
@@ -400,20 +398,21 @@
 }
 
 .payment-total{
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding: 50px;
-  height: 100%;
-  width: 50%;
-  -webkit-box-shadow: 0px 0 5px rgba(80, 196, 27, 0.842);
-  background-image: linear-gradient(345deg, #8dc525, #b2fd27)
+  background-color: transparent;
+  position: sticky; 
+  top: 1rem;
+  border-radius: 10px;
+  padding: 5px;
+  width: 33.3%;
+  /* background-image: linear-gradient(345deg, #8dc525, #b2fd27) */
 }
 
 .payment-details{
+  position: sticky;
+  top: 1rem; 
   width: 100%;
   padding: 7%;
-  margin-top: 5%;
-  background-color: rgb(255, 255, 255);
+  background-image: linear-gradient(345deg, #8dc525, #b2fd27);
   border-radius: 10px;
 }
 

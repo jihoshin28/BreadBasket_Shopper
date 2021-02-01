@@ -50,7 +50,7 @@ class Payment extends React.Component {
     processOrder = async () => {
         this.props.dropCart(this.props.cart_id)
         let cartItems = this.cartItems()
-        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "completed" })
+        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
         this.props.checkoutOrder()
     }
 
@@ -130,8 +130,8 @@ class Payment extends React.Component {
                 <div >
                     {!this.state.loading ? 
                     <div class="wrapper"> 
-                            <div className = "row payment-box">
-                                <div class= "col-6 payment-items">
+                            <div className = "payment-box">
+                                <div class= "payment-options">
                                     <h1 class = "payment-header">Checkout</h1>
                                     <div class = "row payment-labels">
                                         <p class = "col-6">Items</p>
@@ -146,56 +146,51 @@ class Payment extends React.Component {
                                     </div> 
                                 </div>
                             
-                                <div class="col-6 payment-total">
-                                    <div>
-                                        <form onChange = {this.onPaymentChange}>
-                                            <div class="payment-method">
-                                                <div>
-                                                    <input type = "radio" id = "stripe" value = "stripe" name = "payment-method"> 
-                                                    </input>
-                                                    <label for="stripe"><h4>Stripe</h4></label>
-                                                    
-                                                </div>
-                                                <img class = 'payment-icon' src={process.env.PUBLIC_URL + '/stripeIcon.png'} /> 
-
+                                <div class="payment-total">
+                                    {/* <form onChange = {this.onPaymentChange}>
+                                        <div class="payment-method">
+                                            <div>
+                                                <input type = "radio" id = "stripe" value = "stripe" name = "payment-method"> 
+                                                </input>
+                                                <label for="stripe"><h4>Stripe</h4></label>
+                                                
                                             </div>
-                                            <div class="payment-method">
-                                                <div>
-                                                    <input type="radio" id = "paypal" value = "paypal" name = "payment-method">
-                                                    </input>
-                                                    <label for="paypal"><h4>Paypal</h4></label>
-                                                </div>
-                                                <img class='payment-icon' src={process.env.PUBLIC_URL + '/paypalIcon.svg.png'} />
-                                            </div>
-                                            
-                                        </form>
-                                        <div class="payment-divider">
-
+                                            <img class = 'payment-icon' src={process.env.PUBLIC_URL + '/stripeIcon.png'} /> 
                                         </div>
-                                        <div class = "payment-details">
-                                            <h3>SubTotal: {`$${(this.props.orderSubTotal / 100).toFixed(2)}`}</h3>
-                                            <h3>Delivery: {`$${(this.props.orderPayment / 100).toFixed(2)}`}</h3>
-                                            <h3>Tip: {`$${(this.props.orderTip / 100).toFixed(2)}`}</h3>
-                                            <div class="payment-divider"></div>
-                                            <h3>Total: {`$${(this.props.orderTotal / 100).toFixed(2)}`}</h3>
-                                            
-                                            {
-                                                this.state.paymentOption === "paypal" ? 
-                                                <PayPalButton placeOrder = {this.placeOrder} amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
-                                                :
-                                                <div></div>
-                                            }
-                                            {
-                                                this.state.paymentOption === "stripe" ? 
-                                                <button className = 'btn btn-secondary' onClick = {this.placeOrder}>Stripe Checkout</button>
-                                                :
-                                                <div></div>
-                                            }
+                                        <div class="payment-method">
+                                            <div>
+                                                <input type="radio" id = "paypal" value = "paypal" name = "payment-method">
+                                                </input>
+                                                <label for="paypal"><h4>Paypal</h4></label>
+                                            </div>
+                                            <img class='payment-icon' src={process.env.PUBLIC_URL + '/paypalIcon.svg.png'} />
                                         </div>
                                         
+                                    </form>
+                                    <div class="payment-divider">
+
+                                    </div> */}
+                                    <div class = "payment-details">
+                                        <h3>SubTotal: {`$${(this.props.orderSubTotal / 100).toFixed(2)}`}</h3>
+                                        <h3>Delivery: {`$${(this.props.orderPayment / 100).toFixed(2)}`}</h3>
+                                        <h3>Tip: {`$${(this.props.orderTip / 100).toFixed(2)}`}</h3>
+                                        <div class="payment-divider"></div>
+                                        <h3>Total: {`$${(this.props.orderTotal / 100).toFixed(2)}`}</h3>
+                                        
+                                        {
+                                            this.state.paymentOption === "paypal" ? 
+                                            <PayPalButton placeOrder = {this.placeOrder} amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
+                                            :
+                                            <div></div>
+                                        }
+                                        {
+                                            this.state.paymentOption === "stripe" ? 
+                                            <button className = 'btn btn-secondary' onClick = {this.placeOrder}>Stripe Checkout</button>
+                                            :
+                                            <div></div>
+                                        }
                                     </div>
                                 </div>
-
                             </div>
                             <div class="payment-bg-1">
                                 
