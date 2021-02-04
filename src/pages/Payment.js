@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {loadStripe} from '@stripe/stripe-js'
 import PayPalButton from '../components/PayPalButton'
+import PaymentOptions from '../containers/PaymentOptions'
 import { processOrder, stripePayment, checkoutOrder, dropCart } from '../actions'
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_TEST_KEY)
@@ -133,43 +134,10 @@ class Payment extends React.Component {
                             <div className = "payment-box">
                                 <div class= "payment-options">
                                     <h1 class = "payment-header">Checkout</h1>
-                                    <div class = "row payment-labels">
-                                        <p class = "col-6">Items</p>
-                                        <p class = "col-3">Quantity</p>
-                                        <p class = "col-3" >Price</p>
-                                    </div>
-                                    <div class = "payment-divider">
-
-                                    </div>
-                                    <div class = "checkout-items">
-                                        {this.renderItems()}                           
-                                    </div> 
+                                    <PaymentOptions />
                                 </div>
                             
                                 <div class="payment-total">
-                                    {/* <form onChange = {this.onPaymentChange}>
-                                        <div class="payment-method">
-                                            <div>
-                                                <input type = "radio" id = "stripe" value = "stripe" name = "payment-method"> 
-                                                </input>
-                                                <label for="stripe"><h4>Stripe</h4></label>
-                                                
-                                            </div>
-                                            <img class = 'payment-icon' src={process.env.PUBLIC_URL + '/stripeIcon.png'} /> 
-                                        </div>
-                                        <div class="payment-method">
-                                            <div>
-                                                <input type="radio" id = "paypal" value = "paypal" name = "payment-method">
-                                                </input>
-                                                <label for="paypal"><h4>Paypal</h4></label>
-                                            </div>
-                                            <img class='payment-icon' src={process.env.PUBLIC_URL + '/paypalIcon.svg.png'} />
-                                        </div>
-                                        
-                                    </form>
-                                    <div class="payment-divider">
-
-                                    </div> */}
                                     <div class = "payment-details">
                                         <div style = {{backgroundColor: 'white', margin: '1%', padding: '10%', borderRadius: "10px"}}>
                                             <div className = "row payment-cost-line">
