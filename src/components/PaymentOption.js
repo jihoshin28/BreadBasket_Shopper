@@ -17,35 +17,24 @@ class PaymentOption extends React.Component{
             })
         } else {
             this.setState({
-                showBottomEdit: false
+                showBottomEdit: false,
+                
             })
         }
     }
 
     renderSelect = (type) => {
-        if(type === 'none'){
+        if(!type){
             return (
                 <div></div>
             )
-        } else if (type === "add"){
+        } else {
             return (
                 <Link onClick = {() => this.showBottomEdit(this.state.showBottomEdit)}>
-                    Add
+                    {type}
                 </Link>
             )
-        } else if(type === "select"){
-            return(
-                <Link onClick = {() => this.showBottomEdit(this.state.showBottomEdit)}>
-                    Select
-                </Link>
-            )
-        } else if(type === "edit"){
-            return(
-                <Link onClick = {() => this.showBottomEdit(this.state.showBottomEdit)}>
-                    Edit
-                </Link>
-            )
-        }
+        } 
     }
 
     render(){
@@ -58,7 +47,14 @@ class PaymentOption extends React.Component{
                             </h3>
                         </div>
                         <div>
-                            {this.renderSelect(this.state.selectType)}
+                            {this.state.selectType ? 
+                                this.renderSelect(this.state.selectType)
+                                :
+                                <div>
+                                    
+                                </div>
+                            }
+                            
                         </div>
                     </div>
                     <div className = "payment-divider">
@@ -70,7 +66,6 @@ class PaymentOption extends React.Component{
                             <div>
                                 
                             </div>
-
                         }
                     </div>
             </div>

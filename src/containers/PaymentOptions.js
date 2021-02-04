@@ -35,13 +35,13 @@ class PaymentOptions extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <PaymentOption title = 'Phone Number' selectType = "add" bottomContent = {<h1>Hello</h1>}/>
-                <PaymentOption title = 'Address' selectType = "add"/>
-                <PaymentOption title = 'Tip' selectType = "select" />
-                <PaymentOption title = 'Delivery Time' selectType = "select"/>
-                <PaymentOption title = 'Substitution Preference' selectType = "select"/>
-                <PaymentOption title = 'Delivery Notes' selectType = "edit"/>
-                <PaymentOption title = 'Payment Method' selectType = "none" bottomContent = {<h1>Hello</h1>}/>
+                <PaymentOption title = 'Phone Number' selectType = "Add" bottomContent = {<h1>Hello</h1>}/>
+                <PaymentOption title = 'Address' selectType = "Add" bottomContent = {<h1>Hello</h1>}/>
+                <PaymentOption title = 'Tip' selectType = "Select" bottomContent = {<h1>Hello</h1>}/>
+                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomContent = {<h1>Hello</h1>}/>
+                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomContent = {<h1>Hello</h1>}/>
+                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomContent = {<h1>Hello</h1>}/>
+                <PaymentOption title = 'Payment Method' bottomContent = {<h1>Hello</h1>}/>
             </React.Fragment>
           
 
