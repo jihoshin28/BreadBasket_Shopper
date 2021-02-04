@@ -1,21 +1,16 @@
 import React from 'react' 
 import { connect } from 'react-redux'
+import PaymentOption from '../components/PaymentOption'
 import {} from '../actions'
 
 class PaymentOptions extends React.Component{
-    constructor(){
-        super()
-        this.state = {
-            tip: 0,
-        }
-    }
     
     //All have titles above the divider
 
     //Contact Information
     //Conditionally Add if no contacts
     //Select Button w/ Add Line or Phone Number Display underneath
-
+    
 
     //Delivery Address
     //Conditionally Add if no address
@@ -38,97 +33,13 @@ class PaymentOptions extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <div className = "payment-option">
-                    <div className = "row payment-option-line">
-                        <div>
-                            <h3>
-                                Contact Information
-                            </h3>
-                        </div>
-                        <div>
-                            <a href = "#">
-                                Link
-                            </a>
-                        </div>
-                    </div>
-                    <div className = "payment-divider">
-                    </div>
-                    <div>
-
-                    </div>
-                </div>
-                <div className = "payment-option">
-                    <div className = "row">
-                        <h3>
-                            Contact Information
-                        </h3>
-                    </div>
-                    <div className = "payment-divider">
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
-                <div className = "payment-option">
-                    <div>
-                        <h3>
-                            Contact Information
-                        </h3>
-                    </div>
-                    <div className = "payment-divider">
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
-                <div className = "payment-option">
-                    <div>
-                        <h3>
-                            Contact Information
-                        </h3>
-                    </div>
-                    <div className = "payment-divider">
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
-                <div className = "payment-option">
-                    <div>
-                        <h3>
-                            Contact Information
-                        </h3>
-                    </div>
-                    <div className = "payment-divider">
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
-                <div className = "payment-option">
-                    <div>
-                        <h3>
-                            Contact Information
-                        </h3>
-                    </div>
-                    <div className = "payment-divider">
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
-                <div className = "payment-option">
-                    <div>
-                        <h3>
-                            Contact Information
-                        </h3>
-                    </div>
-                    <div className = "payment-divider">
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
+                <PaymentOption title = 'Phone Number'/>
+                <PaymentOption title = 'Address'/>
+                <PaymentOption title = 'Tip'/>
+                <PaymentOption title = 'Delivery Time'/>
+                <PaymentOption title = 'Substitution Preference'/>
+                <PaymentOption title = 'Delivery Notes'/>
+                <PaymentOption title = 'Payment Method'/>
             </React.Fragment>
           
 
