@@ -171,24 +171,65 @@ class Payment extends React.Component {
 
                                     </div> */}
                                     <div class = "payment-details">
-                                        <h3>SubTotal: {`$${(this.props.orderSubTotal / 100).toFixed(2)}`}</h3>
-                                        <h3>Delivery: {`$${(this.props.orderPayment / 100).toFixed(2)}`}</h3>
-                                        <h3>Tip: {`$${(this.props.orderTip / 100).toFixed(2)}`}</h3>
+                                        <div style = {{backgroundColor: 'white', margin: '1%', padding: '10%', borderRadius: "10px"}}>
+                                            <div className = "row payment-cost-line">
+                                                <div>
+                                                    <h4>SubTotal</h4>
+                                                </div>
+                                                <div>
+                                                    <h4>{`$${(this.props.orderSubTotal / 100).toFixed(2)}`}</h4>
+                                                </div>
+                                            </div>
+                                            <div className = "row payment-cost-line">
+                                                <div>
+                                                    <h4>Delivery</h4>
+                                                </div>    
+                                                <div>
+                                                    <h4>{`$${(this.props.orderPayment / 100).toFixed(2)}`}</h4>
+                                                </div>    
+                                            </div>
+                                            <div className = "row payment-cost-line">
+                                                <div>
+                                                    <h4>Tax</h4>
+                                                </div>
+                                                <div>
+                                                    <h4>{`$${(this.props.orderTip / 100).toFixed(2)}`}</h4>
+                                                </div>
+                                            </div>
+                                            <div className = "row payment-cost-line">
+                                                <div>
+                                                    <h4>Tip</h4>
+                                                </div>    
+                                                <div>
+                                                    <h4>{`$${(this.props.orderTip / 100).toFixed(2)}`}</h4>
+                                                </div>    
+                                            </div>
+                                        </div>
                                         <div class="payment-divider"></div>
-                                        <h3>Total: {`$${(this.props.orderTotal / 100).toFixed(2)}`}</h3>
+                                        <div style = {{backgroundColor: 'white', margin: '1%', padding: '10%', borderRadius: "10px"}}>
+                                            <div className = "row payment-cost-total">
+                                                <div>
+                                                    <h4>Total</h4> 
+                                                </div>
+                                                <div>
+                                                    <h4>{`$${(this.props.orderTotal / 100).toFixed(2)}`}</h4>
+                                                </div>
+                                            </div>
+                                            {
+                                                this.state.paymentOption === "paypal" ? 
+                                                <PayPalButton placeOrder = {this.placeOrder} amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
+                                                :
+                                                <div></div>
+                                            }
+                                            {
+                                                this.state.paymentOption === "stripe" ? 
+                                                <button className = 'btn btn-secondary' onClick = {this.placeOrder}>Stripe Checkout</button>
+                                                :
+                                                <div></div>
+                                            }
+                                        </div>
                                         
-                                        {
-                                            this.state.paymentOption === "paypal" ? 
-                                            <PayPalButton placeOrder = {this.placeOrder} amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
-                                            :
-                                            <div></div>
-                                        }
-                                        {
-                                            this.state.paymentOption === "stripe" ? 
-                                            <button className = 'btn btn-secondary' onClick = {this.placeOrder}>Stripe Checkout</button>
-                                            :
-                                            <div></div>
-                                        }
+                                        
                                     </div>
                                 </div>
                             </div>

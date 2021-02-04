@@ -23,7 +23,7 @@ class ViewOrderItems extends React.Component{
     }
     render(){
         return(
-            <div>
+            <div className = "App-margin">
                 <h1>Order Items</h1>
                 {this.renderItems()}
             </div>

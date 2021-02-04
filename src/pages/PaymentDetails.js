@@ -30,7 +30,7 @@ const PaymentDetails = props => {
         }
     }
     return (
-        <div>
+        <div className = "App-margin">
             <h1>Payment Details</h1>
             <div>
                 {renderPaymentInfo()}
