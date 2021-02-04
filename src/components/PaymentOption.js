@@ -60,13 +60,15 @@ class PaymentOption extends React.Component{
                     <div className = "payment-divider">
                     </div>
                     <div className = "row payment-option-line">
-                        {this.state.showBottomEdit ? 
-                            this.props.bottomContent
-                            :
-                            <div>
-                                
-                            </div>
-                        }
+                        
+                            {this.state.showBottomEdit ? 
+                                this.props.bottomContent
+                                :
+                                <div>
+                                    
+                                </div>
+                            }
+
                     </div>
             </div>
         )
