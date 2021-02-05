@@ -72,7 +72,19 @@ class Cart extends Component{
                         {`$${payment.toFixed(2)}`}
                     </h4>
                     <h4>
-                        {`Tax`}
+                        <span>
+                            Tip(% of total order)
+                        </span>
+                        <span>
+                            <Field name = "tip" component = "select">
+                                <option value="0">0%</option>
+                                <option value="5">5%</option>
+                                <option value="10">10%</option>
+                                <option value="15">15%</option>
+                                <option value="20">20%</option>
+                            </Field>   
+                        </span>
+                        {/* {`$${tip}`} */}
                     </h4>
                     <h4>
                         {`$${total.toFixed(2)}`}
