@@ -325,12 +325,3 @@ export const clearConfirm = () => {
     })
 }
 
-//ADDRESS ACTIONS
-
-export const addAddressShopper = (address) => {
-    const response = rails.patch('/address')
-}
-
-export const addAddressOrder = (address) => {
-
-}

@@ -1,10 +1,30 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { connect } from 'react-redux'
+import {} from '../../actions'
 
 class Substitute extends React.Component {
-    submitForm = (formValues) => {
-        console.log(formValues)
+  
+    renderInput({input, label, meta}) {
+        console.log(meta)
+        return (
+            <div className = "field"> 
+                <label>{label}</label>
+                <input {...input} />
+                <div>{meta.error}</div>
+            </div>
+        )     
     }
+
+    onSubmit = (id, formValues) => {
+        console.log(id, formValues)
+        // if(id){
+        //     this.props.onSubmit(id, formValues)
+        // } else {
+        //     this.props.onSubmit(formValues)
+        // }
+    }
+
     render(){
         return(
             <div class = "payment-option-bottom">
@@ -18,13 +38,18 @@ class Substitute extends React.Component {
                     </Field>   
                 </form>
             </div>
-    
         )
     }
 }
 
 let formWrapped = reduxForm({
-    form: 'tipForm'
+    form: 'substituteForm'
 })(Substitute)
 
-export default formWrapped
+let mapStateToProps = (state) => {
+    return ({
+        
+    })
+}
+
+export default connect(mapStateToProps, {})(formWrapped)

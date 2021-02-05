@@ -42,7 +42,7 @@ class Cart extends Component{
             if(!!isEmpty(this.props.cart_items)){
                 alert('Your cart is empty!')
             } else {
-                let tip = !!formValues.tip ? formValues.tip * .01 * (subtotal + payment) : 0
+                let tip = !!formValues.cartTip ? formValues.cartTip * .01 * (subtotal + payment) : 0
                 let orderInfo = {
                     payment: (payment * 100).toFixed(0),
                     tip: (tip * 100).toFixed(0),
@@ -76,7 +76,7 @@ class Cart extends Component{
                             Tip(% of total order)
                         </span>
                         <span>
-                            <Field name = "tip" component = "select">
+                            <Field name = "cartTip" component = "select">
                                 <option value="0">0%</option>
                                 <option value="5">5%</option>
                                 <option value="10">10%</option>
@@ -135,7 +135,7 @@ class Cart extends Component{
 }
 
 let formWrapped = reduxForm({
-    form: 'checkoutForm'
+    form: 'cartForm'
 })(Cart)
 
 
