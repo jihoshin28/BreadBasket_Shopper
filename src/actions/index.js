@@ -325,3 +325,42 @@ export const clearConfirm = () => {
     })
 }
 
+//ADDRESS ACTIONS
+
+export const getShopperAddresses = () => async dispatch => {
+
+}
+
+export const getShopperAddress = (address) => async dispatch => {
+    const response = rails.patch('/address')
+}
+
+export const addShopperAddress = (address) => async dispatch => {
+
+}
+
+//CONTACT ACTIONS
+
+export const getShopperContacts = () => async dispatch => {
+
+}
+
+export const getShopperContact = () => async dispatch => {
+
+}
+
+export const addShopperNumber = (number) =>  async dispatch => {
+    const response = await rails.post('/phones', {'number': number})
+    const data = response.data
+    dispatch({
+        type: "UPDATE_ORDER_NUMBER",
+        paylod: data.number
+    })
+}
+
+export const updateOrderNumber = (number) => async dispatch => {
+    dispatch({
+        type: "UPDATE_ORDER_NUMBER",
+        payload: number
+    })
+}

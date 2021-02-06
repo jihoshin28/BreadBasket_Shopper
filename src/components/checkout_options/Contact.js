@@ -1,52 +1,74 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import { getShopperContacts } from '../../actions'
+import { getShopperContacts, addShopperNumber, updateOrderNumber } from '../../actions'
 
 class Contact extends React.Component {
-    renderInput({input, label, meta}) {
-        console.log(input, label, meta)
-        return (
-            <div className = "field"> 
-                <label>{label}</label>
-                <input {...input} />
-                <div>{meta.error}</div>
-            </div>
-        )     
+
+    componentDidMount(){
+        console.log(this.props.handleSubmit, this.props.onSubmit)
+    }
+    
+    renderContacts = () => {
+        let options = ['510-789-9938', '510-299-8061']
+        if (!options) {
+            return(
+                <div></div>
+            )
+        } else {
+
+            return options.map((contact) => {
+                return(
+                    <div className = "button-div">
+                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} form = "contactForm" value = {`${contact}`}>{contact}</button> 
+                    </div>
+                )
+            })
+        }
+        
     }
 
-    onSubmit = (id, formValues) => {
-        console.log(id, formValues)
-        // if(id){
-        //     this.props.onSubmit(id, formValues)
-        // } else {
-        //     this.props.onSubmit(formValues)
-        // }
+    // plus sign 
+    //<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="background-color:;border-color:#038767;color:#038767;min-height:14px;min-width:14px;width:14px;height:14px" class="pa1 mr3 ba br-100 bg-transparent b--dark-gray" data-test="OptionListButton-icon"><path d="M20 11H13V4C13 3.45 12.55 3 12 3C11.45 3 11 3.45 11 4V11H4C3.45 11 3 11.45 3 12C3 12.55 3.45 13 4 13H11V20C11 20.55 11.45 21 12 21C12.55 21 13 20.55 13 20V13H20C20.55 13 21 12.55 21 12C21 11.45 20.55 11 20 11Z" fill="currentColor"></path></svg>
+
+    //checkmark sign 
+    //<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="pa1 mr3 ba br-100 bg-transparent b--dark-gray" data-test="OptionListButton-icon" style="background-color: rgb(3, 135, 103); border-color: rgb(3, 135, 103); color: rgb(255, 255, 255); min-height: 14px; min-width: 14px; width: 14px; height: 14px;"><path d="M21.895 4.93001C21.505 4.54001 20.875 4.54001 20.485 4.93001L8.465 16.95L3.515 12C3.125 11.61 2.495 11.61 2.105 12C1.715 12.39 1.715 13.02 2.105 13.41L7.765 19.07C8.155 19.46 8.785 19.46 9.175 19.07L21.895 6.35001C22.285 5.96001 22.285 5.32001 21.895 4.93001Z" fill="currentColor"></path></svg>
+
+    selectOption = (e) => {
+        console.log(e.target.value)
+    }
+
+    addContact = (e) => {
+        let form = {
+            'number': e.target.children[0].value,
+            'phoneable_type': 'Shopper',
+            'phoneable_id': this.props.shopperId
+        }
+        console.log(e.target.children[0].value)
     }
 
     render() {
         console.log(this.props)
         return (
             <div className = "ui container">
-                <form onSubmit = {this.props.handleSubmit(this.onSubmit)} className = "ui form">
-                    <Field name = "title" component = {this.renderInput} label = "Enter Title"/>
-                    <Field name = "description" component = {this.renderInput} label = "Enter Description"/>
-                    <button className = "ui button red">Submit</button>
-                </form>
+                <div className = "button-options">
+                    {this.renderContacts()}
+                    <div className = "button-div">
+                        <form id = "addContact" onSubmit = {(e) => this.addContact(e)} >
+                            <input type = "text" name = "phone"></input>
+                            <button type = 'submit' value = "submit" style = {{width: "100%"}} form = "addContact" >+</button> 
+                        </form>
+                    </div>
+                </div>
             </div>
             
         )
     }
 }
 
-let formWrapped = reduxForm({
-    form: 'contactForm'
-})(Contact)
-
 let mapStateToProps = (state) => {
     return ({
-
+        contacts: state
     })
 }
 
-export default connect(mapStateToProps, {getShopperContacts})(formWrapped)
+export default connect(mapStateToProps, {getShopperContacts, addShopperNumber, updateOrderNumber})(Contact)

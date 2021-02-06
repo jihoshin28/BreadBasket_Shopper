@@ -42,18 +42,22 @@ class PaymentOptions extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <PaymentOption title = 'Phone Number' selectType = "Add" bottomContent = {<Contact/>}/>
-                <PaymentOption title = 'Address' selectType = "Add" bottomContent = {<Address />}/>
-                <PaymentOption title = 'Tip' selectType = "Select" bottomContent = {<Tip />}/>
-                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomContent = {<DeliveryTime/>}/>
-                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomContent = {<Substitute/>}/>
-                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomContent = {<DeliveryNote />}/>
-                <PaymentOption title = 'Payment Method' bottomContent = {<CheckoutPayment />}/>
+                <PaymentOption shopperId = {this.props.shopperId} title = 'Phone Number' selectType = "Add" bottomContent = {<Contact/>}/>
+                <PaymentOption shopperId = {this.props.shopperId} title = 'Address' selectType = "Add" bottomContent = {<Address />}/>
+                <PaymentOption shopperId = {this.props.shopperId} title = 'Tip' selectType = "Select" bottomContent = {<Tip />}/>
+                <PaymentOption shopperId = {this.props.shopperId} title = 'Delivery Time' selectType = "Select" bottomContent = {<DeliveryTime/>}/>
+                <PaymentOption shopperId = {this.props.shopperId} title = 'Substitution Preference' selectType = "Select" bottomContent = {<Substitute/>}/>
+                <PaymentOption shopperId = {this.props.shopperId} title = 'Delivery Notes' selectType = "Edit" bottomContent = {<DeliveryNote />}/>
+                <PaymentOption shopperId = {this.props.shopperId} title = 'Payment Method' bottomContent = {<CheckoutPayment />}/>
             </React.Fragment>
-          
-
         )
     }
 }
 
-export default PaymentOptions
+let mapStateToProps = (state) => {
+    return ({
+        shopperId: state.auth.currentShopper.id,
+    })
+}
+
+export default connect(mapStateToProps, {})(PaymentOptions)

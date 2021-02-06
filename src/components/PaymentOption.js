@@ -6,7 +6,7 @@ class PaymentOption extends React.Component{
         super()
         this.state = {
             selectType: props.selectType,
-            showBottomEdit: false
+            showBottomEdit: true
         }
     }
 

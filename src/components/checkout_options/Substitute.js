@@ -28,7 +28,7 @@ class Substitute extends React.Component {
     render(){
         return(
             <div class = "payment-option-bottom">
-                <form onChange = {this.props.handleSubmit(this.submitForm)}>
+                {/* <form onChange = {this.props.handleSubmit(this.submitForm)}>
                     <Field name = "contact" component = "select">
                         <option value="0">0%</option>
                         <option value="5">5%</option>
@@ -36,7 +36,7 @@ class Substitute extends React.Component {
                         <option value="15">15%</option>
                         <option value="20">20%</option>
                     </Field>   
-                </form>
+                </form> */}
             </div>
         )
     }
