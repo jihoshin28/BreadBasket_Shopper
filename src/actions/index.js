@@ -337,15 +337,11 @@ export const addShopperAddress = (form) => async dispatch => {
     const response = await rails.post('/addresses', {'address': form})
     const data = response.data
     console.log(data)
-    dispatch({
-        type: "UPDATE_ORDER_ADDRESS",
-        payload: data.address
-    })
 }
 
-export const updateOrderAddress = (address) => async dispatch => {
-
-    dispatch({
+export const updateOrderAddress = (address) => {
+    console.log('update address', address)
+    return ({
         type: "UPDATE_ORDER_ADDRESS",
         payload: address
     })
@@ -364,16 +360,11 @@ export const addShopperEmail = (form) => async dispatch => {
 export const addShopperNumber = (form) =>  async dispatch => {
     const response = await rails.post('/phones', {'phone': form})
     const data = response.data
-    console.log(data)
-
-    dispatch({
-        type: "UPDATE_ORDER_NUMBER",
-        payload: data.number
-    })
 }
 
-export const updateOrderNumber = (number) => async dispatch => {
-    dispatch({
+export const updateOrderNumber = (number) => {
+    console.log('update number', number)
+    return ({
         type: "UPDATE_ORDER_NUMBER",
         payload: number
     })

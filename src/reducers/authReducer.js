@@ -3,7 +3,6 @@ const INTIAL_STATE = {
     currentShopper: {
         shopper_info: {}
     },
-    
 }
 
 export default (state = INTIAL_STATE, action) => {

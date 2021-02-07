@@ -32,6 +32,9 @@ class PaymentOptions extends React.Component{
     //Select Button w/ Add Button or Address Display underneath 
     
     userAddresses = () => {
+        return this.props.currentShopper.addresses.map((address) => {
+            return address
+        })
         // this.props.currentShopper.attributes
     }
 
