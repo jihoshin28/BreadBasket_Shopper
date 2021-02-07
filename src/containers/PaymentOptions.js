@@ -9,20 +9,32 @@ import DeliveryTime from '../components/checkout_options/DeliveryTime'
 import Substitute from '../components/checkout_options/Substitute'
 import Tip from '../components/checkout_options/Tip'
 import { reduxForm, Field } from 'redux-form'
-import {} from '../actions'
+import {getCurrentShopper} from '../actions'
 
 class PaymentOptions extends React.Component{
-    
+    componentDidMount(){
+        this.props.getCurrentShopper(this.props.shopperId)
+        console.log(this.props.currentShopper, 'current_SHOPPER')
+    }
     //All have titles above the divider
     
     //Contact Information
     //Conditionally Add if no contacts
     //Select Button w/ Add Line or Phone Number Display underneath
-    
+    userNumbers = () => {
+        return this.props.currentShopper.phones.map((number) => {
+            return number.number
+        })
+    }
+
     //Delivery Address
     //Conditionally Add if no address
     //Select Button w/ Add Button or Address Display underneath 
     
+    userAddresses = () => {
+        // this.props.currentShopper.attributes
+    }
+
     //Tip
     //Select Button w/ 0, 5, 10, 15, 'other' options underneath or tip amount display
     
@@ -42,13 +54,13 @@ class PaymentOptions extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <PaymentOption title = 'Phone Number' selectType = "Add" bottomContent = {<Contact shopperId = {this.props.shopperId}/>}/>
-                <PaymentOption title = 'Address' selectType = "Add" bottomContent = {<Address shopperId = {this.props.shopperId}/>}/>
-                <PaymentOption title = 'Tip' selectType = "Select" bottomContent = {<Tip shopperId = {this.props.shopperId}/>}/>
-                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomContent = {<DeliveryTime shopperId = {this.props.shopperId}/>}/>
-                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomContent = {<Substitute shopperId = {this.props.shopperId}/>}/>
-                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomContent = {<DeliveryNote shopperId = {this.props.shopperId}/>}/>
-                <PaymentOption title = 'Payment Method' bottomContent = {<CheckoutPayment shopperId = {this.props.shopperId}/>}/>
+                <PaymentOption title = 'Phone Number' selectType = "Add" bottomContent = {<Contact numbers = {this.userNumbers()}/>}/>
+                <PaymentOption title = 'Address' selectType = "Add" bottomContent = {<Address addresses = {this.userAddresses()}/>}/>
+                <PaymentOption title = 'Tip' selectType = "Select" bottomContent = {<Tip />}/>
+                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomContent = {<DeliveryTime />}/>
+                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomContent = {<Substitute />}/>
+                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomContent = {<DeliveryNote />}/>
+                <PaymentOption title = 'Payment Method' bottomContent = {<CheckoutPayment />}/>
             </React.Fragment>
         )
     }
@@ -57,7 +69,8 @@ class PaymentOptions extends React.Component{
 let mapStateToProps = (state) => {
     return ({
         shopperId: state.auth.currentShopper.id,
+        currentShopper: state.auth.currentShopper
     })
 }
 
-export default connect(mapStateToProps, {})(PaymentOptions)
+export default connect(mapStateToProps, {getCurrentShopper})(PaymentOptions)

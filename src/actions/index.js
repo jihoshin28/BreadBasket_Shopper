@@ -254,6 +254,12 @@ export const signOut = () => {
 
 //USER PROFILE ACTIONS
 
+export const getCurrentShopper = (shopperId) => async dispatch => {
+    const response = await rails.get(`shoppers/${shopperId}`)
+    let data = response.data
+    console.log(response.data)
+}
+
 export const createShopperProfile = (shopperInfo) => async dispatch => {
     const response = await rails.post('/shopper_infos/', shopperInfo)
     let data = response.data

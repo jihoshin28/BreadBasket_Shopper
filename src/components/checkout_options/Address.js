@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import { getShopperAddresses } from '../../actions'
+import { addShopperAddress, updateOrderAddress} from '../../actions'
 
 class Address extends React.Component {
     renderInput({input, label, meta}) {
@@ -49,4 +49,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { getShopperAddresses })(formWrapped)
+export default connect(mapStateToProps, { addShopperAddress, updateOrderAddress })(formWrapped)

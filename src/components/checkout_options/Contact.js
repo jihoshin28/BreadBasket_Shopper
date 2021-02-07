@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getShopperNumbers, addShopperNumber, updateOrderNumber } from '../../actions'
+import { addShopperNumber, updateOrderNumber } from '../../actions'
 
 class Contact extends React.Component {
 
     componentDidMount(){
-        this.props.getShopperNumbers(this.props.shopperId)
+        console.log(this.props.numbers)
     }
     
     renderContacts = () => {
@@ -49,7 +49,6 @@ class Contact extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className = "ui container">
                 <div className = "button-options">
@@ -73,4 +72,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, {getShopperNumbers, addShopperNumber, updateOrderNumber})(Contact)
+export default connect(mapStateToProps, { addShopperNumber, updateOrderNumber})(Contact)
