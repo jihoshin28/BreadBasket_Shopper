@@ -161,7 +161,7 @@ class Payment extends React.Component {
                                                     <h4>Tax</h4>
                                                 </div>
                                                 <div>
-                                                    <h4>{`$${(this.props.orderTip / 100).toFixed(2)}`}</h4>
+                                                    <h4>{`$${(this.props.orderTax / 100).toFixed(2)}`}</h4>
                                                 </div>
                                             </div>
                                             <div className = "row payment-cost-line">
@@ -228,6 +228,7 @@ let mapStateToProps = state => {
         cartItems: state.cart.cart_items,
         orderPayment: state.order.payment,
         orderTip: state.order.tip,
+        orderTax: state.order.tax,
         orderTotal: state.order.total,
         orderSubTotal: state.order.subtotal
     })

@@ -40,7 +40,12 @@ export default (state = INITIAL_STATE, action) => {
             address: action.payload
         }
     }
-    
+
+    if(action.type === 'UPDATE_ORDER_TIP') {
+        return {...state, 
+            tip: action.payload
+        }
+    }
     
     if(action.type === 'CHECKOUT_ORDER'){
         return {...state, current_order_id: null}

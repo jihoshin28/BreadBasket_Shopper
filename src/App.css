@@ -33,8 +33,14 @@
 }
 
 .button-options{
-  display: 'flex';
+  display: flex;
   flex-flow: column;
+  align-items: center;
+}
+
+.button-options-row{
+  display: flex;
+  flex-flow: row;
   align-items: center;
 }
 

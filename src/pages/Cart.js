@@ -36,19 +36,18 @@ class Cart extends Component{
             }, 0)
         }
         let payment = subtotal * .14
-        let total = subtotal + payment
+        let tax = (subtotal + payment) * .0725
+        let total = subtotal + payment + tax
         let submitForm = (formValues) => {
             console.log(this.props.currentOrderId)
             if(!!isEmpty(this.props.cart_items)){
                 alert('Your cart is empty!')
             } else {
-                let tip = !!formValues.cartTip ? formValues.cartTip * .01 * (subtotal + payment) : 0
                 let orderInfo = {
-                    payment: (payment * 100).toFixed(0),
-                    tip: (tip * 100).toFixed(0),
-                    tax: ((total * 100)/ .0725).toFixed(0),
                     subtotal: (subtotal * 100).toFixed(0),
-                    total: (total * 100 + tip * 100).toFixed(0),
+                    payment: (payment * 100).toFixed(0),
+                    tax: (tax * 100).toFixed(0),
+                    total: (total * 100).toFixed(0),
                     store_id: this.props.storeId,
                     shopper_id: this.props.shopperId,
                     status: 'pending'
@@ -73,19 +72,8 @@ class Cart extends Component{
                         {`$${payment.toFixed(2)}`}
                     </h4>
                     <h4>
-                        <span>
-                            Tip(% of total order)
-                        </span>
-                        <span>
-                            <Field name = "cartTip" component = "select">
-                                <option value="0">0%</option>
-                                <option value="5">5%</option>
-                                <option value="10">10%</option>
-                                <option value="15">15%</option>
-                                <option value="20">20%</option>
-                            </Field>   
-                        </span>
-                        {/* {`$${tip}`} */}
+                        {`$${tax.toFixed(2)}`}
+                        
                     </h4>
                     <h4>
                         {`$${total.toFixed(2)}`}

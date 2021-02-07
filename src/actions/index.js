@@ -232,6 +232,29 @@ export const clearOrderItems = () => {
     })
 }
 
+export const updateOrderAddress = (address) => {
+    console.log('update address', address)
+    return ({
+        type: "UPDATE_ORDER_ADDRESS",
+        payload: address
+    })
+}
+
+export const updateOrderNumber = (number) => {
+    console.log('update number', number)
+    return ({
+        type: "UPDATE_ORDER_NUMBER",
+        payload: number
+    })
+}
+
+export const updateOrderTip = (tip) => {
+    return({
+        type: "UPDATE_ORDER_TIP",
+        payload: tip
+    })
+}
+
 //AUTH ACTIONS
 
 export const signIn = (userInfo) => async dispatch => {
@@ -339,14 +362,6 @@ export const addShopperAddress = (form) => async dispatch => {
     console.log(data)
 }
 
-export const updateOrderAddress = (address) => {
-    console.log('update address', address)
-    return ({
-        type: "UPDATE_ORDER_ADDRESS",
-        payload: address
-    })
-}
-
 //EMAIL ACTIONS
 
 export const addShopperEmail = (form) => async dispatch => {
@@ -362,10 +377,3 @@ export const addShopperNumber = (form) =>  async dispatch => {
     const data = response.data
 }
 
-export const updateOrderNumber = (number) => {
-    console.log('update number', number)
-    return ({
-        type: "UPDATE_ORDER_NUMBER",
-        payload: number
-    })
-}

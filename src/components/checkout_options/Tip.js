@@ -1,85 +1,77 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import {} from '../../actions'
+import {updateOrderTip} from '../../actions'
 
 class Tip extends React.Component {
-    componentDidUpdate(prevProps){
-        if(prevProps.checkoutTip !== this.props.checkoutTip){
-            console.log(this.checkoutTip)
+
+    constructor(){
+        super()
+        this.state = {
+            otherSelect: false
         }
-
-    }
-    renderInput({input, label, meta}) {
-        console.log(meta)
-        return (
-            <div>
-                <form>
-                    <option value="0">
-                        <button type="button" class="btn btn-primary btn-lg">0%</button>
-                    </option>
-                    <option value="5">
-                        <button type="button" class="btn btn-primary btn-lg">5%</button>
-                    </option>
-                    <option value="10">
-                        <button type="button" class="btn btn-primary btn-lg">10%</button>
-                    </option>
-                    <option value="15">
-                        <button type="button" class="btn btn-primary btn-lg">15%</button>
-                    </option>
-                    <option value="other">
-                        <button type="button" class="btn btn-primary btn-lg">Other</button>
-                    </option>
-                </form>
-                <label>{label}</label>
-                <input {...input} />
-                <div>{meta.error}</div>
-            </div>
-        )     
     }
 
-    onSubmit = (id, formValues) => {
-        console.log(id, formValues)
-        // if(id){
-        //     this.props.onSubmit(id, formValues)
-        // } else {
-        //     this.props.onSubmit(formValues)
-        // }
+    selectOption = (e) => {
+        console.log(e.target.value)
+        this.props.updateOrderTip(e.target.value)
+        this.setState({
+            otherSelect: false
+        })
     }
-    render(){
-        return(
-            <div class = "payment-option-bottom">
-                <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-                    <Field name = "checkoutTip" component = {this.renderInput}>
-                    
-                    </Field>   
-                </form>
-            </div>
+
+    selectOther = () => {
+        this.setState({
+            otherSelect: true
+        })
+    }
     
+    submitOther = (e) => {
+        console.log(e.target.children[0].value)
+        this.setState({
+            otherSelect: false
+        })
+    }
+
+    render() {
+        return (
+            <div className = "ui container">
+                <div className = "button-options-row">
+                    <div className = "button-div">
+                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {0}>None</button> 
+                    </div>  
+                    <div className = "button-div">
+                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {5}>5%</button> 
+                    </div>
+                    <div className = "button-div">
+                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {10}>10%</button> 
+                    </div>
+                    <div className = "button-div">
+                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {15}>15%</button> 
+                    </div>
+                    {
+                        this.state.otherSelect ?
+                        <form onSubmit = {(e) => this.submitOther(e)} id = "otherTip">
+                            <input type = "integer" name = "otherTip"></input>
+                            <button value = "submit" type = "submit" form = "otherTip" >Submit</button>
+                        </form>
+                        :
+                        <div className = "button-div">
+                            <button onClick = {() => this.selectOther()} style = {{width: "100%"}} >Other</button> 
+                        </div>
+                    }
+                </div>
+            </div>
+            
         )
     }
 }
-const validate = (formValues) => {
-    const error = {}
-    if(!formValues.title){
-        error.title = 'You must have a title'
-    }
-
-    if(!formValues.description){
-        error.description = 'You must have a description'
-    }
-
-    return error
-}
-
-let formWrapped = reduxForm({
-    form: 'tipForm'
-})(Tip)
 
 let mapStateToProps = (state) => {
     return ({
-        checkoutTip: state.form.checkoutTip
+        currentTotal: state.order.total,
+        shopperId: state.auth.currentShopper.id
     })
 }
 
-export default connect(mapStateToProps, {})(formWrapped)
+export default connect(mapStateToProps, {updateOrderTip})(Tip)
