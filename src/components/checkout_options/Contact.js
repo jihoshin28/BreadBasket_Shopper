@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getShopperContacts, addShopperNumber, updateOrderNumber } from '../../actions'
+import { getShopperNumbers, addShopperNumber, updateOrderNumber } from '../../actions'
 
 class Contact extends React.Component {
 
     componentDidMount(){
-        console.log(this.props.handleSubmit, this.props.onSubmit)
+        this.props.getShopperNumbers(this.props.shopperId)
     }
     
     renderContacts = () => {
@@ -38,11 +38,13 @@ class Contact extends React.Component {
     }
 
     addContact = (e) => {
+        e.preventDefault()
         let form = {
             'number': e.target.children[0].value,
             'phoneable_type': 'Shopper',
             'phoneable_id': this.props.shopperId
         }
+        this.props.addShopperNumber(form)
         console.log(e.target.children[0].value)
     }
 
@@ -67,8 +69,8 @@ class Contact extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        contacts: state
+        contacts: state.auth.currentShopper
     })
 }
 
-export default connect(mapStateToProps, {getShopperContacts, addShopperNumber, updateOrderNumber})(Contact)
+export default connect(mapStateToProps, {getShopperNumbers, addShopperNumber, updateOrderNumber})(Contact)

@@ -42,13 +42,13 @@ class PaymentOptions extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <PaymentOption shopperId = {this.props.shopperId} title = 'Phone Number' selectType = "Add" bottomContent = {<Contact/>}/>
-                <PaymentOption shopperId = {this.props.shopperId} title = 'Address' selectType = "Add" bottomContent = {<Address />}/>
-                <PaymentOption shopperId = {this.props.shopperId} title = 'Tip' selectType = "Select" bottomContent = {<Tip />}/>
-                <PaymentOption shopperId = {this.props.shopperId} title = 'Delivery Time' selectType = "Select" bottomContent = {<DeliveryTime/>}/>
-                <PaymentOption shopperId = {this.props.shopperId} title = 'Substitution Preference' selectType = "Select" bottomContent = {<Substitute/>}/>
-                <PaymentOption shopperId = {this.props.shopperId} title = 'Delivery Notes' selectType = "Edit" bottomContent = {<DeliveryNote />}/>
-                <PaymentOption shopperId = {this.props.shopperId} title = 'Payment Method' bottomContent = {<CheckoutPayment />}/>
+                <PaymentOption title = 'Phone Number' selectType = "Add" bottomContent = {<Contact shopperId = {this.props.shopperId}/>}/>
+                <PaymentOption title = 'Address' selectType = "Add" bottomContent = {<Address shopperId = {this.props.shopperId}/>}/>
+                <PaymentOption title = 'Tip' selectType = "Select" bottomContent = {<Tip shopperId = {this.props.shopperId}/>}/>
+                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomContent = {<DeliveryTime shopperId = {this.props.shopperId}/>}/>
+                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomContent = {<Substitute shopperId = {this.props.shopperId}/>}/>
+                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomContent = {<DeliveryNote shopperId = {this.props.shopperId}/>}/>
+                <PaymentOption title = 'Payment Method' bottomContent = {<CheckoutPayment shopperId = {this.props.shopperId}/>}/>
             </React.Fragment>
         )
     }

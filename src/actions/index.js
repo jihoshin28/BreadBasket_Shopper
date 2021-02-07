@@ -327,34 +327,78 @@ export const clearConfirm = () => {
 
 //ADDRESS ACTIONS
 
-export const getShopperAddresses = () => async dispatch => {
-
+export const getShopperAddresses = (shopperId) => async dispatch => {
+    const response = await rails.get(`/shoppers/${shopperId}`)
+    const data = response.data.data.attributes.addresses.map((address) => {
+        return address
+    })
+    console.log(data)
+    dispatch({
+        type: "GET_SHOPPER_ADDRESSES",
+        payload: data
+    })
 }
 
-export const getShopperAddress = (address) => async dispatch => {
-    const response = rails.patch('/address')
-}
-
-export const addShopperAddress = (address) => async dispatch => {
-
-}
-
-//CONTACT ACTIONS
-
-export const getShopperContacts = () => async dispatch => {
-
-}
-
-export const getShopperContact = () => async dispatch => {
-
-}
-
-export const addShopperNumber = (number) =>  async dispatch => {
-    const response = await rails.post('/phones', {'number': number})
+export const addShopperAddress = (form) => async dispatch => {
+    const response = await rails.post('/addresses', {'address': form})
     const data = response.data
+    console.log(data)
+    dispatch({
+        type: "UPDATE_ORDER_ADDRESS",
+        payload: data.address
+    })
+}
+
+export const updateOrderAddress = (address) => async dispatch => {
+
+    dispatch({
+        type: "UPDATE_ORDER_ADDRESS",
+        payload: address
+    })
+}
+
+//EMAIL ACTIONS
+
+export const getShopperEmails= (shopperId) => async dispatch => {
+    const response = await rails.get(`/shoppers/${shopperId}`)
+    const data = response.data.data.attributes.emails.map((email) => {
+        return email.email
+    })
+    console.log(data)
+    dispatch({
+        type: "GET_SHOPPER_EMAILS",
+        payload: data
+    })
+}
+
+export const addShopperEmail = (form) => async dispatch => {
+    const response = await rails.post('/emails', {'email': form})
+    const data = response.data
+    console.log(data)
+}
+
+//NUMBER ACTIONS
+
+export const getShopperNumbers = (shopperId) => async dispatch => {
+    const response = await rails.get(`/shoppers/${shopperId}`)
+    const data = response.data.data.attributes.phones.map((number, index) => {
+        return number.number
+    })
+    console.log(data)
+    dispatch({
+        type: "GET_SHOPPER_NUMBERS",
+        payload: data
+    })
+}
+
+export const addShopperNumber = (form) =>  async dispatch => {
+    const response = await rails.post('/phones', {'phone': form})
+    const data = response.data
+    console.log(data)
+
     dispatch({
         type: "UPDATE_ORDER_NUMBER",
-        paylod: data.number
+        payload: data.number
     })
 }
 

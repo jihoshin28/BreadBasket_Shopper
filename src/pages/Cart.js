@@ -46,6 +46,7 @@ class Cart extends Component{
                 let orderInfo = {
                     payment: (payment * 100).toFixed(0),
                     tip: (tip * 100).toFixed(0),
+                    tax: ((total * 100)/ .0725).toFixed(0),
                     subtotal: (subtotal * 100).toFixed(0),
                     total: (total * 100 + tip * 100).toFixed(0),
                     store_id: this.props.storeId,

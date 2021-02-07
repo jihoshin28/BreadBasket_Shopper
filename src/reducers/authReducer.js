@@ -2,7 +2,8 @@ const INTIAL_STATE = {
     signedIn: null,
     currentShopper: {
         shopper_info: {}
-    }
+    },
+    
 }
 
 export default (state = INTIAL_STATE, action) => {
@@ -17,10 +18,7 @@ export default (state = INTIAL_STATE, action) => {
             return {
                 ...state, 
                 signedIn: false, 
-                currentShopper: {
-                    ...state.currentShopper,
-                    shopper_info: {}
-                }
+                currentShopper: {}
             }
         case 'PROFILE_INFO':
             return{
@@ -40,6 +38,31 @@ export default (state = INTIAL_STATE, action) => {
                     shopper_info: action.payload
                 }
             }
+
+        case 'GET_SHOPPER_NUMBERS': {
+            return {
+                ...state, currentShopper: {
+                    ...state.currentShopper,
+                    shopper_numbers: action.payload
+                }
+            }
+        }
+        case 'GET_SHOPPER_EMAILS': {
+            return {
+                ...state, currentShopper: {
+                    ...state.currentShopper,
+                    shopper_emails: action.payload
+                }
+            }
+        }
+        case 'GET_SHOPPER_ADDRESSES': {
+            return {
+                ...state, currentShopper: {
+                    ...state.currentShopper,
+                    shopper_addresses: action.payload
+                }
+            }
+        }
         default:
             return state 
     }
