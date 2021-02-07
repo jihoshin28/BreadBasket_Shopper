@@ -69,7 +69,7 @@ class Contact extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        contacts: state.auth.currentShopper
+        contacts: state.auth.currentShopper.phones
     })
 }
 

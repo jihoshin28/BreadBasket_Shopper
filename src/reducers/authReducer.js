@@ -39,30 +39,6 @@ export default (state = INTIAL_STATE, action) => {
                 }
             }
 
-        case 'GET_SHOPPER_NUMBERS': {
-            return {
-                ...state, currentShopper: {
-                    ...state.currentShopper,
-                    shopper_numbers: action.payload
-                }
-            }
-        }
-        case 'GET_SHOPPER_EMAILS': {
-            return {
-                ...state, currentShopper: {
-                    ...state.currentShopper,
-                    shopper_emails: action.payload
-                }
-            }
-        }
-        case 'GET_SHOPPER_ADDRESSES': {
-            return {
-                ...state, currentShopper: {
-                    ...state.currentShopper,
-                    shopper_addresses: action.payload
-                }
-            }
-        }
         default:
             return state 
     }

@@ -327,18 +327,6 @@ export const clearConfirm = () => {
 
 //ADDRESS ACTIONS
 
-export const getShopperAddresses = (shopperId) => async dispatch => {
-    const response = await rails.get(`/shoppers/${shopperId}`)
-    const data = response.data.data.attributes.addresses.map((address) => {
-        return address
-    })
-    console.log(data)
-    dispatch({
-        type: "GET_SHOPPER_ADDRESSES",
-        payload: data
-    })
-}
-
 export const addShopperAddress = (form) => async dispatch => {
     const response = await rails.post('/addresses', {'address': form})
     const data = response.data
@@ -359,18 +347,6 @@ export const updateOrderAddress = (address) => async dispatch => {
 
 //EMAIL ACTIONS
 
-export const getShopperEmails= (shopperId) => async dispatch => {
-    const response = await rails.get(`/shoppers/${shopperId}`)
-    const data = response.data.data.attributes.emails.map((email) => {
-        return email.email
-    })
-    console.log(data)
-    dispatch({
-        type: "GET_SHOPPER_EMAILS",
-        payload: data
-    })
-}
-
 export const addShopperEmail = (form) => async dispatch => {
     const response = await rails.post('/emails', {'email': form})
     const data = response.data
@@ -378,18 +354,6 @@ export const addShopperEmail = (form) => async dispatch => {
 }
 
 //NUMBER ACTIONS
-
-export const getShopperNumbers = (shopperId) => async dispatch => {
-    const response = await rails.get(`/shoppers/${shopperId}`)
-    const data = response.data.data.attributes.phones.map((number, index) => {
-        return number.number
-    })
-    console.log(data)
-    dispatch({
-        type: "GET_SHOPPER_NUMBERS",
-        payload: data
-    })
-}
 
 export const addShopperNumber = (form) =>  async dispatch => {
     const response = await rails.post('/phones', {'phone': form})
