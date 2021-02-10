@@ -27,8 +27,7 @@ class Payment extends React.Component {
         super()
         this.state = {
             error: false,
-            loading: false,
-            paymentOption: null
+            loading: false
         }
     }
 
@@ -184,18 +183,20 @@ class Payment extends React.Component {
                                                         (this.props.orderPayment + this.props.orderSubTotal + this.props.orderTip + this.props.orderTax) / 100).toFixed(2)}`}</h4>
                                                 </div>
                                             </div>
-                                            {
-                                                this.state.paymentOption === "paypal" ? 
-                                                <PayPalButton placeOrder = {this.placeOrder} amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
-                                                :
-                                                <div></div>
-                                            }
-                                            {
-                                                this.state.paymentOption === "stripe" ? 
-                                                <button className = 'btn btn-secondary' onClick = {this.placeOrder}>Stripe Checkout</button>
-                                                :
-                                                <div></div>
-                                            }
+                                            <div style = {{marginTop: '5%'}}>
+                                                {
+                                                    this.props.paymentMethod === "paypal" ? 
+                                                    <PayPalButton placeOrder = {this.placeOrder} amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
+                                                    :
+                                                    <div></div>
+                                                }
+                                                {
+                                                    this.props.paymentMethod === "stripe" ? 
+                                                    <button className = 'btn btn-secondary' onClick = {this.placeOrder}>Stripe Checkout</button>
+                                                    :
+                                                    <div></div>
+                                                }
+                                            </div>
                                         </div>
                                         
                                         
@@ -230,7 +231,8 @@ let mapStateToProps = state => {
         orderPayment: state.order.payment,
         orderTip: state.order.tip,
         orderTax: state.order.tax,
-        orderSubTotal: state.order.subtotal
+        orderSubTotal: state.order.subtotal,
+        paymentMethod: state.order.payment_method
     })
 }
 

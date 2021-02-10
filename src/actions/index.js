@@ -276,6 +276,13 @@ export const updateDeliveryNote = (note) => {
     })
 }
 
+export const selectOrderPayment = (method) => {
+    return({
+        type: "UPDATE_ORDER_PAYMENT_METHOD",
+        payload: method.target.value
+    })
+}
+
 //AUTH ACTIONS
 
 export const signIn = (userInfo) => async dispatch => {

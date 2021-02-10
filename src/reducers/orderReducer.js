@@ -64,6 +64,13 @@ export default (state = INITIAL_STATE, action) => {
             note: action.payload
         }
     }
+
+    if(action.type === 'UPDATE_ORDER_PAYMENT_METHOD') {
+        console.log(action.payload)
+        return {...state, 
+            payment_method: action.payload
+        }
+    }
     
     if(action.type === 'CHECKOUT_ORDER'){
         return {...state, current_order_id: null}
