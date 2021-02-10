@@ -262,6 +262,13 @@ export const updateOrderDeliveryTime = (delivery_time) => {
     })
 }
 
+export const updateOrderSubstitute = (substitute) => {
+    return({
+        type: "UPDATE_ORDER_SUBSTITUTE",
+        payload: substitute
+    })
+}
+
 //AUTH ACTIONS
 
 export const signIn = (userInfo) => async dispatch => {

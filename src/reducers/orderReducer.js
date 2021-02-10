@@ -11,7 +11,7 @@ let INITIAL_STATE = {
     total: null,
     delivery_time: null,
     complete_time: null,
-    substitue: null,
+    substitute: null,
     note: null,
     payment_method: null,
     address: null,
@@ -50,6 +50,12 @@ export default (state = INITIAL_STATE, action) => {
     if(action.type === 'UPDATE_ORDER_DELIVERY_TIME') {
         return {...state, 
             delivery_time: action.payload
+        }
+    }
+
+    if(action.type === 'UPDATE_ORDER_SUBSTITUTE') {
+        return {...state, 
+            substitute: action.payload
         }
     }
     

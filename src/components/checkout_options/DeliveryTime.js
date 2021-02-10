@@ -73,7 +73,6 @@ class DeliveryTime extends React.Component {
             } else {
                 let index = time - 9
                 times = times.slice(index)
-                
             }
             return 
         }
@@ -82,7 +81,7 @@ class DeliveryTime extends React.Component {
         <div className = "button-div">
             {times.map((time) => {
                 return(
-                    <button type = "button" onClick = {(e) => this.selectDate(e)} style = {{width: "100%"}} value = {day}>
+                    <button type = "button" onClick = {(e) => this.selectTime(e)} style = {{width: "100%"}} value = {time}>
                         <p>{time}</p>
                     </button> 
                 )
@@ -92,13 +91,19 @@ class DeliveryTime extends React.Component {
     }
 
     selectDate = (e) => {
-        console.log(e.currentTarget.value)
+        console.log(e.currentTarget.value.day)
         this.setState({
-            selectedDay: e.currentTarget.value
+            selectedDay: e.currentTarget.value,
+            selectedDate: e.currentTarget.children[0].innerHTML
         })
     }
 
-   
+    selectTime = (e) => {
+        var today = new Date()
+        var yy = String(today.getFullYear()).slice(2)
+        let time = `${e.currentTarget.value + ' ' + this.state.selectedDate + '-' + yy}`
+        this.props.updateOrderDeliveryTime(time)
+    }
 
     render() {
         return (
@@ -134,10 +139,4 @@ class DeliveryTime extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => {
-    return ({
-        
-    })
-}
-
-export default connect(mapStateToProps, {updateOrderDeliveryTime})(DeliveryTime)
+export default connect(null, {updateOrderDeliveryTime})(DeliveryTime)

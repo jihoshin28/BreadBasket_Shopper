@@ -1,55 +1,35 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import {} from '../../actions'
+import {updateOrderSubstitute} from '../../actions'
 
 class Substitute extends React.Component {
   
-    renderInput({input, label, meta}) {
-        console.log(meta)
-        return (
-            <div className = "field"> 
-                <label>{label}</label>
-                <input {...input} />
-                <div>{meta.error}</div>
-            </div>
-        )     
-    }
-
-    onSubmit = (id, formValues) => {
-        console.log(id, formValues)
-        // if(id){
-        //     this.props.onSubmit(id, formValues)
-        // } else {
-        //     this.props.onSubmit(formValues)
-        // }
+    selectOption = (e) => {
+        this.props.updateOrderSubstitute(e.target.value)
     }
 
     render(){
         return(
-            <div class = "payment-option-bottom">
-                {/* <form onChange = {this.props.handleSubmit(this.submitForm)}>
-                    <Field name = "contact" component = "select">
-                        <option value="0">0%</option>
-                        <option value="5">5%</option>
-                        <option value="10">10%</option>
-                        <option value="15">15%</option>
-                        <option value="20">20%</option>
-                    </Field>   
-                </form> */}
+            <div className = "ui container">
+                <h4>
+                    If you can't find my items:
+                </h4>
+                <div className = "button-options">
+                    <div className = "button-div">
+                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = 'contact'>Contact me for replacements.</button> 
+                    </div>  
+                    <div className = "button-div">
+                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = 'choose'>Choose any replacements for me.</button> 
+                    </div>
+                    <div className = "button-div">
+                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = 'none'>Don't make any replacements.</button> 
+                    </div>
+                    
+                </div>
             </div>
         )
     }
 }
 
-let formWrapped = reduxForm({
-    form: 'substituteForm'
-})(Substitute)
-
-let mapStateToProps = (state) => {
-    return ({
-        
-    })
-}
-
-export default connect(mapStateToProps, {})(formWrapped)
+export default connect(null, {updateOrderSubstitute})(Substitute)
