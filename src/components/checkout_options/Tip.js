@@ -13,8 +13,8 @@ class Tip extends React.Component {
     }
 
     selectOption = (e) => {
-        console.log(e.target.value)
-        this.props.updateOrderTip(e.target.value)
+        let tip = (e.target.value/ 100) * this.props.currentTotal
+        this.props.updateOrderTip(tip)
         this.setState({
             otherSelect: false
         })
@@ -27,7 +27,8 @@ class Tip extends React.Component {
     }
     
     submitOther = (e) => {
-        console.log(e.target.children[0].value)
+        let tip = (e.target.value / 100) * this.props.currentTotal
+        this.props.updateOrderTip(tip)
         this.setState({
             otherSelect: false
         })
@@ -38,28 +39,31 @@ class Tip extends React.Component {
             <div className = "ui container">
                 <div className = "button-options-row">
                     <div className = "button-div">
-                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {0}>None</button> 
+                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {0}>None</button> 
                     </div>  
                     <div className = "button-div">
-                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {5}>5%</button> 
+                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {5}>5%</button> 
                     </div>
                     <div className = "button-div">
-                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {10}>10%</button> 
+                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {10}>10%</button> 
                     </div>
                     <div className = "button-div">
-                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {15}>15%</button> 
+                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {15}>15%</button> 
                     </div>
-                    {
-                        this.state.otherSelect ?
-                        <form onSubmit = {(e) => this.submitOther(e)} id = "otherTip">
-                            <input type = "integer" name = "otherTip"></input>
-                            <button value = "submit" type = "submit" form = "otherTip" >Submit</button>
-                        </form>
-                        :
-                        <div className = "button-div">
-                            <button onClick = {() => this.selectOther()} style = {{width: "100%"}} >Other</button> 
-                        </div>
-                    }
+                    <div className = "button-div">
+                        <button type = "button" onClick = {() => this.selectOther()} style = {{width: "100%"}} >Other</button> 
+                    </div>
+                </div>
+                <div>
+                {
+                    this.state.otherSelect ?
+                    <form id = "otherTip" onSubmit = {(e) => this.submitOther(e)}>
+                        <input type = "integer" name = "otherTip"></input>
+                        <button type = "submit" value = "submit" form = "otherTip" >Submit</button>
+                    </form>
+                    :
+                    <div></div>
+                }
                 </div>
             </div>
             
@@ -69,6 +73,7 @@ class Tip extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
+        currentTip: state.order.tip,
         currentTotal: state.order.total,
         shopperId: state.auth.currentShopper.id
     })

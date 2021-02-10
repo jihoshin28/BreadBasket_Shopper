@@ -180,7 +180,8 @@ class Payment extends React.Component {
                                                     <h4>Total</h4> 
                                                 </div>
                                                 <div>
-                                                    <h4>{`$${(this.props.orderTotal / 100).toFixed(2)}`}</h4>
+                                                    <h4>{`$${(
+                                                        (this.props.orderPayment + this.props.orderSubTotal + this.props.orderTip + this.props.orderTax) / 100).toFixed(2)}`}</h4>
                                                 </div>
                                             </div>
                                             {
@@ -229,7 +230,6 @@ let mapStateToProps = state => {
         orderPayment: state.order.payment,
         orderTip: state.order.tip,
         orderTax: state.order.tax,
-        orderTotal: state.order.total,
         orderSubTotal: state.order.subtotal
     })
 }

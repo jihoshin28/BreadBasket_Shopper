@@ -255,6 +255,13 @@ export const updateOrderTip = (tip) => {
     })
 }
 
+export const updateOrderDeliveryTime = (delivery_time) => {
+    return({
+        type: "UPDATE_ORDER_DELIVERY_TIME",
+        payload: delivery_time
+    })
+}
+
 //AUTH ACTIONS
 
 export const signIn = (userInfo) => async dispatch => {
