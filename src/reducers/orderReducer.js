@@ -58,6 +58,12 @@ export default (state = INITIAL_STATE, action) => {
             substitute: action.payload
         }
     }
+
+    if(action.type === 'UPDATE_ORDER_DELIVERY_NOTE') {
+        return {...state, 
+            note: action.payload
+        }
+    }
     
     if(action.type === 'CHECKOUT_ORDER'){
         return {...state, current_order_id: null}

@@ -269,6 +269,13 @@ export const updateOrderSubstitute = (substitute) => {
     })
 }
 
+export const updateDeliveryNote = (note) => {
+    return({
+        type: "UPDATE_DELIVERY_NOTE",
+        payload: note
+    })
+}
+
 //AUTH ACTIONS
 
 export const signIn = (userInfo) => async dispatch => {

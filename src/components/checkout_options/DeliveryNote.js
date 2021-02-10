@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import {} from '../../actions'
+import {updateDeliveryNote} from '../../actions'
 
 class DeliveryNote extends React.Component {
 
@@ -10,38 +10,30 @@ class DeliveryNote extends React.Component {
         return (
             <div className = "field"> 
                 <label>{label}</label>
-                <input {...input} />
+                <input type = "text" {...input} />
                 <div>{meta.error}</div>
             </div>
         )     
     }
 
-    onSubmit = (id, formValues) => {
-        console.log(id, formValues)
-        // if(id){
-        //     this.props.onSubmit(id, formValues)
-        // } else {
-        //     this.props.onSubmit(formValues)
-        // }
+    onSubmit = (e) => {
+        e.preventDefault()
+        this.props.updateDeliveryNote(e.target.children[0].value)
     }
 
     render(){
         return(
             <div class = "payment-option-bottom">
-                <h1>Hello</h1>
+                <h3>Leave a note for the driver:</h3>
+                <form onSubmit = {(e) => this.onSubmit(e)} id = 'delivery-note'>
+                    <textarea form = "delivery-note" name="w3review" rows="7" cols="75" placeholder = "F.e. Please leave the delivery on my front porch!">
+                    </textarea>
+                    <button type = "submit">Submit</button>
+                </form>
+                
             </div>
         )
     }
 }
 
-let formWrapped = reduxForm({
-    form: 'deliveryNoteForm'
-})(DeliveryNote)
-
-let mapStateToProps = (state) => {
-    return ({
-        
-    })
-}
-
-export default connect(mapStateToProps, {})(formWrapped)
+export default connect(null, {updateDeliveryNote})(DeliveryNote)
