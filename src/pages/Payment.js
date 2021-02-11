@@ -183,7 +183,7 @@ class Payment extends React.Component {
                                                         (this.props.orderPayment + this.props.orderSubTotal + this.props.orderTip + this.props.orderTax) / 100).toFixed(2)}`}</h4>
                                                 </div>
                                             </div>
-                                            <div style = {{marginTop: '5%'}}>
+                                            <div style = {{marginTop: '10%'}}>
                                                 {
                                                     this.props.paymentMethod === "paypal" ? 
                                                     <PayPalButton placeOrder = {this.placeOrder} amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>

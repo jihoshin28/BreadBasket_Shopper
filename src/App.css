@@ -357,7 +357,7 @@
   margin: 5px; 
   -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842);
   /* background-color: rgba(255, 255, 255, 0.842); */
-  height: 100%;
+  min-height: 100%;
   width: 66.5%
 }
 
@@ -366,6 +366,7 @@
   border-radius: 10px;
   background-color: rgb(245, 245, 245);
   margin-top: 5%;
+  margin-bottom: 1%;
 }
 
 .payment-option-line{

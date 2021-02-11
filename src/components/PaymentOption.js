@@ -62,10 +62,9 @@ class PaymentOption extends React.Component{
                     <div className = "row payment-option-line">
                         
                             {this.state.showBottomEdit ? 
-                                this.props.bottomContent
+                                this.props.bottomOption
                                 :
                                 <div>
-                                    
                                 </div>
                             }
 

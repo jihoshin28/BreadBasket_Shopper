@@ -57,13 +57,13 @@ class PaymentOptions extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <PaymentOption title = 'Phone Number' selectType = "Add" bottomContent = {<Contact numbers = {this.userNumbers()}/>}/>
-                <PaymentOption title = 'Address' selectType = "Add" bottomContent = {<Address addresses = {this.userAddresses()}/>}/>
-                <PaymentOption title = 'Tip' selectType = "Select" bottomContent = {<Tip />}/>
-                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomContent = {<DeliveryTime />}/>
-                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomContent = {<Substitute />}/>
-                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomContent = {<DeliveryNote />}/>
-                <PaymentOption title = 'Payment Method' bottomContent = {<CheckoutPayment />}/>
+                <PaymentOption title = 'Phone Number' selectType = "Add" bottomOption = {<Contact numbers = {this.userNumbers()}/>} bottomContent = {this.props.number}/>
+                <PaymentOption title = 'Address' selectType = "Add" bottomOption = {<Address addresses = {this.userAddresses()}/>} bottomContent = {this.props.address}/>
+                <PaymentOption title = 'Tip' selectType = "Select" bottomOption = {<Tip />} bottomContent = {this.props.tip}/>
+                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomOption = {<DeliveryTime />} bottomContent = {this.props.delivery_time}/>
+                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomOption = {<Substitute />} bottomContent = {this.props.substitute}/>
+                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomOption = {<DeliveryNote />} bottomContent = {this.props.note}/>
+                <PaymentOption title = 'Payment Method' bottomOption = {<CheckoutPayment />}/>
             </React.Fragment>
         )
     }
@@ -72,7 +72,13 @@ class PaymentOptions extends React.Component{
 let mapStateToProps = (state) => {
     return ({
         shopperId: state.auth.currentShopper.id,
-        currentShopper: state.auth.currentShopper
+        currentShopper: state.auth.currentShopper,
+        chosenPhone: state.order.number,
+        chosenAddress: state.order.address, 
+        chosenTip: state.order.tip,
+        chosenDeliveryTime: state.order.delivery_time,
+        chosenSubstitute: state.order.substitute,
+        chosenDeliveryNote: state.order.note 
     })
 }
 
