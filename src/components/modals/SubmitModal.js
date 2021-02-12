@@ -1,16 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
+import { addShopperNumber, addShopperAddress} from '../../actions'
+
 
 
 class SubmitModal extends React.Component {
     type = this.props.submitType 
     renderInput = ({ input, meta, label }) => {
-
+        console.log(input)
         return (
-            <div>
-                <label> {label}</label>
-                <input {...input} /> 
+            <div class = "form-group modal-form">
+                <label style = {{left: '0'}} for = {label}> {label}</label>
+                <input type = "email" id = {label} class= "form-control" {...input} /> 
                 <div>{meta.error} </div>
             </div>
         )
@@ -19,20 +21,19 @@ class SubmitModal extends React.Component {
     renderForm = () => {
         if(this.type === "number"){
             return (
-                <form id = "modalSubmit" onSubmit = {this.props.handleSubmit(this.submit)}>
-                    <Field name = "number" component = {this.renderInput} label = "Phone Number"/>
+                <form style = {{width: '100%'}} id = "modalSubmit" onSubmit = {this.props.handleSubmit(this.submit)}>
+                    <Field name = "number" component = {this.renderInput} label = "Number"/>
                 </form>
             )
         } else if(this.type === "address"){
             return(
-                <form id = "modalSubmit" onSubmit = {this.props.handleSubmit(this.submit)}>
+                <form style = {{width: '100%'}} id = "modalSubmit" onSubmit = {this.props.handleSubmit(this.submit)}>
                     <Field name = "street" component = {this.renderInput} label = "Street "/>
                     <Field name = "city" component = {this.renderInput} label = "City "/>
                     <Field name = "state" component = {this.renderInput} label = "State "/>
                     <Field name = "zip_code" component = {this.renderInput} label = "Zip Code "/>
                 </form>
             )
-
         }
     }
 
@@ -40,9 +41,9 @@ class SubmitModal extends React.Component {
         console.log(formValues)
         
         if(this.type === "number"){
-            
+            console.log(formValues)
         } else if (this.type === "address"){
-
+            console.log(formValues)
         }
     }
 
@@ -56,12 +57,12 @@ class SubmitModal extends React.Component {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div>
+                    <div class = "modal-form">
                         {this.renderForm()}
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" form = "modalSubmit">Confirm</button>
+                    <button type="submit" class="btn btn-primary" form = "modalSubmit">Submit</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -91,4 +92,4 @@ let mapStateToProps = state => {
     })
 } 
 
-export default connect(mapStateToProps, {})(formWrapped)
+export default connect(mapStateToProps, {addShopperAddress, addShopperNumber})(formWrapped)

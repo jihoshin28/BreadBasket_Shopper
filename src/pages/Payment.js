@@ -167,10 +167,8 @@ class Payment extends React.Component {
                                                     <h4>Tip</h4>
                                                 </div>    
                                                 <div>
-                                                    {this.props.orderTip ? 
-                                                        <h4>{`$${(this.props.orderTip / 100).toFixed(2)}`}</h4>
-                                                        :
-                                                        <h4>$0.00</h4>
+                                                    {
+                                                        <h4>{`$${(this.props.orderTip / 100).toFixed(2)}`}</h4>   
                                                     }
                                                 </div>    
                                             </div>
@@ -183,7 +181,9 @@ class Payment extends React.Component {
                                                 </div>
                                                 <div>
                                                     <h4>{`$${(
-                                                        (this.props.orderPayment + this.props.orderSubTotal + this.props.orderTip + this.props.orderTax) / 100).toFixed(2)}`}</h4>
+                                                        (this.props.orderPayment + this.props.orderSubTotal + this.props.orderTip + this.props.orderTax) / 100).toFixed(2)}`
+                                                        }
+                                                    </h4>
                                                 </div>
                                             </div>
                                             <div style = {{marginTop: '10%'}}>
@@ -232,7 +232,7 @@ let mapStateToProps = state => {
         currentOrderId: state.order.current_order_id,
         cartItems: state.cart.cart_items,
         orderPayment: state.order.payment,
-        orderTip: state.order.tip.amount,
+        orderTip: state.order.tip.amount ? state.order.tip.amount: 0,
         orderTax: state.order.tax,
         orderSubTotal: state.order.subtotal,
         paymentMethod: state.order.payment_method
