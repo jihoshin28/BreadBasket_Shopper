@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react' 
 import {connect} from 'react-redux'
-import { clearItemPic, clearConfirm, clearSubmit } from '../actions'
+import { clearModal } from '../actions'
 import ItemModal from './modals/ItemModal'
 import ConfirmModal from './modals/ConfirmModal'
 import SubmitModal from './modals/SubmitModal'
@@ -10,7 +10,7 @@ const Modal = (props) => {
     const[ref] = useState(React.createRef())
 
     useEffect(() => {
-        console.log(props.submit)
+        console.log(props)
         const selectedDiv = ref.current
         const options = {
             root: null,
@@ -19,13 +19,7 @@ const Modal = (props) => {
         }
 
         function clearContent(){
-            if(props.item){
-                props.clearItemPic()
-            } else if(props.confirm){
-                props.clearConfirm()
-            } else if(props.submit){
-                props.clearSubmit()
-            }
+            props.clearModal()
         }
         
         const observer = new MutationObserver(function (mutationList, observer) {
@@ -48,18 +42,18 @@ const Modal = (props) => {
     }
 
     let renderContent = () => {
-        if(!props.confirm && !props.item && !props.submit){
+        if(!props.modal.item_pic && !props.modal.confirm && !props.modal.submit){
             return 
-        } else if(props.item){
-            let item = props.item.data.attributes
+        } else if(props.modal.item_pic){
+            let item = props.modal.item_pic.data.attributes
             return (
                 <ItemModal name = {item.name} image = {item.image} />
             )
-        } else if(props.confirm){
+        } else if(props.modal.confirm){
             return (
                 <ConfirmModal id = {props.confirm.id} title = {props.confirm.title} message = {props.confirm.message}/>
             )
-        } else if(props.submit){
+        } else if(props.modal.submit){
             return (
                 <SubmitModal/>
             )
@@ -75,4 +69,4 @@ const Modal = (props) => {
         )
 }
 
-export default connect(null, {clearItemPic, clearConfirm, clearSubmit})(Modal)
+export default connect(null, { clearModal })(Modal)

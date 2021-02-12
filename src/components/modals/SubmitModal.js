@@ -19,9 +19,11 @@ class SubmitModal extends React.Component {
         )
     }
 
-    // searchSubmit = (formValues) => {
-    //     this.props.history.push(`/search/${formValues.searchItem}`)
-    // }
+    submit = (type) => {
+        if(type){
+            
+        }
+    }
 
     render(){
         return (
@@ -36,7 +38,7 @@ class SubmitModal extends React.Component {
                 <p>{this.props.message}</p>
                 </div>
                 <div class="modal-footer">
-                    <button onClick = {() => this.confirm(this.props.title, this.props.id)} type="button" class="btn btn-primary">Confirm</button>
+                    <button onClick = {() => this.submit(this.props.submitType)} type="button" class="btn btn-primary">Confirm</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>

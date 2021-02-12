@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import { addShopperAddress, updateOrderAddress, submitAddress} from '../../actions'
+import { addShopperAddress, updateOrderAddress, addressModal} from '../../actions'
 
 class Address extends React.Component {
     componentDidMount(){
@@ -59,8 +59,9 @@ class Address extends React.Component {
                 <div className = "button-options">
                     {this.renderAddresses()}
                     <div className = "button-div">
-                        <button onClick = {() => this.props.submitAddress()} style = {{width: "100%"}} >+</button> 
-                        
+                        <button onClick = {() => this.props.addressModal()} style = {{width: "100%"}}  data-toggle="modal" data-target="#Modal">
+                            +
+                        </button>
                     </div>
                 </div>
             </div>
@@ -75,4 +76,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { addShopperAddress, updateOrderAddress, submitAddress })(Address)
+export default connect(mapStateToProps, { addShopperAddress, updateOrderAddress, addressModal })(Address)

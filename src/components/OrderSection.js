@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import {connect} from 'react-redux'
-import {cancelOrder, clearOrderItems, clearOrder, confirmCancelOrder} from '../actions'
+import {cancelOrder, clearOrderItems, clearOrder, cancelOrderModal } from '../actions'
 
 class OrderSection extends Component {
     componentDidMount(){
@@ -58,4 +58,4 @@ class OrderSection extends Component {
     }
 }
 
-export default connect(null, {cancelOrder, clearOrderItems, clearOrder, confirmCancelOrder})(OrderSection)
+export default connect(null, { cancelOrder, clearOrderItems, clearOrder, cancelOrderModal })(OrderSection)

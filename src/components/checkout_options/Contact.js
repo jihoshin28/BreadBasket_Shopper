@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addShopperNumber, updateOrderNumber } from '../../actions'
+import { addShopperNumber, updateOrderNumber, numberModal } from '../../actions'
 
 class Contact extends React.Component {
 
@@ -58,10 +58,9 @@ class Contact extends React.Component {
                 <div className = "button-options">
                     {this.renderContacts()}
                     <div className = "button-div">
-                        <form id = "addContact" onSubmit = {(e) => this.addContact(e)} >
-                            <input type = "text" name = "phone"></input>
-                            <button type = 'submit' value = "submit" style = {{width: "100%"}} form = "addContact" >+</button> 
-                        </form>
+                        <button onClick = {() => this.props.numberModal()} style = {{width: "100%"}}  data-toggle="modal" data-target="#Modal">
+                            +
+                        </button>
                     </div>
                 </div>
             </div>
@@ -76,4 +75,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { addShopperNumber, updateOrderNumber})(Contact)
+export default connect(mapStateToProps, { addShopperNumber, updateOrderNumber, numberModal})(Contact)

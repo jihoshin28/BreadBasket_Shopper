@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import ItemPic from './ItemPic'
 import { connect } from 'react-redux'
-import { addCartItem, removeCartItem, getItemPic } from '../actions'
+import { addCartItem, removeCartItem } from '../actions'
 
 const ItemCard = (props) => {
     let[ref] = useState(React.createRef())
@@ -91,4 +91,4 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, {addCartItem, removeCartItem, getItemPic })(ItemCard)
+export default connect(mapStateToProps, {addCartItem, removeCartItem })(ItemCard)

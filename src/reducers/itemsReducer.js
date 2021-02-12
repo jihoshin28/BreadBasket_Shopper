@@ -16,13 +16,5 @@ export default (state = INITIAL_STATE, action) => {
         return { ...state, selectedItem: null }
     }
 
-    if (action.type === 'GET_ITEM_PIC') {
-        return { ...state, selectedItemPic: action.payload }
-    }
-
-    if(action.type === 'CLEAR_ITEM_PIC'){
-        return { ...state, selectedItemPic: null }
-    }
-
     return state
 }

@@ -1,6 +1,9 @@
 import React from 'react'
 
 class ItemModal extends React.Component {
+    componentDidMount(){
+        console.log(this.props)
+    }
     render(){
         return(
             <div class = "modal-content">

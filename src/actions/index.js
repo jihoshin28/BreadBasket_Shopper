@@ -48,12 +48,6 @@ export const clearItemPic = () => {
     })
 }
 
-export const getItemPic = (item_id) => async dispatch => {
-    const response = await rails.get(`/items/${item_id}`)
-    console.log(response.data, "items")
-    dispatch({ type: 'GET_ITEM_PIC', payload: response.data })
-}
-
 export const getItems = (store_id) => async dispatch => {
     const response = await rails.get(`/items?store_id=${store_id}`)
     console.log(response.data, "items")
@@ -365,9 +359,27 @@ export const stripePayment = (event, stripePromise, checkoutItems) => async disp
     console.log(result, "payment result!")
 }
 
-//CONFIRMATION ACTIONS
+//MODAL ACTIONS
 
-export const confirmCancelOrder = (id) => {
+export const itemPicModal = (item_id) => async dispatch => {
+    const response = await rails.get(`/items/${item_id}`)
+    console.log(response.data, "items")
+    dispatch({ type: 'ITEM_PIC_MODAL', payload: response.data })
+}
+
+export const addressModal = () => {
+    return({
+        type: "ADDRESS_MODAL"
+    })
+}
+
+export const numberModal = () => {
+    return({
+        type: "NUMBER_MODAL"
+    })
+}
+
+export const cancelOrderModal = (id) => {
     return({
         type: "CONFIRM_CANCEL_ORDER",
         payload: {
@@ -376,29 +388,9 @@ export const confirmCancelOrder = (id) => {
     })
 }
 
-export const clearConfirm = () => {
+export const clearModal = () => {
     return({
-        type: "CLEAR_CONFIRM"
-    })
-}
-
-//SUBMISSION ACTIONS
-
-export const submitAddress = () => {
-    return({
-        type: "SUBMIT_ADDRESS"
-    })
-}
-
-export const submitNumber = () => {
-    return({
-        type: "SUBMIT_NUMBER"
-    })
-}
-
-export const clearSubmit = () => {
-    return({
-        type: 'CLEAR_SUBMIT'
+        type: 'CLEAR_MODAL'
     })
 }
 

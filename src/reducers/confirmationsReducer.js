@@ -11,7 +11,7 @@ export default (state = INITIAL_STATE, action) => {
                 "id": action.payload.id
             }
         }
-    } else if (action.type === "CLEAR_CONFIRM"){
+    } else if (action.type === "CLEAR_MODAL"){
         return{
             confirm: null
         }
