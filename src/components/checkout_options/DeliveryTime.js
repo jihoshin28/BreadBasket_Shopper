@@ -18,19 +18,19 @@ class DeliveryTime extends React.Component {
         }
         let dayDisplay = ''
         if(day === '0'){
-            dayDisplay = 'Sun'
+            dayDisplay = 'Sunday'
         } else if (day === '1'){
-            dayDisplay = 'Mon'
+            dayDisplay = 'Monday'
         } else if (day === '2'){
-            dayDisplay = 'Tue'
+            dayDisplay = 'Tuesday'
         } else if (day === '3'){
-            dayDisplay = 'Wed'
+            dayDisplay = 'Wednesday'
         } else if (day === '4'){
-            dayDisplay = 'Thu'
+            dayDisplay = 'Thursday'
         } else if (day === '5'){
-            dayDisplay = 'Fri'
+            dayDisplay = 'Friday'
         } else if (day === '6'){
-            dayDisplay = 'Sat'
+            dayDisplay = 'Saturday'
         }
         console.log(dayDisplay)
         return dayDisplay
@@ -45,11 +45,11 @@ class DeliveryTime extends React.Component {
             var mm = String(today.getMonth() + 1).padStart(2, '0');
             var day = String(today.getDay() + i)
             let currentDay = this.dayDisplay(day)
-            console.log(day, currentDay)
+    
             result.push(
                 <div className = "button-div">
                     <button type = "button" onClick = {(e) => this.selectDate(e)} style = {{width: "100%"}} value = {day}>
-                        <p>{`${mm}-${dd}`}</p>
+                        <p>{`${mm}/${dd}`}</p>
                         <p>{`${currentDay}`}</p>
                     </button> 
                 </div>  
@@ -91,16 +91,19 @@ class DeliveryTime extends React.Component {
     }
 
     selectDate = (e) => {
-        console.log(e.currentTarget.value.day)
+        let date = e.currentTarget.children[0].innerHTML.split('/')
+        let day = date[1]
+        let month = date[0]
         this.setState({
-            selectedDay: e.currentTarget.value,
-            selectedDate: e.currentTarget.children[0].innerHTML
+            selectedDay: this.dayDisplay(e.currentTarget.value),
+            selectedDate: {
+                day: day,
+                month: month
+            }
         })
     }
 
     selectTime = (e) => {
-        var today = new Date()
-        var yy = String(today.getFullYear()).slice(2)
         let delivery_time = {
             'time': e.currentTarget.value,
             'date': this.state.selectedDate,

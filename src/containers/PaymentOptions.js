@@ -60,7 +60,7 @@ class PaymentOptions extends React.Component{
                 <PaymentOption title = 'Phone Number' selectType = "Select" bottomOption = {<Contact numbers = {this.userNumbers()}/>} bottomContent = {this.props.chosenPhone}/>
                 <PaymentOption title = 'Address' selectType = "Select" bottomOption = {<Address addresses = {this.userAddresses()}/>} bottomContent = {this.props.chosenAddress}/>
                 <PaymentOption title = 'Tip' selectType = "Select" bottomOption = {<Tip />} bottomContent = {`$${(this.props.chosenTip.amount/100).toFixed(2)} (${this.props.chosenTip.value}%)`}/>
-                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomOption = {<DeliveryTime />} bottomContent = {`${this.props.chosenDeliveryTime.day}`}/>
+                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomOption = {<DeliveryTime />} bottomContent = {`${this.props.chosenDeliveryDay}, ${this.props.chosenDeliveryDate} by ${this.props.chosenDeliveryTime}`}/>
                 <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomOption = {<Substitute />} bottomContent = {`"${this.props.chosenSubstitute}"`}/>
                 <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomOption = {<DeliveryNote />} bottomContent = {this.props.chosenDeliveryNote}/>
                 <PaymentOption title = 'Payment Method' bottomOption = {<CheckoutPayment />}/>
@@ -76,7 +76,9 @@ let mapStateToProps = (state) => {
         chosenPhone: state.order.number,
         chosenAddress: state.order.address, 
         chosenTip: state.order.tip,
-        chosenDeliveryTime: state.order.delivery_time,
+        chosenDeliveryDate:`${state.order.delivery_time.date.month}/${state.order.delivery_time.date.day}`,
+        chosenDeliveryDay: state.order.delivery_time.day,
+        chosenDeliveryTime: state.order.delivery_time.time, 
         chosenSubstitute: state.order.substitute,
         chosenDeliveryNote: state.order.note 
     })
