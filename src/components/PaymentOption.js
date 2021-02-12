@@ -6,7 +6,15 @@ class PaymentOption extends React.Component{
         super()
         this.state = {
             selectType: props.selectType,
-            showBottomEdit: true
+            showBottomEdit: false
+        }
+    }
+
+    componentDidMount(){
+        if(!this.props.selectType){
+            this.setState({
+                showBottomEdit: true
+            })
         }
     }
 
@@ -23,15 +31,17 @@ class PaymentOption extends React.Component{
         }
     }
 
-    renderSelect = (type) => {
-        if(!type){
+    renderSelect = (state) => {
+        if(!!state){
             return (
-                <div></div>
+                <Link onClick = {() => this.showBottomEdit(this.state.showBottomEdit)}>
+                    x
+                </Link>
             )
         } else {
             return (
                 <Link onClick = {() => this.showBottomEdit(this.state.showBottomEdit)}>
-                    {type}
+                    {this.state.selectType}
                 </Link>
             )
         } 
@@ -48,11 +58,9 @@ class PaymentOption extends React.Component{
                         </div>
                         <div>
                             {this.state.selectType ? 
-                                this.renderSelect(this.state.selectType)
+                                this.renderSelect(this.state.showBottomEdit)
                                 :
-                                <div>
-                                    
-                                </div>
+                                <div></div>
                             }
                             
                         </div>
@@ -64,7 +72,8 @@ class PaymentOption extends React.Component{
                             {this.state.showBottomEdit ? 
                                 this.props.bottomOption
                                 :
-                                <div>
+                                <div className = "bottomContent">
+                                    {this.props.bottomContent}
                                 </div>
                             }
 

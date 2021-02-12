@@ -69,7 +69,6 @@ class Payment extends React.Component {
                     quantity: checkoutItem.attributes.quantity_num,
                 }
             })
-            
         console.log(result)
         console.log(result)
         await this.props.stripePayment(e, stripePromise, result)
