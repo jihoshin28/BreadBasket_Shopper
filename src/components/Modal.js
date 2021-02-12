@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react' 
 import {connect} from 'react-redux'
-import { clearItemPic, clearConfirm, cancelOrder } from '../actions'
+import { clearItemPic, clearConfirm, clearSubmit } from '../actions'
 import ItemModal from './modals/ItemModal'
 import ConfirmModal from './modals/ConfirmModal'
 import SubmitModal from './modals/SubmitModal'
@@ -10,6 +10,7 @@ const Modal = (props) => {
     const[ref] = useState(React.createRef())
 
     useEffect(() => {
+        console.log(props.submit)
         const selectedDiv = ref.current
         const options = {
             root: null,
@@ -22,7 +23,7 @@ const Modal = (props) => {
                 props.clearItemPic()
             } else if(props.confirm){
                 props.clearConfirm()
-            } else if(props.form){
+            } else if(props.submit){
                 props.clearSubmit()
             }
         }
@@ -47,7 +48,7 @@ const Modal = (props) => {
     }
 
     let renderContent = () => {
-        if(!props.confirm && !props.item){
+        if(!props.confirm && !props.item && !props.submit){
             return 
         } else if(props.item){
             let item = props.item.data.attributes
@@ -66,12 +67,12 @@ const Modal = (props) => {
     }
         return (
             <div ref = {ref} class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                {renderContent()}
-            </div>
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    {renderContent()}
+                </div>
             </div>
     
         )
 }
 
-export default connect(null, {clearItemPic, clearConfirm})(Modal)
+export default connect(null, {clearItemPic, clearConfirm, clearSubmit})(Modal)

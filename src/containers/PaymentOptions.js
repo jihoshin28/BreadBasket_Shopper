@@ -38,6 +38,14 @@ class PaymentOptions extends React.Component{
         // this.props.currentShopper.attributes
     }
 
+    renderTip = () => {
+        console.log(this.props.chosenTip)
+        if(!this.props.chosenTip.value || this.props.chosenTip.value === "0"){
+            return `No Tip`
+        } else {
+            return `$${(this.props.chosenTip.amount/100).toFixed(2)} (${this.props.chosenTip.value}%)`
+        }
+    }
     //Tip
     //Select Button w/ 0, 5, 10, 15, 'other' options underneath or tip amount display
     
@@ -59,8 +67,8 @@ class PaymentOptions extends React.Component{
             <React.Fragment>
                 <PaymentOption title = 'Phone Number' selectType = "Select" bottomOption = {<Contact numbers = {this.userNumbers()}/>} bottomContent = {this.props.chosenPhone}/>
                 <PaymentOption title = 'Address' selectType = "Select" bottomOption = {<Address addresses = {this.userAddresses()}/>} bottomContent = {this.props.chosenAddress}/>
-                <PaymentOption title = 'Tip' selectType = "Select" bottomOption = {<Tip />} bottomContent = {`$${(this.props.chosenTip.amount/100).toFixed(2)} (${this.props.chosenTip.value}%)`}/>
-                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomOption = {<DeliveryTime />} bottomContent = {`${this.props.chosenDeliveryDay}, ${this.props.chosenDeliveryDate} by ${this.props.chosenDeliveryTime}`}/>
+                <PaymentOption title = 'Tip' selectType = "Select" bottomOption = {<Tip />} bottomContent = {this.renderTip()}/>
+                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomOption = {<DeliveryTime />} bottomContent = {`Deliver by ${this.props.chosenDeliveryDay}, ${this.props.chosenDeliveryDate} at ${this.props.chosenDeliveryTime}`}/>
                 <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomOption = {<Substitute />} bottomContent = {`"${this.props.chosenSubstitute}"`}/>
                 <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomOption = {<DeliveryNote />} bottomContent = {this.props.chosenDeliveryNote}/>
                 <PaymentOption title = 'Payment Method' bottomOption = {<CheckoutPayment />}/>

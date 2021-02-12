@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import { addShopperAddress, updateOrderAddress} from '../../actions'
+import { addShopperAddress, updateOrderAddress, submitAddress} from '../../actions'
 
 class Address extends React.Component {
     componentDidMount(){
@@ -59,13 +59,8 @@ class Address extends React.Component {
                 <div className = "button-options">
                     {this.renderAddresses()}
                     <div className = "button-div">
-                        <form id = "addAddress" onSubmit = {(e) => this.addAddress(e)} >
-                            <input type = "text" name = "address"></input>
-                            <input type = "text" name = "address"></input>
-                            <input type = "text" name = "address"></input>
-                            <input type = "text" name = "address"></input>
-                            <button type = 'submit' value = "submit" style = {{width: "100%"}} form = "addAddress" >+</button> 
-                        </form>
+                        <button onClick = {() => this.props.submitAddress()} style = {{width: "100%"}} >+</button> 
+                        
                     </div>
                 </div>
             </div>
@@ -80,4 +75,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { addShopperAddress, updateOrderAddress })(Address)
+export default connect(mapStateToProps, { addShopperAddress, updateOrderAddress, submitAddress })(Address)

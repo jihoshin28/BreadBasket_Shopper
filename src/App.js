@@ -39,7 +39,7 @@ class App extends Component  {
       <div className="App">
         <div>
             <NavBar history = {this.props.history}/>
-              <Modal history = {this.props.history} item = {this.props.itemPic} confirm = {this.props.confirm}/>
+              <Modal history = {this.props.history} item = {this.props.itemPic} confirm = {this.props.confirm} submit = {this.props.submit}/>
               <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
               <Route exact path='/order_history' render={(props) => <OrderHistory {...props} />} />
               <Route exact path='/active_orders' render={(props) => <ActiveOrders {...props} />} />
