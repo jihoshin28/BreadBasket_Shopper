@@ -14,7 +14,10 @@ class Tip extends React.Component {
 
     selectOption = (e) => {
         let tip = (e.target.value/ 100) * this.props.currentTotal
-        this.props.updateOrderTip(tip)
+        this.props.updateOrderTip({
+            'amount': tip, 
+            'value': e.target.value
+        })
         this.setState({
             otherSelect: false
         })
@@ -73,7 +76,6 @@ class Tip extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        currentTip: state.order.tip,
         currentTotal: state.order.total,
         shopperId: state.auth.currentShopper.id
     })

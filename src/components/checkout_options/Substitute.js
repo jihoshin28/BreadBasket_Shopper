@@ -6,7 +6,7 @@ import {updateOrderSubstitute} from '../../actions'
 class Substitute extends React.Component {
   
     selectOption = (e) => {
-        this.props.updateOrderSubstitute(e.target.value)
+        this.props.updateOrderSubstitute(e.target.innerHTML)
     }
 
     render(){

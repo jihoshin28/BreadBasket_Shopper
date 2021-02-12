@@ -85,9 +85,12 @@
 }
 
 .bottomContent{
-  background-color: white;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
   border-radius: 1em;
-  margin-bottom: 7%;
+  margin-bottom: 3%;
+  margin-top: -2%;
+  padding: 2%;
 }
 
 .container{

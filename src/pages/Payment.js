@@ -228,7 +228,7 @@ let mapStateToProps = state => {
         currentOrderId: state.order.current_order_id,
         cartItems: state.cart.cart_items,
         orderPayment: state.order.payment,
-        orderTip: state.order.tip,
+        orderTip: state.order.tip.amount,
         orderTax: state.order.tax,
         orderSubTotal: state.order.subtotal,
         paymentMethod: state.order.payment_method

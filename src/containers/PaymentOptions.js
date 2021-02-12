@@ -59,9 +59,9 @@ class PaymentOptions extends React.Component{
             <React.Fragment>
                 <PaymentOption title = 'Phone Number' selectType = "Select" bottomOption = {<Contact numbers = {this.userNumbers()}/>} bottomContent = {this.props.chosenPhone}/>
                 <PaymentOption title = 'Address' selectType = "Select" bottomOption = {<Address addresses = {this.userAddresses()}/>} bottomContent = {this.props.chosenAddress}/>
-                <PaymentOption title = 'Tip' selectType = "Select" bottomOption = {<Tip />} bottomContent = {this.props.chosenTip}/>
+                <PaymentOption title = 'Tip' selectType = "Select" bottomOption = {<Tip />} bottomContent = {`$${(this.props.chosenTip.amount/100).toFixed(2)} (${this.props.chosenTip.value}%)`}/>
                 <PaymentOption title = 'Delivery Time' selectType = "Select" bottomOption = {<DeliveryTime />} bottomContent = {this.props.chosenDeliveryTime}/>
-                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomOption = {<Substitute />} bottomContent = {this.props.chosenSubstitute}/>
+                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomOption = {<Substitute />} bottomContent = {`"${this.props.chosenSubstitute}"`}/>
                 <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomOption = {<DeliveryNote />} bottomContent = {this.props.chosenDeliveryNote}/>
                 <PaymentOption title = 'Payment Method' bottomOption = {<CheckoutPayment />}/>
             </React.Fragment>
