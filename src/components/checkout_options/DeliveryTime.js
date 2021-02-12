@@ -14,7 +14,7 @@ class DeliveryTime extends React.Component {
     dayDisplay = (day) => {
         
         if(day > 6){
-            day = day - 7
+            day = (day - 7).toString()
         }
         let dayDisplay = ''
         if(day === '0'){
@@ -45,7 +45,7 @@ class DeliveryTime extends React.Component {
             var mm = String(today.getMonth() + 1).padStart(2, '0');
             var day = String(today.getDay() + i)
             let currentDay = this.dayDisplay(day)
-
+            console.log(day, currentDay)
             result.push(
                 <div className = "button-div">
                     <button type = "button" onClick = {(e) => this.selectDate(e)} style = {{width: "100%"}} value = {day}>
@@ -101,8 +101,12 @@ class DeliveryTime extends React.Component {
     selectTime = (e) => {
         var today = new Date()
         var yy = String(today.getFullYear()).slice(2)
-        let time = `${e.currentTarget.value + ' ' + this.state.selectedDate + '-' + yy}`
-        this.props.updateOrderDeliveryTime(time)
+        let delivery_time = {
+            'time': e.currentTarget.value,
+            'date': this.state.selectedDate,
+            'day': this.state.selectedDay
+        }
+        this.props.updateOrderDeliveryTime(delivery_time)
     }
 
     render() {
