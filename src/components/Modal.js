@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react' 
 import {connect} from 'react-redux'
 import { clearItemPic, clearConfirm, cancelOrder } from '../actions'
+import ItemModal from './modals/ItemModal'
+import ConfirmModal from './modals/ConfirmModal'
+import SubmitModal from './modals/SubmitModal'
 
 const Modal = (props) => {
     
@@ -15,8 +18,13 @@ const Modal = (props) => {
         }
 
         function clearContent(){
-            props.clearItemPic()
-            props.clearConfirm()
+            if(props.item){
+                props.clearItemPic()
+            } else if(props.confirm){
+                props.clearConfirm()
+            } else if(props.form){
+                props.clearSubmit()
+            }
         }
         
         const observer = new MutationObserver(function (mutationList, observer) {
@@ -34,12 +42,8 @@ const Modal = (props) => {
         })
     }, [])
 
-    let confirmAction = async (title, id) => {
-        console.log(props)
-        if(title === "Delete Order"){
-            await props.cancelOrder(id)
-            window.location.reload()
-        }
+    let submitForm = () => {
+
     }
 
     let renderContent = () => {
@@ -48,37 +52,17 @@ const Modal = (props) => {
         } else if(props.item){
             let item = props.item.data.attributes
             return (
-                <div class = "modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">{item.name}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <img style = {{width: '100%'}} src = {`${item.image}`}/>
-                    </div>
-                </div>
+                <ItemModal name = {item.name} image = {item.image} />
             )
         } else if(props.confirm){
             return (
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id = "ModalLabel">{props.confirm.title}</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <p>{props.confirm.message}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button onClick = {() => confirmAction(props.confirm.title, props.confirm.id)} type="button" class="btn btn-primary">Confirm</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+                <ConfirmModal id = {props.confirm.id} title = {props.confirm.title} message = {props.confirm.message}/>
             )
-        }
+        } else if(props.submit){
+            return (
+                <SubmitModal/>
+            )
+        } 
     }
         return (
             <div ref = {ref} class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -90,4 +74,4 @@ const Modal = (props) => {
         )
 }
 
-export default connect(null, {clearItemPic, clearConfirm, cancelOrder})(Modal)
+export default connect(null, {clearItemPic, clearConfirm})(Modal)

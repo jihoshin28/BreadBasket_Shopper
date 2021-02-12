@@ -1,6 +1,7 @@
 import authReducer from './authReducer'
 import itemsReducer from './itemsReducer'
 import categoriesReducer from './categoriesReducer'
+import submissionsReducer from './submissionsReducer'
 import storesReducer from './storesReducer'
 import cartReducer from './cartReducer'
 import orderReducer from './orderReducer'
@@ -14,7 +15,7 @@ import storage from 'redux-persist/lib/storage'
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['auth', 'items', 'categories', 'stores', 'cart', 'order', 'confirmations']
+    whitelist: ['auth', 'items', 'categories', 'stores', 'cart', 'order', 'confirmations', 'submissions']
 }
 
 const reducer = combineReducers({
@@ -23,6 +24,7 @@ const reducer = combineReducers({
     categories: categoriesReducer,
     stores: storesReducer,
     confirmations: confirmationsReducer,
+    submissions: submissionsReducer,
     cart: cartReducer,
     order: orderReducer,
     form: formReducer

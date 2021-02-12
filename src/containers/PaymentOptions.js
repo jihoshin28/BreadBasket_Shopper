@@ -79,7 +79,7 @@ let mapStateToProps = (state) => {
         chosenDeliveryDate:`${state.order.delivery_time.date.month}/${state.order.delivery_time.date.day}`,
         chosenDeliveryDay: state.order.delivery_time.day,
         chosenDeliveryTime: state.order.delivery_time.time, 
-        chosenSubstitute: state.order.substitute,
+        chosenSubstitute: state.order.substitute.phrase,
         chosenDeliveryNote: state.order.note 
     })
 }

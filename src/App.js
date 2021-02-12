@@ -39,7 +39,6 @@ class App extends Component  {
       <div className="App">
         <div>
             <NavBar history = {this.props.history}/>
-           
               <Modal history = {this.props.history} item = {this.props.itemPic} confirm = {this.props.confirm}/>
               <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
               <Route exact path='/order_history' render={(props) => <OrderHistory {...props} />} />
@@ -90,7 +89,8 @@ let mapStateToProps = state => {
     shopperId: state.auth.currentShopper.id,
     selectedStore: state.stores.selectedStore,
     itemPic: state.items.selectedItemPic,
-    confirm: state.confirmations.confirm
+    confirm: state.confirmations.confirm,
+    submit: state.submissions.submit
   })
 }
 

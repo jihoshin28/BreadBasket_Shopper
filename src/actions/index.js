@@ -382,6 +382,26 @@ export const clearConfirm = () => {
     })
 }
 
+//SUBMISSION ACTIONS
+
+export const submitAddress = () => {
+    return({
+        type: "SUBMIT_ADDRESS"
+    })
+}
+
+export const submitNumber = () => {
+    return({
+        type: "SUBMIT_NUMBER"
+    })
+}
+
+export const clearSubmit = () => {
+    return({
+        type: 'CLEAR_SUBMIT'
+    })
+}
+
 //ADDRESS ACTIONS
 
 export const addShopperAddress = (form) => async dispatch => {
