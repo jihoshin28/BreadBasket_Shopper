@@ -39,8 +39,12 @@ class Contact extends React.Component {
 
     addContact = (e) => {
         e.preventDefault()
+        let number = e.target.children[0].value
+        let areaCode = number.slice(0, 3)
+        let number1 = number.slice(3,6)
+        let number2 = number.slice(6,10)
         let form = {
-            'number': e.target.children[0].value,
+            'number': `(${areaCode})${number1}-${number2}`,
             'phoneable_type': 'Shopper',
             'phoneable_id': this.props.shopperId
         }
