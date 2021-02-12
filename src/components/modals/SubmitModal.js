@@ -4,24 +4,45 @@ import { reduxForm, Field } from 'redux-form'
 
 
 class SubmitModal extends React.Component {
-
+    type = this.props.submitType 
     renderInput = ({ input, meta, label }) => {
-    console.log(input)
+
         return (
-            
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for = "input">{label}</label>
-                <div class = "col-smn-9">
-                    <input type = "text" class = "form-control" id = "input" {...input} />
-                </div>
-                {/* <div> {meta.error}</div> */}
+            <div>
+                <label> {label}</label>
+                <input {...input} /> 
+                <div>{meta.error} </div>
             </div>
         )
     }
 
-    submit = (type) => {
-        if(type){
+    renderForm = () => {
+        if(this.type === "number"){
+            return (
+                <form id = "modalSubmit" onSubmit = {this.props.handleSubmit(this.submit)}>
+                    <Field name = "number" component = {this.renderInput} label = "Phone Number"/>
+                </form>
+            )
+        } else if(this.type === "address"){
+            return(
+                <form id = "modalSubmit" onSubmit = {this.props.handleSubmit(this.submit)}>
+                    <Field name = "street" component = {this.renderInput} label = "Street "/>
+                    <Field name = "city" component = {this.renderInput} label = "City "/>
+                    <Field name = "state" component = {this.renderInput} label = "State "/>
+                    <Field name = "zip_code" component = {this.renderInput} label = "Zip Code "/>
+                </form>
+            )
+
+        }
+    }
+
+    submit = (formValues) => {
+        console.log(formValues)
+        
+        if(this.type === "number"){
             
+        } else if (this.type === "address"){
+
         }
     }
 
@@ -35,20 +56,16 @@ class SubmitModal extends React.Component {
                     </button>
                 </div>
                 <div class="modal-body">
-                <p>{this.props.message}</p>
+                    <div>
+                        {this.renderForm()}
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button onClick = {() => this.submit(this.props.submitType)} type="button" class="btn btn-primary">Confirm</button>
+                    <button type="submit" class="btn btn-primary" form = "modalSubmit">Confirm</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
-            // <div>
-            //     <form onSubmit = {this.props.handleSubmit(this.searchSubmit)}>
-            //         <Field name = "searchItem" component = {this.renderInput} label = "Search"/>
-
-            //         <button style = {{marginLeft: ".5em"}}className = "btn btn-primary" type="submit">Search Item</button>
-            //     </form>
-            // </div>
+            
         )
     }
 }
@@ -56,7 +73,7 @@ class SubmitModal extends React.Component {
 let validate = (formValues) => {
     let error = {}
 
-    if(!formValues.searchItem){
+    if(!formValues.number){
         error.searchItem = "Please enter an Item"
     }
 
@@ -64,14 +81,14 @@ let validate = (formValues) => {
 }
 
 let formWrapped = reduxForm({
-    form: 'searchForm',
+    form: 'modalSubmit',
     validate: validate
 })(SubmitModal)
 
 let mapStateToProps = state => {
     return({
-        submitType: state.submissions.submit.type
+        submitType: state.modals.submit.type
     })
 } 
 
-export default SubmitModal
+export default connect(mapStateToProps, {})(formWrapped)
