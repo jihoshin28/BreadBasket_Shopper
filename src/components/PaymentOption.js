@@ -35,7 +35,7 @@ class PaymentOption extends React.Component{
         if(!!state){
             return (
                 <Link onClick = {() => this.showBottomEdit(this.state.showBottomEdit)}>
-                    x
+                    &#10006;
                 </Link>
             )
         } else {

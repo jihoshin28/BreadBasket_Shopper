@@ -57,7 +57,13 @@ class PaymentOptions extends React.Component{
 
     //Delivery Instructions
     //Select button with text input box and submit button or italicized quoted note
-    
+    quote = (content) => {
+        return(
+            <div class = "quote">
+                <p align = "left" style = {{ fontStyle: 'italic', fontSize: '1.5em'}}>"{content}"</p>
+            </div>
+        )
+    }
     //Payment Method 
     //Buttons underneath for Stripe/Paypal Options 
     
@@ -69,8 +75,8 @@ class PaymentOptions extends React.Component{
                 <PaymentOption title = 'Address' selectType = "Select" bottomOption = {<Address addresses = {this.userAddresses()}/>} bottomContent = {this.props.chosenAddress}/>
                 <PaymentOption title = 'Tip' selectType = "Select" bottomOption = {<Tip />} bottomContent = {this.renderTip()}/>
                 <PaymentOption title = 'Delivery Time' selectType = "Select" bottomOption = {<DeliveryTime />} bottomContent = {`Deliver by ${this.props.chosenDeliveryDay}, ${this.props.chosenDeliveryDate} at ${this.props.chosenDeliveryTime}`}/>
-                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomOption = {<Substitute />} bottomContent = {`"${this.props.chosenSubstitute}"`}/>
-                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomOption = {<DeliveryNote />} bottomContent = {this.props.chosenDeliveryNote}/>
+                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomOption = {<Substitute />} bottomContent = {this.quote(this.props.chosenSubstitute)}/>
+                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomOption = {<DeliveryNote />} bottomContent = {this.quote(this.props.chosenDeliveryNote)}/>
                 <PaymentOption title = 'Payment Method' bottomOption = {<CheckoutPayment />}/>
             </React.Fragment>
         )

@@ -60,6 +60,7 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     if(action.type === 'UPDATE_ORDER_DELIVERY_NOTE') {
+        console.log(action.payload)
         return {...state, 
             note: action.payload
         }

@@ -1,39 +1,61 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, SubmissionError } from 'redux-form'
 import { connect } from 'react-redux'
 import {updateDeliveryNote} from '../../actions'
 
 class DeliveryNote extends React.Component {
 
-    renderInput({input, label, meta}) {
-        console.log(meta)
+    renderTextArea = ({ input, meta, label }) => {
         return (
-            <div className = "field"> 
-                <label>{label}</label>
-                <input type = "text" {...input} />
-                <div>{meta.error}</div>
-            </div>
-        )     
+            <div class="form-group modal-form">
+            <label style = {{left: '0'}}>{label}</label>
+            <textarea class="form-control" rows="3" {...input} placeholder = "F.e. Please leave the groceries on my front porch... "></textarea>
+            <div>{meta.error}</div>
+        </div>
+        )
     }
 
-    onSubmit = (e) => {
-        e.preventDefault()
-        this.props.updateDeliveryNote(e.target.children[0].value)
+    onSubmit = (formValues) => {
+        console.log(formValues)
+        return new Promise((resolve, reject) => {
+            console.log('hello are you there?')
+            const errors = validate(formValues)
+            if(errors.empty){
+                reject(new SubmissionError(errors))
+            } else {
+                resolve(formValues)
+            }
+        }).then((formValues) => {
+        
+            this.props.updateDeliveryNote(formValues.delivery_note)
+        })
     }
 
     render(){
         return(
             <div class = "payment-option-bottom">
-                <h3>Leave a note for the driver:</h3>
-                <form onSubmit = {(e) => this.onSubmit(e)} id = 'delivery-note'>
-                    <textarea form = "delivery-note" name="w3review" rows="7" cols="75" placeholder = "F.e. Please leave the delivery on my front porch!">
-                    </textarea>
-                    <button type = "submit">Submit</button>
+                <form onSubmit = {this.props.handleSubmit(this.onSubmit)} id = 'delivery-note'>
+                    <Field name = "delivery_note" component = {this.renderTextArea} label = "Add a note for your order"/>
                 </form>
-                
+                <button style = {{float: 'left'}} type = 'submit' class = 'btn btn-primary' form = 'delivery-note'>Submit</button>
             </div>
         )
     }
 }
 
-export default connect(null, {updateDeliveryNote})(DeliveryNote)
+let validate = (formValues) => {
+    let error = {}
+
+    if(!formValues.delivery_note){
+        error.delivery_note = "Your note is empty!"
+    }
+
+    return error
+}
+
+let formWrapped = reduxForm({
+    form: 'deliveryNote',
+    validate: validate
+})(DeliveryNote)
+
+export default connect(null, {updateDeliveryNote})(formWrapped)

@@ -106,8 +106,14 @@ class SubmitModal extends React.Component {
             if(errors){
                 reject(new SubmissionError(errors))
             } else {
-                let resolved = resolve('resolved')
-                console.log(resolved)
+                resolve(formValues)
+            }
+        }).then((formValues)=> {
+            console.log(formValues)
+            if(this.type === "number"){
+                this.props.addShopperNumber(formValues)
+            } else if(this.type === "address") {
+                this.props.addShopperAddress(formValues)
             }
         })
         

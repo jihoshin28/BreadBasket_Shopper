@@ -264,8 +264,9 @@ export const updateOrderSubstitute = (substitute) => {
 }
 
 export const updateDeliveryNote = (note) => {
+    console.log(note)
     return({
-        type: "UPDATE_DELIVERY_NOTE",
+        type: "UPDATE_ORDER_DELIVERY_NOTE",
         payload: note
     })
 }
