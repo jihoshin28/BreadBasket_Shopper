@@ -23,13 +23,14 @@ import ProfileSignup from './pages/ProfileSignup'
 import SearchPage from './pages/SearchPage'
 import Modal from './components/Modal'
 import ViewItems from './pages/ViewOrderItems'
-import {getStores, getCategories, signOut, getActiveOrders, getItems, selectStore} from './actions'
+import {getStores, getCategories, signOut, getActiveOrders, getItems, selectStore, clearModal} from './actions'
 
 class App extends Component  {
   
   componentDidMount(){
     this.props.getStores()
     this.props.getItems(1)
+    this.props.clearModal()
     // this.props.getActiveOrders(this.props.shopperId)
     console.log(this.props.items)
   }
@@ -92,4 +93,4 @@ let mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, {getStores, getCategories, signOut, getActiveOrders, getItems, selectStore})(App)
+export default connect(mapStateToProps, {getStores, getCategories, signOut, getActiveOrders, getItems, selectStore, clearModal})(App)
