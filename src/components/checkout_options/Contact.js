@@ -5,6 +5,12 @@ import CheckoutRowButton from '../buttons/CheckoutRowButton'
 import AddRowButton from '../buttons/AddRowButton'
 
 class Contact extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            checked: null
+        }
+    }
 
     componentDidMount(){
         console.log(this.props.numbers)
@@ -20,7 +26,7 @@ class Contact extends React.Component {
 
             return this.props.numbers.map((contact) => {
                 return(
-                    <CheckoutRowButton value = {contact} form = "contactForm" text = {contact} selectOption = {this.selectOption} />
+                    <CheckoutRowButton checked = {this.state.checked} value = {contact} form = "contactForm" text = {contact} selectOption = {this.selectOption} />
                 )
             })
         }
@@ -34,6 +40,9 @@ class Contact extends React.Component {
     //<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="pa1 mr3 ba br-100 bg-transparent b--dark-gray" data-test="OptionListButton-icon" style="background-color: rgb(3, 135, 103); border-color: rgb(3, 135, 103); color: rgb(255, 255, 255); min-height: 14px; min-width: 14px; width: 14px; height: 14px;"><path d="M21.895 4.93001C21.505 4.54001 20.875 4.54001 20.485 4.93001L8.465 16.95L3.515 12C3.125 11.61 2.495 11.61 2.105 12C1.715 12.39 1.715 13.02 2.105 13.41L7.765 19.07C8.155 19.46 8.785 19.46 9.175 19.07L21.895 6.35001C22.285 5.96001 22.285 5.32001 21.895 4.93001Z" fill="currentColor"></path></svg>
 
     selectOption = (e) => {
+        this.setState({
+            checked: e.currentTarget.value
+        })
         this.props.updateOrderNumber(e.currentTarget.value)
     }
 

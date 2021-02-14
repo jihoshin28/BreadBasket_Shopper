@@ -235,7 +235,6 @@ export const updateOrderAddress = (address) => {
 }
 
 export const updateOrderNumber = (number) => {
-    console.log('update number', number)
     return ({
         type: "UPDATE_ORDER_NUMBER",
         payload: number

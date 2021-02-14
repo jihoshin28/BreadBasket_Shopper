@@ -39,7 +39,6 @@ class PaymentOptions extends React.Component{
     }
 
     renderTip = () => {
-        console.log(this.props.chosenTip)
         if(!this.props.chosenTip.value || this.props.chosenTip.value === "0"){
             return `No Tip`
         } else {
