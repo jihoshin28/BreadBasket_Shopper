@@ -117,11 +117,7 @@ class SubmitModal extends React.Component {
             }
         })
         
-        if(this.type === "number"){
-            console.log(formValues)
-        } else if (this.type === "address"){
-            console.log(formValues)
-        }
+        
     }
 
     render(){

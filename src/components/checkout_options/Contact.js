@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addShopperNumber, updateOrderNumber, numberModal } from '../../actions'
+import CheckoutRowButton from '../buttons/CheckoutRowButton'
 
 class Contact extends React.Component {
 
@@ -18,9 +19,7 @@ class Contact extends React.Component {
 
             return this.props.numbers.map((contact) => {
                 return(
-                    <div className = "button-div">
-                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} form = "contactForm" value = {`${contact}`}>{contact}</button> 
-                    </div>
+                    <CheckoutRowButton value = {contact} form = "contactForm" text = {contact} selectOption = {this.selectOption} />
                 )
             })
         }
