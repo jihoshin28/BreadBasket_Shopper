@@ -1,13 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {updateOrderDeliveryTime} from '../../actions'
+import CheckoutColumnButton from '../buttons/CheckoutColumnButton'
+import CheckoutRowButton from '../buttons/CheckoutRowButton'
 
 class DeliveryTime extends React.Component {
 
     constructor(){
         super()
         this.state = {
-            selectedDay: null
+            currentDay: null,
+            currentDate: null,
+            selectedTime: null,
+            selectedDay: null,
         }
     }
 
@@ -48,21 +53,26 @@ class DeliveryTime extends React.Component {
     
             result.push(
                 <div className = "button-div">
-                    <button type = "button" onClick = {(e) => this.selectDate(e)} style = {{width: "100%"}} value = {day}>
+                    <CheckoutColumnButton selected = {this.state.selectedDay} selectOption = {(e) => this.selectDate(e)} value = {day} 
+                    text = 
+                    {
+                    <div>
                         <p>{`${mm}/${dd}`}</p>
                         <p>{`${currentDay}`}</p>
-                    </button> 
+                    </div>
+                    }/>
+                    
                 </div>  
             )
         }
         return result
     }
 
-    renderTimes = (selectedDay) => {
+    renderTimes = (currentDay) => {
         let today = new Date()
         let day = String(today.getDay())
         let times = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM' ,'6PM', '7PM', '8PM', '9PM', '10PM', '11PM' ]
-        if(day === selectedDay){
+        if(day === currentDay){
             let time = today.getHours()
             if(time > 22){
                 return(
@@ -81,9 +91,7 @@ class DeliveryTime extends React.Component {
         <div className = "button-div">
             {times.map((time) => {
                 return(
-                    <button type = "button" onClick = {(e) => this.selectTime(e)} style = {{width: "100%"}} value = {time}>
-                        <p>{time}</p>
-                    </button> 
+                    <CheckoutRowButton checked = {this.state.selectedTime} selectOption = {this.selectTime} value = {time} text = {time} /> 
                 )
             })}
         </div>
@@ -91,24 +99,28 @@ class DeliveryTime extends React.Component {
     }
 
     selectDate = (e) => {
-        let date = e.currentTarget.children[0].innerHTML.split('/')
+        let date = e.currentTarget.children[0].children[0].innerHTML.split('/')
         let day = date[1]
         let month = date[0]
         this.setState({
-            selectedDay: this.dayDisplay(e.currentTarget.value),
-            selectedDate: {
+            currentDay: this.dayDisplay(e.currentTarget.value),
+            currentDate: {
                 day: day,
                 month: month
-            }
+            },
+            selectedDay: e.currentTarget.value
         })
     }
 
     selectTime = (e) => {
         let delivery_time = {
             'time': e.currentTarget.value,
-            'date': this.state.selectedDate,
-            'day': this.state.selectedDay
+            'date': this.state.currentDate,
+            'day': this.state.currentDay
         }
+        this.setState({
+            selectedTime: e.currentTarget.value
+        })
         this.props.updateOrderDeliveryTime(delivery_time)
     }
 
@@ -118,11 +130,11 @@ class DeliveryTime extends React.Component {
                 <div className = "button-options-row">
                     {this.renderDates()}
                 </div>
-                <div className = "button-options">
+                <div className = "button-options" style = {{marginTop: '2%'}}>
 
                     {   
-                        this.state.selectedDay ?
-                        this.renderTimes(this.state.selectedDay)
+                        this.state.currentDay ?
+                        this.renderTimes(this.state.currentDay)
                         :
                         <div></div>
                     }   

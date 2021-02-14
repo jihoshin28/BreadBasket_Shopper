@@ -36,8 +36,12 @@ class Tip extends React.Component {
     }
     
     submitOther = (e) => {
-        let tip = (e.target.value / 100) * this.props.currentTotal
-        this.props.updateOrderTip(tip)
+        e.preventDefault()
+        let tip = (e.currentTarget.children[0].value / 100) * this.props.currentTotal
+        this.props.updateOrderTip({
+            'amount': tip, 
+            'value': e.currentTarget.children[0].value
+        })
         this.setState({
             otherSelect: false
         })
@@ -57,8 +61,9 @@ class Tip extends React.Component {
                 {
                     this.state.otherSelect ?
                     <form id = "otherTip" onSubmit = {(e) => this.submitOther(e)}>
-                        <input type = "integer" name = "otherTip"></input>
-                        <button type = "submit" value = "submit" form = "otherTip" >Submit</button>
+                        
+                        <input style = {{marginTop: '2%'}} type="text" class="form-control" id="tipForm" aria-describedby="emailHelp" placeholder="Enter new tip %"/>
+                        <button style = {{float: 'left', marginTop: '2%'}} class = "btn btn-primary" type = "submit" form = "otherTip" >Submit</button>
                     </form>
                     :
                     <div></div>

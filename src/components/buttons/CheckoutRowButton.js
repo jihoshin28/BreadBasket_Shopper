@@ -4,10 +4,19 @@ class CheckoutRowButton extends React.Component {
 
     render(){
         let src 
-        this.props.checked === this.props.value ? src = `${process.env.PUBLIC_URL}/checkMark.svg` : src = `${process.env.PUBLIC_URL}/circle.svg`
+        let btnClass
+        if(this.props.checked === this.props.value){
+            src = `${process.env.PUBLIC_URL}/checkMark.svg`
+            btnClass = "btn btn-success"
+
+        } else {
+            src = `${process.env.PUBLIC_URL}/circle.svg`
+            btnClass = "btn btn-light"
+        }  
+
         return(
-            <div className = "button-div">
-                <button className = "btn btn-light" onClick = {(e) => this.props.selectOption(e)} style = {{width: "100%"}} form = "contactForm" value = {this.props.value}>
+            <div style = {{borderRadius: "3px", webkitBoxShadow: "0px 0 5px rgba(99, 99, 99, 0.842)"}} className = "button-div">
+                <button className = {btnClass} onClick = {(e) => this.props.selectOption(e)} style = {{width: "100%"}} form = "contactForm" value = {this.props.value}>
                     <div className = "checkout-option-div">
                         <span> 
                             
