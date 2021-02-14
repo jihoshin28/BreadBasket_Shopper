@@ -2,8 +2,16 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { addShopperAddress, updateOrderAddress, addressModal} from '../../actions'
+import AddRowButton from '../buttons/AddRowButton'
+import CheckoutRowButton from '../buttons/CheckoutRowButton'
 
 class Address extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            checked: null
+        }
+    }
     componentDidMount(){
         console.log(this.props.addresses)
     }
@@ -18,9 +26,8 @@ class Address extends React.Component {
             return this.props.addresses.map((address) => {
                 let joinedAddress = `${address.street}, ${address.city}, ${address.state} ${address.zip_code}`
                 return(
-                    <div className = "button-div">
-                        <button onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {joinedAddress}>{joinedAddress}</button> 
-                    </div>
+                    <CheckoutRowButton checked = {this.state.checked} value = {joinedAddress} form = "contactForm" text = {joinedAddress} selectOption = {this.selectOption} imgClass = {'checkout-img-address'}/>
+
                 )
             })
         }
@@ -34,7 +41,11 @@ class Address extends React.Component {
     //<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="pa1 mr3 ba br-100 bg-transparent b--dark-gray" data-test="OptionListButton-icon" style="background-color: rgb(3, 135, 103); border-color: rgb(3, 135, 103); color: rgb(255, 255, 255); min-height: 14px; min-width: 14px; width: 14px; height: 14px;"><path d="M21.895 4.93001C21.505 4.54001 20.875 4.54001 20.485 4.93001L8.465 16.95L3.515 12C3.125 11.61 2.495 11.61 2.105 12C1.715 12.39 1.715 13.02 2.105 13.41L7.765 19.07C8.155 19.46 8.785 19.46 9.175 19.07L21.895 6.35001C22.285 5.96001 22.285 5.32001 21.895 4.93001Z" fill="currentColor"></path></svg>
 
     selectOption = (e) => {
-        this.props.updateOrderAddress(e.target.value)
+
+        this.setState({
+            checked: e.currentTarget.value
+        })
+        this.props.updateOrderAddress(e.currentTarget.value)
     }
 
     addAddress = async (e) => {
@@ -58,11 +69,9 @@ class Address extends React.Component {
             <div className = "ui container">
                 <div className = "button-options">
                     {this.renderAddresses()}
-                    <div className = "button-div">
-                        <button onClick = {() => this.props.addressModal()} style = {{width: "100%"}}  data-toggle="modal" data-target="#Modal">
-                            +
-                        </button>
-                    </div>
+                
+                    <AddRowButton numberModal = {() => this.props.addressModal()} text = "Add an Address" />
+                
                 </div>
             </div>
             

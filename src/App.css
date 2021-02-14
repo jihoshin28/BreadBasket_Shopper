@@ -407,8 +407,12 @@
 }
 
 .checkout-option-img{
-  width: 10%;
-  margin-right: 3%;
+  width: 20%;
+  margin-left: 5%;
+}
+
+.checkout-option-items{
+  align-items: center;
 }
 
 .checkout-option-div{

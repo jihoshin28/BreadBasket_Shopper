@@ -26,7 +26,7 @@ class Contact extends React.Component {
 
             return this.props.numbers.map((contact) => {
                 return(
-                    <CheckoutRowButton checked = {this.state.checked} value = {contact} form = "contactForm" text = {contact} selectOption = {this.selectOption} />
+                    <CheckoutRowButton imgClass = {'checkout-img-contact'} checked = {this.state.checked} value = {contact} form = "contactForm" text = {contact} selectOption = {this.selectOption} />
                 )
             })
         }
@@ -66,7 +66,7 @@ class Contact extends React.Component {
             <div className = "ui container">
                 <div className = "button-options">
                     {this.renderContacts()}
-                    
+                        
                         <AddRowButton numberModal = {() => this.props.numberModal()} text = "Add a Number" />
                         
 
