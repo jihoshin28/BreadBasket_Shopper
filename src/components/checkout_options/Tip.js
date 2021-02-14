@@ -2,30 +2,36 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import {updateOrderTip} from '../../actions'
+import CheckoutColumnButton from '../buttons/CheckoutColumnButton'
 
 class Tip extends React.Component {
 
     constructor(){
         super()
         this.state = {
-            otherSelect: false
+            otherSelect: false,
+            selected: null
         }
     }
 
     selectOption = (e) => {
+        console.log(e.target.value)
         let tip = (e.target.value/ 100) * this.props.currentTotal
         this.props.updateOrderTip({
             'amount': tip, 
-            'value': e.target.value
+            'value': e.currentTarget.value
         })
         this.setState({
+            selected: e.currentTarget.value,
             otherSelect: false
         })
     }
 
-    selectOther = () => {
+    selectOther = (e) => {
+        console.log(e.currentTarget.value)
         this.setState({
-            otherSelect: true
+            otherSelect: true, 
+            selected: e.currentTarget.value
         })
     }
     
@@ -41,21 +47,11 @@ class Tip extends React.Component {
         return (
             <div className = "ui container">
                 <div className = "button-options-row">
-                    <div className = "button-div">
-                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {0}>None</button> 
-                    </div>  
-                    <div className = "button-div">
-                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {5}>5%</button> 
-                    </div>
-                    <div className = "button-div">
-                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {10}>10%</button> 
-                    </div>
-                    <div className = "button-div">
-                        <button type = "button" onClick = {(e) => this.selectOption(e)} style = {{width: "100%"}} value = {15}>15%</button> 
-                    </div>
-                    <div className = "button-div">
-                        <button type = "button" onClick = {() => this.selectOther()} style = {{width: "100%"}} >Other</button> 
-                    </div>
+                    <CheckoutColumnButton selected = {this.state.selected} value = {0} text = "None" selectOption = {this.selectOption} />
+                    <CheckoutColumnButton selected = {this.state.selected} value = {5} text = "5%" selectOption = {this.selectOption} />
+                    <CheckoutColumnButton selected = {this.state.selected} value = {10} text = "10%" selectOption = {this.selectOption} />
+                    <CheckoutColumnButton selected = {this.state.selected} value = {15} text = "15%" selectOption = {this.selectOption} />
+                    <CheckoutColumnButton selected = {this.state.selected} value = {'other'} text = "Other" selectOption = {this.selectOther} />
                 </div>
                 <div>
                 {
