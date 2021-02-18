@@ -22,7 +22,7 @@ export class OrderHistory extends Component {
                             history = {this.props.history}
                             position = {id + 1} 
                             id = {order.id}
-                            paymentText = "Payment Info $"
+                            paymentText = "Payment Info"
                             orderButtonTxt = "View Order"
                             store = {this.props.stores[attributes.store_id - 1].attributes.name}
                             total = {attributes.total}

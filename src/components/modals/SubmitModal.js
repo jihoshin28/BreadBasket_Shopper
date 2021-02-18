@@ -17,7 +17,7 @@ class SubmitModal extends React.Component {
         )
     }
 
-    renderAddressSelect = ({input, meta, label}) => {
+    renderAddressSelect = ({input, meta}) => {
         console.log(input)
         return (
             <div class = "form-group modal-form">

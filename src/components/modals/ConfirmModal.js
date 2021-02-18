@@ -4,6 +4,10 @@ import { cancelOrder } from '../../actions'
 
 class ConfirmModal extends React.Component {
 
+    componentDidMount(){
+        console.log(this.props.confirm)
+    }
+
     confirm = async (title, id) => {
         if(title === "Delete Order"){
             await this.props.cancelOrder(id)

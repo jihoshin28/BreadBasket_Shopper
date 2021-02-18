@@ -194,9 +194,10 @@ class Payment extends React.Component {
                                                     <div></div>
                                                 }
                                                 {
+                                                    
                                                     this.props.paymentMethod === "stripe" ? 
                                                     <div style = {{borderRadius: "3px", webkitBoxShadow: "0px 0 5px rgba(99, 99, 99, 0.842)"}} className = "button-div">
-                                                        <button className = "btn btn-primary" style = {{width: "100%"}} form = "contactForm" >
+                                                        <button onClick = {this.placeOrder} className = "btn btn-primary" style = {{width: "100%"}} form = "contactForm" >
                                                             <div className = "checkout-option-div">
                                                                 <span> 
                         
@@ -248,7 +249,7 @@ let mapStateToProps = state => {
         currentOrderId: state.order.current_order_id,
         cartItems: state.cart.cart_items,
         orderPayment: state.order.payment,
-        orderTip: state.order.tip.amount ? state.order.tip.amount: 0,
+        orderTip: (state.order.tip.amount ? state.order.tip.amount : 0),
         orderTax: state.order.tax,
         orderSubTotal: state.order.subtotal,
         paymentMethod: state.order.payment_method

@@ -19,7 +19,7 @@ export default (state = INITIAL_STATE, action) => {
             ...state, confirm: {
                 "title": "Delete Order",
                 "message": "Are you sure you want to cancel this order?",
-                "id": action.payload.id
+                "id": action.payload
             }
         }
     } else if(action.type === 'ADDRESS_MODAL'){

@@ -43,7 +43,7 @@ class OrderSection extends Component {
                         {this.props.orderButtonTxt}
                     </button>
                     {this.props.orderButtonTxt === "Update Order" ?
-                        <button onClick = {() => this.props.confirmCancelOrder(this.props.id)} class= "btn btn-warning orderSectionDetails" data-toggle="modal" data-target="#Modal">
+                        <button onClick = {() => this.props.cancelOrderModal(this.props.id)} class= "btn btn-warning orderSectionDetails" data-toggle="modal" data-target="#Modal">
                             Cancel Order
                         </button>
                         :

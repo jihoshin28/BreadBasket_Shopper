@@ -381,10 +381,8 @@ export const numberModal = () => {
 
 export const cancelOrderModal = (id) => {
     return({
-        type: "CONFIRM_CANCEL_ORDER",
-        payload: {
-            id
-        }
+        type: "CANCEL_ORDER_MODAL",
+        payload: id
     })
 }
 

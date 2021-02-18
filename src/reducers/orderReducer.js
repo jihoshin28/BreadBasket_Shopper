@@ -25,7 +25,6 @@ export default (state = INITIAL_STATE, action) => {
             subtotal: parseInt(action.payload.order.subtotal),
             payment: parseInt(action.payload.order.payment),
             tax: parseInt(action.payload.order.tax),
-            tip: parseInt(action.payload.order.tip),
             total: parseInt(action.payload.order.total)
         }
     }

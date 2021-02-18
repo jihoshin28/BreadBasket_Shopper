@@ -37,10 +37,6 @@ const Modal = (props) => {
         })
     }, [])
 
-    let submitForm = () => {
-
-    }
-
     let renderContent = () => {
         if(!props.modal.item_pic && !props.modal.confirm && !props.modal.submit){
             return 
@@ -51,7 +47,7 @@ const Modal = (props) => {
             )
         } else if(props.modal.confirm){
             return (
-                <ConfirmModal id = {props.confirm.id} title = {props.confirm.title} message = {props.confirm.message}/>
+                <ConfirmModal id = {props.modal.confirm.id} title = {props.modal.confirm.title} message = {props.modal.confirm.message}/>
             )
         } else if(props.modal.submit){
             return (
