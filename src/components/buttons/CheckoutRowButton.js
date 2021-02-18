@@ -16,7 +16,7 @@ class CheckoutRowButton extends React.Component {
 
         if(this.props.value === 'stripe'){
             src = `${process.env.PUBLIC_URL}/stripeIcon.png`
-            btnClass = "btn btn-dark"
+            btnClass = "btn btn-primary"
         }
 
         if(this.props.value === 'paypal'){
