@@ -195,7 +195,23 @@ class Payment extends React.Component {
                                                 }
                                                 {
                                                     this.props.paymentMethod === "stripe" ? 
-                                                    <button className = 'btn btn-secondary' onClick = {this.placeOrder}>Stripe Checkout</button>
+                                                    <div style = {{borderRadius: "3px", webkitBoxShadow: "0px 0 5px rgba(99, 99, 99, 0.842)"}} className = "button-div">
+                                                        <button className = "btn btn-dark" style = {{width: "100%"}} form = "contactForm" >
+                                                            <div className = "checkout-option-div">
+                                                                <span> 
+                        
+                                                                    <div className = "row checkout-option-items">
+                                                                        <div>
+                                                                            <img style = {{marginRight: '12%'}}className = {"checkout-option-img"} src = {`${process.env.PUBLIC_URL}/stripeIcon.png`} />
+                                                                        </div>
+                                                                        <div style = {{marginLeft: '-2.5em'}}>
+                                                                            {this.props.text}
+                                                                        </div>
+                                                                    </div>
+                                                                </span>
+                                                            </div>
+                                                        </button> 
+                                                    </div>
                                                     :
                                                     <div></div>
                                                 }

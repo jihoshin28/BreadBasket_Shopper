@@ -14,6 +14,16 @@ class CheckoutRowButton extends React.Component {
             btnClass = "btn btn-light"
         }  
 
+        if(this.props.value === 'stripe'){
+            src = `${process.env.PUBLIC_URL}/stripeIcon.png`
+            btnClass = "btn btn-dark"
+        }
+
+        if(this.props.value === 'paypal'){
+            src = `${process.env.PUBLIC_URL}/paypalIcon.svg.png`
+            btnClass = "btn btn-warning"
+        }
+
         return(
             <div style = {{borderRadius: "3px", webkitBoxShadow: "0px 0 5px rgba(99, 99, 99, 0.842)"}} className = "button-div">
                 <button className = {btnClass} onClick = {(e) => this.props.selectOption(e)} style = {{width: "100%"}} form = "contactForm" value = {this.props.value}>

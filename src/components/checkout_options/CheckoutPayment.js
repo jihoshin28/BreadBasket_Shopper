@@ -1,6 +1,7 @@
 import React from 'react' 
 import { connect } from 'react-redux'
 import {selectOrderPayment} from '../../actions'
+import CheckoutRowButton from '../buttons/CheckoutRowButton'
 
 class CheckoutPayment extends React.Component {
 
@@ -12,12 +13,8 @@ class CheckoutPayment extends React.Component {
                     Select a Payment Option:
                 </h4>
                 <div className = "button-options-row">
-                    <div className = "button-div">
-                        <button type = "button" onClick = {(e) => this.props.selectOrderPayment(e)} style = {{width: "100%"}} value = 'stripe'>Stripe</button> 
-                    </div>  
-                    <div className = "button-div">
-                        <button type = "button" onClick = {(e) => this.props.selectOrderPayment(e)} style = {{width: "100%"}} value = 'paypal'>Paypal</button> 
-                    </div>
+                    <CheckoutRowButton selectOption = {this.props.selectOrderPayment} value = "stripe"/>
+                    <CheckoutRowButton selectOption = {this.props.selectOrderPayment} value = "paypal"/>
                 </div>
             </div>
         )
