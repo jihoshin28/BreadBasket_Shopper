@@ -7,9 +7,8 @@ import {getOrderItems} from '../actions'
 class ViewOrderItems extends React.Component{
 
     componentDidMount(){
-        console.log(this.props.history)
-        console.log(this.props.match.params)
         console.log(this.props.orderItems)
+        console.log(this.props.order)
         this.props.getOrderItems(this.props.match.params.order_id)
     }
 
@@ -33,7 +32,8 @@ class ViewOrderItems extends React.Component{
 
 let mapStateToProps = state => {
     return({
-        orderItems: state.order.order_items
+        orderItems: state.order.order_items,
+        order: state.order
     })
 }
 

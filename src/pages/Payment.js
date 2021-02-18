@@ -10,7 +10,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_TEST_KEY)
 class Payment extends React.Component {
     
     componentDidMount(){
-        console.log(this.props.history)
+        console.log(this.props)
         let currentURL = window.location.href.split('/')
         let successParam = currentURL[currentURL.length - 1]
         console.log(currentURL.length) 
@@ -50,7 +50,18 @@ class Payment extends React.Component {
     processOrder = async () => {
         this.props.dropCart(this.props.cart_id)
         let cartItems = this.cartItems()
-        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, { status: "active" })
+        await this.props.processOrder(cartItems, this.props.cart_id, this.props.currentOrderId, 
+            { 
+                status: "active",
+                address: this.props.orderAddress,
+                delivery_time: this.props.orderDeliveryTime,
+                delivery_date: `${this.props.orderDeliveryDate.month + '/' + this.props.orderDeliveryDate.day}`,
+                note: this.props.orderNote,
+                phone: this.props.orderNumber,
+                substitute: this.props.orderSubstitute
+
+            }
+        )
         this.props.checkoutOrder()
     }
 
@@ -252,7 +263,13 @@ let mapStateToProps = state => {
         orderTip: (state.order.tip.amount ? state.order.tip.amount : 0),
         orderTax: state.order.tax,
         orderSubTotal: state.order.subtotal,
-        paymentMethod: state.order.payment_method
+        paymentMethod: state.order.payment_method,
+        orderAddress: state.order.address,
+        orderDeliveryTime: state.order.delivery_time.time,
+        orderDeliveryDate: state.order.delivery_time.date,
+        orderNote: state.order.note,
+        orderNumber: state.order.number,
+        orderSubstitute: state.order.substitute.value
     })
 }
 
