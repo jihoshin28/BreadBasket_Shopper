@@ -33,7 +33,7 @@ class Profile extends Component{
                     <h4>{this.capitalize(this.props.userFirstName) + ' ' + this.capitalize(this.props.userLastName)}</h4>
 
                     <div>
-git commit -m ""                        <h4>Age: {this.props.userInfo.age}</h4>
+                      <h4>Age: {this.props.userInfo.age}</h4>
                     </div>
                     <div>
                         <h4>Email: {this.props.userEmail}</h4>
