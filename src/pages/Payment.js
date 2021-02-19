@@ -58,8 +58,9 @@ class Payment extends React.Component {
                 delivery_date: `${this.props.orderDeliveryDate.month + '/' + this.props.orderDeliveryDate.day}`,
                 note: this.props.orderNote,
                 phone: this.props.orderNumber,
-                substitute: this.props.orderSubstitute
-
+                substitute: this.props.orderSubstitute,
+                total: this.props.orderTotal + this.props.orderTip,
+                tip: this.props.orderTip
             }
         )
         this.props.checkoutOrder()
@@ -262,6 +263,7 @@ let mapStateToProps = state => {
         orderPayment: state.order.payment,
         orderTip: (state.order.tip.amount ? state.order.tip.amount : 0),
         orderTax: state.order.tax,
+        orderTotal: state.order.total, 
         orderSubTotal: state.order.subtotal,
         paymentMethod: state.order.payment_method,
         orderAddress: state.order.address,
