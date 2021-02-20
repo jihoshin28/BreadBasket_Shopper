@@ -14,7 +14,7 @@ let history = createBrowserHistory()
 
 ReactDOM.render(
     <Provider store = {store}>
-        <Router history = {history}>
+        <Router basename = {process.env.PUBLIC_URL} history = {history}>
             <PersistGate persistor = {persistor}>
                 <App history = {history}/>
             </PersistGate>
