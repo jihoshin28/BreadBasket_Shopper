@@ -23,7 +23,7 @@ import ProfileSignup from './pages/ProfileSignup'
 import SearchPage from './pages/SearchPage'
 import Modal from './components/Modal'
 import ViewItems from './pages/ViewOrderItems'
-import {getStores, getCategories, signOut, getActiveOrders, getItems, selectStore, clearModal} from './actions'
+import {getStores, getCategories, signOut, startCart, getActiveOrders, getItems, selectStore, clearModal} from './actions'
 
 class App extends Component  {
   
@@ -31,6 +31,10 @@ class App extends Component  {
     this.props.getStores()
     this.props.getItems(1)
     this.props.clearModal()
+    if (!!this.props.shopperId && !this.props.cartId) {
+        console.log('hit')
+        this.props.startCart({ shopper_id: this.props.shopperId })
+    }
     // this.props.getActiveOrders(this.props.shopperId)
     console.log(this.props.items)
   }
@@ -93,4 +97,4 @@ let mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, {getStores, getCategories, signOut, getActiveOrders, getItems, selectStore, clearModal})(App)
+export default connect(mapStateToProps, {getStores, getCategories, signOut, startCart, getActiveOrders, getItems, selectStore, clearModal})(App)

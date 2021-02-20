@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { getItems, getCategories, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords, getItem} from '../actions'
+import { getItems, getCategories, selectStore, dropCart, getCart, getActiveOrders, userCoords, getItem} from '../actions'
 import StoreDropdown from '../components/StoreDropdown'
 import Searchbar from '../components/Searchbar'
 import FoodCategoryNav from '../containers/FoodCategoryNav'
@@ -14,10 +14,6 @@ class OrderPage extends Component {
         this.props.getItems(this.props.selectedStore.attributes.id)
         this.props.getActiveOrders(this.props.shopperId)
         this.props.getCategories(this.props.selectedStore.attributes.id - 1)
-        if (!!this.props.shopperId && !this.props.cartId) {
-            console.log('hit')
-            this.props.startCart({ shopper_id: this.props.shopperId })
-        }
     }
 
     success(pos){
@@ -93,4 +89,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, {getItems, getItem, getCategories, selectStore, dropCart, startCart, getCart, getActiveOrders, userCoords})(OrderPage)
+export default connect(mapStateToProps, {getItems, getItem, getCategories, selectStore, dropCart, getCart, getActiveOrders, userCoords})(OrderPage)
