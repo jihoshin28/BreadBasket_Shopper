@@ -48,7 +48,7 @@ If this is your first time signing in, you'll be prompted to add some additional
 
 ### Creating an Order
 
-Once you're signed in you can add any item to the cart by simply pressing the plus button. 
+Once you're signed in you can add any item to the cart by simply pressing the plus button on the items. 
 
 If you switch stores, your cart will drop all its items, since orders can't have items from multiple locations. 
 
@@ -58,7 +58,11 @@ You can use the search bar to search for specific items, or click on a category 
 
 Once you want to check out, you can click on the cart button and check your current order. 
 
-Follow all the promptings until you get to the page where you can check your payment and create the order! 
+After the cart page, you will be given multiple options for the delivery address, contact number, and other helpful information for your order.
+
+As of now, the site is not meant to take actual orders, so please use the "Test order" option to try creating an order. 
+
+The paypal and stripe options will take you to their pages which are linked to test keys. You can check those out to see what it would look like to checkout with either option.
 
 ### Current Orders/Order History
 
