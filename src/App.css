@@ -53,7 +53,7 @@
 }
 
 .about-banner-div{
-  background-color: #7ddb24;
+  background-color:rgb(130, 212, 37);
   border-radius: 10px; 
   padding-left: 5%;
   padding-right: 5%;
@@ -64,7 +64,7 @@
 }
 
 .banner-div {
-  background-color: #7ddb24;
+  background-color: rgb(130, 212, 37);
   border-radius: 10px; 
   padding: 3%;
   margin-top: 5%;
@@ -93,7 +93,7 @@
 }
 
 .nav-bar{
-  background-color: #7ddb24;;
+  background-color: rgb(130, 212, 37);
 }
 
 .cartItem {
@@ -188,7 +188,7 @@
   margin-bottom: 3%;
   border-radius: 1em;
   -webkit-box-shadow: 0px 0 3px rgba(99, 99, 99, 0.842);
-  background-color: #7ddb24;
+  background-color: rgb(130, 212, 37);
 }
 
 .modal-form{
@@ -680,7 +680,7 @@
   width: 100%;
   bottom: 0;
   border-radius: 100% / 50% 50% 0 0;
-  background-color: #7ddb24;;
+  background-color: rgb(130, 212, 37);
   padding-bottom: 30px;
 }
 
@@ -688,7 +688,7 @@
 .footer-curve{
   height: 100px;
   border-radius: 100% / 70% 70% 0 0 ;
-  background: #7ddb24;;
+  background: rgb(130, 212, 37);
   -webkit-box-shadow: 0px -3px 2px rgba(167, 167, 167, 0.842);
   -moz-box-shadow: 0px -3px 2px rgba(167, 167, 167, 0.842);
   box-shadow: 0px -3px 2px rgba(167, 167, 167, 0.842);
@@ -702,7 +702,7 @@
 
 .footer-row{
   align-items: center;
-  background-color: #7ddb24;;
+  background-color: rgb(130, 212, 37);
   padding-bottom: 70px;
 }
 
@@ -767,7 +767,7 @@
 }
 
 .nav-bg{
-  background-color: #7ddb24;
+  background-color: rgb(130, 212, 37);
   -webkit-box-shadow: 0px 0 5px rgba(99, 99, 99, 0.842)
 }
 
@@ -777,7 +777,7 @@
   font-size: 1em;
   padding-left: 10px;
   padding-right: 12px;
-  background: linear-gradient(to left, #7ddb24 50%, white 50%);
+  background: linear-gradient(to left, rgb(130, 212, 37) 50%, white 50%);
   background-size: 201% 100%;
   background-position:right bottom;
   transition: all 500ms ease-in-out;
