@@ -25,7 +25,8 @@ export default (state = INITIAL_STATE, action) => {
             subtotal: parseInt(action.payload.order.subtotal),
             payment: parseInt(action.payload.order.payment),
             tax: parseInt(action.payload.order.tax),
-            total: parseInt(action.payload.order.total)
+            total: parseInt(action.payload.order.total),
+            tip: action.payload.tip
         }
     }
     if(action.type === 'UPDATE_ORDER_NUMBER') {
