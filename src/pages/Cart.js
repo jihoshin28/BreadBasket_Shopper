@@ -49,6 +49,7 @@ class Cart extends Component{
                     tax: (tax * 100).toFixed(0),
                     total: (total * 100).toFixed(0),
                     store_id: this.props.storeId,
+                    tip: {amount: 0, value: 0},
                     shopper_id: this.props.shopperId,
                     status: 'pending'
                 }
