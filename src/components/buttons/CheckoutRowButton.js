@@ -24,21 +24,19 @@ class CheckoutRowButton extends React.Component {
             btnClass = "btn btn-warning"
         }
 
+        if(this.props.value === 'test'){
+            btnClass = "btn btn-success"
+        }
+
         return(
             <div style = {{borderRadius: "3px", webkitBoxShadow: "0px 0 5px rgba(99, 99, 99, 0.842)"}} className = "button-div">
                 <button className = {btnClass} onClick = {(e) => this.props.selectOption(e)} style = {{width: "100%"}} form = "contactForm" value = {this.props.value}>
                     <div className = "checkout-option-div">
-                        <span> 
-                            
-                            <div className = "row checkout-option-items">
-                                <div>
-                                    <img className = {"checkout-option-img"} src = {src} />
-                                </div>
-                                <div style = {{marginLeft: '-2.5em'}}>
-                                    {this.props.text}
-                                </div>
-                            </div>
-                            </span>
+                        {this.props.value === 'test' ?  
+                            <h4>Test Checkout</h4>
+                            :                            
+                            <img className = "checkout-option-img" src = {src} />
+                        }
                         </div>
                 </button> 
             </div>

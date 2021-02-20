@@ -409,15 +409,13 @@
   margin-left: 5%;
 }
 
-.checkout-option-items{
-  align-items: center;
-  justify-content: center;
-}
-
 .checkout-option-div{
   display: flex;
+  justify-content:center;
+  align-items: center;
   left: 0;
   min-height: 2em;
+  max-height: 2em;
   font-size: 1.2em;
 }
 

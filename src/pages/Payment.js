@@ -200,6 +200,18 @@ class Payment extends React.Component {
                                             </div>
                                             <div style = {{marginTop: '10%'}}>
                                                 {
+                                                    this.props.paymentMethod === "test"?
+                                                    <div style = {{borderRadius: "3px", webkitBoxShadow: "0px 0 5px rgba(99, 99, 99, 0.842)"}} className = "button-div">
+                                                        <button className = "btn btn-success" onClick = {(e) => this.props.selectOption(e)} style = {{width: "100%"}} form = "contactForm" value = {this.props.value}>
+                                                            <div className = "checkout-option-div">
+                                                                <h4>Test Checkout</h4>
+                                                            </div>
+                                                        </button> 
+                                                    </div>
+                                                    :
+                                                    <div></div>
+                                                }
+                                                {
                                                     this.props.paymentMethod === "paypal" ? 
                                                     <PayPalButton placeOrder = {this.placeOrder} amount = {(this.props.orderTotal*.01).toFixed(2)}></PayPalButton>
                                                     :
@@ -211,17 +223,9 @@ class Payment extends React.Component {
                                                     <div style = {{borderRadius: "3px", webkitBoxShadow: "0px 0 5px rgba(99, 99, 99, 0.842)"}} className = "button-div">
                                                         <button onClick = {this.placeOrder} className = "btn btn-primary" style = {{width: "100%"}} form = "contactForm" >
                                                             <div className = "checkout-option-div">
-                                                                <span> 
-                        
-                                                                    <div className = "row checkout-option-items">
-                                                                        <div>
-                                                                            <img style = {{marginTop: "2px", marginRight: "2px"}} className = {"checkout-option-img"} src = {`${process.env.PUBLIC_URL}/stripeIcon.png`} />
-                                                                        </div>
-                                                                        <div style = {{marginLeft: '-2.5em'}}>
-                                                                            {this.props.text}
-                                                                        </div>
-                                                                    </div>
-                                                                </span>
+                                                                <div>
+                                                                    <img style = {{marginTop: "2px", marginRight: "2px"}} className = {"checkout-option-img"} src = {`${process.env.PUBLIC_URL}/stripeIcon.png`} />
+                                                                </div>
                                                             </div>
                                                         </button> 
                                                     </div>

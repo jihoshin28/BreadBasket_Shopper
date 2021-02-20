@@ -9,12 +9,12 @@ import {Link} from 'react-router-dom'
 class OrderPage extends Component {
 
     componentDidMount(){
+        console.log(this.props.cartId, this.props.shopperId)
         navigator.geolocation.getCurrentPosition(this.success.bind(this), this.error)
         this.props.getItems(this.props.selectedStore.attributes.id)
         this.props.getActiveOrders(this.props.shopperId)
         this.props.getCategories(this.props.selectedStore.attributes.id - 1)
         if (!!this.props.shopperId && !this.props.cartId) {
-            console.log("Hello shopper! Welcome to BreadBasket!")
             this.props.startCart({ shopper_id: this.props.shopperId })
         }
     }

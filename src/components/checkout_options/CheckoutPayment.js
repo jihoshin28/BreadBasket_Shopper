@@ -10,11 +10,12 @@ class CheckoutPayment extends React.Component {
         return(
             <div className = "ui container">
                 <h4>
-                    Select a Payment Option:
+                    Select a Payment Option (Paypal and Stripe methods are links. Please use test to create orders.):
                 </h4>
                 <div className = "button-options-row">
                     <CheckoutRowButton selectOption = {this.props.selectOrderPayment} value = "stripe"/>
                     <CheckoutRowButton selectOption = {this.props.selectOrderPayment} value = "paypal"/>
+                    <CheckoutRowButton selectOption = {this.props.selectOrderPayment} value = "test"/>
                 </div>
             </div>
         )
