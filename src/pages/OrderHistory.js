@@ -7,6 +7,7 @@ import { getCompletedOrders } from '../actions'
 export class OrderHistory extends Component {
     componentDidMount(){
         this.props.getCompletedOrders(this.props.shopperId)
+        console.log(this.props.completedOrders)
     }
 
     render() {
@@ -14,21 +15,28 @@ export class OrderHistory extends Component {
         return (
             <div class = "App-margin container">
                 <h1>Order History</h1>
-
-                {this.props.completedOrders.map((order,id) => {
-                    let attributes = order.attributes
-                    return (
-                        <OrderSection 
-                            history = {this.props.history}
-                            position = {id + 1} 
-                            id = {order.id}
-                            paymentText = "Payment Info"
-                            orderButtonTxt = "View Order"
-                            store = {this.props.stores[attributes.store_id - 1].attributes.name}
-                            total = {attributes.total}
-                        />
-                    )   
-                })}                
+                {this.props.completedOrders ? 
+                    <div class = "banner-div">
+                        <div class = "banner-header">
+                            <h2>You have no completed orders!</h2>
+                        </div>
+                    </div>
+                    :
+                    this.props.completedOrders.map((order,id) => {
+                        let attributes = order.attributes
+                        return (
+                            <OrderSection 
+                                history = {this.props.history}
+                                position = {id + 1} 
+                                id = {order.id}
+                                paymentText = "Payment Info"
+                                orderButtonTxt = "View Order"
+                                store = {this.props.stores[attributes.store_id - 1].attributes.name}
+                                total = {attributes.total}
+                            />
+                        )   
+                    })               
+                }
             </div>
         )
     }

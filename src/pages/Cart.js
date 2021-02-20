@@ -94,30 +94,38 @@ class Cart extends Component{
     render() {
         return(
             <div class = 'App-margin container'>
-                <div class =  'cart-div'>
-                    <h1>Cart</h1>
-                    {this.renderCart()}
-                    <div class = "row cartItem total roboFont">
-                        
-                    <div>
-                            <h4>
-                                SubTotal: 
-                            </h4>
-                            <h4>
-                                Delivery: 
-                            </h4>
-                            <h4>
-                                Tax:
-                            </h4>
-                            <h4>
-                                Total:
-                            </h4>
-                            <br></br>
+                <h1>Cart</h1>
+                <div class =  'banner-div'>
+                    {isEmpty(this.props.cart_items)?
+                        <div class = 'banner-header'>
+                            <h2> Your cart is empty. Pick out some items from the order page!</h2>
                         </div>
-                        {this.renderCartTotal()}
-                    </div>
+                        :
+                        <div>
+                            {this.renderCart()}
+                            <div class = "row cartItem total roboFont">
+                            
+                                <div>
+                                    <h4>
+                                        SubTotal: 
+                                    </h4>
+                                    <h4>
+                                        Delivery: 
+                                    </h4>
+                                    <h4>
+                                        Tax:
+                                    </h4>
+                                    <h4>
+                                        Total:
+                                    </h4>
+                                    <br></br>
+                                </div>
+                                {this.renderCartTotal()}
+                            </div>
+                        </div>
+                    }
                     
-                </div>
+                </div>    
                 
             </div> 
         )

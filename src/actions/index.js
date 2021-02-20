@@ -88,8 +88,8 @@ export const addCartItem = cartItemInfo => async dispatch => {
     console.log(data.data, 'cart_item added')
     dispatch({ type: "ADD_CART_ITEM", 
                 payload: { 
-                    cart_item: data.data,
                     id: data.data.id,
+                    cart_item: data.data,
                     item_id: data.data.attributes.item_id
                 }
             })

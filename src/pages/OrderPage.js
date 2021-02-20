@@ -15,6 +15,7 @@ class OrderPage extends Component {
         this.props.getActiveOrders(this.props.shopperId)
         this.props.getCategories(this.props.selectedStore.attributes.id - 1)
         if (!!this.props.shopperId && !this.props.cartId) {
+            console.log('hit')
             this.props.startCart({ shopper_id: this.props.shopperId })
         }
     }
