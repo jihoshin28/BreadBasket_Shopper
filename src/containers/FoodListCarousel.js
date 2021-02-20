@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FoodList from '../containers/FoodList'
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import '../Carousel.css'
 import { Carousel } from 'react-responsive-carousel';
 
 class FoodListCarousel extends Component {
