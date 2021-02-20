@@ -41,22 +41,22 @@ class App extends Component  {
         <div>
             <NavBar history = {this.props.history}/>
               <Modal history = {this.props.history} modal = {this.props.modal}/>
-              <Route exact path='/' render={(props) => <Home {...props} />}></Route> 
-              <Route exact path='/order_history' render={(props) => <OrderHistory {...props} />} />
-              <Route exact path='/active_orders' render={(props) => <ActiveOrders {...props} />} />
-              <Route exact path='/about' render={(props) => <About {...props} />} />
-              <Route exact path='/cart' render={(props) => <Cart {...props} />} />
-              <Route exact path='/edit_shopper/:section' render={(props) => <EditShopper {...props} />} />
-              <Route exact path='/item_details/:item_id' render={(props) => <ItemDetails {...props} />} />
-              <Route exact path='/map_page' render={(props) => <MapPage {...props} />} />
-              <Route exact path='/orderpage' render={(props) => <OrderPage {...props} />}/>
-              <Route exact path='/profile' render={(props) => <Profile {...props} />} />
-              <Route exact path='/profile_signup' render={(props) => <ProfileSignup {...props} />} />
-              <Route exact path='/products/:category' render={(props) => <Products {...props} />}/>
-              <Route exact path='/payment/:status' render={(props) => <Payment {...props} />} />
-              <Route exact path='/payment_details/:order_id' render={(props) => <PaymentDetails {...props} />} />
-              <Route exact path='/search/:item' render={(props) => <SearchPage {...props} />} />
-              <Route exact path='/view_order_items/:order_id' render={(props) => <ViewItems {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/'} render={(props) => <Home {...props} />}></Route> 
+              <Route exact path={process.env.PUBLIC_URL + '/order_history'} render={(props) => <OrderHistory {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/active_orders'} render={(props) => <ActiveOrders {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/about'} render={(props) => <About {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL +'/cart'} render={(props) => <Cart {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/edit_shopper/:section'} render={(props) => <EditShopper {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/item_details/:item_id'} render={(props) => <ItemDetails {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/map_page'} render={(props) => <MapPage {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/orderpage'} render={(props) => <OrderPage {...props} />}/>
+              <Route exact path={process.env.PUBLIC_URL + '/profile'} render={(props) => <Profile {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/profile_signup'} render={(props) => <ProfileSignup {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/products/:category'} render={(props) => <Products {...props} />}/>
+              <Route exact path={process.env.PUBLIC_URL + '/payment/:status'} render={(props) => <Payment {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/payment_details/:order_id'} render={(props) => <PaymentDetails {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/search/:item'} render={(props) => <SearchPage {...props} />} />
+              <Route exact path={process.env.PUBLIC_URL + '/view_order_items/:order_id'} render={(props) => <ViewItems {...props} />} />
         </div>
         <div class = "content-wrap"></div>
         <footer className="footer">
