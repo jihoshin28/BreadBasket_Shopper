@@ -221,7 +221,7 @@ class Payment extends React.Component {
                                                     
                                                     this.props.paymentMethod === "stripe" ? 
                                                     <div style = {{borderRadius: "3px", webkitBoxShadow: "0px 0 5px rgba(99, 99, 99, 0.842)"}} className = "button-div">
-                                                        <button onClick = {this.placeOrder} className = "btn btn-primary" style = {{width: "100%"}} form = "contactForm" >
+                                                        <button onClick = {this.stripeCheckout} className = "btn btn-primary" style = {{width: "100%"}} form = "contactForm" >
                                                             <div className = "checkout-option-div">
                                                                 <div>
                                                                     <img style = {{marginTop: "2px", marginRight: "2px"}} className = {"checkout-option-img"} src = {`${process.env.PUBLIC_URL}/stripeIcon.png`} />
