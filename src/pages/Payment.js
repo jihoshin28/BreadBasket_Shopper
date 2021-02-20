@@ -202,7 +202,7 @@ class Payment extends React.Component {
                                                 {
                                                     this.props.paymentMethod === "test"?
                                                     <div style = {{borderRadius: "3px", webkitBoxShadow: "0px 0 5px rgba(99, 99, 99, 0.842)"}} className = "button-div">
-                                                        <button className = "btn btn-success" onClick = {(e) => this.props.selectOption(e)} style = {{width: "100%"}} form = "contactForm" value = {this.props.value}>
+                                                        <button className = "btn btn-success" onClick = {this.placeOrder} style = {{width: "100%"}} form = "contactForm" value = {this.props.value}>
                                                             <div className = "checkout-option-div">
                                                                 <h4>Test Checkout</h4>
                                                             </div>
