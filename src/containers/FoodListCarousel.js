@@ -49,11 +49,11 @@ class FoodListCarousel extends Component {
                         )
                     }
                 >
-                    <div style = {{backgroundColor: "white"}}>
-                    {this.splitItems(0, 6)}
+                        <div class= "carousel-div" >
+                            {this.splitItems(0, 6)}
                         </div> 
-                    <div>
-                    {this.splitItems(6, 12)}
+                        <div class = "carousel-div">
+                            {this.splitItems(6, 12)}
                         </div> 
                 </Carousel>
             </div>
