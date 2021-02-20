@@ -45,9 +45,7 @@ export class Navbar extends Component {
                 <div class="collapse navbar-collapse " id="navbarNav">
                     <Link class='header-logo' to='/'>
                         <img class="header-icon" src={process.env.PUBLIC_URL + '/bread_basket_icon.jpg'}></img>
-                    {/* <svg>
-                        <rect x="0" y="0" fill="none" width="100%" height="100%" />
-                    </svg>   */}
+
                     </Link>
                     {(!!this.props.signedIn) ?
                     
