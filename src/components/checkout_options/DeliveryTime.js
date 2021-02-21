@@ -103,6 +103,7 @@ class DeliveryTime extends React.Component {
         let day = date[1]
         let month = date[0]
         this.setState({
+            selectedTime: null,
             currentDay: this.dayDisplay(e.currentTarget.value),
             currentDate: {
                 day: day,
