@@ -17,7 +17,7 @@ class PaymentOptions extends React.Component{
     //All have titles above the divider
     componentDidUpdate(prevState){
         // if(this.prevState.currentShopperAddresses !== prevState.currentShopperAddresses){
-            
+
         // }
 
         // if(this.prevState.currentShopperContacts !== prevState.currentShopperContacts){
@@ -38,9 +38,9 @@ class PaymentOptions extends React.Component{
     //Select Button w/ Add Button or Address Display underneath 
     
     userAddresses = () => {
-        // return this.props.currentShopperAddresses.map((address) => {
-        //     return address
-        // })
+        return this.props.currentShopperAddresses.map((address) => {
+            return address
+        })
     }
 
     renderTip = () => {
