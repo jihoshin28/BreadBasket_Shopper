@@ -72,6 +72,7 @@ class DeliveryTime extends React.Component {
         let today = new Date()
         let day = String(today.getDay())
         let times = ['9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM' ,'6PM', '7PM', '8PM', '9PM', '10PM', '11PM' ]
+        console.log(day, currentDay)
         if(day === currentDay){
             let time = today.getHours()
             if(time > 22){
@@ -81,10 +82,9 @@ class DeliveryTime extends React.Component {
                     </div>
                 )
             } else {
-                let index = time - 9
+                let index = time - 8
                 times = times.slice(index)
             }
-            return 
         }
 
         return (
@@ -104,7 +104,7 @@ class DeliveryTime extends React.Component {
         let month = date[0]
         this.setState({
             selectedTime: null,
-            currentDay: this.dayDisplay(e.currentTarget.value),
+            currentDay: e.currentTarget.value,
             currentDate: {
                 day: day,
                 month: month
