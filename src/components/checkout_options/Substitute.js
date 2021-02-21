@@ -13,7 +13,7 @@ class Substitute extends React.Component {
   
     selectOption = (e) => {
         let substitute = {
-            'phrase': e.currentTarget.children[0].children[0].children[0].children[1].innerHTML,
+            'phrase': e.currentTarget.children[0].children[1].children[0].innerHTML,
             'value': e.currentTarget.value
         }
         this.setState({

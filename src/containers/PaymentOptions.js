@@ -1,13 +1,6 @@
 import React from 'react' 
 import { connect } from 'react-redux'
 import PaymentOption from '../components/PaymentOption'
-import Address from '../components/checkout_options/Address'
-import CheckoutPayment from '../components/checkout_options/CheckoutPayment'
-import Contact from '../components/checkout_options/Contact'
-import DeliveryNote from '../components/checkout_options/DeliveryNote'
-import DeliveryTime from '../components/checkout_options/DeliveryTime'
-import Substitute from '../components/checkout_options/Substitute'
-import Tip from '../components/checkout_options/Tip'
 import {addShopperNumber, addShopperAddress} from '../actions'
 
 class PaymentOptions extends React.Component{
@@ -75,13 +68,13 @@ class PaymentOptions extends React.Component{
     render(){
         return(
             <React.Fragment>
-                <PaymentOption title = 'Phone Number' selectType = "Select" bottomOption = {<Contact numbers = {this.userNumbers()}/>} bottomContent = {this.props.chosenPhone? this.props.chosenPhone: "Please choose a contact"}/>
-                <PaymentOption title = 'Address' selectType = "Select" bottomOption = {<Address addresses = {this.userAddresses()}/>} bottomContent = {this.props.chosenAddress? this.props.chosenAddress: "Please select an address"}/>
-                <PaymentOption title = 'Tip' selectType = "Select" bottomOption = {<Tip />} bottomContent = {this.renderTip()}/>
-                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomOption = {<DeliveryTime />} bottomContent = {this.props.chosenDeliveryDay && this.props.chosenDeliveryTime ? `Deliver by ${this.props.chosenDeliveryDay}, ${this.props.chosenDeliveryDate} at ${this.props.chosenDeliveryTime}`: "Please select delivery time and date"}/>
-                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomOption = {<Substitute />} bottomContent = {this.props.chosenSubstitute? this.quote(this.props.chosenSubstitute): "Add an optional substitute preference"}/>
-                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomOption = {<DeliveryNote />} bottomContent = {this.props.chosenDeliveryNote? this.quote(this.props.chosenDeliveryNote): "Add an optional delivery note"}/>
-                <PaymentOption title = 'Payment Method' bottomOption = {<CheckoutPayment />}/>
+                <PaymentOption title = 'Phone Number' selectType = "Select" userNumbers = {this.userNumbers()} bottomContent = {this.props.chosenPhone? this.props.chosenPhone: "Please choose a contact"}/>
+                <PaymentOption title = 'Address' selectType = "Select" userAddresses = {this.userAddresses()} bottomContent = {this.props.chosenAddress? this.props.chosenAddress: "Please select an address"}/>
+                <PaymentOption title = 'Tip' selectType = "Select"  bottomContent = {this.renderTip()}/>
+                <PaymentOption title = 'Delivery Time' selectType = "Select" bottomContent = {this.props.chosenDeliveryDay && this.props.chosenDeliveryTime ? `Deliver by ${this.props.chosenDeliveryDay}, ${this.props.chosenDeliveryDate} at ${this.props.chosenDeliveryTime}`: "Please select delivery time and date"}/>
+                <PaymentOption title = 'Substitution Preference' selectType = "Select" bottomContent = {this.props.chosenSubstitute? this.quote(this.props.chosenSubstitute): "Add an optional substitute preference"}/>
+                <PaymentOption title = 'Delivery Notes' selectType = "Edit" bottomContent = {this.props.chosenDeliveryNote? this.quote(this.props.chosenDeliveryNote): "Add an optional delivery note"}/>
+                <PaymentOption title = 'Payment Method'/>
             </React.Fragment>
         )
     }

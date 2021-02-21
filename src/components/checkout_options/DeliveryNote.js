@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import {updateDeliveryNote} from '../../actions'
 
 class DeliveryNote extends React.Component {
-
+    componentDidMount(){
+        console.log(this.props.showBottomToggle)
+    }
     renderTextArea = ({ input, meta, label }) => {
         return (
             <div class="form-group modal-form">
@@ -18,7 +20,6 @@ class DeliveryNote extends React.Component {
     onSubmit = (formValues) => {
         console.log(formValues)
         return new Promise((resolve, reject) => {
-            console.log('hello are you there?')
             const errors = validate(formValues)
             if(errors.empty){
                 reject(new SubmissionError(errors))
@@ -26,8 +27,8 @@ class DeliveryNote extends React.Component {
                 resolve(formValues)
             }
         }).then((formValues) => {
-        
             this.props.updateDeliveryNote(formValues.delivery_note)
+            this.props.showBottomToggle()
         })
     }
 

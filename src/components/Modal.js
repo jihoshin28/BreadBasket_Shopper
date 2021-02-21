@@ -8,7 +8,8 @@ import SubmitModal from './modals/SubmitModal'
 const Modal = (props) => {
     
     const[ref] = useState(React.createRef())
-
+    const[show] = useState("")
+    
     useEffect(() => {
         console.log(props)
         const selectedDiv = ref.current
@@ -37,6 +38,11 @@ const Modal = (props) => {
         })
     }, [])
 
+    // let closeForm = (e) => {
+    //     ref.current.classList = "modal fade"
+    //     console.log(ref.current)
+    // }
+
     let renderContent = () => {
         if(!props.modal.item_pic && !props.modal.confirm && !props.modal.submit){
             return 
@@ -56,7 +62,7 @@ const Modal = (props) => {
         } 
     }
         return (
-            <div ref = {ref} class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div ref = {ref} class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true" >
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     {renderContent()}
                 </div>
