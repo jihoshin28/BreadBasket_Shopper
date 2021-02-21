@@ -25,10 +25,7 @@ export default (state = INITIAL_STATE, action) => {
     }
 
     if(action.type === 'DROP_CART'){
-        return {...state, 
-            cart_items: {},
-            item_ids: []   
-        }
+        return INITIAL_STATE
     }
 
     if(action.type === 'CHANGE_STORE'){

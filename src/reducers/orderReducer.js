@@ -7,11 +7,18 @@ let INITIAL_STATE = {
     subtotal:0,
     payment: 0,
     tax: 0,
-    tip: {amount: 0, value: 0}, 
+    tip: {"amount": 0, "value": 0}, 
     total: 0,
-    delivery_time: null,
+    delivery_time: {
+        "time": null, 
+        "date": {
+            "month": null,
+            "day": null, 
+        },
+        "day": null
+    }, 
     complete_time: null,
-    substitute: null,
+    substitute: {"phrase": null, "value": null},
     note: null,
     payment_method: null,
     address: null,
@@ -26,8 +33,7 @@ export default (state = INITIAL_STATE, action) => {
             subtotal: parseInt(action.payload.order.subtotal),
             payment: parseInt(action.payload.order.payment),
             tax: parseInt(action.payload.order.tax),
-            total: parseInt(action.payload.order.total),
-            tip: action.payload.tip
+            total: parseInt(action.payload.order.total)
         }
     }
     if(action.type === 'UPDATE_ORDER_NUMBER') {
@@ -75,7 +81,7 @@ export default (state = INITIAL_STATE, action) => {
     }
     
     if(action.type === 'CHECKOUT_ORDER'){
-        return {...state, current_order_id: null}
+        return INITIAL_STATE
     }
     
     if(action.type === "CANCEL_ORDER"){
