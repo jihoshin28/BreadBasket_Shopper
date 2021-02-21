@@ -73,8 +73,12 @@ class Products extends Component {
                     <div class = "container-fluid justify-content-center">
                         <h1 class = "productsHeader">{categoryTitle}</h1>
                         <div class = "row productsHeader">
-                            <div className = "col-sm-5">
-                                <h2>{this.props.selectedStore.attributes.name}</h2>
+                            <div class="col-sm-5">
+                                <div className = "productsStore">
+                                    <img style = {{height: '100%', width: '25%', marginBottom: "3%"}} src = {`${this.props.selectedStore.attributes.logo}`}></img>
+
+                                </div>
+                               
                             </div>
                             <div className = "col-sm-5">
                                 <Searchbar history = {this.props.history} onSearchSubmit={this.props.onSearchSubmit} onSearchChange={this.props.onSearchChange}/>
