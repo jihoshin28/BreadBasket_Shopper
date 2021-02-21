@@ -446,6 +446,13 @@
 
 .checkout-option-div{
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: -5%;
+}
+
+.checkout-option-payment{
+  display: flex;
   justify-content:center;
   align-items: center;
   left: 0;
