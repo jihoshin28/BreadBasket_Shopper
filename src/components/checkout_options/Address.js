@@ -68,6 +68,7 @@ class Address extends React.Component {
         return (
             <div className = "ui container">
                 <div className = "button-options">
+                    
                     {this.renderAddresses()}
                 
                     <AddRowButton numberModal = {() => this.props.addressModal()} text = "Add an Address" />
