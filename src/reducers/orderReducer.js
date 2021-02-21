@@ -21,7 +21,8 @@ let INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
     
     if(action.type === "PRE_ORDER"){
-        return {...state, current_order_id: action.payload.id, 
+        return {...state, 
+            current_order_id: action.payload.id, 
             subtotal: parseInt(action.payload.order.subtotal),
             payment: parseInt(action.payload.order.payment),
             tax: parseInt(action.payload.order.tax),

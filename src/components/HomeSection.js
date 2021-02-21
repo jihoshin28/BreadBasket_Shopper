@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react'
 let HomeSection = (props) => {
     const [ref] = useState(React.createRef())
     useEffect(() => {
-
-        console.log(props)
         const selectedSection = ref.current
         const options = {
             root: null,

@@ -10,7 +10,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_TEST_KEY)
 class Payment extends React.Component {
     
     componentDidMount(){
-        console.log(this.props)
+        console.log(this.props.orderTip)
         let currentURL = window.location.href.split('/')
         let successParam = currentURL[currentURL.length - 1]
         console.log(currentURL.length) 
