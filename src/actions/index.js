@@ -279,14 +279,32 @@ export const selectOrderPayment = (method) => {
 
 //AUTH ACTIONS
 
+export const getCurrentUser = (shopperId) => async dispatch => {
+    const response = await rails.get(`/shoppers/${shopperId}`)
+    let data = response.data
+
+}
+
 export const signIn = (userInfo) => async dispatch => {
     const response = await rails.post('/login', {shopper: userInfo})
     let data = response.data
     localStorage.setItem('shopper_token', data.jwt)
-    console.log(data.shopper)
     dispatch({
         type: 'SIGN_IN',
-        payload: data.shopper.data.attributes
+        payload: {
+            'current_shopper': data.shopper.data.attributes,
+            'numbers': data.shopper.data.attributes.phones.map((number) => {
+                return number.number
+            }),
+            'addresses': data.shopper.data.attributes.addresses.map(address => {
+                return{
+                    "street": address.street,
+                    "city": address.city,
+                    "state": address.state,
+                    "zip_code": address.zip_code
+                }
+            })
+        }
     })
 }
 
@@ -298,12 +316,6 @@ export const signOut = () => {
 }
 
 //USER PROFILE ACTIONS
-
-export const getCurrentShopper = (shopperId) => async dispatch => {
-    const response = await rails.get(`shoppers/${shopperId}`)
-    let data = response.data
-    console.log(response.data)
-}
 
 export const createShopperProfile = (shopperInfo) => async dispatch => {
     const response = await rails.post('/shopper_infos/', shopperInfo)
@@ -395,15 +407,20 @@ export const clearModal = () => {
 //ADDRESS ACTIONS
 
 export const addShopperAddress = (form) => async dispatch => {
+    console.log(form)
     const response = await rails.post('/addresses', {'address': form})
     const data = response.data
-    console.log(data)
+    console.log(data.data.attributes)
+    dispatch({
+        type: "ADD_SHOPPER_ADDRESS",
+        payload: data.data.attributes
+    })
 }
 
 //EMAIL ACTIONS
 
 export const addShopperEmail = (form) => async dispatch => {
-    const response = await rails.post('/emails', {'email': form})
+    const response = await rails.post('/emails', {form})
     const data = response.data
     console.log(data)
 }
@@ -411,7 +428,13 @@ export const addShopperEmail = (form) => async dispatch => {
 //NUMBER ACTIONS
 
 export const addShopperNumber = (form) =>  async dispatch => {
+    console.log(form)
     const response = await rails.post('/phones', {'phone': form})
     const data = response.data
+    console.log(data)
+    dispatch({
+        type: "ADD_SHOPPER_CONTACT",
+        payload: data.data.attributes.number
+    })
 }
 

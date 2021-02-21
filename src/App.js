@@ -31,10 +31,6 @@ class App extends Component  {
     this.props.getStores()
     this.props.getItems(1)
     this.props.clearModal()
-    if (!!this.props.shopperId && !this.props.cartId) {
-        console.log('hit')
-        this.props.startCart({ shopper_id: this.props.shopperId })
-    }
     // this.props.getActiveOrders(this.props.shopperId)
     console.log(this.props.items)
   }

@@ -100,24 +100,33 @@ class SubmitModal extends React.Component {
     }
 
     submit = (formValues) => {
-        console.log(formValues)
+
         return new Promise((resolve, reject) => {
             const errors = validate(formValues, this.type)
-            if(errors){
+            if(errors.empty){
                 reject(new SubmissionError(errors))
             } else {
                 resolve(formValues)
             }
-        }).then((formValues)=> {
-            console.log(formValues)
-            if(this.type === "number"){
-                this.props.addShopperNumber(formValues)
-            } else if(this.type === "address") {
-                this.props.addShopperAddress(formValues)
+        }).then((formValues) => {
+            if('number' in formValues){
+                this.props.addShopperNumber(
+                    {
+                        ...formValues,
+                        phoneable_type: 'Shopper', 
+                        phoneable_id: this.props.shopperId
+                    }
+                )
+            } else {
+                this.props.addShopperAddress(
+                    {
+                        ...formValues,
+                        addressable_type: 'Shopper', 
+                        addressable_id: this.props.shopperId
+                    }
+                )
             }
         })
-        
-        
     }
 
     render(){
@@ -146,7 +155,6 @@ class SubmitModal extends React.Component {
 
 let validate = (formValues, type) => {
     let error = {}
-    console.log(formValues, type)
     if(type === 'number' && formValues.number){
         if(formValues.number.length !== 10){
             error.number = "Please enter a valid number."
@@ -178,6 +186,7 @@ let formWrapped = reduxForm({
 
 let mapStateToProps = state => {
     return({
+        shopperId: state.auth.currentShopper.id,
         submitType: state.modals.submit.type
     })
 } 

@@ -1,8 +1,10 @@
 const INTIAL_STATE = {
-    signedIn: null,
+    signedIn: false,
     currentShopper: {
         shopper_info: {}
     },
+    numbers: [],
+    addresses: []
 }
 
 export default (state = INTIAL_STATE, action) => {
@@ -11,14 +13,12 @@ export default (state = INTIAL_STATE, action) => {
             return {
                 ...state, 
                 signedIn: true,
-                currentShopper: action.payload
+                currentShopper: action.payload.current_shopper,
+                numbers: action.payload.numbers,
+                addresses: action.payload.addresses
             }
         case 'SIGN_OUT':
-            return {
-                ...state, 
-                signedIn: false, 
-                currentShopper: {}
-            }
+            return INTIAL_STATE
         case 'PROFILE_INFO':
             return{
                 ...state, currentShopper: { 
@@ -36,6 +36,25 @@ export default (state = INTIAL_STATE, action) => {
                     ...state.currentShopper,
                     shopper_info: action.payload
                 }
+            }
+        case 'ADD_SHOPPER_ADDRESS':
+            return {
+                ...state, addresses: [
+                        ...state.addresses, {
+                            "street": action.payload.street,
+                            "city": action.payload.city,
+                            "state": action.payload.state,
+                            "zip_code": action.payload.zip_code
+                        }
+                    ]
+            }
+            
+
+        case 'ADD_SHOPPER_CONTACT':
+            return {
+                ...state, numbers: [
+                    ...state.numbers, action.payload
+                ]
             }
 
         default:

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {signIn, signOut, dropCart, checkoutOrder} from '../actions'
+import {signIn, signOut, dropCart, startCart, checkoutOrder} from '../actions'
 
 class GoogleAuth extends React.Component{
     componentDidMount(){
@@ -24,7 +24,7 @@ class GoogleAuth extends React.Component{
     }
     
 
-    authChange = (userStatus) => {
+    authChange = async(userStatus) => {
         if (!!userStatus) {
             let user = this.auth.currentUser.get().getBasicProfile()
             console.log(user)
@@ -35,7 +35,8 @@ class GoogleAuth extends React.Component{
                 last_name: user.getFamilyName(),
                 image: user.getImageUrl()
             }
-            this.props.signIn(userInfo)
+            let response = await this.props.signIn(userInfo)
+            this.props.startCart({shopper_id: this.props.shopperId})
         } else {
             this.props.signOut()
         }
@@ -133,4 +134,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, {signIn, signOut, dropCart, checkoutOrder})(GoogleAuth)
+export default connect(mapStateToProps, {signIn, signOut, dropCart, startCart, checkoutOrder})(GoogleAuth)

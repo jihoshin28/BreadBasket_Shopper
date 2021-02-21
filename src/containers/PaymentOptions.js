@@ -8,22 +8,28 @@ import DeliveryNote from '../components/checkout_options/DeliveryNote'
 import DeliveryTime from '../components/checkout_options/DeliveryTime'
 import Substitute from '../components/checkout_options/Substitute'
 import Tip from '../components/checkout_options/Tip'
-import { reduxForm, Field } from 'redux-form'
-import {getCurrentShopper} from '../actions'
+import {addShopperNumber, addShopperAddress} from '../actions'
 
 class PaymentOptions extends React.Component{
     componentDidMount(){
-        this.props.getCurrentShopper(this.props.shopperId)
-        console.log(this.props.currentShopper, 'current_SHOPPER')
+        console.log(this.props.currentShopper)
     }
     //All have titles above the divider
-    
+    componentDidUpdate(prevState){
+        // if(this.prevState.currentShopperAddresses !== prevState.currentShopperAddresses){
+            
+        // }
+
+        // if(this.prevState.currentShopperContacts !== prevState.currentShopperContacts){
+            
+        // }
+    }    
     //Contact Information
     //Conditionally Add if no contacts
     //Select Button w/ Add Line or Phone Number Display underneath
     userNumbers = () => {
-        return this.props.currentShopper.phones.map((number) => {
-            return number.number
+        return this.props.currentShopperContacts.map((number) => {
+            return number
         })
     }
 
@@ -32,10 +38,9 @@ class PaymentOptions extends React.Component{
     //Select Button w/ Add Button or Address Display underneath 
     
     userAddresses = () => {
-        return this.props.currentShopper.addresses.map((address) => {
-            return address
-        })
-        // this.props.currentShopper.attributes
+        // return this.props.currentShopperAddresses.map((address) => {
+        //     return address
+        // })
     }
 
     renderTip = () => {
@@ -84,8 +89,9 @@ class PaymentOptions extends React.Component{
 
 let mapStateToProps = (state) => {
     return ({
-        shopperId: state.auth.currentShopper.id,
         currentShopper: state.auth.currentShopper,
+        currentShopperAddresses: state.auth.addresses,
+        currentShopperContacts: state.auth.numbers,
         chosenPhone: state.order.number,
         chosenAddress: state.order.address, 
         chosenTip: state.order.tip,
@@ -97,4 +103,4 @@ let mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, {getCurrentShopper})(PaymentOptions)
+export default connect(mapStateToProps, {addShopperNumber, addShopperAddress})(PaymentOptions)
