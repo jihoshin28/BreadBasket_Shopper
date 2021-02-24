@@ -10,7 +10,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_TEST_KEY)
 class Payment extends React.Component {
     
     componentDidMount(){
-        console.log(this.props.orderTip)
+        console.log(this.props.orderTax, this.props.orderTotal, this.props.orderSubTotal, this.props.orderPayment)
         let currentURL = window.location.href.split('/')
         let successParam = currentURL[currentURL.length - 1]
         console.log(currentURL.length) 
@@ -59,8 +59,8 @@ class Payment extends React.Component {
                 note: this.props.orderNote,
                 phone: this.props.orderNumber,
                 substitute: this.props.orderSubstitute,
-                total: this.props.orderTotal + this.props.orderTip,
-                tip: this.props.orderTip
+                total: (this.props.orderTotal + this.props.orderTip/100).toFixed(2) ,
+                tip: (this.props.orderTip/100).toFixed(2)
             }
         )
         this.props.checkoutOrder()
@@ -155,7 +155,7 @@ class Payment extends React.Component {
                                                     <h4>SubTotal</h4>
                                                 </div>
                                                 <div>
-                                                    <h4>{`$${(this.props.orderSubTotal / 100).toFixed(2)}`}</h4>
+                                                    <h4>{`$${this.props.orderSubTotal.toFixed(2) }`}</h4>
                                                 </div>
                                             </div>
                                             <div className = "row payment-cost-line">
@@ -163,7 +163,7 @@ class Payment extends React.Component {
                                                     <h4>Delivery</h4>
                                                 </div>    
                                                 <div>
-                                                    <h4>{`$${(this.props.orderPayment / 100).toFixed(2)}`}</h4>
+                                                    <h4>{`$${this.props.orderPayment.toFixed(2) }`}</h4>
                                                 </div>    
                                             </div>
                                             <div className = "row payment-cost-line">
@@ -171,7 +171,7 @@ class Payment extends React.Component {
                                                     <h4>Tax</h4>
                                                 </div>
                                                 <div>
-                                                    <h4>{`$${(this.props.orderTax / 100).toFixed(2)}`}</h4>
+                                                    <h4>{`$${this.props.orderTax.toFixed(2) }`}</h4>
                                                 </div>
                                             </div>
                                             <div className = "row payment-cost-line">
@@ -180,7 +180,7 @@ class Payment extends React.Component {
                                                 </div>    
                                                 <div>
                                                     {
-                                                        <h4>{`$${(this.props.orderTip / 100).toFixed(2)}`}</h4>   
+                                                        <h4>{`$${this.props.orderTip.toFixed(2) }`}</h4>   
                                                     }
                                                 </div>    
                                             </div>
@@ -192,15 +192,15 @@ class Payment extends React.Component {
                                                     <h4>Total</h4> 
                                                 </div>
                                                 <div>
-                                                    <h4>{`$${(
-                                                        (this.props.orderPayment + this.props.orderSubTotal + this.props.orderTip + this.props.orderTax) / 100).toFixed(2)}`
+                                                    <h4>{`$${
+                                                        (this.props.orderPayment + this.props.orderSubTotal + this.props.orderTip + this.props.orderTax).toFixed(2) }`
                                                         }
                                                     </h4>
                                                 </div>
                                             </div>
                                             <div style = {{marginTop: '10%'}}>
                                                 {
-                                                    this.props.paymentMethod === "test"?
+                                                    this.props.paymentMethod === "test" ?
                                                     <div style = {{borderRadius: "3px", webkitBoxShadow: "0px 0 5px rgba(99, 99, 99, 0.842)"}} className = "button-div">
                                                         <button className = 'btn btn-success' onClick = {this.placeOrder} style = {{width: "100%"}} form = "contactForm" value = {this.props.value}>
                                                             <div className = "checkout-option-payment">    

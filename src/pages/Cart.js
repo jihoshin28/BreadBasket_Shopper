@@ -35,7 +35,7 @@ class Cart extends Component{
                 return sum + (current.attributes.quantity_num * (current.attributes.item.price * .01))
             }, 0)
         }
-        let payment = subtotal * .14
+        let payment = subtotal * .35
         let tax = (subtotal + payment) * .0725
         let total = subtotal + payment + tax
         let submitForm = (formValues) => {
@@ -44,10 +44,10 @@ class Cart extends Component{
                 alert('Your cart is empty!')
             } else {
                 let orderInfo = {
-                    subtotal: (subtotal * 100).toFixed(0),
-                    payment: (payment * 100).toFixed(0),
-                    tax: (tax * 100).toFixed(0),
-                    total: (total * 100).toFixed(0),
+                    subtotal: subtotal,
+                    payment: payment,
+                    tax: tax,
+                    total: total,
                     store_id: this.props.storeId,
                     shopper_id: this.props.shopperId,
                     status: 'pending'

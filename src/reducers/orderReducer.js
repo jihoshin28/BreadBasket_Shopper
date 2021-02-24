@@ -30,10 +30,10 @@ export default (state = INITIAL_STATE, action) => {
     if(action.type === "PRE_ORDER"){
         return {...state, 
             current_order_id: action.payload.id, 
-            subtotal: parseInt(action.payload.order.subtotal),
-            payment: parseInt(action.payload.order.payment),
-            tax: parseInt(action.payload.order.tax),
-            total: parseInt(action.payload.order.total)
+            subtotal: action.payload.order.subtotal,
+            payment: action.payload.order.payment,
+            tax: action.payload.order.tax,
+            total: action.payload.order.total
         }
     }
     if(action.type === 'UPDATE_ORDER_NUMBER') {
