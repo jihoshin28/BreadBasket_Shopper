@@ -59,8 +59,8 @@ class Payment extends React.Component {
                 note: this.props.orderNote,
                 phone: this.props.orderNumber,
                 substitute: this.props.orderSubstitute,
-                total: (this.props.orderTotal + this.props.orderTip/100).toFixed(2) ,
-                tip: (this.props.orderTip/100).toFixed(2)
+                total: this.props.orderTotal + this.props.orderTip ,
+                tip: this.props.orderTip
             }
         )
         this.props.checkoutOrder()
