@@ -12,7 +12,7 @@ class FoodListCarousel extends Component {
 
     render(){
 
-        const arrowStyles : CSSProperties = {
+        const arrowStyles = {
             position: 'absolute',
             zIndex: 2,
             top: 'calc(50% - 15px)',
